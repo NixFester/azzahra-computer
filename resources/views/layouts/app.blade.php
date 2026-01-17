@@ -15,7 +15,7 @@
 </head>
 <body>
     {{-- Include Navigation --}}
-    @include('partials.navbar')
+    @include('partials.header')
 
     {{-- Main Content --}}
     <main>
