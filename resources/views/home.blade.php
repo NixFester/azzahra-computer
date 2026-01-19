@@ -2,34 +2,60 @@
 @section('title', 'Home')
 @section('content')
     <section class="text-white" style="">
-        <div class="container py-5 m-0">
+        <div class="container">
             <img src="{{ asset('images/banner1.png') }}" alt="banner" class="img-fluid">
         </div>
     </section>
 
         <!-- Rating -->
         <section class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-md-4">
-            <h2 class="display-4 fw-bold">4,8</h2>
-            <div class="text-warning fs-4">★★★★★</div>
-            <small>Berdasarkan 8.218 ulasan Google</small>
-            </div>
-            <div class="col-md-8">
-            <div class="row g-3">
-                <div class="col-md-4">
-                <div class="border p-3 rounded">Review pelanggan</div>
-                </div>
-                <div class="col-md-4">
-                <div class="border p-3 rounded">Review pelanggan</div>
-                </div>
-                <div class="col-md-4">
-                <div class="border p-3 rounded">Review pelanggan</div>
-                </div>
-            </div>
-            </div>
+  <div class="row align-items-center g-4">
+
+    <!-- Rating summary -->
+    <div class="col-lg-3 col-md-4 text-center">
+      <h2 class="display-4 fw-bold">4,8</h2>
+      <div class="text-warning fs-4">★★★★★</div>
+      <small>Berdasarkan 8.218 ulasan Google</small>
+      <div class="mt-3 mx-auto" style="max-width:120px;">
+        <img src="{{ asset('images/logo 1.png') }}" alt="banner" class="img-fluid">
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="col-lg-9 col-md-8">
+      <div class="row g-3">
+
+        <div class="col-lg-4 col-md-6">
+          <x-kartu-review
+            name="Pulafa Pulafa"
+            :rating="5"
+            review="Pelayanan sangat baik, staff ramah. Mereka menemukan bahwa masalahnya adalah konflik driver yang sangat spesifik setelah update BIOS. Selama proses perbaikan, mereka secara proaktif memberikan update melalui WhatsApp..."
+          />
         </div>
-        </section>
+
+        <div class="col-lg-4 col-md-6">
+          <x-kartu-review
+            name="Farhan Denta"
+            image="{{ asset('images/farhan.png') }}"
+            :rating="5"
+            review="Pelayanan oke, Staff ramah dan informatif, layar bergaris garansi Asus full cover juga tanpa bayar. Sekalian saya tambah cleaning + ganti thermal pasta 300 ribu, laptop adem lagi 👍. Makasih Azzahra Computer 🙏"
+          />
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <x-kartu-review
+            name="Khalim Mahfud"
+            image="{{ asset('images/khalim.png') }}"
+            :rating="5"
+            review="Baru pertama kali klaim kerusakan HP, merk Motorola dan disini alhamdulillah dibantu maksimal sekali sampai ganti unit baru. Jarak waktu klaim 5 harian. Pelayanannya oke, CS nya ramah & solutif. Keren! Tegal nih, laka-laka."
+          />
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
         <!-- Categories -->
         <section class="container py-4">
