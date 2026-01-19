@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ asset('css/kategoriproduk1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cardproduct.css') }}">
     <link rel="stylesheet" href="{{ asset('css/companyprofile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/brand.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/detailtempat.css') }}">
 
     {{-- bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
