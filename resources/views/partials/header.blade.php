@@ -53,12 +53,12 @@
 
       <!-- Menu -->
       <nav class="menu">
-        <a href="#">Home</a>
-        <a href="#">About Us</a>
+        <a href="/">Home</a>
+        <a href="/tentang">About Us</a>
         <a href="#">Blog</a>
-        <a href="#">Contact</a>
-        <a href="#">Promo</a>
-        <a href="#">Intership/Magang</a>
+        <a href="/kontak">Contact</a>
+        <a href="/promo">Promo</a>
+        <a href="/intern">Intership/Magang</a>
       </nav>
 
     </div>

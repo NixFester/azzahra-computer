@@ -4,14 +4,16 @@
 @include('partials.header')
 
 <section class="container py-5">
-    <h1>Internship</h1>
-    <p>
-        Kami membuka program magang untuk mahasiswa dan fresh graduate
-        di bidang IT, desain, dan marketing.
-    </p>
-
-    <p>Kirim CV ke: hr@example.com</p>
+  <div class="row">
+    <div class="col-12 mb-3 text-center">
+      <img src="images/promo1.png" alt="promo1" class="img-fluid">
+    </div>
+    <div class="col-12 text-center">
+      <img src="images/promo2.png" alt="promo2" class="img-fluid">
+    </div>
+  </div>
 </section>
+
 
 @include('partials.footer')
 @endsection
