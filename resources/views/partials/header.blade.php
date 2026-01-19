@@ -36,12 +36,12 @@
 
       <!-- Kanan -->
       <div class="d-flex gap-4">
-        <a class="text-white text-decoration-none" href="#">Home</a>
-        <a class="text-white text-decoration-none" href="#">About Us</a>
+        <a class="text-white text-decoration-none" href="/">Home</a>
+        <a class="text-white text-decoration-none" href="/tentang">About Us</a>
         <a class="text-white text-decoration-none" href="#">Blog</a>
-        <a class="text-white text-decoration-none" href="#">Contact</a>
-        <a class="text-white text-decoration-none" href="#">Promo</a>
-        <a class="text-white text-decoration-none" href="#">Internship/Magang</a>
+        <a class="text-white text-decoration-none" href="/kontak">Contact</a>
+        <a class="text-white text-decoration-none" href="/promo">Promo</a>
+        <a class="text-white text-decoration-none" href="/intern">Internship/Magang</a>
       </div>
 
     </div>

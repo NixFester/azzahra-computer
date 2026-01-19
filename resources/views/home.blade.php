@@ -1,66 +1,18 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
+@include('partials.header')
     <section class="text-white" style="">
         <div class="container">
             <img src="{{ asset('images/banner1.png') }}" alt="banner" class="">
         </div>
     </section>
 
-    <!-- Rating -->
-    <section class="container py-2 pl-5">
-        <div class="row align-items-center g-4">
+    <!-- Rating Component -->
+    <x-rating :ratings="app('App\Http\Controllers\RatingController')->getRatings()" />
 
-            <!-- Rating summary -->
-            <div class="col-lg-3 col-md-4 text-center">
-                <h2 class="display-4 fw-bold">4,8</h2>
-                <div class="text-warning fs-4">★★★★★</div>
-                <small>Berdasarkan 8.218 ulasan Google</small>
-                <div class="mt-3 mx-auto" style="max-width:120px;">
-                    <img src="{{ asset('images/logo 1.png') }}" alt="banner" class="img-fluid">
-                </div>
-            </div>
-
-            <!-- Reviews -->
-            <div class="col-lg-9 col-md-8">
-                <div class="row g-3">
-
-                    <div class="col-lg-4 col-md-6">
-                        <x-kartu-review name="Pulafa Pulafa" :rating="5"
-                            review="Pelayanan sangat baik, staff ramah. Mereka menemukan bahwa masalahnya adalah konflik driver yang sangat spesifik setelah update BIOS. Selama proses perbaikan, mereka secara proaktif memberikan update melalui WhatsApp..." />
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <x-kartu-review name="Farhan Denta" image="{{ asset('images/farhan.png') }}" :rating="5"
-                            review="Pelayanan oke, Staff ramah dan informatif, layar bergaris garansi Asus full cover juga tanpa bayar. Sekalian saya tambah cleaning + ganti thermal pasta 300 ribu, laptop adem lagi 👍. Makasih Azzahra Computer 🙏" />
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <x-kartu-review name="Khalim Mahfud" image="{{ asset('images/khalim.png') }}" :rating="5"
-                            review="Baru pertama kali klaim kerusakan HP, merk Motorola dan disini alhamdulillah dibantu maksimal sekali sampai ganti unit baru. Jarak waktu klaim 5 harian. Pelayanannya oke, CS nya ramah & solutif. Keren! Tegal nih, laka-laka." />
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Categories -->
-    <section class="container py-5">
-        <h5 class="fw-semibold mb-3">Top Categories</h5>
-        <div class="row text-center ">
-            <div class="col-4 col-md-2">
-                <x-kategori image="{{ asset('images/laptop.png') }}" kategori="Laptop" />
-            </div>
-            <div class="col-4 col-md-2"><x-kategori image="{{ asset('images/laptop.png') }}" kategori="Laptop" />
-            </div>
-            <div class="col-4 col-md-2"><x-kategori image="{{ asset('images/laptop.png') }}" kategori="Aksesoris" /></div>
-            <div class="col-4 col-md-2"><x-kategori image="{{ asset('images/laptop.png') }}" kategori="Desktop" /></div>
-            <div class="col-4 col-md-2"><x-kategori image="{{ asset('images/laptop.png') }}" kategori="Komponen" /></div>
-            <div class="col-4 col-md-2"><x-kategori image="{{ asset('images/laptop.png') }}" kategori="Networking" /></div>
-        </div>
-    </section>
+    <!-- Categories Component -->
+    <x-categories :categories="app('App\Http\Controllers\CategoriesController')->getCategories()" />
 
     <!-- Good Better Best -->
     <section class="container">
@@ -82,29 +34,8 @@
         <x-stats-bar service-count="9000" satisfaction="8500" max-satisfaction="9000" customer-count="9500" />
     </section>
 
-    <!-- Products -->
-    <section class="container py-5">
-        <ul class="nav nav-tabs mb-4">
-            <li class="nav-item"><a class="nav-link active">Power Deals</a></li>
-            <li class="nav-item"><a class="nav-link">New Arrival</a></li>
-            <li class="nav-item"><a class="nav-link">Top Rate</a></li>
-            <li class="nav-item"><a class="nav-link">Best Selling</a></li>
-        </ul>
-
-        <div class="row g-4">
-            <div class="col-md-3">
-                <x-kartu-produk image="images/Nereus-AP1602-4.jpg" category="Backpack" name="Asus Nereus AP1602 Backpack"
-                    price="Rp299.000,00" badge="5% OFF" old-price="Rp314.000,00" />
-            </div>
-            <div class="col-md-3"> <x-kartu-produk image="images/Nereus-AP1602-4.jpg" category="Backpack"
-                    name="Asus Nereus AP1602 Backpack" price="Rp299.000,00" badge="5% OFF" old-price="Rp314.000,00" /></div>
-            <div class="col-md-3"> <x-kartu-produk image="images/Nereus-AP1602-4.jpg" category="Backpack"
-                    name="Asus Nereus AP1602 Backpack" price="Rp299.000,00" badge="5% OFF" old-price="Rp314.000,00" /></div>
-            <div class="col-md-3"> <x-kartu-produk image="images/Nereus-AP1602-4.jpg" category="Backpack"
-                    name="Asus Nereus AP1602 Backpack" price="Rp299.000,00" badge="5% OFF" old-price="Rp314.000,00" />
-            </div>
-        </div>
-    </section>
+    <!-- Products Component -->
+    <x-products :products="app('App\Http\Controllers\ProductsController')->getProducts()" :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
 
     <section class="container">
         <img src="{{ asset('images/produkBanner.png') }}" alt="produk banner" class="img-fluid">
@@ -209,4 +140,5 @@
             <img src="{{ asset('images/hp.png') }}" alt="HP">
         </div>
     </section>
+@include('partials.footer')
 @endsection

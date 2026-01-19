@@ -22,16 +22,11 @@
     
 </head>
 <body>
-    {{-- Include Navigation --}}
-    @include('partials.header')
 
     {{-- Main Content --}}
     <main>
         @yield('content')
     </main>
-
-    {{-- Include Footer --}}
-    @include('partials.footer')
 
     {{-- Link JS Anda disini --}}
     <script src="{{ asset('js/app.js') }}"></script>
