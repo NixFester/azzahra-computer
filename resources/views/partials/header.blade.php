@@ -1,51 +1,203 @@
-<header class="border-bottom shadow-md">
+<header class="header">
 
-  <!-- Top header (row 1) -->
-  <div class="container py-3">
-    <div class="d-flex align-items-center gap-3">
+  <!-- TOP HEADER -->
+  <div class="top-header">
+    <div class="container header-top-inner">
 
-      <div class="logo">
-        <a href="{{ route('home') }}">
-          <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
-        </a>
+      <!-- Logo -->
+      <div class="logo-area">
+        <img src="images/logo.png" alt="Azzahra Computer">
+        <span>Azzahra Computer</span>
       </div>
 
-      <div class="flex-grow-1 d-flex">
-        <input class="form-control rounded-0 rounded-start" placeholder="Search">
-        <select class="form-select rounded-0 w-auto">
+      <!-- Search -->
+      <div class="search-area">
+        <input type="text" placeholder="Search">
+        <select>
           <option>All Categories</option>
+          <option>Laptop</option>
+          <option>Printer</option>
         </select>
-        <button class="btn btn-primary rounded-0 rounded-end">Search</button>
+        <button class="search-btn">
+          <i class="bi bi-search"></i>
+        </button>
       </div>
 
-      <div class="d-flex gap-3">
-        <span>Account</span>
-        <span>Cart</span>
-      </div>
+      <!-- Account & Cart -->
+      <div class="user-area">
 
-    </div>
-  </div>
+        <div class="user-item">
+          <i class="bi bi-person"></i>
+          <small>My Account</small>
+        </div>
 
-  <!-- Navigation (row 2) -->
-  <nav class="bg-primary">
-  <div class="container py-2">
-    <div class="d-flex align-items-center justify-content-between text-white">
+        <div class="user-item">
+          <i class="bi bi-cart"></i>
+          <small>Cart</small>
+        </div>
 
-      <!-- Kiri -->
-      <strong>Kategori Produk</strong>
-
-      <!-- Kanan -->
-      <div class="d-flex gap-4">
-        <a class="text-white text-decoration-none" href="#">Home</a>
-        <a class="text-white text-decoration-none" href="#">About Us</a>
-        <a class="text-white text-decoration-none" href="#">Blog</a>
-        <a class="text-white text-decoration-none" href="#">Contact</a>
-        <a class="text-white text-decoration-none" href="#">Promo</a>
-        <a class="text-white text-decoration-none" href="#">Internship/Magang</a>
       </div>
 
     </div>
   </div>
-</nav>
+
+  <!-- NAVBAR -->
+  <div class="nav-bar">
+    <div class="container nav-inner">
+
+      <!-- Kategori -->
+      <div class="category-btn">
+        <span>Kategori Produk</span>
+        <i class="bi bi-list"></i>
+      </div>
+
+      <!-- Menu -->
+      <nav class="menu">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+        <a href="#">Promo</a>
+        <a href="#">Intership/Magang</a>
+      </nav>
+
+    </div>
+  </div>
 
 </header>
+
+<style>
+/* Reset */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* TOP HEADER */
+.top-header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-top-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+}
+
+/* Logo */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.logo-area img {
+    height: 42px;
+}
+
+/* Search */
+.search-area {
+    display: flex;
+    width: 45%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.search-area input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+.search-area select {
+    border: none;
+    border-left: 1px solid #ccc;
+    padding: 10px;
+    outline: none;
+}
+
+.search-btn {
+    background: #2f80ed;
+    border: none;
+    padding: 0 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-btn i {
+    font-size: 18px;
+}
+
+/* Account & Cart */
+.user-area {
+    display: flex;
+    gap: 28px;
+}
+
+.user-item {
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: #333;
+}
+
+.user-item i {
+    font-size: 22px;
+    display: block;
+}
+
+/* NAVBAR */
+.nav-bar {
+    background: #4a90e2;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Category */
+.category-btn {
+    background: #3b7ddd;
+    color: #fff;
+    padding: 14px 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-btn i {
+    font-size: 20px;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+</style>
