@@ -33,13 +33,25 @@ class RatingController extends Controller
                     'rating' => 5,
                     'review' => 'Baru pertama kali klaim kerusakan HP, merk Motorola dan disini alhamdulillah dibantu maksimal sekali sampai ganti unit baru. Jarak waktu klaim 5 harian. Pelayanannya oke, CS nya ramah & solutif. Keren! Tegal nih, laka-laka.',
                 ],
-                 [
-                    'name' => 'Khalim Mahfud',
-                    'image' => asset('images/khalim.png'),
+                [
+                    'name' => 'eL Ka',
+                    'image' => asset('images/avatar/eLka.png'),
                     'rating' => 5,
-                    'review' => 'Baru pertama kali klaim kerusakan HP, merk Motorola dan disini alhamdulillah dibantu maksimal sekali sampai ganti unit baru. Jarak waktu klaim 5 harian. Pelayanannya oke, CS nya ramah & solutif. Keren! Tegal nih, laka-laka.',
+                    'review' => 'Mantap Servis TAB sy yg ngehang disini benar² bisa Garansi Full Rp,0,- dan Pelayanan Ramah serta Komunikatif, Waktu pengerjaan jg hari Libur Nasional tetap Melayani (kec. Minggu. ) Estimasi pengerjaan lebih cepat dari janjinya, ToP pokoke',
                 ],
-                
+                [
+                    'name' => 'farrah fauzia',
+                    'image' => null,
+                    'rating' => 5,
+                    'review' => 'Pelayanan mantap,after sales wet vacume dreame masih garansi,sehabis dservis,mesin seperti baru lagi,Tegal laptop store n service center top markotop.',
+                ],
+                [
+                    'name' => 'APIP RAMADAN',
+                    'image' => null,
+                    'rating' => 5,
+                    'review' => 'TEGAL LAPTOP STORE DAN SERVICE CENTER TEGAL memang luar biasa,pelayanannya ramah dan cepat,informasi jelas,garansi panjang dan hadiahnya menarik.buat teman -teman yang punya masalah dengan laptopnya bisa langsung ke TEGA...'
+                ]
+
             ]
         ];
     }

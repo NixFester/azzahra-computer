@@ -11,28 +11,28 @@ class CategoriesController extends Controller
         return [
             [
                 'name' => 'Laptop',
-                'image' => 'images/laptop.png',
-            ],
-            [
-                'name' => 'Laptop',
-                'image' => 'images/laptop.png',
+                'image' => 'images/kategori/laptop.png',
             ],
             [
                 'name' => 'Aksesoris',
-                'image' => 'images/laptop.png',
+                'image' => 'images/kategori/accesories.png',
             ],
             [
-                'name' => 'Desktop',
-                'image' => 'images/laptop.png',
+                'name' => 'handphone',
+                'image' => 'images/kategori/hp.png',
             ],
             [
-                'name' => 'Komponen',
-                'image' => 'images/laptop.png',
+                'name' => 'tablet',
+                'image' => 'images/kategori/hp.png',
             ],
             [
-                'name' => 'Networking',
-                'image' => 'images/laptop.png',
+                'name' => 'watch',
+                'image' => 'images/kategori/laptop.png',
             ],
+            [
+                'name' => 'audio',
+                'image' => 'images/kategori/tws.png',
+            ]
         ];
     }
 }

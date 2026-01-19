@@ -13,35 +13,44 @@
             </div>
         </div>
 
-        <!-- Reviews carousel -->
-        <div class="col-lg-9 col-md-8">
+         <!-- Reviews carousel -->
+        <div class="col-lg-9 col-md-8 overflow-visible  ">
 
-            <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+            <div id="reviewCarousel"
+                 class="carousel slide"
+                 data-bs-ride="carousel"
+                 data-bs-interval="4000"
+                 data-bs-wrap="true">
+
                 <div class="carousel-inner">
 
-                    @foreach($ratings['reviews'] as $i => $review)
+                    @foreach(array_chunk($ratings['reviews'], 3) as $i => $chunk)
                         <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
-                            <div class="col-lg-4 col-md-6">
-                                <x-kartu-review 
-                                    name="{{ $review['name'] }}" 
-                                    image="{{ $review['image'] ?? null }}"
-                                    :rating="$review['rating']"
-                                    review="{{ $review['review'] }}" />
+                            <div class="row g-3">
+                                @foreach($chunk as $review)
+                                    <div class="col-lg-4 col-md-6">
+                                        <x-kartu-review 
+                                            name="{{ $review['name'] }}" 
+                                            image="{{ $review['image'] ?? null }}"
+                                            :rating="$review['rating']"
+                                            review="{{ $review['review'] }}" />
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     @endforeach
 
                 </div>
 
-                <button class="carousel-control-prev blur-btn" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
-                <button class="carousel-control-next blur-btn" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </button>
-            </div>
 
-        </div>
+            </div>
 
     </div>
 </section>
@@ -52,7 +61,11 @@
     }
     .blur-btn {
     width: 48px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(1px);
+    background: rgba(255,255,255,0);
+}
+    .blur-btn:hover {
+        backdrop-filter: blur(8px);
     background: rgba(255,255,255,0.3);
 }
 
