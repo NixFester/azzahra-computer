@@ -1,0 +1,48 @@
+.brand-section {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.brand-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+    color: #000;
+}
+
+/* GRID 2 BARIS */
+.brand-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 2 baris (4 x 2) */
+    gap: 32px 40px;
+    align-items: center;
+    justify-items: center;
+}
+
+/* LOGO BESAR */
+.brand-logos img {
+    max-height: 55px;   /* diperbesar */
+    max-width: 140px;
+    object-fit: contain;
+    transition: transform 0.25s ease;
+}
+
+/* HOVER */
+.brand-logos img:hover {
+    transform: scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .brand-logos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
