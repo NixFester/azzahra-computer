@@ -9,6 +9,13 @@ use App\Http\Controllers\Admin\IklanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\ProductFilterController;
+use App\Http\Controllers\ProductController;
+
+
+Route::get('/products', function () {
+    return view('products');
+})->name('products');
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

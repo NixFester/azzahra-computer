@@ -1,25 +1,14 @@
 <?php
+// app/Http/Controllers/NavigationController.php
 
-namespace App\Providers;
+namespace App\Http\Controllers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
-class AppServiceProvider extends ServiceProvider
+class NavigationController extends Controller
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
+    public function __construct()
     {
         // Share navigation data with all views
         View::composer('*', function ($view) {

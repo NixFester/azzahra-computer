@@ -46,13 +46,15 @@
     <div class="container nav-inner">
 
       <!-- Kategori -->
-      <div >
-        <select class="category-btn">
-          <option>Kategori <i class="bi bi-list"></i></option>
-          <option>Laptop</option>
-          <option>Printer</option>
-        </select>
-      </div>
+      <x-nav-dropdown title="Categories">
+                <a href="/products">All Products</a>
+                @foreach($navCategories as $category)
+                    <a href="/products?category={{ $category }}">
+                        {{ $category }}
+                    </a>
+                @endforeach
+            </x-nav-dropdown>
+          
 
       <!-- Menu -->
       <nav class="menu">
