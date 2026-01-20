@@ -70,7 +70,7 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
     });
 });
 
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/tentang', 'pages.tentang')->name('tentang');
 Route::view('/kontak', 'pages.kontak')->name('kontak');
 Route::view('/promo', 'pages.promo')->name('promo');
