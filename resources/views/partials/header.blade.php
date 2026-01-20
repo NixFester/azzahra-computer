@@ -46,9 +46,12 @@
     <div class="container nav-inner">
 
       <!-- Kategori -->
-      <div class="category-btn">
-        <span>Kategori Produk</span>
-        <i class="bi bi-list"></i>
+      <div >
+        <select class="category-btn">
+          <option>Kategori <i class="bi bi-list"></i></option>
+          <option>Laptop</option>
+          <option>Printer</option>
+        </select>
       </div>
 
       <!-- Menu -->

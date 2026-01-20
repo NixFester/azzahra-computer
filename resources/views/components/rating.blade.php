@@ -14,10 +14,10 @@
         </div>
 
          <!-- Reviews carousel -->
-        <div class="col-lg-9 col-md-8 overflow-visible  ">
+        <div class="col-lg-9 col-md-8 ">
 
             <div id="reviewCarousel"
-                 class="carousel slide"
+                 class="carousel slide carousel-wrapper"
                  data-bs-ride="carousel"
                  data-bs-interval="4000"
                  data-bs-wrap="true">
@@ -72,6 +72,7 @@
     .carousel-control-prev.blur-btn,
     .carousel-control-next.blur-btn {
         top: 50%;
+        left: 10px;
         transform: translateY(-50%);
         height: 120px; /* vertical blur area */
     }
@@ -82,3 +83,7 @@
     }
 
 </style>
+
+<script>
+ 
+    </script>

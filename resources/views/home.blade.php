@@ -5,7 +5,7 @@
 <section class="text-white">
     <div class="container">
 
-        <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div id="bannerCarousel" class="carousel slide carousel-wrapper" data-bs-ride="carousel" data-bs-interval="4000">
 
             {{-- Indicators (titik bawah) --}}
             <div class="carousel-indicators">

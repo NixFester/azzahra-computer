@@ -16,6 +16,16 @@
         background: linear-gradient(135deg, #e8f3ff 0%, #ffffff 100%);
         color: #333;
     }
+    .carousel-control-prev {
+        left : 0 !important; 
+    }
+    .carousel-control-next {
+        right : 0 !important;
+    }
+
+    .carousel {
+        overflow: hidden;
+    }
     * {
             margin: 0;
             padding: 0;
