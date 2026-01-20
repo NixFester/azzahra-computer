@@ -1,26 +1,19 @@
-@import 'tailwindcss';
-@import './kartureview.css';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-}
-@layer base {
-    body {
-        font-family: var(--font-sans);
-        background: linear-gradient(135deg, #e8f3ff 0%, #ffffff 100%);
-        color: #333;
-    }
-    * {
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Dashboard') - Admin</title>
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6fa;
         }
 
         .app {
@@ -36,6 +29,9 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 24px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
         }
 
         .logo {
@@ -47,6 +43,12 @@
             color: #3D8FEF;
             font-size: 24px;
             font-weight: 700;
+        }
+
+        .logo img {
+            max-width: 160px;
+            height: auto;
+            object-fit: contain;
         }
 
         .menu {
@@ -90,6 +92,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
+            flex-shrink: 0;
         }
 
         .logout-link {
@@ -100,6 +103,7 @@
             cursor: pointer;
             background: none;
             border: none;
+            padding: 0;
         }
 
         .logout-link:hover {
@@ -108,6 +112,7 @@
 
         .main {
             flex: 1;
+            margin-left: 260px;
             padding: 30px;
         }
 
@@ -230,11 +235,37 @@
             border: 1px solid #f5c6cb;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .sidebar {
                 display: none;
             }
+            .main {
+                margin-left: 0;
+            }
         }
-    
-}
+    </style>
+    @stack('styles')
+</head>
+<body>
 
+<div class="app">
+    @include('admin.partials.sidebar')
+
+    <main class="main">
+        @include('admin.partials.breadcrumb')
+        
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+
+        @yield('content')
+    </main>
+</div>
+
+@stack('scripts')
+</body>
+</html>

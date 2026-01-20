@@ -28,12 +28,12 @@
 
         <div class="user-item">
           <i class="bi bi-person"></i>
-          <small>My Account</small>
+          <a href="/login"><small>My Account</small></a>
         </div>
 
         <div class="user-item">
           <i class="bi bi-cart"></i>
-          <small>Cart</small>
+          <a href="/cart"><small>Cart</small></a>
         </div>
 
       </div>

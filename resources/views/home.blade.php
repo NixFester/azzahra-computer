@@ -2,7 +2,9 @@
 @section('title', 'Home')
 @section('content')
 @include('partials.header')
-    <section class="text-white" style="">
+
+    <!-- Banner Section -->
+    <section class="text-white m-10" style="margin-bottom: 25px;">
         <div class="container">
             <img src="{{ asset('images/banner1.png') }}" alt="banner" class="">
         </div>
