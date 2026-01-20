@@ -11,7 +11,7 @@ class CategoriesController extends Controller
         return [
             [
                 'name' => 'Laptop',
-                'image' => 'images/kategori/laptop.png',
+                'image' => 'images/kategori/Axioo Slimbook Hype 10 W11 BROWN.png',
             ],
             [
                 'name' => 'Aksesoris',
@@ -23,11 +23,11 @@ class CategoriesController extends Controller
             ],
             [
                 'name' => 'tablet',
-                'image' => 'images/kategori/hp.png',
+                'image' => 'images/kategori/tablet.png',
             ],
             [
                 'name' => 'watch',
-                'image' => 'images/kategori/laptop.png',
+                'image' => 'images/kategori/Watch S10 42mm.png',
             ],
             [
                 'name' => 'audio',

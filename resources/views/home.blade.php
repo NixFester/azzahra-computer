@@ -2,13 +2,62 @@
 @section('title', 'Home')
 @section('content')
 @include('partials.header')
+<section class="text-white">
+    <div class="container">
 
-    <!-- Banner Section -->
-    <section class="text-white m-10" style="margin-bottom: 25px;">
-        <div class="container">
-            <img src="{{ asset('images/banner1.png') }}" alt="banner" class="">
+        <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+
+            {{-- Indicators (titik bawah) --}}
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="3"></button>
+            </div>
+
+            {{-- Slides --}}
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <a href="/promo-1">
+                        <img src="{{ asset('images/banner1.png') }}" class="d-block w-100" alt="Banner 1">
+                    </a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/promo-2">
+                        <img src="{{ asset('images/banner2.png') }}" class="d-block w-100" alt="Banner 2">
+                    </a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/promo-3">
+                        <img src="{{ asset('images/banner3.png') }}" class="d-block w-100" alt="Banner 3">
+                    </a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="/promo-4">
+                        <img src="{{ asset('images/banner4.png') }}" class="d-block w-100" alt="Banner 4">
+                    </a>
+                </div>
+
+            </div>
+
+            {{-- Prev / Next --}}
+            <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
         </div>
-    </section>
+
+    </div>
+</section>
+
 
     <!-- Rating Component -->
     <x-rating :ratings="app('App\Http\Controllers\RatingController')->getRatings()" />
@@ -18,18 +67,25 @@
 
     <!-- Good Better Best -->
     <section class="container">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <div class="bg-light text-center py-5 fw-bold">GOOD</div>
-            </div>
-            <div class="col-md-4">
-                <div class="bg-light text-center py-5 fw-bold">BETTER</div>
-            </div>
-            <div class="col-md-4">
-                <div class="bg-light text-center py-5 fw-bold">BEST</div>
-            </div>
+    <div class="row g-3 text-center">
+        <div class="col-md-4">
+            <img src="{{ asset('images/tiers/good.png') }}"
+                 alt="Good"
+                 class="img-fluid">
         </div>
+        <div class="col-md-4">
+            <img src="{{ asset('images/tiers/better.png') }}"
+                 alt="Better"
+                 class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="{{ asset('images/tiers/best.png') }}"
+                 alt="Best"
+                 class="img-fluid">
+        </div>
+    </div>
     </section>
+
 
     <!-- Stats -->
     <section class="container">

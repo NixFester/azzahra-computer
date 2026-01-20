@@ -68,25 +68,26 @@
 
             {{-- RIGHT: Payment & Shipping --}}
             <div class="col-md-3 pt-5">
-                <h5>Pembayaran</h5>
-                <div class="d-flex flex-wrap gap-2 mb-3">
-                    <span>BCA</span>
-                    <span>Mandiri</span>
-                    <span>BRI</span>
-                    <span>BNI</span>
-                    <span>DANA</span>
-                    <span>OVO</span>
-                    <span>Gopay</span>
+                    <h5>Pembayaran</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <img src="{{ asset('images/payment/bca.png') }}" alt="BCA" height="20">
+                            <img src="{{ asset('images/payment/mandiri.png') }}" alt="Mandiri" height="20">
+                            <img src="{{ asset('images/payment/bri.png') }}" alt="BRI" height="20">
+                            <img src="{{ asset('images/payment/bni.jpg') }}" alt="BNI" height="20">
+                            <img src="{{ asset('images/payment/dana.png') }}" alt="DANA" height="20">
+                            <img src="{{ asset('images/payment/ovo.png') }}" alt="OVO" height="20">
+                            <img src="{{ asset('images/payment/gopay.png') }}" alt="Gopay" height="20">
+                        </div>
+
+                <h6 class="mb-2">Pengiriman</h6>
+
+                <div class="d-flex align-items-center gap-2">
+                    <img src="{{ asset('images/tiki.png') }}" height="20" alt="TIKI">
+                    <img src="{{ asset('images/jne.png') }}" height="20" alt="JNE">
+                    <img src="{{ asset('images/j&t.png') }}" height="20" alt="J&T">
+                    <img src="{{ asset('images/sicepat.png') }}" height="20" alt="SiCepat">
                 </div>
 
-                <h5>Pengiriman</h5>
-                <div class="d-flex flex-wrap gap-2">
-                    <span>JNE</span>
-                    <span>J&T</span>
-                    <span>SiCepat</span>
-                    <span>AnterAja</span>
-                    <span>Pos Indonesia</span>
-                </div>
             </div>
 
         </div>
@@ -111,7 +112,7 @@ function setActive(index) {
 
 function showTegal() {
     setActive(0);
-    document.getElementById('title').innerText = 'Toko Pusat Tegal';
+    document.getElementById('title').innerText = 'Toko Reparasi Komputer Tegal';
     document.getElementById('address').innerHTML = `
         Ruko Citraland Tegal, Blk. B No.11, Kraton, Kec. <br>
         Tegal Bar., Kota Tegal, Jawa Tengah 52112
@@ -127,7 +128,7 @@ function showCibubur() {
         Kec. Jatisampurna, Kota Bks, Jawa Barat 17433
     `;
     document.getElementById('maps').href =
-        'https://maps.app.goo.gl/H6K6RkaLKGMXGvDi8';
+        'https://maps.app.goo.gl/gNrtrGizxMmiqGzx8';
 }
 </script>
 
