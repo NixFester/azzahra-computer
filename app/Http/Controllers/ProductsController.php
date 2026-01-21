@@ -12,7 +12,6 @@ class ProductsController extends Controller
         $dbProducts = DB::connection('sqlite')
             ->table('products')
             ->whereRaw("CAST(REPLACE(REPLACE(REPLACE(price, 'Rp', ''), '.', ''), ',', '') AS INTEGER) > 0")
-            ->inRandomOrder()
             ->limit(20)
             ->get();
 

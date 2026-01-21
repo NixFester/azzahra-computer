@@ -60,7 +60,7 @@
       <nav class="menu">
         <a href="/">Home</a>
         <a href="/tentang">About Us</a>
-        <a href="#">Blog</a>
+        <a href="/blog">Blog</a>
         <a href="/kontak">Contact</a>
         <a href="/promo">Promo</a>
         <a href="/intern">Intership/Magang</a>

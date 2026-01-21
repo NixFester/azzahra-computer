@@ -7,10 +7,10 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\IklanController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\ProductFilterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BlogController;
 
 
 Route::get('/products', function () {
@@ -56,16 +56,6 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
         Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
     });
     
-    // Blog Routes
-    Route::prefix('blog')->name('blog.')->group(function () {
-        Route::get('/', [BlogController::class, 'index'])->name('index');
-        Route::get('/create', [BlogController::class, 'create'])->name('create');
-        Route::post('/', [BlogController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [BlogController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [BlogController::class, 'update'])->name('update');
-        Route::delete('/{id}', [BlogController::class, 'destroy'])->name('destroy');
-    });
-    
     // Social Routes
     Route::prefix('social')->name('social.')->group(function () {
         Route::get('/', [SocialController::class, 'index'])->name('index');
@@ -76,6 +66,20 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
         Route::delete('/{id}', [SocialController::class, 'destroy'])->name('destroy');
     });
 });
+
+Route::get('/blogs', function () {
+    return view('blogs');
+})->name('blogs');
+
+// Blog routes
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
+Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+Route::put('/blog/{blog}', [BlogController::class, 'update'])->name('blog.update');
+Route::delete('/blog/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/tentang', 'pages.tentang')->name('tentang');
