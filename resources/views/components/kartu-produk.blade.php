@@ -1,4 +1,9 @@
-<div class="card position-relative h-100 shadow-sm">
+<style>
+    .kartu {
+       height: 500px;
+    }
+</style>
+<div class="card kartu position-relative shadow-sm">
 
     @if($badge)
         <span class="badge bg-danger position-absolute top-0 start-0 m-2">
