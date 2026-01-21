@@ -18,9 +18,7 @@
                             Tegal Bar., Kota Tegal, Jawa Tengah 52112
                         </p>
 
-                        <a id="maps" class="maps" href="#" target="_blank">
-                            📌 Open di Google Maps
-                        </a>
+
 
                         <h3>Kontak</h3>
                         <p>📱 0859 4200 1720</p>
