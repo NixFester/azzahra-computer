@@ -7,7 +7,7 @@
     margin: 40px auto;
 }
 
-.sidebar {
+.sidebar.tabs {
     width: 150px;
     border-right: 1px solid #ccc;
 }

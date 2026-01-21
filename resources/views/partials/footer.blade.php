@@ -5,7 +5,7 @@
             {{-- LEFT: Original Location Widget --}}
             <div class="col-md-6">
                 <div class="containertempat ml-10 p-0">
-                    <div class="sidebar">
+                    <div class="sidebar tabs">
                         <div class="tab active" onclick="showTegal()">Tegal</div>
                         <div class="tab" onclick="showCibubur()">Cibubur</div>
                     </div>
