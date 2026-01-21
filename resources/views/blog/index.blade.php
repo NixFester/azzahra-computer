@@ -19,7 +19,7 @@
 
         <div class="grid gap-6">
             @forelse($blogs as $blog)
-                <article class="bg-white shadow-md rounded-lg p-6">
+                <article class=" shadow-md rounded-lg p-6">
                     <h2 class="text-2xl font-bold mb-2">
                         <a href="{{ route('blog.show', $blog) }}" class="hover:text-blue-600">
                             {{ $blog->title }}

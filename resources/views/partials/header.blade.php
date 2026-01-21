@@ -177,7 +177,7 @@ body {
 /* Category */
 .category-btn {
     background: #3b7ddd;
-    color: #fff;
+    color: #ffffff;
     padding: 14px 20px;
     font-weight: 600;
     display: flex;
