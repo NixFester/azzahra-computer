@@ -1,4 +1,6 @@
-<div class="d-flex justify-content-around align-items-center text-center py-4 bg-white">
+<div class="d-flex justify-content-around align-items-center text-center py-4 bg---primary-color: #3D8FEF;
+    --primary-dark: #2a6bc4;
+    --primary-light: #e8f3ff;">
 
     {{-- Service Count --}}
     <div>
