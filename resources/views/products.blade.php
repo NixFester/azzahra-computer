@@ -48,12 +48,11 @@
                             @forelse($searchCategories as $cat)
                             <li class="mb-2">
                                 @php
-                                    $catCount = collect($products)->filter(function($p) use ($cat) {
-                                        return isset($p['category']) && $p['category'] === $cat;
-                                    })->count();
+                                    $isActive = request('category') === $cat;
                                 @endphp
-                                <a href="?category={{ $cat }}&search={{ request('search', '') }}" class="text-decoration-none text-dark">
-                                    {{ ucfirst($cat) }} <span class="text-muted">({{ $catCount }})</span>
+                                <a href="?category={{ urlencode($cat) }}&search={{ request('search', '') }}&min_price={{ request('min_price', 0) }}&max_price={{ request('max_price', 50000000) }}" 
+                                   class="text-decoration-none {{ $isActive ? 'text-primary fw-bold' : 'text-dark' }} category-link">
+                                    {{ ucfirst($cat) }}
                                 </a>
                             </li>
                             @empty
@@ -125,6 +124,10 @@
     .category-list li a:hover {
         color: #667eea !important;
         padding-left: 0.5rem;
+    }
+
+    .category-link.text-primary {
+        color: #667eea !important;
     }
 
     .form-range::-webkit-slider-thumb {
@@ -211,6 +214,23 @@
     // slider.noUiSlider.on('change', () => {
     //     minPriceInput.form.submit();
     // });
+    
+    // Handle category click to toggle selection
+    document.querySelectorAll('.category-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const currentCategory = new URLSearchParams(window.location.search).get('category');
+            const clickedCategory = new URL(this.href).searchParams.get('category');
+            
+            // If clicking the same category, clear it
+            if (currentCategory === clickedCategory) {
+                e.preventDefault();
+                const url = new URL(window.location);
+                url.searchParams.delete('category');
+                window.location = url.toString();
+            }
+        });
+    });
+    
     updatePrice();
 </script>
 @endpush

@@ -36,9 +36,9 @@ class ProductsController extends Controller
             $query->where('product_name', 'like', '%' . $search . '%');
         }
 
-        // Filter by category
+        // Filter by category (case-insensitive)
         if (!empty($category)) {
-            $query->where('category', '=', $category);
+            $query->whereRaw('LOWER(category) = ?', [strtolower($category)]);
         }
 
         // Get products

@@ -21,8 +21,7 @@
     .product-tabs {
         border-bottom: 2px solid #e0e0e0;
         display: flex;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        gap: 1rem;  
         flex-wrap: wrap;
     }
 
@@ -300,20 +299,8 @@
     }
 </style>
 
-<section class="product-section container py-5">
-    <!-- Tabs -->
-    <ul class="nav product-tabs">
-        @foreach($tabs as $index => $tab)
-            <li class="nav-item">
-                <a class="nav-link @if($index === 0) active @endif" 
-                   data-bs-toggle="tab" 
-                   href="#tab-{{ $index }}"
-                   role="button">
-                    {{ $tab }}
-                </a>
-            </li>
-        @endforeach
-    </ul>
+<section class="product-section container">
+
 
     <!-- Products carousel -->
     <div class="product-carousel-wrapper">

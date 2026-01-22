@@ -18,7 +18,9 @@
                             Tegal Bar., Kota Tegal, Jawa Tengah 52112
                         </p>
 
-
+                        <a href="https://maps.app.goo.gl/CeYe9bGF1zyYp6ZX7" id="maps" class="btn btn-primary mb-3">
+                            Lihat di Google Maps
+                        </a>
 
                         <h3>Kontak</h3>
                         <p>📱 0859 4200 1720</p>
@@ -49,15 +51,6 @@
                             <li><a href="#">Service Laptop</a></li>
                             <li><a href="#">Service PC</a></li>
                             <li><a href="#">Sparepart</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="">
-                        <h5>My Account</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
-                            <li><a href="#">Order Saya</a></li>
                         </ul>
                     </div>
 

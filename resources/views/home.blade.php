@@ -78,8 +78,12 @@
     </section>
 
     <!-- Products Component -->
-    <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
+    <section class="container">
+        <x-product-tabs :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
+        <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
+    </section>
 
+    <!-- Produk Banner -->
     <section class="container">
         <img src="{{ asset('images/produkBanner.png') }}" alt="produk banner" class="img-fluid">
 
