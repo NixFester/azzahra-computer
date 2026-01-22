@@ -11,17 +11,20 @@
       </div>
 
       <!-- Search -->
-      <div class="search-area">
-        <input type="text" placeholder="Search">
-        <select>
-          <option>All Categories</option>
-          <option>Laptop</option>
-          <option>Printer</option>
+      <form action="/products" method="GET" class="search-area">
+        <input type="text" name="search" placeholder="Search" value="{{ request('search', '') }}">
+        <select name="category">
+          <option value="">All Categories</option>
+          @foreach($searchCategories as $cat)
+            <option value="{{ $cat }}" @if(request('category') == $cat) selected @endif>
+              {{ ucfirst($cat) }}
+            </option>
+          @endforeach
         </select>
-        <button class="search-btn">
+        <button type="submit" class="search-btn">
           <i class="bi bi-search"></i>
         </button>
-      </div>
+      </form>
 
       <!-- Account & Cart -->
       <div class="user-area">

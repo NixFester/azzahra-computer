@@ -8,15 +8,14 @@ use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProductFilterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\IklanController;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\SocialController;
 
 
-Route::get('/products', function () {
-    return view('products');
-})->name('products');
+Route::get('/products', [ProductsController::class, 'index'])->name('products');
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

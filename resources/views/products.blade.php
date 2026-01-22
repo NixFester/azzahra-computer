@@ -32,6 +32,10 @@
                 <input type="hidden" id="maxPriceInput" name="max_price"
                     value="{{ request('max_price', 50000000) }}">
 
+                <!-- Preserve search and category filters -->
+                <input type="hidden" name="search" value="{{ request('search', '') }}">
+                <input type="hidden" name="category" value="{{ request('category', '') }}">
+
             <button type="submit" class="btn btn-primary  mt-3">
                 Apply Filter
             </button>
@@ -41,36 +45,22 @@
                     <div class="categories-section mb-4">
                         <h5 class="filter-title border-bottom pb-2 mb-3">Product Categories</h5>
                         <ul class="list-unstyled category-list">
+                            @forelse($searchCategories as $cat)
                             <li class="mb-2">
-                                <a href="?category=backpack" class="text-decoration-none text-dark">
-                                    Backpack <span class="text-muted">(2)</span>
+                                @php
+                                    $catCount = collect($products)->filter(function($p) use ($cat) {
+                                        return isset($p['category']) && $p['category'] === $cat;
+                                    })->count();
+                                @endphp
+                                <a href="?category={{ $cat }}&search={{ request('search', '') }}" class="text-decoration-none text-dark">
+                                    {{ ucfirst($cat) }} <span class="text-muted">({{ $catCount }})</span>
                                 </a>
                             </li>
+                            @empty
                             <li class="mb-2">
-                                <a href="?category=digital-antena" class="text-decoration-none text-dark">
-                                    Digital Antena <span class="text-muted">(0)</span>
-                                </a>
+                                <p class="text-muted">No categories available</p>
                             </li>
-                            <li class="mb-2">
-                                <a href="?category=handphone-tablet" class="text-decoration-none text-dark">
-                                    Handphone & Tablet <span class="text-muted">(67)</span>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="?category=laptop" class="text-decoration-none text-dark">
-                                    Laptop <span class="text-muted">(676)</span>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="?category=komputer" class="text-decoration-none text-dark">
-                                    Komputer <span class="text-muted">(467)</span>
-                                </a>
-                            </li>
-                            <li class="mt-3">
-                                <a href="#" class="text-primary text-decoration-none">
-                                    <i class="bi bi-plus-circle"></i> Show More
-                                </a>
-                            </li>
+                            @endforelse
                         </ul>
                     </div>
                 </div>
@@ -81,8 +71,8 @@
 
                 <!-- Products Component -->
                 <x-products 
-                    :products="app('App\Http\Controllers\ProductsController')->getProducts()" 
-                    :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" 
+                    :products="$products" 
+                    :tabs="$tabs" 
                 />
             </div>
         </div>

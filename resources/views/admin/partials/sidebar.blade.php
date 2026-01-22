@@ -3,7 +3,7 @@
         <div class="logo">
             {{-- Jika ada logo gambar, uncomment baris dibawah --}}
             {{-- <img src="{{ asset('images/logo.png') }}" alt="Logo"> --}}
-            <h2><a href="/" style="text-decoration: none; color: blue   ">Admin Panel</a></h2>
+            <h2><a href="/" style="text-decoration: none; color: blue   "><img src="{{ asset('images/logo.png') }}" alt="Logo" height="40"></a></h2>
         </div>
 
         <ul class="menu">
@@ -30,6 +30,11 @@
             <li>
                 <a href="{{ route('admin.social.index') }}" class="{{ request()->routeIs('admin.social.*') ? 'active' : '' }}">
                     Social
+                </a>
+            </li>
+            <li>
+                <a href="/" class="">
+                    beranda
                 </a>
             </li>
         </ul>

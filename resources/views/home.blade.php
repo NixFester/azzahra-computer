@@ -9,39 +9,24 @@
 
             {{-- Indicators (titik bawah) --}}
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
-                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="3"></button>
+                @foreach($banners as $index => $banner)
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ $index }}" @if($index === 0) class="active" @endif></button>
+                @endforeach
             </div>
 
             {{-- Slides --}}
             <div class="carousel-inner">
-
+                @forelse($banners as $index => $banner)
+                <div class="carousel-item @if($index === 0) active @endif">
+                    <a href="{{ $banner->link ?? '#' }}">
+                        <img src="{{ $banner->image_url }}" class="d-block w-100" alt="{{ $banner->title }}">
+                    </a>
+                </div>
+                @empty
                 <div class="carousel-item active">
-                    <a href="/promo-1">
-                        <img src="{{ asset('images/banner1.png') }}" class="d-block w-100" alt="Banner 1">
-                    </a>
+                    <img src="{{ asset('images/banner1.png') }}" class="d-block w-100" alt="Default Banner">
                 </div>
-
-                <div class="carousel-item">
-                    <a href="/promo-2">
-                        <img src="{{ asset('images/banner2.png') }}" class="d-block w-100" alt="Banner 2">
-                    </a>
-                </div>
-
-                <div class="carousel-item">
-                    <a href="/promo-3">
-                        <img src="{{ asset('images/banner3.png') }}" class="d-block w-100" alt="Banner 3">
-                    </a>
-                </div>
-
-                <div class="carousel-item">
-                    <a href="/promo-4">
-                        <img src="{{ asset('images/banner4.png') }}" class="d-block w-100" alt="Banner 4">
-                    </a>
-                </div>
-
+                @endforelse
             </div>
 
             {{-- Prev / Next --}}
@@ -93,7 +78,7 @@
     </section>
 
     <!-- Products Component -->
-    <x-products :products="app('App\Http\Controllers\ProductsController')->getProducts()" :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
+    <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
 
     <section class="container">
         <img src="{{ asset('images/produkBanner.png') }}" alt="produk banner" class="img-fluid">

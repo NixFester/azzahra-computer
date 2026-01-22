@@ -12,23 +12,33 @@
     @endif
 
     <!-- Store Contact Details Section -->
-    <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-0"><i class="fas fa-store"></i> Kontak Store</h5>
+    <div class="card border-0 shadow-sm mb-4">
+    <div class="card-header bg-white border-bottom py-3">
+        <div class="d-flex align-items-center">
+            <div class="bg-primary bg-opacity-10 rounded-3 p-2 me-3">
+                <i class="bi bi-shop text-primary fs-5"></i>
+            </div>
+            <h5 class="mb-0 fw-semibold">Kontak Store</h5>
         </div>
-        <div class="card-body">
-            <form action="{{ route('admin.social.store.update') }}" method="POST">
-                @csrf
-                @method('PUT')
-                
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label class="form-label">
-                                <i class="fab fa-whatsapp text-success"></i> WhatsApp
-                            </label>
+    </div>
+    <div class="card-body p-4">
+        <form action="{{ route('admin.social.store.update') }}" method="POST">
+            @csrf
+            @method('PUT')
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-medium d-flex align-items-center gap-2">
+                            <i class="bi bi-whatsapp text-success"></i>
+                            WhatsApp
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="bi bi-whatsapp text-success"></i>
+                            </span>
                             <input type="text" 
-                                   class="form-control @error('whatsapp') is-invalid @enderror" 
+                                   class="form-control border-start-0 @error('whatsapp') is-invalid @enderror" 
                                    name="whatsapp" 
                                    value="{{ old('whatsapp', $store->whatsapp) }}"
                                    placeholder="+6285942001720">
@@ -37,14 +47,20 @@
                             @enderror
                         </div>
                     </div>
-
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label class="form-label">
-                                <i class="fab fa-instagram text-danger"></i> Instagram
-                            </label>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-medium d-flex align-items-center gap-2">
+                            <i class="bi bi-instagram text-danger"></i>
+                            Instagram
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="bi bi-instagram text-danger"></i>
+                            </span>
                             <input type="text" 
-                                   class="form-control @error('instagram') is-invalid @enderror" 
+                                   class="form-control border-start-0 @error('instagram') is-invalid @enderror" 
                                    name="instagram" 
                                    value="{{ old('instagram', $store->instagram) }}"
                                    placeholder="authorized_servicecenter.tegal">
@@ -53,14 +69,20 @@
                             @enderror
                         </div>
                     </div>
-
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label class="form-label">
-                                <i class="fab fa-youtube text-danger"></i> YouTube
-                            </label>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-medium d-flex align-items-center gap-2">
+                            <i class="bi bi-youtube text-danger"></i>
+                            YouTube
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="bi bi-youtube text-danger"></i>
+                            </span>
                             <input type="text" 
-                                   class="form-control @error('youtube') is-invalid @enderror" 
+                                   class="form-control border-start-0 @error('youtube') is-invalid @enderror" 
                                    name="youtube" 
                                    value="{{ old('youtube', $store->youtube) }}"
                                    placeholder="@authorizedmultibrandservic9761">
@@ -70,15 +92,17 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="text-end">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Update Kontak
-                    </button>
-                </div>
-            </form>
-        </div>
+            </div>
+            
+            <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                <button type="submit" class="btn btn-primary px-4 py-2 d-flex align-items-center gap-2">
+                    <i class="bi bi-check-circle"></i>
+                    Update Kontak
+                </button>
+            </div>
+        </form>
     </div>
+</div>
 
     <!-- Batch Magang Image Section -->
     <div class="card mb-4">

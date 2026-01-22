@@ -23,12 +23,14 @@ class AppServiceProvider extends ServiceProvider
     {
         // Share navigation data with all views
         View::composer('*', function ($view) {
-            $categories = DB::table('products')
+            $searchCategories = DB::table('products')
                 ->select('category')
                 ->distinct()
                 ->whereNotNull('category')
                 ->orderBy('category')
                 ->pluck('category');
+
+            $searchCategoriesArray = $searchCategories ? $searchCategories->toArray() : [];
 
             $brands = DB::table('products')
                 ->select('brand')
@@ -38,7 +40,8 @@ class AppServiceProvider extends ServiceProvider
                 ->pluck('brand');
 
             $view->with([
-                'navCategories' => $categories,
+                'searchCategories' => $searchCategoriesArray,
+                'navCategories' => $searchCategoriesArray,
                 'navBrands' => $brands
             ]);
         });
