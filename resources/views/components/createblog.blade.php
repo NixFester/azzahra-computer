@@ -1,7 +1,20 @@
+    <style>
+        .bodyblog {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            width: 1100px;
+        }
+    </style>
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold mb-6">Create New Blog Post</h1>
 
-        <form action="{{ route('blog.store') }}" method="POST" class="bg-white shadow-md rounded-lg p-8">
+        <form action="{{ route('blog.store') }}" method="POST" class=" shadow-md rounded-lg p-8">
             @csrf
 
             <div class="mb-4">
@@ -24,8 +37,8 @@
 
             <div class="mb-6">
                 <label for="body" class="block text-gray-700 font-bold mb-2">Body (Markdown)</label>
-                <textarea name="body" id="body" rows="10"
-                    class="w-full px-3 py-2 border rounded font-mono @error('body') border-red-500 @enderror">{{ old('body') }}</textarea>
+                <br/>                <textarea name="body" id="body" rows="20" 
+                    class=" px-3 py-2 border rounded font-mono bodyblog @error('body') @enderror">{{ old('body') }}</textarea>
                 <p class="text-gray-600 text-sm mt-1">You can use Markdown formatting</p>
                 @error('body')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
