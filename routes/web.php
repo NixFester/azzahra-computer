@@ -5,12 +5,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProdukController;
-use App\Http\Controllers\Admin\IklanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\ProductFilterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Admin\IklanController;
 
 
 Route::get('/products', function () {
@@ -41,9 +41,9 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
         Route::get('/', [IklanController::class, 'index'])->name('index');
         Route::get('/create', [IklanController::class, 'create'])->name('create');
         Route::post('/', [IklanController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [IklanController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [IklanController::class, 'update'])->name('update');
-        Route::delete('/{id}', [IklanController::class, 'destroy'])->name('destroy');
+        Route::get('/{iklan}/edit', [IklanController::class, 'edit'])->name('edit');
+        Route::put('/{iklan}', [IklanController::class, 'update'])->name('update');
+        Route::delete('/{iklan}', [IklanController::class, 'destroy'])->name('destroy');
     });
     
     // User Routes
