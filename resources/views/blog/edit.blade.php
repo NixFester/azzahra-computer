@@ -6,7 +6,7 @@
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold mb-6">Edit Blog Post</h1>
 
-        <form action="{{ route('blog.update', $blog) }}" method="POST" class="bg-white shadow-md rounded-lg p-8">
+        <form action="{{ route('blog.update', $blog) }}" method="POST" class=" shadow-md rounded-lg p-8">
             @csrf
             @method('PUT')
 

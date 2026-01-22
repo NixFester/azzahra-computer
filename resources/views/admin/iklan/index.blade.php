@@ -68,9 +68,9 @@
     
     <div class="row g-3">
         @foreach($promos as $promo)
-        <div class="col-md-6">
+        <div class="col-3">
             <div class="card border-0 shadow-sm h-100 position-relative">
-                <img src="{{ $promo->image_url }}" class="card-img-top" alt="{{ $promo->title }}" style="height: 250px; object-fit: cover;">
+                <img src="{{ $promo->image_url }}" class="card-img-top h-100" alt="{{ $promo->title }}" style="height: 250px; object-fit: cover;">
                 <div class="position-absolute top-0 end-0 p-2">
                     <div class="dropdown">
                         <button class="btn btn-sm btn-light rounded-circle" type="button" data-bs-toggle="dropdown">
@@ -93,9 +93,9 @@
         @endforeach
         
         @if($promos->count() < 4)
-        <div class="col-md-6">
+        <div class="col-3">
             <a href="{{ route('admin.iklan.create') }}?type=promo" class="text-decoration-none">
-                <div class="card border-0 shadow-sm h-100 bg-light d-flex align-items-center justify-content-center" style="min-height: 250px; cursor: pointer;">
+                <div class="card h-100 border-0 shadow-sm h-100 bg-light d-flex align-items-center justify-content-center" style="min-height: 250px; cursor: pointer;">
                     <div class="text-center text-secondary">
                         <i class="bi bi-plus-lg" style="font-size: 2rem;"></i>
                     </div>
