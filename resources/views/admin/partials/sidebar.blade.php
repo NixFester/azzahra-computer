@@ -18,22 +18,17 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('admin.iklan.index') }}" class="{{ request()->routeIs('admin.iklan.*') ? 'active' : '' }}">
                     Iklan
                 </a>
             </li>
             <li>
-                <a href="">
-                    Kelola Pengguna
-                </a>
-            </li>
-            <li>
-                <a href="">
+                <a href="{{ route('admin.blog.index') }}" class="{{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
                     Blog
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('admin.social.index') }}" class="{{ request()->routeIs('admin.social.*') ? 'active' : '' }}">
                     Social
                 </a>
             </li>

@@ -6,11 +6,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\ProductFilterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\IklanController;
+use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\SocialController;
 
 
 Route::get('/products', function () {
@@ -35,6 +36,16 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
         Route::put('/{id}', [ProdukController::class, 'update'])->name('update');
         Route::delete('/{id}', [ProdukController::class, 'destroy'])->name('destroy');
     });
+
+    // Blog Routes
+    Route::prefix('blog')->name('blog.')->group(function () {
+        Route::get('/', [AdminBlogController::class, 'index'])->name('index');
+        Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
+        Route::post('/', [AdminBlogController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [AdminBlogController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [AdminBlogController::class, 'update'])->name('update');
+        Route::delete('/{id}', [AdminBlogController::class, 'destroy'])->name('destroy');
+    });
     
     // Iklan Routes
     Route::prefix('iklan')->name('iklan.')->group(function () {
@@ -46,25 +57,19 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
         Route::delete('/{iklan}', [IklanController::class, 'destroy'])->name('destroy');
     });
     
-    // User Routes
-    Route::prefix('users')->name('users.')->group(function () {
-        Route::get('/', [UserController::class, 'index'])->name('index');
-        Route::get('/create', [UserController::class, 'create'])->name('create');
-        Route::post('/', [UserController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [UserController::class, 'update'])->name('update');
-        Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
-    });
+    // Social Media Management Routes
+    Route::get('social', [SocialController::class, 'index'])->name('social.index');
     
-    // Social Routes
-    Route::prefix('social')->name('social.')->group(function () {
-        Route::get('/', [SocialController::class, 'index'])->name('index');
-        Route::get('/create', [SocialController::class, 'create'])->name('create');
-        Route::post('/', [SocialController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [SocialController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [SocialController::class, 'update'])->name('update');
-        Route::delete('/{id}', [SocialController::class, 'destroy'])->name('destroy');
-    });
+    // Store contact details
+    Route::put('social/store', [SocialController::class, 'updateStore'])->name('social.store.update');
+    
+    // Batch magang image
+    Route::put('social/batch', [SocialController::class, 'updateBatchImage'])->name('social.batch.update');
+    
+    // Brochures
+    Route::post('social/brochure', [SocialController::class, 'addBrochure'])->name('social.brochure.add');
+    Route::delete('social/brochure/{id}', [SocialController::class, 'deleteBrochure'])->name('social.brochure.delete');
+    
 });
 
 Route::get('/blogs', function () {
