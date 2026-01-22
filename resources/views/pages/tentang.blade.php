@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'tentangami')
+@section('title', 'tentangkami')
 @section('content')
 @include('partials.header')
 
