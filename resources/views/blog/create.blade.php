@@ -38,12 +38,19 @@
             </div>
 
             <div class="flex gap-4">
-                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
+                <button 
+                    type="submit" 
+                    class="bg-purple-600 text-black px-6 py-2 rounded-lg font-semibold
+                        hover:bg-purple-700 transition duration-200">
                     Create Post
                 </button>
-                <a href="{{ route('blog.index') }}" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
-                    Cancel
-                </a>
+
+                    <a href="{{ route('blog.index') }}"
+                    class="inline-block border border-gray-400 text-gray-600 px-6 py-2 rounded-lg
+                            hover:bg-gray-100 hover:text-gray-800 transition duration-200">
+                        Cancel
+                    </a>
+
             </div>
         </form>
     </div>
