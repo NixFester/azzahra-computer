@@ -19,7 +19,7 @@
 .nav-dropdown-toggle {
     background: none;
     border: none;
-    color: #333;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 500;
     padding: 10px 16px;

@@ -2,9 +2,9 @@
 
 <style>
     .product-section {
-        background: linear-gradient(135deg, #e8f3ff 0%, #ffffff 100%);
+   
         position: relative;
-        overflow: hidden;
+  
     }
 
     .product-section::before {
