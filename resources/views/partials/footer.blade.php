@@ -65,27 +65,25 @@
             </div>
 
             {{-- RIGHT: Payment & Shipping --}}
-            <div class="col-md-3 pt-5">
-                    <h5>Pembayaran</h5>
-                        <div class="d-flex flex-wrap gap-2">
-                            <img src="{{ asset('images/payment/bca.png') }}" alt="BCA" height="20">
-                            <img src="{{ asset('images/payment/mandiri.png') }}" alt="Mandiri" height="20">
-                            <img src="{{ asset('images/payment/bri.png') }}" alt="BRI" height="20">
-                            <img src="{{ asset('images/payment/bni.jpg') }}" alt="BNI" height="20">
-                            <img src="{{ asset('images/payment/dana.png') }}" alt="DANA" height="20">
-                            <img src="{{ asset('images/payment/ovo.png') }}" alt="OVO" height="20">
-                            <img src="{{ asset('images/payment/gopay.png') }}" alt="Gopay" height="20">
-                        </div>
-
-                <h6 class="mb-2">Pengiriman</h6>
-
-                <div class="d-flex align-items-center gap-2">
-                    <img src="{{ asset('images/tiki.png') }}" height="20" alt="TIKI">
-                    <img src="{{ asset('images/jne.png') }}" height="20" alt="JNE">
-                    <img src="{{ asset('images/j&t.png') }}" height="20" alt="J&T">
-                    <img src="{{ asset('images/sicepat.png') }}" height="20" alt="SiCepat">
+           <div class="col-md-3 pt-5">
+                <h5>Pembayaran</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="{{ asset('images/payment/bca.png') }}" height="20">
+                    <img src="{{ asset('images/payment/mandiri.png') }}" height="20">
+                    <img src="{{ asset('images/payment/bri.png') }}" height="20">
+                    <img src="{{ asset('images/payment/bni.jpg') }}" height="20">
+                    <img src="{{ asset('images/payment/dana.png') }}" height="20">
+                    <img src="{{ asset('images/payment/ovo.png') }}" height="20">
+                    <img src="{{ asset('images/payment/gopay.png') }}" height="20">
                 </div>
 
+                <h5 class="mt-4">Pengiriman</h5>
+                <div class="d-flex align-items-center gap-2">
+                    <img src="{{ asset('images/tiki.png') }}" height="20">
+                    <img src="{{ asset('images/jne.png') }}" height="20">
+                    <img src="{{ asset('images/j&t.png') }}" height="20">
+                    <img src="{{ asset('images/sicepat.png') }}" height="20">
+                </div>
             </div>
 
         </div>
