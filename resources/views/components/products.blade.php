@@ -510,7 +510,7 @@
                     <div class="product-carousel-wrapper">
                         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
-                                @forelse($products as $productKey => $product)
+                                @forelse(array_chunk($products, 4) as $productKey => $productChunk)
                                     <div class="carousel-item {{ $productKey === 0 ? 'active' : '' }}">
                                         <div class="row g-4">
                                             @for($i = 0; $i < 4 && ($productKey * 4 + $i) < count($products); $i++)

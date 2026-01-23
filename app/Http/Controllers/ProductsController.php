@@ -77,7 +77,7 @@ class ProductsController extends Controller
             $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
             
             $products[] = [
-                'image' => 'images/Nereus-AP1602-4.jpg',
+                'image' => $product->image_array ?? "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
                 'category' => $product->category,
                 'name' => $product->product_name,
                 'price' => $formattedNewPrice,
@@ -212,7 +212,7 @@ class ProductsController extends Controller
             $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
             
             $products[] = [
-                'image' => 'images/Nereus-AP1602-4.jpg',
+                'image' => $product->image_array ?? "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
                 'category' => $product->category,
                 'name' => $product->product_name,
                 'price' => $formattedNewPrice,
@@ -244,8 +244,40 @@ class ProductsController extends Controller
 
     public function getFeaturedProducts(): array
     {
-        // Get featured products for home page without filters
         $request = new Request();
-        return $this->getProducts($request);
+
+        // Clone base query logic from getProducts, but add random order
+        $query = DB::connection('sqlite')
+            ->table('products')
+            ->whereNotNull('price')
+            ->where('price', '!=', '')
+            ->inRandomOrder()
+            ->limit(20);
+
+        $dbProducts = $query->get();
+
+        $products = [];
+
+        foreach ($dbProducts as $product) {
+            $discount = rand(1, 15);
+            $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);
+
+            if ($originalPrice <= 0) {
+                continue;
+            }
+
+            $newPrice = $originalPrice - ($originalPrice * $discount / 100);
+
+            $products[] = [
+                'image' => $product->image_array ?? "images/kategori/{$product->category}/" . rand(1, 4) . ".jpg",
+                'category' => $product->category,
+                'name' => $product->product_name,
+                'price' => 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00',
+                'badge' => $discount . '% OFF',
+                'oldPrice' => 'Rp' . number_format($originalPrice, 0, ',', '.') . '.000,00',
+            ];
+        }
+
+        return $products;
     }
 }
