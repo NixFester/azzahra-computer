@@ -148,7 +148,7 @@
 
     <div class="kartu-body">
         <p class="kartu-category">{{ $category }}</p>
-        <h5 class="kartu-title">{{ $name }}</h5>
+        <h5 class="kartu-title">{{ htmlspecialchars_decode($name) }}</h5>
 
         <div class="kartu-price-section">
             <span class="price-current">{{ $price }}</span>
