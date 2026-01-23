@@ -27,19 +27,13 @@
       </form>
 
       <!-- Account & Cart -->
-      <div class="user-area">
-
-        <div class="user-item">
-          <i class="bi bi-person"></i>
-          <a href="/login"><small>My Account</small></a>
-        </div>
-
-        <div class="user-item">
-          <i class="bi bi-cart"></i>
-          <a href="/cart"><small>Cart</small></a>
-        </div>
-
-      </div>
+        <a href="/login " class="user-area" style="text-decoration: none;">
+            <div href="/login" class="user-circle-btn" title="Admin">
+                <i class="bi bi-person"></i>
+            </div>
+            <small >Admin</small>
+        </a>
+            
 
     </div>
   </div>
@@ -75,10 +69,45 @@
 </header>
 
 <style>
-/* Reset */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-circle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3D8FEF 0%, #2563eb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(61, 143, 239, 0.2);
+}
+
+.user-circle-btn:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(61, 143, 239, 0.3);
+    color: white;
+}
+
+.user-circle-btn:active {
+    transform: translateY(0);
+}
+
+.user-circle-btn i {
+    font-size: 1.2rem;
+}
+
+.user-area small {
+    color: #333;
+    font-weight: 500;
 }
 
 /* Container */

@@ -77,7 +77,7 @@ class ProductsController extends Controller
             $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
             
             $products[] = [
-                'image' => $product->image_array ?? "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
+                'image' => $product->image_array !== "" ? $product->image_array : "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
                 'category' => $product->category,
                 'name' => $product->product_name,
                 'price' => $formattedNewPrice,
@@ -269,7 +269,7 @@ class ProductsController extends Controller
             $newPrice = $originalPrice - ($originalPrice * $discount / 100);
 
             $products[] = [
-                'image' => $product->image_array ?? "images/kategori/{$product->category}/" . rand(1, 4) . ".jpg",
+                'image' => $product->image_array !== "" ? $product->image_array : "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
                 'category' => $product->category,
                 'name' => $product->product_name,
                 'price' => 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00',

@@ -100,34 +100,38 @@
         display: inline-block;
     }
 
-    .kartu-btn-cart {
-        background: linear-gradient(135deg, #3D8FEF 0%, #2563eb 100%);
-        border: none;
-        border-radius: 8px;
-        padding: 10px 16px;
-        color: white;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        cursor: pointer;
-        width: 100%;
-    }
+   .kartu-btn-cart {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    width: 100%;
+}
 
-    .kartu-btn-cart:hover {
-        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(61, 143, 239, 0.3);
-        color: white;
-        text-decoration: none;
-    }
+.kartu-btn-cart:hover {
+    background: linear-gradient(135deg, #128C7E 0%, #0D7C66 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+    color: white;
+    text-decoration: none;
+}
 
-    .kartu-btn-cart:active {
-        transform: translateY(0);
-    }
+.kartu-btn-cart:active {
+    transform: translateY(0);
+}
+
+.kartu-btn-cart i {
+    font-size: 1.1em;
+}
 
     .icon-cart {
         width: 18px;
@@ -136,6 +140,22 @@
         align-items: center;
         justify-content: center;
     }
+    .btn-whatsapp {
+    background-color: #25D366 !important;
+    border-color: #25D366 !important;
+    color: white !important;
+    }
+
+    .btn-whatsapp:hover {
+        background-color: #128C7E !important;
+        border-color: #128C7E !important;
+        color: white !important;
+    }
+
+    .btn-whatsapp i {
+        font-size: 1.1em;
+        margin-right: 0.3rem;
+    }
 </style>
 
 <div class="kartu-modern position-relative shadow-sm">
@@ -143,25 +163,22 @@
         @if($badge)
             <span class="badge-discount">{{ $badge }}</span>
         @endif
-        <img src="{{ asset($image) }}" alt="{{ $name }}" loading="lazy">
+        <img src="{{ asset($image) }}" alt="{{ $name }}" loading="lazy" 
+        onerror="this.onerror=null;this.src='{{ asset('images/fallback/product.jpg') }}';"
+        >
     </div>
-
     <div class="kartu-body">
         <p class="kartu-category">{{ $category }}</p>
         <h5 class="kartu-title">{{ htmlspecialchars_decode($name) }}</h5>
-
         <div class="kartu-price-section">
             <span class="price-current">{{ $price }}</span>
             @if($oldPrice)
                 <span class="price-old">{{ $oldPrice }}</span>
             @endif
         </div>
-
-        <button class="kartu-btn-cart" title="Add to cart">
-            <svg class="icon-cart" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.352l.646 2.585H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 6.5H12.5l1.313-6.5H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-            Add To Cart
+        <button class="kartu-btn-cart btn-whatsapp" title="Order via WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+            Order via WhatsApp
         </button>
     </div>
 </div>

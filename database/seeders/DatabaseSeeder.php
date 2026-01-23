@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
                 'price'        => trim($row[2]),
                 'brand'        => trim($row[3]),
                 'category'     => trim($row[4]),
-                'image_array'  => null,
+                'image_array'  => trim($row[5] ?? NUll),
             ]);
         }
     }
