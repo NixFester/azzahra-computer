@@ -79,8 +79,8 @@
 
     <!-- Products Component -->
     <section class="container">
-        <x-product-tabs :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
-        <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="app('App\Http\Controllers\ProductsController')->getTabs()" />
+        <x-product-tabs :tabs="['Power Deals']" />
+        <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="['Power Deals']" />
     </section>
 
     <!-- Produk Banner -->

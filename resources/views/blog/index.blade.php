@@ -5,7 +5,7 @@
     
     <div class="container mx-auto px-4 py-8">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-4xl font-bold">Blog Posts</h1>
+            <h1 class="text-4xl font-bold mt-4">Blog Posts</h1>
             <a href="{{ route('blog.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
                 New Post
             </a>

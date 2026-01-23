@@ -3,7 +3,8 @@
 @section('content')
 @include('partials.header')
 
-<section class="container py-5">
+<section class="container py-3">
+      <h1 class="mb-4">CONTACT</h1>
   <div class="row">
     <div class="col-12 mb-3 text-center">
       <img src="images/promo1.png" alt="promo1" class="img-fluid">

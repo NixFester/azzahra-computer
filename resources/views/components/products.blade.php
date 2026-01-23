@@ -1,4 +1,4 @@
-@props(['products', 'tabs' => ['Power Deals', 'New Arrival', 'Top Rate', 'Best Selling']])
+@props(['products', 'tabs' => ['Power Deals']])
 
 <style>
     .product-section {

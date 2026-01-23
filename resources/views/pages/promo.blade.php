@@ -3,10 +3,10 @@
 @section('content')
 @include('partials.header')
 
-<section class="container py-5">
+<section class="container py-3">
 
   <!-- Judul -->
-  <h3 class="fw-bold mb-4">PROMO</h3>
+  <h1 class="mb-4">PROMO</h1>
 
   <!-- Gambar -->
   <div class="row g-4">

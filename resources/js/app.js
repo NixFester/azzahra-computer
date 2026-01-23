@@ -1,14 +1,18 @@
 import './bootstrap';
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
-        const controls = wrapper.querySelectorAll('.carousel-control-prev, .carousel-control-next');
-
-        wrapper.addEventListener('mouseenter', () => {
-            controls.forEach(btn => btn.style.visibility = 'visible');
+        const carousel = new bootstrap.Carousel(wrapper, {
+            interval: 4000 // Auto-play enabled by default
         });
 
+        // Pause carousel when cursor enters
+        wrapper.addEventListener('mouseenter', () => {
+            carousel.pause();
+        });
+
+        // Resume carousel when cursor leaves
         wrapper.addEventListener('mouseleave', () => {
-            controls.forEach(btn => btn.style.visibility = 'hidden');
+            carousel.cycle();
         });
     });
 });

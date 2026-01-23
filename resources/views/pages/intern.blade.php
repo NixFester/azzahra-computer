@@ -3,8 +3,8 @@
 @section('content')
 @include('partials.header')
 
-<section class="container py-5">
-    <h1 class="mb-4">Internship</h1>
+<section class="container py-3">
+    <h1 class="mb-4">INTERNSHIP</h1>
 
     <div class="row g-3">
         <div class="col-md-4 col-sm-6">
