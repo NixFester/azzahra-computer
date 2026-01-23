@@ -144,14 +144,14 @@
 
     .stat-subtitle {
         font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.4);
+        color:black;
         margin-top: 0.8rem;
         letter-spacing: 1px;
         transition: color 0.4s ease;
     }
 
     .stat-card:hover .stat-subtitle {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 34, 254, 0.7);
     }
 
     .rating-stars {
@@ -219,7 +219,7 @@
             <div class="stat-content">
                 <div class="stat-label">Active Users</div>
                 <div class="stat-number">{{ number_format($customerCount) }}+</div>
-                <div class="stat-subtitle">Since 2010</div>
+                <div class="stat-subtitle">Since 2010 - 2023</div>
             </div>
         </div>
     </div>

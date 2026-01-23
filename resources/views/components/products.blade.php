@@ -1,10 +1,8 @@
-@props(['products', 'tabs' => ['Power Deals']])
+@props(['products', 'pagination' => false, 'tabs' => ['Power Deals']])
 
 <style>
     .product-section {
-   
         position: relative;
-  
     }
 
     .product-section::before {
@@ -113,12 +111,12 @@
         width: 20px;
         height: 20px;
         background-size: 20px 20px;
-        filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(196deg) brightness(98%) contrast(91%);
+        color: black;
     }
 
     .carousel-control-prev:hover .carousel-control-prev-icon,
     .carousel-control-next:hover .carousel-control-next-icon {
-        filter: brightness(0) invert(1);
+        color: black;
     }
 
     .carousel-inner {
@@ -272,24 +270,106 @@
         }
     }
 
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 24px;
+        margin-top: 2rem;
+    }
+
+    .products-grid.grid-4col {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .products-grid.grid-3col {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .products-grid.grid-2col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products-grid.grid-1col {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination-modern {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .pagination-modern .page-link {
+        min-width: 40px;
+        height: 40px;
+        padding: 8px 12px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        color: #3D8FEF;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: white;
+    }
+
+    .pagination-modern .page-link:hover:not(.disabled) {
+        background: #f8f9fa;
+        border-color: #3D8FEF;
+        color: #3D8FEF;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(61, 143, 239, 0.15);
+    }
+
+    .pagination-modern .page-link.active {
+        background: linear-gradient(135deg, #3D8FEF 0%, #2563eb 100%);
+        color: white;
+        border-color: #3D8FEF;
+        box-shadow: 0 6px 16px rgba(61, 143, 239, 0.3);
+    }
+
+    .pagination-modern .page-link.disabled {
+        color: #999;
+        cursor: not-allowed;
+        border-color: #e9ecef;
+        background: #f8f9fa;
+    }
+
+    .pagination-modern .page-item:first-child .page-link,
+    .pagination-modern .page-item:last-child .page-link {
+        min-width: auto;
+        padding: 8px 12px;
+    }
+
+    .pagination-info {
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    @media (max-width: 1200px) {
+        .products-grid.grid-4col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
     @media (max-width: 768px) {
+        .products-grid.grid-4col {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
         .product-tabs .nav-link {
             padding: 0.75rem 1rem;
             font-size: 0.9rem;
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 40px;
-            height: 40px;
-        }
-
-        .carousel-control-prev {
-            left: -10px;
-        }
-
-        .carousel-control-next {
-            right: -10px;
         }
 
         .category-bg-shape {
@@ -297,47 +377,175 @@
             height: 120px;
         }
     }
+
+    @media (max-width: 576px) {
+        .products-grid.grid-4col {
+            grid-template-columns: 1fr;
+        }
+
+        .pagination-modern {
+            gap: 4px;
+        }
+
+        .pagination-modern .page-link {
+            min-width: 36px;
+            height: 36px;
+            font-size: 0.85rem;
+            padding: 6px 10px;
+        }
+    }
 </style>
 
 <section class="product-section container">
+    @if($pagination)
+        <!-- PRODUCTS PAGE: Grid Layout -->
+        <div class="products-grid grid-4col">
+            @forelse($products as $product)
+                <x-kartu-produk 
+                    image="{{ $product['image'] }}" 
+                    category="{{ $product['category'] }}"
+                    name="{{ $product['name'] }}"
+                    price="{{ $product['price'] }}"
+                    badge="{{ $product['badge'] ?? null }}"
+                    old-price="{{ $product['oldPrice'] ?? null }}" />
+            @empty
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted fs-5">No products found</p>
+                </div>
+            @endforelse
+        </div>
 
+        <!-- Pagination -->
+        <div class="pagination-info">
+            Showing {{ count($products) }} products
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-modern">
+                {{-- Previous Page Link --}}
+                @if($pagination['current_page'] > 1)
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $pagination['first_url'] }}" aria-label="First">
+                            <i class="bi bi-chevron-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $pagination['prev_url'] }}" aria-label="Previous">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-label="First">
+                            <i class="bi bi-chevron-double-left"></i>
+                        </span>
+                    </li>
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-label="Previous">
+                            <i class="bi bi-chevron-left"></i>
+                        </span>
+                    </li>
+                @endif
 
-    <!-- Products carousel -->
-    <div class="product-carousel-wrapper">
-        <div id="productCarousel"
-             class="carousel slide"
-             data-bs-ride="carousel"
-             data-bs-interval="4500"
-             data-bs-wrap="true">
-            <div class="carousel-inner">
-                @foreach(array_chunk($products, 4) as $i => $chunk)
-                    <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
-                        <div class="row g-4">
-                            @foreach($chunk as $product)
-                                <div class="col-md-3">
-                                    <x-kartu-produk 
-                                        image="{{ $product['image'] }}" 
-                                        category="{{ $product['category'] }}"
-                                        name="{{ $product['name'] }}"
-                                        price="{{ $product['price'] }}"
-                                        badge="{{ $product['badge'] ?? null }}"
-                                        old-price="{{ $product['oldPrice'] ?? null }}" />
-                                </div>
-                            @endforeach
+                {{-- Pagination Elements --}}
+                @foreach($pagination['links'] as $link)
+                    @if($link['url'] === null)
+                        <li class="page-item disabled" aria-label="Page {{ $link['label'] }}">
+                            <span class="page-link">{{ $link['label'] }}</span>
+                        </li>
+                    @else
+                        <li class="page-item {{ $link['active'] ? 'active' : '' }}" aria-label="Page {{ $link['label'] }}">
+                            <a class="page-link {{ $link['active'] ? 'active' : '' }}" href="{{ $link['url'] }}">
+                                {{ $link['label'] }}
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+
+                {{-- Next Page Link --}}
+                @if($pagination['current_page'] < $pagination['last_page'])
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $pagination['next_url'] }}" aria-label="Next">
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $pagination['last_url'] }}" aria-label="Last">
+                            <i class="bi bi-chevron-double-right"></i>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-label="Next">
+                            <i class="bi bi-chevron-right"></i>
+                        </span>
+                    </li>
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-label="Last">
+                            <i class="bi bi-chevron-double-right"></i>
+                        </span>
+                    </li>
+                @endif
+            </ul>
+        </nav>
+    @else
+        <!-- HOME PAGE: Carousel Layout -->
+        <ul class="nav nav-tabs product-tabs" role="tablist">
+            @foreach($tabs as $index => $tab)
+                <li class="nav-item" role="presentation">
+                    <button 
+                        class="nav-link {{ $index === 0 ? 'active' : '' }}" 
+                        id="tab-{{ $index }}" 
+                        data-bs-toggle="tab" 
+                        data-bs-target="#content-{{ $index }}" 
+                        type="button">
+                        {{ $tab }}
+                    </button>
+                </li>
+            @endforeach
+        </ul>
+
+        <div class="tab-content">
+            @foreach($tabs as $index => $tab)
+                <div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}" id="content-{{ $index }}">
+                    <div class="product-carousel-wrapper">
+                        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @forelse($products as $productKey => $product)
+                                    <div class="carousel-item {{ $productKey === 0 ? 'active' : '' }}">
+                                        <div class="row g-4">
+                                            @for($i = 0; $i < 4 && ($productKey * 4 + $i) < count($products); $i++)
+                                                <div class="col-lg-3 col-md-6">
+                                                    <x-kartu-produk 
+                                                        image="{{ $products[$productKey * 4 + $i]['image'] }}" 
+                                                        category="{{ $products[$productKey * 4 + $i]['category'] }}"
+                                                        name="{{ $products[$productKey * 4 + $i]['name'] }}"
+                                                        price="{{ $products[$productKey * 4 + $i]['price'] }}"
+                                                        badge="{{ $products[$productKey * 4 + $i]['badge'] ?? null }}"
+                                                        old-price="{{ $products[$productKey * 4 + $i]['oldPrice'] ?? null }}" />
+                                                </div>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                @empty
+                                    <div class="carousel-item active">
+                                        <div class="text-center py-5">
+                                            <p class="text-muted fs-5">No products found</p>
+                                        </div>
+                                    </div>
+                                @endforelse
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
                     </div>
-                @endforeach
-            </div>
-
-            <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+                </div>
+            @endforeach
         </div>
-    </div>
+    @endif
 </section>

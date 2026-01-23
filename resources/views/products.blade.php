@@ -71,6 +71,7 @@
                 <!-- Products Component -->
                 <x-products 
                     :products="$products" 
+                    :pagination="$pagination" 
                     :tabs="$tabs" 
                 />
             </div>
