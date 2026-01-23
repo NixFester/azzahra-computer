@@ -2,32 +2,27 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
-class DatabaseSeeder extends Seeder
+class ProductSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        DB::table('products')->delete(); // remove all existing data
-
         $path = database_path('seeders/data/productList.csv');
-        if (!file_exists($path)) {
+
+        if (!File::exists($path)) {
             return;
         }
 
         $rows = array_map('str_getcsv', file($path));
-        array_shift($rows); // remove header
+        $header = array_shift($rows); // remove header
 
         foreach ($rows as $row) {
-            if (count($row) < 5) continue;
+            if (count($row) < 5) {
+                continue;
+            }
 
             DB::table('products')->insert([
                 'product_name' => trim($row[0]),
@@ -39,5 +34,4 @@ class DatabaseSeeder extends Seeder
             ]);
         }
     }
-
 }
