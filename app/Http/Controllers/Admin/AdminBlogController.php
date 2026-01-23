@@ -24,12 +24,12 @@ class AdminBlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'slug' => 'required|string|unique:blogs',
+            'body' => 'required|string',
+            'date' => 'nullable|date',
         ]);
 
         Blog::create($validated);
-        return redirect()->route('admin.blog.index')->with('success', 'Blog created successfully.');
+        return redirect()->route('admin.blog.index')->with('success', 'Blog berhasil dibuat.');
     }
 
     public function edit(Blog $blog)
@@ -41,17 +41,17 @@ class AdminBlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'slug' => 'required|string|unique:blogs,slug,' . $blog->id,
+            'body' => 'required|string',
+            'date' => 'nullable|date',
         ]);
 
         $blog->update($validated);
-        return redirect()->route('admin.blog.index')->with('success', 'Blog updated successfully.');
+        return redirect()->route('admin.blog.index')->with('success', 'Blog berhasil diperbarui.');
     }
 
     public function destroy(Blog $blog)
     {
         $blog->delete();
-        return redirect()->route('admin.blog.index')->with('success', 'Blog deleted successfully.');
+        return redirect()->route('admin.blog.index')->with('success', 'Blog berhasil dihapus.');
     }
 }

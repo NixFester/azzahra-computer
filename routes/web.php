@@ -41,9 +41,9 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
         Route::get('/', [AdminBlogController::class, 'index'])->name('index');
         Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
         Route::post('/', [AdminBlogController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [AdminBlogController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [AdminBlogController::class, 'update'])->name('update');
-        Route::delete('/{id}', [AdminBlogController::class, 'destroy'])->name('destroy');
+        Route::get('/{blog}/edit', [AdminBlogController::class, 'edit'])->name('edit');
+        Route::put('/{blog}', [AdminBlogController::class, 'update'])->name('update');
+        Route::delete('/{blog}', [AdminBlogController::class, 'destroy'])->name('destroy');
     });
     
     // Iklan Routes
@@ -75,14 +75,9 @@ Route::get('/blogs', function () {
     return view('blogs');
 })->name('blogs');
 
-// Blog routes
+// Blog routes (Viewer only)
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
-Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
 Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
-Route::get('/blog/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit');
-Route::put('/blog/{blog}', [BlogController::class, 'update'])->name('blog.update');
-Route::delete('/blog/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

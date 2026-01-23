@@ -3,45 +3,72 @@
 @section('content')
     @include('partials.header')
     
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-4xl font-bold mt-4">Blog Posts</h1>
-            <a href="{{ route('blog.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                New Post
-            </a>
-        </div>
-
-        @if(session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                {{ session('success') }}
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <h1 class="display-4 fw-bold">
+                    <i class="bi bi-newspaper me-3 text-primary"></i>Blog Posts
+                </h1>
             </div>
-        @endif
 
-        <div class="grid gap-6">
-            @forelse($blogs as $blog)
-                <article class=" shadow-md rounded-lg p-6">
-                    <h2 class="text-2xl font-bold mb-2">
-                        <a href="{{ route('blog.show', $blog) }}" class="hover:text-blue-600">
-                            {{ $blog->title }}
-                        </a>
-                    </h2>
-                    <p class="text-gray-600 text-sm mb-4">{{ $blog->date->format('F d, Y') }}</p>
-                    <div class="text-gray-700 prose prose-sm">
-                {!! str(strip_tags($blog->body_html))->limit(200) !!}
-            </div>
-                    <a href="{{ route('blog.show', $blog) }}" class="text-blue-500 hover:underline mt-2 inline-block">
-                        Read more →
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="bi bi-check-circle me-2"></i>
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            <div class="row g-4">
+                @forelse($blogs as $blog)
+                    <a href="{{ route('blog.show', $blog) }}" class="col-md-6 col-lg-4 text-decoration-none">
+                        <div class="card h-100 shadow-sm border-0 hover-shadow transition">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-calendar3 text-primary me-2"></i>
+                                    <small class="text-muted">{{ $blog->date->format('F d, Y') }}</small>
+                                </div>
+                                <h5 class="card-title fw-bold mb-3 text-dark">{{ $blog->title }}</h5>
+                                <p class="card-text text-muted flex-grow-1">
+                                    {!! str(strip_tags($blog->body_html))->limit(150) !!}
+                                </p>
+                                <div class="pt-3">
+                                    <span class="badge bg-primary-subtle text-primary rounded-pill">
+                                        <i class="bi bi-pencil-square me-1"></i>Blog
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </a>
-                </article>
-            @empty
-                <p class="text-gray-600">No blog posts yet. Create your first post!</p>
-            @endforelse
-        </div>
+                @empty
+                    <div class="col-12">
+                        <div class="alert alert-info text-center py-5" role="alert">
+                            <i class="bi bi-inbox display-4 mb-3 d-block text-info"></i>
+                            <p class="mb-0">No blog posts yet. Stay tuned for updates!</p>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
 
-        <div class="mt-6">
-            {{ $blogs->links() }}
+            @if($blogs->hasPages())
+                <div class="d-flex justify-content-center mt-5">
+                    {{ $blogs->links('pagination::bootstrap-5') }}
+                </div>
+            @endif
         </div>
     </div>
+
+    <style>
+        .hover-shadow {
+            transition: box-shadow 0.3s ease;
+        }
+        .hover-shadow:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+        .bg-primary-subtle {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+    </style>
     
     @include('partials.footer')
 @endsection
