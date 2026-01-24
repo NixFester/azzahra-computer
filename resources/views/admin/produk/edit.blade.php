@@ -58,7 +58,7 @@
                         $firstImage = !empty($images) ? $images[0] : null;
                     @endphp
                     @if($firstImage)
-                        <img src="{{ asset('storage/' . $firstImage) }}" alt="Product Image" style="width: 150px; height: 150px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                        <img src="{{ Storage::url($firstImage) }}" alt="Product Image" style="width: 150px; height: 150px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
                     @else
                         <p style="color: #999;">Tidak ada gambar</p>
                     @endif
