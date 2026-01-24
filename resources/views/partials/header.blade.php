@@ -38,35 +38,35 @@
     </div>
   </div>
 
-  <!-- NAVBAR -->
-  <div class="nav-bar sticky-top">
-    <div class="container nav-inner">
-
-      <!-- Kategori -->
-      <x-nav-dropdown title="Categories">
-                <a href="/products">All Products</a>
-                @foreach($navCategories as $category)
-                    <a href="/products?category={{ $category }}">
-                        {{ $category }}
-                    </a>
-                @endforeach
-            </x-nav-dropdown>
-          
-
-      <!-- Menu -->
-      <nav class="menu">
-        <a href="/">Home</a>
-        <a href="/tentang">About Us</a>
-        <a href="/blog">Blog</a>
-        <a href="/kontak">Contact</a>
-        <a href="/promo">Promo</a>
-        <a href="/intern">Intership/Magang</a>
-      </nav>
-
-    </div>
-  </div>
-
 </header>
+
+<!-- NAVBAR -->
+<div class="nav-bar">
+  <div class="container nav-inner">
+
+    <!-- Kategori -->
+    <x-nav-dropdown title="Categories">
+              <a href="/products">All Products</a>
+              @foreach($navCategories as $category)
+                  <a href="/products?category={{ $category }}">
+                      {{ $category }}
+                  </a>
+              @endforeach
+          </x-nav-dropdown>
+        
+
+    <!-- Menu -->
+    <nav class="menu">
+      <a href="/">Home</a>
+      <a href="/tentang">About Us</a>
+      <a href="/blog">Blog</a>
+      <a href="/kontak">Contact</a>
+      <a href="/promo">Promo</a>
+      <a href="/intern">Intership/Magang</a>
+    </nav>
+
+  </div>
+</div>
 
 <style>
 
@@ -198,9 +198,9 @@
 /* NAVBAR */
 .nav-bar {
     background: #4a90e2;
-        position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
 }
 
 .nav-inner {
