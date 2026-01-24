@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    protected $table = 'products';
+    use HasFactory;
     
-    public $timestamps = false;
+    protected $table = 'products';
     
     protected $fillable = [
         'category',
@@ -17,5 +18,27 @@ class Product extends Model
         'specs',
         'price',
         'image_array',
+        'description',
+        'stock',
+        'is_active',
     ];
+    
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'is_active' => 'boolean',
+        'image_array' => 'array',
+    ];
+    
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+    
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('product_name', 'like', "%{$search}%")
+                     ->orWhere('category', 'like', "%{$search}%")
+                     ->orWhere('brand', 'like', "%{$search}%");
+    }
 }

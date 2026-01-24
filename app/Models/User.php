@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'address',
+        'is_admin',
+        'is_active',
     ];
 
     /**
@@ -43,6 +47,18 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
+            'is_active' => 'boolean',
         ];
+    }
+    
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+    
+    public function scopeAdmins($query)
+    {
+        return $query->where('is_admin', true);
     }
 }

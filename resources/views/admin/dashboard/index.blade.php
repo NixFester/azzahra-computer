@@ -5,71 +5,181 @@
 
 @section('content')
 <style>
+    :root {
+        --primary: #3D8FEF;
+        --primary-dark: #2563eb;
+        --success: #10b981;
+        --danger: #ff3b3b;
+        --warning: #f59e0b;
+        --info: #0ea5e9;
+        --text-dark: #1f2937;
+        --text-light: #6b7280;
+        --border: #e5e7eb;
+    }
+
     .stats {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
         margin-bottom: 30px;
     }
 
     .stat-card {
-        background: linear-gradient(135deg, #3D8FEF, #2563eb);
-        color: #fff;
-        padding: 22px;
-        border-radius: 18px;
-        box-shadow: 0 12px 30px rgba(61, 143, 239, 0.25);
+        background: #fff;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        border-left: 4px solid var(--primary);
+        transition: all 0.3s ease;
     }
 
-    .stat-card p {
-        font-size: 13px;
-        opacity: 0.9;
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
-    .stat-card h2 {
-        margin: 10px 0;
-        font-size: 24px;
+    .stat-card.blue {
+        border-left-color: var(--primary);
     }
 
-    .up {
-        color: #d6ffe7;
-        font-size: 13px;
+    .stat-card.green {
+        border-left-color: var(--success);
     }
 
-    .down {
-        color: #ffd6d6;
-        font-size: 13px;
+    .stat-card.red {
+        border-left-color: var(--danger);
+    }
+
+    .stat-card.orange {
+        border-left-color: var(--warning);
+    }
+
+    .stat-card.purple {
+        border-left-color: #a855f7;
+    }
+
+    .stat-label {
+        font-size: 12px;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 12px;
+    }
+
+    .stat-growth {
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .stat-growth.up {
+        color: var(--success);
+    }
+
+    .stat-growth.down {
+        color: var(--danger);
     }
 
     .card {
         background: #fff;
-        padding: 22px;
-        border-radius: 18px;
+        padding: 24px;
+        border-radius: 16px;
         margin-bottom: 24px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.07);
     }
 
-    .card.large {
-        height: 280px;
-    }
-
-    .red {
-        color: #ff3b3b;
+    .card h4 {
+        margin-top: 0;
+        color: var(--text-dark);
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
     }
 
     .chart-placeholder {
-        height: 190px;
-        background: #f1f3f7;
-        border-radius: 14px;
+        height: 280px;
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #999;
-        margin-top: 14px;
+        color: var(--text-light);
+        font-size: 14px;
+    }
+
+    .recent-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .recent-item {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .recent-item:last-child {
+        border-bottom: none;
+    }
+
+    .recent-item-title {
+        color: var(--text-dark);
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .recent-item-date {
+        color: var(--text-light);
+        font-size: 12px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .badge-primary {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .badge-success {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .badge-warning {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 24px;
     }
 
     @media (max-width: 1024px) {
         .stats {
             grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-2 {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -82,36 +192,128 @@
 
 <!-- STAT CARDS -->
 <div class="stats">
-    <div class="stat-card">
-        <p>Kunjungan</p>
-        <h2>{{ number_format($stats['kunjungan']) }}</h2>
-        <span class="up">▲ 11.01%</span>
+    <div class="stat-card blue">
+        <div class="stat-label">Total Pengguna</div>
+        <div class="stat-value">{{ number_format($stats['kunjungan']) }}</div>
+        <span class="stat-growth up">
+            @if($stats['user_growth'] > 0)
+                ▲ {{ $stats['user_growth'] }}% dari bulan lalu
+            @elseif($stats['user_growth'] < 0)
+                ▼ {{ abs($stats['user_growth']) }}% dari bulan lalu
+            @else
+                — Sama dengan bulan lalu
+            @endif
+        </span>
     </div>
-    <div class="stat-card">
-        <p>Produk Masuk</p>
-        <h2>{{ number_format($stats['produk_masuk']) }}</h2>
-        <span class="down">▼ 0.03%</span>
+
+    <div class="stat-card green">
+        <div class="stat-label">Produk Masuk (Bulan Ini)</div>
+        <div class="stat-value">{{ number_format($stats['produk_masuk']) }}</div>
+        <span class="stat-growth up">
+            @if($stats['product_growth'] > 0)
+                ▲ {{ $stats['product_growth'] }}% dari bulan lalu
+            @elseif($stats['product_growth'] < 0)
+                ▼ {{ abs($stats['product_growth']) }}% dari bulan lalu
+            @else
+                — Sama dengan bulan lalu
+            @endif
+        </span>
     </div>
-    <div class="stat-card">
-        <p>Produk Keluar</p>
-        <h2>{{ number_format($stats['produk_keluar']) }}</h2>
-        <span class="up">▲ 15.03%</span>
+
+    <div class="stat-card orange">
+        <div class="stat-label">Total Produk</div>
+        <div class="stat-value">{{ number_format($stats['produk_keluar']) }}</div>
+        <span class="stat-growth up">Semua produk tersimpan</span>
     </div>
-    <div class="stat-card">
-        <p>Pengguna Baru</p>
-        <h2>{{ number_format($stats['pengguna_baru']) }}</h2>
-        <span class="up">▲ 6.08%</span>
+
+    <div class="stat-card purple">
+        <div class="stat-label">Konten Aktif</div>
+        <div class="stat-value">{{ number_format($stats['total_blogs'] + $stats['active_iklan']) }}</div>
+        <span class="badge badge-success">{{ $stats['total_blogs'] }} artikel | {{ $stats['active_iklan'] }} iklan</span>
     </div>
 </div>
 
-<!-- CHART -->
-<div class="card large">
-    <h4>Users</h4>
-    <div class="chart-placeholder">Line Chart</div>
+<!-- MAIN CONTENT -->
+<div class="grid-2">
+    <!-- RECENT PRODUCTS -->
+    <div class="card">
+        <h4>Produk Terbaru</h4>
+        @if($recentProducts->count() > 0)
+            <ul class="recent-list">
+                @foreach($recentProducts as $product)
+                    <li class="recent-item">
+                        <div>
+                            <div class="recent-item-title">{{ $product->product_name }}</div>
+                            <div class="recent-item-date">
+                                {{ $product->created_at ? $product->created_at->diffForHumans() : 'Tidak tersedia' }}
+                            </div>
+                        </div>
+                        <span class="badge badge-primary">{{ $product->category ?? 'Tanpa Kategori' }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <div class="chart-placeholder">Belum ada produk</div>
+        @endif
+    </div>
+
+    <!-- RECENT USERS -->
+    <div class="card">
+        <h4>Pengguna Baru</h4>
+        @if($recentUsers->count() > 0)
+            <ul class="recent-list">
+                @foreach($recentUsers as $user)
+                    <li class="recent-item">
+                        <div>
+                            <div class="recent-item-title">{{ $user->name }}</div>
+                            <div class="recent-item-date">
+                                <small>{{ $user->email }}</small><br>
+                                {{ $user->created_at ? $user->created_at->diffForHumans() : 'Tidak tersedia' }}
+                            </div>
+                        </div>
+                        <span class="badge badge-success">Aktif</span>
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <div class="chart-placeholder">Belum ada pengguna baru</div>
+        @endif
+    </div>
 </div>
 
-<div class="card">
-    <h4 class="red">Grafik Penjualan</h4>
-    <div class="chart-placeholder">Bar Chart</div>
+<!-- CHART SECTION -->
+<div class="grid-2" style="margin-top: 24px;">
+    <div class="card">
+        <h4>Grafik Pertumbuhan Pengguna</h4>
+        <div class="chart-placeholder">📊 Chart pertumbuhan pengguna (integrasi dengan Chart.js)</div>
+    </div>
+
+    <div class="card">
+        <h4>Grafik Penjualan Produk</h4>
+        <div class="chart-placeholder">📈 Chart penjualan produk (integrasi dengan Chart.js)</div>
+    </div>
 </div>
+
+<!-- RECENT BLOGS -->
+<div class="card" style="margin-top: 24px;">
+    <h4>Artikel Terbaru</h4>
+    @if($recentBlogs->count() > 0)
+        <ul class="recent-list">
+            @foreach($recentBlogs as $blog)
+                <li class="recent-item">
+                    <div style="flex: 1;">
+                        <div class="recent-item-title">{{ $blog->title }}</div>
+                        <div class="recent-item-date">
+                            {{ $blog->date ? $blog->date->format('d M Y') : 'Tidak tersedia' }}
+                        </div>
+                    </div>
+                    <span class="badge badge-primary">Artikel</span>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <div class="chart-placeholder">Belum ada artikel</div>
+    @endif
+</div>
+
 @endsection
