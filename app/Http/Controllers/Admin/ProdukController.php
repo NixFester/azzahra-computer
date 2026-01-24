@@ -49,8 +49,7 @@ class ProdukController extends Controller
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('products', 'public');
-            $validated['image_array'] = json_encode([$path]);
+            $validated['image_array'] = $request->file('image')->store('products', 'public');
         }
 
         Product::create($validated);
@@ -74,6 +73,7 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $produk = Product::findOrFail($id);
+        
         $validated = $request->validate([
             'product_name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
@@ -93,18 +93,12 @@ class ProdukController extends Controller
         // Handle new image upload
         if ($request->hasFile('image')) {
             // Delete old image
-            if ($produk->image_array) {
-                $oldImages = json_decode($produk->image_array, true);
-                if (!empty($oldImages)) {
-                    foreach ($oldImages as $oldImage) {
-                        Storage::disk('public')->delete($oldImage);
-                    }
-                }
+            if ($produk->image_array && Storage::disk('public')->exists($produk->image_array)) {
+                Storage::disk('public')->delete($produk->image_array);
             }
 
             // Upload new image
-            $path = $request->file('image')->store('products', 'public');
-            $validated['image_array'] = json_encode([$path]);
+            $validated['image_array'] = $request->file('image')->store('products', 'public');
         }
 
         $produk->update($validated);
@@ -119,14 +113,10 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         $produk = Product::findOrFail($id);
+        
         // Delete image
-        if ($produk->image_array) {
-            $images = json_decode($produk->image_array, true);
-            if (!empty($images)) {
-                foreach ($images as $image) {
-                    Storage::disk('public')->delete($image);
-                }
-            }
+        if ($produk->image_array && Storage::disk('public')->exists($produk->image_array)) {
+            Storage::disk('public')->delete($produk->image_array);
         }
 
         $produk->delete();
