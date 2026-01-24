@@ -39,7 +39,7 @@
   </div>
 
   <!-- NAVBAR -->
-  <div class="nav-bar">
+  <div class="nav-bar sticky-top">
     <div class="container nav-inner">
 
       <!-- Kategori -->
@@ -198,6 +198,9 @@
 /* NAVBAR */
 .nav-bar {
     background: #4a90e2;
+        position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav-inner {
