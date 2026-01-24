@@ -46,7 +46,7 @@
                             $firstImage = !empty($images) ? $images[0] : null;
                         @endphp
                         @if($firstImage)
-                            <img src="{{ Storage::url($firstImage) }}" alt="{{ $produk->product_name }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                            <img src="{{ Storage::url($firstImage) }}?v={{ $produk->updated_at->timestamp }}" alt="{{ $produk->product_name }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
                         @else
                             <div style="width: 60px; height: 60px; background: #e9ecef; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #adb5bd;">
                                 <span style="font-size: 12px;">No Image</span>

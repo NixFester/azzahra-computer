@@ -163,7 +163,7 @@
         @if($badge)
             <span class="badge-discount">{{ $badge }}</span>
         @endif
-        <img src="{{ asset($image) }}" alt="{{ $name }}" loading="lazy" 
+        <img src="{{ $image }}" alt="{{ $name }}" loading="lazy" 
         onerror="this.onerror=null;this.src='{{ asset('images/fallback/product.jpg') }}';"
         >
     </div>
