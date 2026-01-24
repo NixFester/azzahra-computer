@@ -58,12 +58,10 @@
 <div class="row justify-content-center">
     <div class="col-md-8 col-lg-7">
         <div class="ratio ratio-16x9 shadow rounded">
-            <iframe
-                src="https://www.youtube.com/embed/0XwYJPq35iY?start=2"
-                title="Azzahra Computer"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/noDPPzCI1Uk" 
+                                            allowfullscreen
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                                    </iframe>
         </div>
     </div>
 </div>

@@ -6,15 +6,14 @@
 
       <!-- Logo -->
       <div class="logo-area">
-        <img src="images/logo.png" alt="Azzahra Computer">
-        <span>Azzahra Computer</span>
+        <img src="images/logo.png" alt="Azzahra Computer" class="img-fluid">
       </div>
 
       <!-- Search -->
       <form action="/products" method="GET" class="search-area">
         <input type="text" name="search" placeholder="Search" value="{{ request('search', '') }}">
         <select name="category">
-          <option value="">Semua Kategori</option>
+          <option value="">Kategori barang</option>
           @foreach($searchCategories as $cat)
             <option value="{{ $cat }}" @if(request('category') == $cat) selected @endif>
               {{ ucfirst($cat) }}
@@ -163,6 +162,7 @@
     border-left: 1px solid #ccc;
     padding: 10px;
     outline: none;
+    background: #f9f9f9;
 }
 
 .search-btn {
