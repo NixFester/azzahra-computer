@@ -82,10 +82,25 @@
         <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="['Power Deals']" />
     </section>
 
-    <!-- Produk Banner -->
+  <!-- Good Better Best -->
     <section class="container">
-        <img src="{{ asset('images/produkBanner.png') }}" alt="produk banner" class="img-fluid">
-
+    <div class="row g-3 text-center">
+        <div class="col-md-4">
+            <img src="{{ asset('images/box1.png') }}"
+                 alt="Good"
+                 class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="{{ asset('images/box2.png') }}"
+                 alt="Better"
+                 class="img-fluid">
+        </div>
+        <div class="col-md-4">
+            <img src="{{ asset('images/box3.png') }}"
+                 alt="Best"
+                 class="img-fluid">
+        </div>
+    </div>
     </section>
 
     <!-- Company Info -->

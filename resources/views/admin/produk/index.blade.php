@@ -86,9 +86,11 @@
     </table>
 
     @if($produks->hasPages())
-    <div style="margin-top: 20px; display: flex; justify-content: center;">
-        {{ $produks->links() }}
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Page navigation">
+            {{ $produks->links() }}
+        </nav>
     </div>
-    @endif
+@endif
 </div>
 @endsection

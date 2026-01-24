@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\Paginator;
+  
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrap(); // atau Paginator::useBootstrapFive();
         // Share navigation data with all views
         View::composer('*', function ($view) {
             $searchCategories = DB::table('products')

@@ -193,7 +193,7 @@
 <!-- STAT CARDS -->
 <div class="stats">
     <div class="stat-card blue">
-        <div class="stat-label">Total Pengguna</div>
+        <div class="stat-label">Jumlah Kunjungan</div>
         <div class="stat-value">{{ number_format($stats['kunjungan']) }}</div>
         <span class="stat-growth up">
             @if($stats['user_growth'] > 0)
@@ -245,7 +245,7 @@
                         <div>
                             <div class="recent-item-title">{{ $product->product_name }}</div>
                             <div class="recent-item-date">
-                                {{ $product->created_at ? $product->created_at->diffForHumans() : 'Tidak tersedia' }}
+                                {{ $product->created_at ? $product->created_at->diffForHumans() : '-' }}
                             </div>
                         </div>
                         <span class="badge badge-primary">{{ $product->category ?? 'Tanpa Kategori' }}</span>
@@ -257,63 +257,30 @@
         @endif
     </div>
 
-    <!-- RECENT USERS -->
+    
+
+<!-- RECENT BLOGS -->
+<div class="grid-2">
     <div class="card">
-        <h4>Pengguna Baru</h4>
-        @if($recentUsers->count() > 0)
+        <h4>Artikel Terbaru</h4>
+        @if($recentBlogs->count() > 0)
             <ul class="recent-list">
-                @foreach($recentUsers as $user)
+                @foreach($recentBlogs as $blog)
                     <li class="recent-item">
-                        <div>
-                            <div class="recent-item-title">{{ $user->name }}</div>
+                        <div style="flex: 1;">
+                            <div class="recent-item-title">{{ $blog->title }}</div>
                             <div class="recent-item-date">
-                                <small>{{ $user->email }}</small><br>
-                                {{ $user->created_at ? $user->created_at->diffForHumans() : 'Tidak tersedia' }}
+                                {{ $blog->date ? $blog->date->format('d M Y') : 'Tidak tersedia' }}
                             </div>
                         </div>
-                        <span class="badge badge-success">Aktif</span>
+                        <span class="badge badge-primary">Artikel</span>
                     </li>
                 @endforeach
             </ul>
         @else
-            <div class="chart-placeholder">Belum ada pengguna baru</div>
+            <div class="chart-placeholder">Belum ada artikel</div>
         @endif
     </div>
-</div>
-
-<!-- CHART SECTION -->
-<div class="grid-2" style="margin-top: 24px;">
-    <div class="card">
-        <h4>Grafik Pertumbuhan Pengguna</h4>
-        <div class="chart-placeholder">📊 Chart pertumbuhan pengguna (integrasi dengan Chart.js)</div>
-    </div>
-
-    <div class="card">
-        <h4>Grafik Penjualan Produk</h4>
-        <div class="chart-placeholder">📈 Chart penjualan produk (integrasi dengan Chart.js)</div>
-    </div>
-</div>
-
-<!-- RECENT BLOGS -->
-<div class="card" style="margin-top: 24px;">
-    <h4>Artikel Terbaru</h4>
-    @if($recentBlogs->count() > 0)
-        <ul class="recent-list">
-            @foreach($recentBlogs as $blog)
-                <li class="recent-item">
-                    <div style="flex: 1;">
-                        <div class="recent-item-title">{{ $blog->title }}</div>
-                        <div class="recent-item-date">
-                            {{ $blog->date ? $blog->date->format('d M Y') : 'Tidak tersedia' }}
-                        </div>
-                    </div>
-                    <span class="badge badge-primary">Artikel</span>
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <div class="chart-placeholder">Belum ada artikel</div>
-    @endif
 </div>
 
 @endsection
