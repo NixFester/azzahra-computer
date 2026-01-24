@@ -176,9 +176,18 @@
                 <span class="price-old">{{ $oldPrice }}</span>
             @endif
         </div>
-        <button class="kartu-btn-cart btn-whatsapp" title="Order via WhatsApp">
+        @php
+            $message = "Halo, kak 👋\n".
+                    "Saya mau beli" . $name . "\n".
+                    "Apakah stok masih ada?\n".
+                    "Terimakasih 🙏";
+        @endphp
+        <a
+        href="https://wa.me/6285942001720?text={{ urlencode($message) }}"
+        target="_blank" rel="noopener" 
+        class="kartu-btn-cart btn-whatsapp" title="Order via WhatsApp" >
             <i class="bi bi-whatsapp"></i>
             Order via WhatsApp
-        </button>
+        </a>
     </div>
 </div>

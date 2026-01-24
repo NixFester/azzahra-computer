@@ -14,6 +14,8 @@
 .nav-dropdown {
     position: relative;
     display: inline-block;
+    border-right: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-left: 1.5px solid rgba(255, 255, 255, 0.2);
 }
 
 .nav-dropdown-toggle {
@@ -32,6 +34,7 @@
 
 .nav-dropdown-toggle:hover {
     color: #3D8FEF;
+    background: rgba(255, 255, 255, 1);
 }
 
 .dropdown-icon {

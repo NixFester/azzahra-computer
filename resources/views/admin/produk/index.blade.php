@@ -41,7 +41,7 @@
                 <td>{{ ($produks->currentPage() - 1) * $produks->perPage() + $index + 1 }}</td>
                 <td>
                         @if ($produk->image_array)
-                            <img src="{{ asset($produk->image_array) }}" alt="{{ $produk->product_name }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                            <img src="{{ Storage::url($produk->image_array) }}" alt="img" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
                         @else
                             <div style="width: 60px; height: 60px; background: #e9ecef; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #adb5bd;">
                                 <span style="font-size: 12px;">No Image</span>

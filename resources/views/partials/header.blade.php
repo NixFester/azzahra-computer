@@ -14,7 +14,7 @@
       <form action="/products" method="GET" class="search-area">
         <input type="text" name="search" placeholder="Search" value="{{ request('search', '') }}">
         <select name="category">
-          <option value="">All Categories</option>
+          <option value="">Semua Kategori</option>
           @foreach($searchCategories as $cat)
             <option value="{{ $cat }}" @if(request('category') == $cat) selected @endif>
               {{ ucfirst($cat) }}
@@ -45,8 +45,8 @@
   <div class="container nav-inner">
 
     <!-- Kategori -->
-    <x-nav-dropdown title="Categories">
-              <a href="/products">All Products</a>
+    <x-nav-dropdown title="Kategori Produk">
+              <a href="/products">Semua Produk</a>
               @foreach($navCategories as $category)
                   <a href="/products?category={{ $category }}">
                       {{ $category }}
