@@ -73,7 +73,7 @@
 .user-area {
     display: flex;
     align-items: center;
-    gap: 8px;
+
 }
 
 .user-circle-btn {
@@ -180,7 +180,7 @@
 /* Account & Cart */
 .user-area {
     display: flex;
-    gap: 28px;
+    gap: 8px;
 }
 
 .user-item {
