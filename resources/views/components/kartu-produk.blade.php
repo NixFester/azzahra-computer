@@ -177,10 +177,10 @@
             @endif
         </div>
         @php
-            $message = "Halo, kak 👋\n".
+            $message = "Halo, kak\n".
                     "Saya mau beli" . $name . "\n".
                     "Apakah stok masih ada?\n".
-                    "Terimakasih 🙏";
+                    "Terimakasih.";
         @endphp
         <a
         href="https://wa.me/6285942001720?text={{ urlencode($message) }}"

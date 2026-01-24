@@ -20,17 +20,17 @@
                     <p class="mb-2">
                         Price:
                         <strong>
-                            Rp<span id="minPriceText">0</span>
+                            Rp<span id="minPriceText">100,000.00</span>
                             —
-                            Rp<span id="maxPriceText">50,000,000.00</span>
+                            Rp<span id="maxPriceText">40,000,000.00</span>
                         </strong>
                     </p>
         <div id="priceSlider"></div>
                 <input type="hidden" id="minPriceInput" name="min_price"
-                    value="{{ request('min_price', 0) }}">
+                    value="{{ request('min_price', 100) }}">
 
                 <input type="hidden" id="maxPriceInput" name="max_price"
-                    value="{{ request('max_price', 50000000) }}">
+                    value="{{ request('max_price', 40000) }}">
 
                 <!-- Preserve search and category filters -->
                 <input type="hidden" name="search" value="{{ request('search', '') }}">
@@ -45,6 +45,15 @@
                     <div class="categories-section mb-4">
                         <h5 class="filter-title border-bottom pb-2 mb-3">Product Categories</h5>
                         <ul class="list-unstyled category-list">
+                            <li class="mb-2">
+                                @php
+                                    $isActive = request('category') === null;
+                                @endphp
+                                <a href="?search={{ request('search', '') }}&min_price={{ request('min_price', 100) }}&max_price={{ request('max_price', 40000000) }}" 
+                                   class="text-decoration-none {{ $isActive ? 'text-primary fw-bold' : 'text-dark' }} category-link">
+                                    Semua Produk
+                                </a>
+                            </li>
                             @forelse($searchCategories as $cat)
                             <li class="mb-2">
                                 @php
@@ -194,8 +203,8 @@
         ],
         connect: true,
         range: {
-            min: 0,
-            max: 50000000
+            min: 100,
+            max: 40000000
         },
         step: 5000
     });
