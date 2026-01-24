@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -76,8 +77,11 @@ class ProductsController extends Controller
             $formattedOldPrice = 'Rp' . number_format($originalPrice, 0, ',', '.') . '.000,00';
             $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
             
+            // Build image URL with cache-busting timestamp
+            $imageUrl = $this->formatImageUrl($product);
+            
             $products[] = [
-                'image' => $product->image_array !== "" ? $product->image_array : "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
+                'image' => $imageUrl,
                 'category' => $product->category,
                 'name' => $product->product_name,
                 'price' => $formattedNewPrice,
@@ -211,8 +215,11 @@ class ProductsController extends Controller
             $formattedOldPrice = 'Rp' . number_format($originalPrice, 0, ',', '.') . '.000,00';
             $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
             
+            // Build image URL with cache-busting timestamp
+            $imageUrl = $this->formatImageUrl($product);
+            
             $products[] = [
-                'image' => $product->image_array ?? "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
+                'image' => $imageUrl,
                 'category' => $product->category,
                 'name' => $product->product_name,
                 'price' => $formattedNewPrice,
@@ -268,8 +275,11 @@ class ProductsController extends Controller
 
             $newPrice = $originalPrice - ($originalPrice * $discount / 100);
 
+            // Build image URL with cache-busting timestamp
+            $imageUrl = $this->formatImageUrl($product);
+
             $products[] = [
-                'image' => $product->image_array !== "" ? $product->image_array : "images/kategori/" . $product->category . "/" . rand(1, 4) . ".jpg",
+                'image' => $imageUrl,
                 'category' => $product->category,
                 'name' => $product->product_name,
                 'price' => 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00',
@@ -279,5 +289,30 @@ class ProductsController extends Controller
         }
 
         return $products;
+    }
+
+    /**
+     * Format image URL with cache-busting parameter
+     * 
+     * @param object $product
+     * @return string
+     */
+    private function formatImageUrl($product): string
+    {
+        // If product has image stored in public disk
+        if (!empty($product->image_array)) {
+            $imageUrl = Storage::url($product->image_array);
+        } else {
+            // Use fallback image based on category
+            $imageUrl = asset('images/kategori/' . $product->category . '/' . rand(1, 4) . '.jpg');
+        }
+        
+        // Add timestamp for cache-busting if product has updated_at
+        if (!empty($product->updated_at)) {
+            $timestamp = strtotime($product->updated_at);
+            $imageUrl .= '?v=' . $timestamp;
+        }
+        
+        return $imageUrl;
     }
 }
