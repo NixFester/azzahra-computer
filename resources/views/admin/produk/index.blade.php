@@ -40,23 +40,13 @@
             <tr>
                 <td>{{ ($produks->currentPage() - 1) * $produks->perPage() + $index + 1 }}</td>
                 <td>
-                    @if($produk->image_array)
-                        @php
-                            $images = json_decode($produk->image_array, true);
-                            $firstImage = !empty($images) ? $images[0] : null;
-                        @endphp
-                        @if($firstImage)
-                            <img src="{{ Storage::url($firstImage) }}" alt="{{ $produk->product_name }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                        @if ($produk->image_array)
+                            <img src="{{ asset($produk->image_array) }}" alt="{{ $produk->product_name }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
                         @else
                             <div style="width: 60px; height: 60px; background: #e9ecef; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #adb5bd;">
                                 <span style="font-size: 12px;">No Image</span>
                             </div>
                         @endif
-                    @else
-                        <div style="width: 60px; height: 60px; background: #e9ecef; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #adb5bd;">
-                            <span style="font-size: 12px;">No Image</span>
-                        </div>
-                    @endif
                 </td>
                 <td>{{ $produk->product_name ?? '-' }}</td>
                 <td>{{ $produk->category ?? '-' }}</td>
