@@ -41,8 +41,8 @@
 </header>
 
 <!-- NAVBAR -->
-<div class="nav-bar">
-  <div class="container nav-inner">
+<div class="nav-bar navigasi">
+  <div class="container nav-inner ">
 
     <!-- Kategori -->
     <x-nav-dropdown title="Kategori Produk">
@@ -69,6 +69,10 @@
 </div>
 
 <style>
+
+    .navigasi {
+        background-color: #2563eb;
+    }
 
 .user-area {
     display: flex;
@@ -198,7 +202,6 @@
 
 /* NAVBAR */
 .nav-bar {
-    background: #4a90e2;
     position: sticky !important;
     top: 0 !important;
     z-index: 1000 !important;
