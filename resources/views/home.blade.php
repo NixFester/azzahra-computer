@@ -121,20 +121,14 @@
 
 
 
-    <!-- Categories -->
-    <section class="container">
-        <x-categories :categories="app('App\Http\Controllers\CategoriesController')->getCategories()" />
-    </section>
+
 
     <!-- box -->
     <section class="container">
         <x-bannerIklan :urlgambar="['images/tiers/good.png', 'images/tiers/better.png', 'images/tiers/best.png']" />
     </section>
 
-    @foreach($navCategories as $greeting)
-        {{-- Just a test for loop --}}
-        <p>{{ $greeting }}, welcome to Azzahra Computer!</p>
-    @endforeach
+    
 
 
     <!-- Stats -->
@@ -143,8 +137,11 @@
     </section>
 
     <!-- Products -->
-    <section class="container">
-        <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="['Power Deals']" />
+    <section class="container-fluid">
+        <x-new-products-collection 
+            :products="app('App\Http\Controllers\ProductsController')->getNewProducts()" 
+            :categories="$navCategories" 
+        />
     </section>
 
     
