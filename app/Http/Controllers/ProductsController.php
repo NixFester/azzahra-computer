@@ -300,6 +300,29 @@ class ProductsController extends Controller
         return $products;
     }
 
+    public function getNewProducts(): array
+    {
+        $products = [];
+        
+        // Query products from database - get latest 16 products
+        $dbProducts = DB::connection('sqlite')
+            ->table('products')
+            ->orderBy('id', 'desc') // Get newest products first
+            ->limit(16)->get();
+
+        foreach ($dbProducts as $product) {
+            $imageUrl = $this->formatImageUrl($product);
+            $products[] = [
+                'id' => $product->id,
+                'image' => $imageUrl,
+                'name' => $product->product_name,
+            ];
+        }
+
+        return $products;
+    }
+
+
     /**
      * Format image URL with cache-busting parameter
      * 
