@@ -96,6 +96,7 @@
 }
 .product-item {
     margin-right: 24px;
+    width: 220px;
 }
 
 .product-image-wrapper {
