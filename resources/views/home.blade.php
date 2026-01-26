@@ -2,74 +2,41 @@
 @section('title', 'Home')
 @section('content')
 @include('partials.header')
-<section class="text-white">
-    <div class="container">
 
-        <div id="bannerCarousel" class="carousel slide carousel-wrapper" data-bs-ride="carousel" data-bs-interval="4000">
+    <section style="height: 1600px;">
+        <img src="{{ asset('images/irisout.png') }}" alt="Banner Azzahra Computer" class="img-fluid h-100 w-100">  
 
-            {{-- Indicators (titik bawah) --}}
-            <div class="carousel-indicators">
-                @foreach($banners as $index => $banner)
-                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ $index }}" @if($index === 0) class="active" @endif></button>
-                @endforeach
-            </div>
-
-            {{-- Slides --}}
-            <div class="carousel-inner">
-                @forelse($banners as $index => $banner)
-                <div class="carousel-item @if($index === 0) active @endif">
-                    <a href="{{ $banner->link ?? '#' }}">
-                        <img src="{{ $banner->image_url }}" class="d-block w-100" alt="{{ $banner->title }}">
-                    </a>
-                </div>
-                @empty
-                <div class="carousel-item active">
-                    <img src="{{ asset('images/banner1.png') }}" class="d-block w-100" alt="Default Banner">
-                </div>
-                @endforelse
-            </div>
-
-            {{-- Prev / Next --}}
-            <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-
-        </div>
-
-    </div>
-</section>
-
-
-    <!-- Rating Component -->
-    <x-rating :ratings="app('App\Http\Controllers\RatingController')->getRatings()" />
-
-    <!-- Categories Component -->
-    <x-categories :categories="app('App\Http\Controllers\CategoriesController')->getCategories()" />
-
-    <!-- Good Better Best -->
-    <section class="container">
-    <div class="row g-3 text-center">
-        <div class="col-md-4">
-            <img src="{{ asset('images/tiers/good.png') }}"
-                 alt="Good"
-                 class="img-fluid">
-        </div>
-        <div class="col-md-4">
-            <img src="{{ asset('images/tiers/better.png') }}"
-                 alt="Better"
-                 class="img-fluid">
-        </div>
-        <div class="col-md-4">
-            <img src="{{ asset('images/tiers/best.png') }}"
-                 alt="Best"
-                 class="img-fluid">
-        </div>
-    </div>
     </section>
+
+    <!-- Banner -->
+    <section class="text-white container">
+            
+        @include('components.bannerCarousel',['banners' => $banners])
+        
+    </section>
+    
+    <!-- Rating  -->
+    <section class="container">
+        <x-rating :ratings="app('App\Http\Controllers\RatingController')->getRatings()" />
+    </section>
+
+
+
+
+    <!-- Categories -->
+    <section class="container">
+        <x-categories :categories="app('App\Http\Controllers\CategoriesController')->getCategories()" />
+    </section>
+
+    <!-- box -->
+    <section class="container">
+        <x-bannerIklan :urlgambar="['images/tiers/good.png', 'images/tiers/better.png', 'images/tiers/best.png']" />
+    </section>
+
+    @foreach($navCategories as $greeting)
+        {{-- Just a test for loop --}}
+        <p>{{ $greeting }}, welcome to Azzahra Computer!</p>
+    @endforeach
 
 
     <!-- Stats -->
@@ -77,129 +44,27 @@
         <x-stats-bar service-count="9000" satisfaction="8500" max-satisfaction="9000" customer-count="9500" />
     </section>
 
-    <!-- Products Component -->
+    <!-- Products -->
     <section class="container">
         <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="['Power Deals']" />
     </section>
 
-  <!-- Good Better Best -->
+    
+    <!-- box -->
     <section class="container">
-    <div class="row g-3 text-center">
-        <div class="col-md-4">
-            <img src="{{ asset('images/box1.png') }}"
-                 alt="Good"
-                 class="img-fluid">
-        </div>
-        <div class="col-md-4">
-            <img src="{{ asset('images/box2.png') }}"
-                 alt="Better"
-                 class="img-fluid">
-        </div>
-        <div class="col-md-4">
-            <img src="{{ asset('images/box3.png') }}"
-                 alt="Best"
-                 class="img-fluid">
-        </div>
-    </div>
+        <x-bannerIklan :urlgambar="['images/box1.png', 'images/box2.png', 'images/box3.png']" />
     </section>
 
-    <!-- Company Info -->
+
+    <!-- Info perusahaan -->
     <section class="profile-section py-5">
-        <div class="container">
-            <!-- Main Company Profile -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="company-card">
-                        
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
-                                <p class="company-info">
-                                    Kami menyediakan solusi teknologi lengkap sejak 2010 — dari penjualan perangkat komputer, laptop,
-                                    printer, CCTV, hingga pengembangan sistem digital dan pelatihan IT. Melayani instansi, pendidikan,
-                                    dan bisnis dengan harga kompetitif, garansi resmi, dan tim profesional.
-                                </p>
-                                <div class="info-item">
-                                    <span class="info-icon">📍</span>
-                                    <span>Tegal, Jawa Tengah</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">📞</span>
-                                    <span>WA: 0859-4200-1720</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">🌐</span>
-                                    <span>bit.ly/ProfileAzzahraComputer</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="video-wrapper">
-                                    <iframe src="https://www.youtube.com/embed/noDPPzCI1Uk" 
-                                            allowfullscreen
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-                                    </iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider"></div>
-
-            <!-- Branch Profile -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="company-card">
-                        
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
-                        <h4 class="company-title">CABANG BEKASI</h4>
-                                <p class="company-info">
-                                    Cabang kami di Bekasi siap melayani kebutuhan teknologi Anda dengan layanan yang sama berkualitas.
-                                    Akses mudah, stok lengkap, dan tim yang responsif untuk mendukung bisnis dan kebutuhan personal Anda.
-                                </p>
-                                <div class="info-item">
-                                    <span class="info-icon">📍</span>
-                                    <span>Cibubur, Bekasi, Jawa Barat</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">📞</span>
-                                    <span>WA: 0818-0387-7777-1</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="video-wrapper">
-                                    <iframe src="https://www.youtube.com/embed/DT1j33eBb2U " 
-                                            allowfullscreen
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-                                    </iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-companyInfo/>
     </section>
 
     <!-- Brands -->
     <section class="brand-section container py-5">
-        <h3 class="brand-title">
-            AUTHORIZED MULTIBRAND SERVICE CENTER TEGAL
-        </h3>
-
-        <div class="brand-logos">
-            <img src="{{ asset('images/asus.png') }}" alt="Asus">
-            <img src="{{ asset('images/lenovo.png') }}" alt="Lenovo">
-            <img src="{{ asset('images/zyrex.png') }}" alt="Zyrex">
-            <img src="{{ asset('images/xiami.png') }}" alt="Xiaomi">
-            <img src="{{ asset('images/avita.png') }}" alt="Avita">
-            <img src="{{ asset('images/infinix.png') }}" alt="Infinix">
-            <img src="{{ asset('images/canon.png') }}" alt="Canon">
-            <img src="{{ asset('images/hp.png') }}" alt="HP">
-        </div>
+        <x-brandShow/>
     </section>
+
 @include('partials.footer')
 @endsection

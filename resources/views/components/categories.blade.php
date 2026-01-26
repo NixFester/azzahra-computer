@@ -1,6 +1,6 @@
 @props(['categories'])
 
-<section class="container py-5">
+<section class="py-5">
     <h5 class="fw-semibold mb-3">Top Categories</h5>
     <div class="row text-center">
         @foreach($categories as $category)

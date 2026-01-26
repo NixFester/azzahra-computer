@@ -1,6 +1,6 @@
 @props(['ratings'])
 
-<section class="container py-2 pl-5">
+<div class="py-2 pl-5">
     <div class="row align-items-center g-4">
 
         <!-- Rating summary (unchanged) -->
@@ -53,7 +53,7 @@
             </div>
 
     </div>
-</section>
+</div>
 <style>
     /* Custom styles for the rating component */
     .carousel-item {
