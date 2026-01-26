@@ -45,6 +45,11 @@ class ProductsController extends Controller
             $query->whereRaw('LOWER(category) = ?', [strtolower($category)]);
         }
 
+        // Filter by price range
+        // Convert price field to numeric for comparison
+        $query->whereRaw('CAST(REPLACE(REPLACE(price, "Rp", ""), ",", "") AS REAL) >= ?', [$minPrice]);
+        $query->whereRaw('CAST(REPLACE(REPLACE(price, "Rp", ""), ",", "") AS REAL) <= ?', [$maxPrice]);
+
         // Get total count for pagination
         $totalProducts = $query->count();
 
@@ -190,6 +195,10 @@ class ProductsController extends Controller
         if (!empty($category)) {
             $query->whereRaw('LOWER(category) = ?', [strtolower($category)]);
         }
+
+        // Filter by price range
+        $query->whereRaw('CAST(REPLACE(REPLACE(price, "Rp", ""), ",", "") AS REAL) >= ?', [$minPrice]);
+        $query->whereRaw('CAST(REPLACE(REPLACE(price, "Rp", ""), ",", "") AS REAL) <= ?', [$maxPrice]);
 
         // Get products
         $dbProducts = $query->limit(20)->get();
