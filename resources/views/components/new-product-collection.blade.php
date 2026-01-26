@@ -34,7 +34,7 @@
                 <!-- Product Carousel -->
                 <div class="product-carousel-wrapper position-relative overflow-hidden">
                     <div class="product-carousel d-flex" id="productCarousel">
-                        @foreach($products as $product)
+                        @foreach($products ?? [] as $product)
                             <div class="product-item flex-shrink-0 px-3">
                                 <div class="product-card position-relative">
                                     <a href="/product/{{ $product['id'] }}" class="d-block text-decoration-none">
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentIndex = 0;
     const itemsPerView = 4;
-    const totalItems = {{ count($products) }};
+    const totalItems = {{ count($products ?? []) }};
     const maxIndex = Math.ceil(totalItems / itemsPerView) - 1;
 
     function updateCarousel() {

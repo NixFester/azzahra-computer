@@ -19,8 +19,8 @@ class NewProductCollection extends Component
             $this->categories = $this->getDefaultCategories();
         }
 
-        // Get products
-        $this->products = $this->getProducts();
+        // Get products - ensure it's always an array
+        $this->products = $this->getProducts() ?? [];
     }
 
     private function getDefaultCategories()
@@ -75,10 +75,9 @@ class NewProductCollection extends Component
             ->get();
 
         foreach ($productQuery as $product) {
-            $id = $product->id;
             $imageUrl = $this->formatImageUrl($product);
             $products[] = [
-                'id' => $id,
+                'id' => $product->id,
                 'image' => $imageUrl,
                 'name' => $product->product_name,
             ];
