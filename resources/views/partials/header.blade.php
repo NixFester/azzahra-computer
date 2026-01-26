@@ -30,7 +30,7 @@
 <style>
 
     .navigasi {
-        background-color: #2563eb;
+        background-color: #120263;
     }
 
 .user-area {
