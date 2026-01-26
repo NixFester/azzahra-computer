@@ -17,12 +17,12 @@
         }
         
 .banner-overlay {
-    position: absolute;
-    top: 535px;
+position: absolute;
+    top: 530px;
     left: 0;
     width: 100%;
     height: 62%;
-    background: radial-gradient(ellipse 121% 160% at top, /* Perbesar elipse */ rgba(232, 243, 255, 0) 40%, rgba(232, 243, 255, 0.8) 57%, rgb(232, 243, 255) 63%);
+    background: radial-gradient(ellipse 121% 160% at top, /* Perbesar elipse */ rgba(232, 243, 255, 0) 44%, rgba(232, 243, 255, 0.8) 53%, rgb(232, 243, 255) 56%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,6 +103,11 @@
         </div>
     </section>
 
+     <!-- Brands -->
+    <section class="brand-section container py-5">
+        <x-brandShow/>
+    </section>
+
     <!-- Banner -->
     <section class="text-white container">
             
@@ -154,10 +159,7 @@
         <x-companyInfo/>
     </section>
 
-    <!-- Brands -->
-    <section class="brand-section container py-5">
-        <x-brandShow/>
-    </section>
+   
 
 @include('partials.footer')
 @endsection
