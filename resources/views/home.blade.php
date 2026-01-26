@@ -16,29 +16,26 @@
             object-fit: cover;
         }
         
-        .banner-overlay {
-            position: absolute;
-            top: -78px;
-            left: 0;
-            width: 100%;
-            height: 38%;
-            background: radial-gradient(ellipse at top, 
-                rgba(232, 243, 255, 0) 40%, 
-                rgba(232, 243, 255, 0.8) 80%,
-                rgb(232, 243, 255) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+.banner-overlay {
+    position: absolute;
+    top: 535px;
+    left: 0;
+    width: 100%;
+    height: 62%;
+    background: radial-gradient(ellipse 121% 160% at top, /* Perbesar elipse */ rgba(232, 243, 255, 0) 40%, rgba(232, 243, 255, 0.8) 57%, rgb(232, 243, 255) 63%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
         
         .banner-title {
             font-size: 3.5rem;
             font-weight: bold;
-            color: #2c3e50;
+            color: #f7f7f7;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
         }
         
         .banner-buttons {
@@ -97,7 +94,7 @@
     <section>
         <img src="{{ asset('images/head/header.png') }}" alt="Banner Azzahra Computer" class="img-fluid h-100 w-100">  
         <div class="banner-overlay">
-            <h1 class="banner-title">Azzahra Computer</h1>
+        <h1 class="banner-title" style="margin-top: -30px;">Azzahra Computer</h1>
             <div class="banner-buttons">
                 <button class="btn btn-primary">Shop Now</button>
                 <button class="btn btn-outline-primary">Service Center</button>
