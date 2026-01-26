@@ -1,0 +1,41 @@
+
+<header class="header">
+
+  <!-- TOP HEADER -->
+  <div class="top-header">
+    <div class="container header-top-inner">
+
+      <!-- Logo -->
+      <div class="logo-area">
+        <img src="images/logo.png" alt="Azzahra Computer" class="img-fluid">
+      </div>
+
+      <!-- Search -->
+      <form action="/products" method="GET" class="search-area">
+        <input type="text" name="search" placeholder="Search" value="{{ request('search', '') }}">
+        <select name="category">
+          <option value="">Kategori barang</option>
+          @foreach($searchCategories as $cat)
+            <option value="{{ $cat }}" @if(request('category') == $cat) selected @endif>
+              {{ ucfirst($cat) }}
+            </option>
+          @endforeach
+        </select>
+        <button type="submit" class="search-btn">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+
+      <!-- Account & Cart -->
+        <a href="/login " class="user-area" style="text-decoration: none;">
+            <div href="/login" class="user-circle-btn" title="Admin">
+                <i class="bi bi-person"></i>
+            </div>
+            <small >Admin</small>
+        </a>
+            
+
+    </div>
+  </div>
+
+</header>
