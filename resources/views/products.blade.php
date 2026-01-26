@@ -6,6 +6,9 @@
 @include('partials.header')
 
 <div class="products-page">
+
+
+
     <!-- Main Products Section -->
     <div class="px-5">
         <div class="row">
