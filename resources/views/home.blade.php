@@ -117,13 +117,9 @@
     </section>
     
     <!-- Rating  -->
-    <section class="container">
+    <section class="container pt-5 pb-3">
         <x-rating :ratings="app('App\Http\Controllers\RatingController')->getRatings()" />
     </section>
-
-
-
-
 
 
     <!-- box -->
@@ -131,7 +127,6 @@
         <x-bannerIklan :urlgambar="['images/tiers/good.png', 'images/tiers/better.png', 'images/tiers/best.png']" />
     </section>
 
-    
 
 
     <!-- Stats -->
@@ -149,7 +144,7 @@
 
     
     <!-- box -->
-    <section class="container">
+    <section class="container my+5">
         <x-bannerIklan :urlgambar="['images/box1.png', 'images/box2.png', 'images/box3.png']" />
     </section>
 
