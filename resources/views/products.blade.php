@@ -94,13 +94,49 @@
                                     
                                     @if(request('min_price') || request('max_price'))
                                         <span class="badge">
-                                            Price: Rp{{ number_format(request('min_price', 0), 0, ',', '.') }} - Rp{{ number_format(request('max_price', 9999), 0, ',', '.') }}
+                                            Price: Rp{{ number_format(request('min_price', 0), 0, ',', '.') }} - Rp{{ number_format(request('max_price', 33795), 0, ',', '.') }}
                                             <a href="{{ route('products', array_filter(request()->except(['min_price', 'max_price']))) }}" class="btn-close ms-2"></a>
                                         </span>
                                     @endif
                                 </div>
                             </div>
                             @endif
+
+                            <!-- Search Filter -->
+                            <div class="filter-section">
+                                <h6 class="filter-title mb-3">
+                                    <i class="bi bi-search me-2"></i>Search Products
+                                </h6>
+                                <form method="GET" action="{{ route('products') }}" id="searchForm">
+                                    @if(request('category'))
+                                        <input type="hidden" name="category" value="{{ request('category') }}">
+                                    @endif
+                                    @if(request('min_price'))
+                                        <input type="hidden" name="min_price" value="{{ request('min_price') }}">
+                                    @endif
+                                    @if(request('max_price'))
+                                        <input type="hidden" name="max_price" value="{{ request('max_price') }}">
+                                    @endif
+                                    
+                                    <div class="input-group">
+                                        <input type="text" 
+                                               class="form-control" 
+                                               name="search"
+                                               id="searchInput" 
+                                               value="{{ request('search', '') }}"
+                                               placeholder="Search by name...">
+                                        @if(request('search'))
+                                            <a href="{{ route('products', array_filter(request()->except('search'))) }}" class="btn btn-outline-secondary">
+                                                <i class="bi bi-x-lg"></i>
+                                            </a>
+                                        @else
+                                            <button class="btn btn-outline-secondary" type="submit">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        @endif
+                                    </div>
+                                </form>
+                            </div>
 
                             <!-- Filter by Price -->
                             <div class="filter-section">
@@ -135,7 +171,7 @@
                                                        class="form-control form-control-sm" 
                                                        name="max_price"
                                                        id="maxPriceInput" 
-                                                       placeholder="9999"
+                                                       placeholder="999999"
                                                        value="{{ request('max_price', '') }}"
                                                        min="0"
                                                        step="100">
@@ -148,16 +184,16 @@
                                         <p class="small text-muted mb-2">Quick Select:</p>
                                         <div class="d-flex flex-wrap gap-2">
                                             <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="0" data-max="1000">
-                                                < 1K
+                                                < 1,000,000
                                             </button>
                                             <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="1000" data-max="3000">
-                                                1K - 3K
+                                                1,000,000 - 3,000,000
                                             </button>
                                             <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="3000" data-max="6000">
-                                                3K - 6K
+                                                3,000,000 - 6,000,000
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="6000" data-max="9999">
-                                                > 6K
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="6000" data-max="999999">
+                                                > 6,000,000
                                             </button>
                                         </div>
                                     </div>
@@ -209,41 +245,7 @@
                                 </div>
                             </div>
 
-                            <!-- Search Filter -->
-                            <div class="filter-section">
-                                <h6 class="filter-title mb-3">
-                                    <i class="bi bi-search me-2"></i>Search Products
-                                </h6>
-                                <form method="GET" action="{{ route('products') }}" id="searchForm">
-                                    @if(request('category'))
-                                        <input type="hidden" name="category" value="{{ request('category') }}">
-                                    @endif
-                                    @if(request('min_price'))
-                                        <input type="hidden" name="min_price" value="{{ request('min_price') }}">
-                                    @endif
-                                    @if(request('max_price'))
-                                        <input type="hidden" name="max_price" value="{{ request('max_price') }}">
-                                    @endif
-                                    
-                                    <div class="input-group">
-                                        <input type="text" 
-                                               class="form-control" 
-                                               name="search"
-                                               id="searchInput" 
-                                               value="{{ request('search', '') }}"
-                                               placeholder="Search by name...">
-                                        @if(request('search'))
-                                            <a href="{{ route('products', array_filter(request()->except('search'))) }}" class="btn btn-outline-secondary">
-                                                <i class="bi bi-x-lg"></i>
-                                            </a>
-                                        @else
-                                            <button class="btn btn-outline-secondary" type="submit">
-                                                <i class="bi bi-search"></i>
-                                            </button>
-                                        @endif
-                                    </div>
-                                </form>
-                            </div>
+                            
 
                             <!-- Reset Filters -->
                             <div class="filter-section border-0">
