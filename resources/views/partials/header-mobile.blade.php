@@ -144,7 +144,7 @@
 
     .menu {
         display: flex;
-        gap: 30px;
+        gap: 20px;
         align-items: center;
     }
 

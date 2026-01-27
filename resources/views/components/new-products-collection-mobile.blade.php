@@ -166,7 +166,6 @@
 /* Modern New Products Section */
 .new-products-section-modern {
     padding: 5rem 0;
-    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
     position: relative;
 }
 

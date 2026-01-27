@@ -193,7 +193,7 @@
 /* Menu */
 .menu {
     display: flex;
-    gap: 30px;
+    gap: 10px;
 }
 
 .menu a {

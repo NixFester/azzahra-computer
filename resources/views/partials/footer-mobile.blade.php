@@ -1,4 +1,4 @@
-<footer class="footer-mobile border-top mt-5 pt-4 bg-light">
+<footer class="footer-mobile border-top mt-5 pt-4 bg-white">
     <div class="footer-container">
         <div class="footer-grid">
 
@@ -182,38 +182,40 @@
 }
 
 /* Links Section */
-.links-section {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
+    .links-section {
+        display: flex;
+        flex-direction: column; /* Default: vertikal untuk desktop */
+        gap: 20px;
+    }
 
-.footer-heading {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #333;
-}
+    .footer-column {
+        width: 100%;
+    }
 
-.footer-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    .footer-heading {
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
 
-.footer-list li {
-    margin-bottom: 0.75rem;
-}
+    .footer-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-.footer-list a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s;
-}
+    .footer-list li {
+        margin-bottom: 10px;
+    }
 
-.footer-list a:hover {
-    color: #3D8FEF;
-}
+    .footer-list a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.3s;
+    }
+
+    .footer-list a:hover {
+        color: #007bff;
+    }
 
 /* Payment Section */
 .payment-logos,
@@ -307,12 +309,12 @@
 
     /* Links Section Mobile */
     .links-section {
-        gap: 1.5rem;
-        text-align: center;
+        flex-direction: row; /* Horizontal di mobile */
+        gap: 20px;
     }
 
     .footer-column {
-        margin-bottom: 1.5rem;
+        flex: 1;
     }
 
     .footer-heading {
