@@ -12,7 +12,7 @@
 
         <!-- Category Filter Pills -->
         <div class="category-filter-wrapper mb-4">
-            <div class="d-flex justify-content-center">
+            <div class="category-scroll-container">
                 <ul class="nav nav-pills category-pills gap-2" id="productCategoryTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active rounded-pill" 
@@ -200,53 +200,43 @@
 
 /* Category Pills */
 .category-filter-wrapper {
-    position: relative;
-    z-index: 1;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    padding: 0 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.category-filter-wrapper::-webkit-scrollbar {
+.category-scroll-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+    padding: 10px 5px;
+}
+
+/* Hide scrollbar Chrome/Safari */
+.category-scroll-container::-webkit-scrollbar {
     display: none;
 }
 
 .category-pills {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center; /* Centered seperti sebelumnya */
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: max-content;
+    min-width: 100%; /* Agar tetap center jika items sedikit */
+}
+
+.category-pills .nav-item {
+    flex-shrink: 0;
 }
 
 .category-pills .nav-link {
-    padding: 0.625rem 1.5rem;
-    font-weight: 500;
-    font-size: 0.9375rem;
-    border: 1px solid #e9ecef;
-    background: #ffffff;
-    color: #6c757d;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.category-pills .nav-link:hover {
-    background: #f8f9fa;
-    color: #0d6efd;
-    border-color: #0d6efd;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
-}
-
-.category-pills .nav-link.active {
-    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
-    color: #ffffff;
-    border-color: #0d6efd;
-    box-shadow: 0 4px 16px rgba(13, 110, 253, 0.3);
-}
-
-.category-pills .nav-link i {
-    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.3s ease;
 }
 
 /* Products Grid */
@@ -449,6 +439,11 @@
 
     .section-subtitle {
         font-size: 1rem;
+    }
+
+    .category-pills {
+    justify-content: flex-start; /* Align left di mobile */
+    min-width: auto;
     }
 
     .category-filter-wrapper {
