@@ -17,7 +17,7 @@
     }
 
     .kartu-image-wrapper {
-        position: relative;
+        position: top;
         height: 220px;
         overflow: hidden;
         background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fa 100%);
@@ -158,6 +158,7 @@
     }
     .product-card {
     width: 230px;
+    height: 320px;
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
