@@ -107,7 +107,7 @@
     .stat-number {
         font-size: 3rem;
         font-weight: 900;
-        color: rgba(61, 143, 239, 0.6);
+        color: rgba(0, 119, 255, 0.6);
         margin: 0.8rem 0;
         line-height: 1;
         letter-spacing: -1px;
@@ -115,7 +115,7 @@
     }
 
     .stat-card:hover .stat-number {
-        background: linear-gradient(135deg, #120263 0%, #070129 100%);
+        background: linear-gradient(135deg, #120263 20%, #070129 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
