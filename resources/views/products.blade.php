@@ -3,7 +3,8 @@
 @section('title', 'Products - Azzahra Computer')
 
 @section('content')
-@include('partials.header')
+
+@include('partials.header-mobile')
 
 <div class="products-page">
 
@@ -91,7 +92,7 @@
     </div>
 </div>
 
-@include('partials.footer')
+@include('partials.footer-mobile')
 @endsection
 
 @push('styles')

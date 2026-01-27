@@ -1,4 +1,4 @@
-<div>
+<div class="brand-desktop">
     <h3 class="brand-title">
             AUTHORIZED MULTIBRAND SERVICE CENTER TEGAL
         </h3>
@@ -14,3 +14,17 @@
             <img class="brand" src="{{ asset('images/hp.png') }}" alt="HP">
         </div>
 </div>
+
+<style>
+/* Desktop Brand Section */
+.brand-desktop {
+    text-align: center;
+    padding: 4rem 0;
+    display: block;
+}
+
+@media (max-width: 769px) {
+    .brand-desktop {
+        display: none;
+    }
+}

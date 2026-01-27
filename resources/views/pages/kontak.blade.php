@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Kontak')
 @section('content')
-@include('partials.header')
+
+@include('partials.header-mobile')
 
 <section class="container py-3">
       <h1 class="mb-4">CONTACT</h1>
@@ -16,5 +17,5 @@
 </section>
 
 
-@include('partials.footer')
+@include('partials.footer-mobile')
 @endsection

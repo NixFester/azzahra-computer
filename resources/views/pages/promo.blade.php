@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'promo')
 @section('content')
-@include('partials.header')
+
+@include('partials.header-mobile')
 
 <section class="container py-3">
 
@@ -24,5 +25,5 @@
 </section>
 
 
-@include('partials.footer')
+@include('partials.footer-mobile')
 @endsection

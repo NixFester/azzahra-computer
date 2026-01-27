@@ -263,14 +263,14 @@ class ProductsController extends Controller
         $request = new Request();
 
         // Clone base query logic from getProducts, but add random order
-        $query = DB::connection('sqlite')
-            ->table('products')
-            ->whereNotNull('price')
-            ->where('price', '!=', '')
-            ->inRandomOrder()
-            ->limit(20);
-
-        $dbProducts = $query->get();
+        $dbProducts = DB::query()
+    ->fromSub(function ($q) {
+        $q->from('products')
+          ->select('*')
+          ->selectRaw('ROW_NUMBER() OVER (PARTITION BY category ORDER BY id) as rn');
+    }, 't')
+    ->where('rn', '<=', 20)
+    ->get();
 
         $products = [];
 
@@ -307,7 +307,7 @@ class ProductsController extends Controller
         // Query products from database - get latest 16 products
         $dbProducts = DB::connection('sqlite')
             ->table('products')
-            ->orderBy('id', 'asc') // Get newest products first
+            ->orderBy('id', 'desc') // Get newest products first
             ->limit(16)->get();
 
         foreach ($dbProducts as $product) {

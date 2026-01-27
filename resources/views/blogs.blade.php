@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'blogs - Azzahra Computer')
 @section('content')
-    @include('partials.header')
+    
+@include('partials.header-mobile')
     
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold mb-6">Welcome to Our Blog</h1>
@@ -11,5 +12,5 @@
         </a>
     </div>
     
-    @include('partials.footer')
+    @include('partials.footer-mobile')
 @endsection

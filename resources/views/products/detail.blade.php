@@ -3,7 +3,8 @@
 @section('title', $product['name'] . ' - Product Detail')
 
 @section('content')
-@include('partials.header')
+
+@include('partials.header-mobile')
 
 <!-- Product Detail Section -->
 <section class="container my-5">
@@ -163,8 +164,9 @@
         :categories="$navCategories" 
     />
 </section>
+<x-brandShow-mobile />
 
-@include('partials.footer')
+@include('partials.footer-mobile')
 
 <!-- JavaScript for Image Gallery -->
 <script>

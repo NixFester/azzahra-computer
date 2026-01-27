@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'tentangkami')
 @section('content')
-@include('partials.header')
+
+@include('partials.header-mobile')
 
 <section class="container py-5">
     <!-- Header -->
@@ -83,5 +84,5 @@
 </section>
 
 
-@include('partials.footer')
+@include('partials.footer-mobile')
 @endsection

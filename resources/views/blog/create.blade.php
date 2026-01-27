@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Create New Post')
 @section('content')
-    @include('partials.header')
+    
+@include('partials.header-mobile')
     
     @include('components.createblog')
     
-    @include('partials.footer')
+    @include('partials.footer-mobile')
 @endsection

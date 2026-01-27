@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Edit Post')
 @section('content')
-    @include('partials.header')
+    
+@include('partials.header-mobile')
     
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold mb-6">Edit Blog Post</h1>
@@ -49,5 +50,5 @@
         </form>
     </div>
     
-    @include('partials.footer')
+    @include('partials.footer-mobile')
 @endsection

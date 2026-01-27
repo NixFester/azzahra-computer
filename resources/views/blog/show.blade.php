@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', $blog->title)
 @section('content')
-    @include('partials.header')
+    
+@include('partials.header-mobile')
     
     <div class="container-fluid py-5 bg-light">
         <div class="container">
@@ -94,5 +95,5 @@
         }
     </style>
     
-    @include('partials.footer')
+    @include('partials.footer-mobile')
 @endsection

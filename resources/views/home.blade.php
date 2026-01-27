@@ -2,7 +2,8 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
-@include('partials.header')
+
+@include('partials.header-mobile')
 <style>
    .banner-section {
             position: relative;
@@ -108,6 +109,8 @@
     <section class="brand-section container py-5">
         <x-brandShow/>
     </section>
+    <x-brandShow-mobile />
+
 
     <!-- Banner -->
     <section class="text-white container">
@@ -115,7 +118,6 @@
         @include('components.bannerCarousel',['banners' => $banners])
         
     </section>
-    
     <!-- Rating  -->
     <section class="container pt-5 pb-3">
         <x-rating :ratings="app('App\Http\Controllers\RatingController')->getRatings()" />
@@ -135,12 +137,10 @@
     </section>
 
     <!-- Products -->
-    <section class="container-fluid">
-        <x-new-products-collection 
-            :products="app('App\Http\Controllers\ProductsController')->getNewProducts()" 
-            :categories="$navCategories" 
-        />
-    </section>
+    <x-new-products-collection-mobile 
+    :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" 
+    :categories="$navCategories" 
+/>
 
     
     <!-- box -->
@@ -162,5 +162,5 @@
 
    
 
-@include('partials.footer')
+@include('partials.footer-mobile')
 @endsection
