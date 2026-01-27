@@ -18,17 +18,17 @@
         
 .banner-overlay {
 position: absolute;
-    top: 391px;
+    top: 530px;
     left: 0;
     width: 100%;
-    height: 553px;
+    height: 62%;
     background: radial-gradient(ellipse 121% 160% at top, /* Perbesar elipse */ rgba(232, 243, 255, 0) 44%, rgba(232, 243, 255, 0.8) 53%, rgb(232, 243, 255) 56%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top:200px;
+
 }
         
         .banner-title {
@@ -54,26 +54,26 @@ position: absolute;
         }
         
         .btn-primary {
-            background-color: #120263;
+            background-color: #3498db;
             border: none;
         }
         
         .btn-primary:hover {
-            background-color: #2980b9;
+            background-color: #298bb9;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
         .btn-outline-primary {
-            border: 2px solid #3498db;
-            color: #3498db;
+            border: 1px solid #ffffff;
+            color: #ffffff;
         }
         
         .btn-outline-primary:hover {
-            background-color: #3498db;
+            background-color: #120263;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
         }
         
         @media (max-width: 768px) {
@@ -96,9 +96,9 @@ position: absolute;
         <div class="banner-overlay">
         <h1 class="banner-title" style="margin-top: -30px;">Azzahra Computer</h1>
             <div class="banner-buttons">
-                <button class="btn btn-primary">Shop Now</button>
-                <button class="btn btn-primary">Service Center</button>
-                <button class="btn btn-primary">All Product</button>
+                <button class="btn btn-outline-primary">Shop Now</button>
+                <button class="btn btn-outline-primary">Service Center</button>
+                <button class="btn btn-outline-primary">All Product</button>
             </div>
         </div>
     </section>
@@ -154,10 +154,6 @@ position: absolute;
 
 
 
-<!-- Products -->
-    <section class="container " style="display:none;">
-        <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="['Power Deals']" />
-    </section>
     <!-- Info perusahaan -->
     <section class="profile-section py-5">
         <x-companyInfo/>
