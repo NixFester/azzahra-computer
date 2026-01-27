@@ -2,17 +2,22 @@
 
 <!-- NAVBAR -->
 <div class="nav-bar navigasi">
-  <div class="container nav-inner ">
+  <div class="nav-inner ">
+
+    <div>
+        <img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/>
+        <x-nav-dropdown title="Kategori Produk">
+            <a href="/products">Semua Produk</a>
+            @foreach($navCategories as $category)
+                <a href="/products?category={{ $category }}">
+                    {{ $category }}
+                </a>
+            @endforeach
+        </x-nav-dropdown>
+    </div>
 
     <!-- Kategori -->
-    <x-nav-dropdown title="Kategori Produk">
-              <a href="/products">Semua Produk</a>
-              @foreach($navCategories as $category)
-                  <a href="/products?category={{ $category }}">
-                      {{ $category }}
-                  </a>
-              @endforeach
-          </x-nav-dropdown>
+    
         
 
     <!-- Menu -->
@@ -22,14 +27,14 @@
       <a href="/blog">Blog</a>
       <a href="/kontak">Contact</a>
       <a href="/promo">Promo</a>
-      <a href="/intern">Intership/Magang</a>
+      <a href="/intern">Intership</a>
+      <a href="/login">Admin</a>
     </nav>
 
   </div>
 </div>
 
 <style>
-
     .navigasi {
         background-color: #120263;
     }
@@ -95,11 +100,8 @@
 
 /* Logo */
 .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 20px;
-    font-weight: 700;
+  width: 9%;
+
 }
 
 .logo-area img {
@@ -171,6 +173,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 20px;
 }
 
 /* Category */
@@ -181,7 +184,6 @@
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
 .category-btn i {
