@@ -17,18 +17,15 @@
         }
         
 .banner-overlay {
-position: absolute;
-    top: 391px;
-    left: 0;
-    width: 100%;
-    height: 553px;
-    background: radial-gradient(ellipse 121% 160% at top, /* Perbesar elipse */ rgba(232, 243, 255, 0) 44%, rgba(232, 243, 255, 0.8) 53%, rgb(232, 243, 255) 56%);
+    background: radial-gradient(ellipse 140% 180% at top, rgba(232, 243, 255, 0) 50%, rgba(232, 243, 255, 0.8) 53%, rgb(232, 243, 255) 55%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top:200px;
+    padding-top: 200px;
+    height: 100%;
+    padding-top: 520px;
 }
         
         .banner-title {
@@ -90,9 +87,14 @@ position: absolute;
                 font-size: 1rem;
             }
         }
+        .seksi {
+            background-image: url('images/head/header.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
 </style>
-    <section>
-        <img src="{{ asset('images/head/header.png') }}" alt="Banner Azzahra Computer" class="img-fluid h-100 w-100">  
+    <section class="seksi">
         <div class="banner-overlay">
         <h1 class="banner-title" style="margin-top: -30px;">Azzahra Computer</h1>
             <div class="banner-buttons">
@@ -154,10 +156,11 @@ position: absolute;
 
 
 
-<!-- Products -->
+    <!-- rusak kalau di hapus hehe -->
     <section class="container " style="display:none;">
         <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="['Power Deals']" />
     </section>
+
     <!-- Info perusahaan -->
     <section class="profile-section py-5">
         <x-companyInfo/>
