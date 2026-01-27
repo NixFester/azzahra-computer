@@ -4,13 +4,13 @@
         </h3>
 
         <div class="brand-logos">
-            <img src="{{ asset('images/asus.png') }}" alt="Asus">
-            <img src="{{ asset('images/lenovo.png') }}" alt="Lenovo">
-            <img src="{{ asset('images/zyrex.png') }}" alt="Zyrex">
-            <img src="{{ asset('images/xiami.png') }}" alt="Xiaomi">
-            <img src="{{ asset('images/avita.png') }}" alt="Avita">
-            <img src="{{ asset('images/infinix.png') }}" alt="Infinix">
-            <img src="{{ asset('images/canon.png') }}" alt="Canon">
-            <img src="{{ asset('images/hp.png') }}" alt="HP">
+            <img class="brand" src="{{ asset('images/asus.png') }}" alt="Asus">
+            <img class="brand" src="{{ asset('images/lenovo.png') }}" alt="Lenovo">
+            <img class="brand" src="{{ asset('images/zyrex.png') }}" alt="Zyrex">
+            <img class="brand" src="{{ asset('images/xiami.png') }}" alt="Xiaomi">
+            <img class="brand" src="{{ asset('images/avita.png') }}" alt="Avita">
+            <img class="brand" src="{{ asset('images/infinix.png') }}" alt="Infinix">
+            <img class="brand" src="{{ asset('images/canon.png') }}" alt="Canon">
+            <img class="brand" src="{{ asset('images/hp.png') }}" alt="HP">
         </div>
 </div>

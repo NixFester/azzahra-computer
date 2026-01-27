@@ -85,3 +85,8 @@ Route::view('/tentang', 'pages.tentang')->name('tentang');
 Route::view('/kontak', 'pages.kontak')->name('kontak');
 Route::view('/promo', 'pages.promo')->name('promo');
 Route::view('/intern', 'pages.intern')->name('intern');
+
+// Product detail route
+Route::get('/product/{id}', [ProductsController::class, 'show'])
+    ->name('product.detail')
+    ->where('id', '[0-9]+');

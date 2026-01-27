@@ -307,7 +307,7 @@ class ProductsController extends Controller
         // Query products from database - get latest 16 products
         $dbProducts = DB::connection('sqlite')
             ->table('products')
-            ->orderBy('id', 'desc') // Get newest products first
+            ->orderBy('id', 'asc') // Get newest products first
             ->limit(16)->get();
 
         foreach ($dbProducts as $product) {
@@ -321,6 +321,83 @@ class ProductsController extends Controller
 
         return $products;
     }
+public function getProductDetails(int $productId): ?array
+{
+    // Get product from database
+    $product = DB::connection('sqlite')
+        ->table('products')
+        ->where('id', $productId)
+        ->first();
+    
+    if (!$product) {
+        return null;
+    }
+    
+    // Generate random discount between 1-15%
+    $discount = rand(1, 15);
+    
+    // Clean and convert price to number
+    $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);
+    
+    // Skip if price is 0 or invalid
+    if ($originalPrice <= 0) {
+        return null;
+    }
+    
+    // Calculate new price after discount
+    $newPrice = $originalPrice - ($originalPrice * $discount / 100);
+    
+    // Format prices
+    $formattedOldPrice = 'Rp' . number_format($originalPrice, 0, ',', '.') . '.000,00';
+    $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
+    
+    // Build image URL
+    $imageUrl = $this->formatImageUrl($product);
+    
+    // Parse specs if available
+    $specs = [];
+    if (!empty($product->specs)) {
+        // Assuming specs is stored as JSON or comma-separated
+        $specs = json_decode($product->specs, true) ?? explode(',', $product->specs);
+    }
+    
+    return [
+        'id' => $product->id,
+        'image' => $imageUrl,
+        'category' => $product->category,
+        'name' => $product->product_name,
+        'brand' => $product->brand,
+        'price' => $formattedNewPrice,
+        'badge' => $discount . '% OFF',
+        'oldPrice' => $formattedOldPrice,
+        'specs' => $specs,
+    ];
+}
+
+/**
+ * Show product detail page
+ */
+public function show(Request $request, int $id)
+{
+    $product = $this->getProductDetails($id);
+    
+    if (!$product) {
+        abort(404, 'Product not found');
+    }
+    
+    // Get categories for navigation
+    $navCategories = DB::connection('sqlite')
+        ->table('products')
+        ->select('category')
+        ->distinct()
+        ->pluck('category')
+        ->toArray();
+    
+    return view('products.detail', [
+        'product' => $product,
+        'navCategories' => $navCategories
+    ]);
+}
 
 
     /**

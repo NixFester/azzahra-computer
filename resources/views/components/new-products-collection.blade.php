@@ -1,7 +1,7 @@
 @props(['products', 'categories'])
 
-<div class="new-product-collection py-5 mx-auto  container">
-    <div class="container-fluid">
+<div class="container my-5">
+    <div class="">
         <div class="row">
             <!-- Left Sidebar -->
             <div class="col-md-2">
@@ -154,6 +154,10 @@
 
 .indicator.active {
     background-color: #dc3545 !important;
+}
+
+.bi-arrow-left, .bi-arrow-right {
+    color: #120263;
 }
 </style>
 @endPushOnce

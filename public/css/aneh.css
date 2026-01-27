@@ -117,7 +117,7 @@
     }
 
     .carousel-inner {
-        overflow: visible;
+        overflow: hidden;
     }
 
     .carousel-item {
