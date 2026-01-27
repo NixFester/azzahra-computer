@@ -11,7 +11,7 @@
 
 
     <!-- Main Products Section -->
-    <div class="px-5">
+    <div class="p-5">
         <div class="row">
             <!-- Sidebar Filter -->
             <div class="col-3 mb-4">
