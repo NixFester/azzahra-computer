@@ -20,12 +20,11 @@
     background: radial-gradient(ellipse 140% 180% at top, rgba(232, 243, 255, 0) 50%, rgba(232, 243, 255, 0.8) 53%, rgb(232, 243, 255) 55%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     text-align: center;
-    padding-top: 200px;
     height: 100%;
-    padding-top: 520px;
+    padding-bottom: 4%;
 }
         
         .banner-title {
