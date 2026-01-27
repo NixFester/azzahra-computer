@@ -18,17 +18,17 @@
         
 .banner-overlay {
 position: absolute;
-    top: 530px;
+    top: 391px;
     left: 0;
     width: 100%;
-    height: 62%;
+    height: 553px;
     background: radial-gradient(ellipse 121% 160% at top, /* Perbesar elipse */ rgba(232, 243, 255, 0) 44%, rgba(232, 243, 255, 0.8) 53%, rgb(232, 243, 255) 56%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    padding-top:200px;
 }
         
         .banner-title {
@@ -54,7 +54,7 @@ position: absolute;
         }
         
         .btn-primary {
-            background-color: #3498db;
+            background-color: #120263;
             border: none;
         }
         
@@ -97,8 +97,8 @@ position: absolute;
         <h1 class="banner-title" style="margin-top: -30px;">Azzahra Computer</h1>
             <div class="banner-buttons">
                 <button class="btn btn-primary">Shop Now</button>
-                <button class="btn btn-outline-primary">Service Center</button>
-                <button class="btn btn-outline-primary">All Product</button>
+                <button class="btn btn-primary">Service Center</button>
+                <button class="btn btn-primary">All Product</button>
             </div>
         </div>
     </section>
@@ -154,6 +154,10 @@ position: absolute;
 
 
 
+<!-- Products -->
+    <section class="container " style="display:none;">
+        <x-products :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :tabs="['Power Deals']" />
+    </section>
     <!-- Info perusahaan -->
     <section class="profile-section py-5">
         <x-companyInfo/>
