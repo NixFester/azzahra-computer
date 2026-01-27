@@ -115,7 +115,7 @@
     }
 
     .stat-card:hover .stat-number {
-        background: linear-gradient(135deg, #3D8FEF 0%, #00D4FF 100%);
+        background: linear-gradient(135deg, #120263 0%, #070129 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -127,7 +127,7 @@
         font-size: 0.9rem;
         text-transform: uppercase;
         font-weight: 700;
-        color: rgba(61, 143, 239, 0.5);
+        color:rgba(61, 143, 239,  0.5);
         letter-spacing: 2px;
         margin-bottom: 0.8rem;
         font-family: 'Courier New', monospace;
@@ -151,7 +151,7 @@
     }
 
     .stat-card:hover .stat-subtitle {
-        color: rgba(0, 34, 254, 0.7);
+        color: rgb(0, 34, 254);
     }
 
     .rating-stars {

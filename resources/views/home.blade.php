@@ -20,12 +20,11 @@
     background: radial-gradient(ellipse 140% 180% at top, rgba(232, 243, 255, 0) 50%, rgba(232, 243, 255, 0.8) 53%, rgb(232, 243, 255) 55%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     text-align: center;
-    padding-top: 200px;
     height: 100%;
-    padding-top: 520px;
+    padding-bottom: 4%;
 }
         
         .banner-title {
@@ -51,26 +50,26 @@
         }
         
         .btn-primary {
-            background-color: #120263;
+            background-color: #3498db;
             border: none;
         }
         
         .btn-primary:hover {
-            background-color: #2980b9;
+            background-color: #298bb9;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
         .btn-outline-primary {
-            border: 2px solid #3498db;
-            color: #3498db;
+            border: 1px solid #ffffff;
+            color: #ffffff;
         }
         
         .btn-outline-primary:hover {
-            background-color: #3498db;
+            background-color: #120263;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
         }
         
         @media (max-width: 768px) {
@@ -98,9 +97,9 @@
         <div class="banner-overlay">
         <h1 class="banner-title" style="margin-top: -30px;">Azzahra Computer</h1>
             <div class="banner-buttons">
-                <button class="btn btn-primary">Shop Now</button>
-                <button class="btn btn-primary">Service Center</button>
-                <button class="btn btn-primary">All Product</button>
+                <button class="btn btn-outline-primary">Shop Now</button>
+                <button class="btn btn-outline-primary">Service Center</button>
+                <button class="btn btn-outline-primary">All Product</button>
             </div>
         </div>
     </section>
@@ -118,13 +117,9 @@
     </section>
     
     <!-- Rating  -->
-    <section class="container">
+    <section class="container pt-5 pb-3">
         <x-rating :ratings="app('App\Http\Controllers\RatingController')->getRatings()" />
     </section>
-
-
-
-
 
 
     <!-- box -->
@@ -132,7 +127,6 @@
         <x-bannerIklan :urlgambar="['images/tiers/good.png', 'images/tiers/better.png', 'images/tiers/best.png']" />
     </section>
 
-    
 
 
     <!-- Stats -->
@@ -150,7 +144,7 @@
 
     
     <!-- box -->
-    <section class="container">
+    <section class="container my+5">
         <x-bannerIklan :urlgambar="['images/box1.png', 'images/box2.png', 'images/box3.png']" />
     </section>
 
