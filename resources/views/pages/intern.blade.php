@@ -1,36 +1,22 @@
 @extends('layouts.app')
 @section('title', 'Internship Program')
 @section('content')
-
 @include('partials.header-mobile')
-
 <section class="container py-3">
     <h1 class="mb-4">INTERNSHIP</h1>
-
     <div class="row g-3">
+        @if($batchImage)
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern1.png" class="img-fluid rounded" alt="Internship 1">
+            <img src="{{ asset( $batchImage->image_url) }}" class="img-fluid rounded" alt="{{ $batchImage->title ?? 'Batch Internship' }}">
         </div>
+        @endif
+        
+        @foreach($brochureImages as $image)
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern2.png" class="img-fluid rounded" alt="Internship 2">
+            <img src="{{ asset( $image->image_url) }}" class="img-fluid rounded" alt="{{ $image->title ?? 'Internship Brochure' }}">
         </div>
-        <div class="col-md-4 col-sm-6">
-            <img src="images/intern3.png" class="img-fluid rounded" alt="Internship 3">
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <img src="images/intern4.png" class="img-fluid rounded" alt="Internship 4">
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <img src="images/intern5.png" class="img-fluid rounded" alt="Internship 5">
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <img src="images/intern6.png" class="img-fluid rounded" alt="Internship 6">
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <img src="images/intern7.png" class="img-fluid rounded" alt="Internship 7">
-        </div>
+        @endforeach
     </div>
 </section>
-
 @include('partials.footer-mobile')
 @endsection

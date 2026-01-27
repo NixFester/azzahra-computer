@@ -70,7 +70,6 @@
         }
 
         .sidebar {
-            width: 260px;
             background: #ffffff;
             border-right: 1px solid #eee;
             display: flex;

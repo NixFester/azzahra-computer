@@ -54,6 +54,7 @@
                     @foreach($products as $product)
                         <div class="product-item">
                             <x-kartu-produk 
+                                :id="$product['id']"
                                 :name="$product['name']" 
                                 :price="$product['price']" 
                                 :image="$product['image']"
@@ -104,7 +105,8 @@
                         <div class="products-grid" data-products-container="cat-{{ $index }}">
                             @foreach($filteredProducts as $product)
                                 <div class="product-item">
-                                    <x-kartu-produk 
+                                    <x-kartu-produk
+                                        :id="$product['id']" 
                                         :name="$product['name']" 
                                         :price="$product['price']" 
                                         :image="$product['image']"

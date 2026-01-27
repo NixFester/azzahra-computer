@@ -1,7 +1,6 @@
 
 /* ITEM */
 .category-item {
-    width: 140px;
     text-align: center;
     cursor: pointer;
 }
@@ -140,7 +139,6 @@
     margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
-    color: #333;
 }
 
 /* HOVER EFFECT */

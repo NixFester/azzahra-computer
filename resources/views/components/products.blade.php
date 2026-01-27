@@ -401,7 +401,8 @@
         <!-- PRODUCTS PAGE: Grid Layout -->
         <div class="products-grid grid-4col">
             @forelse($products as $product)
-                <x-kartu-produk 
+                <x-kartu-produk
+                    id="{{ $product['id'] }}" 
                     image="{{ $product['image'] }}" 
                     category="{{ $product['category'] }}"
                     name="{{ $product['name'] }}"
@@ -515,7 +516,8 @@
                                         <div class="row g-4">
                                             @for($i = 0; $i < 4 && ($productKey * 4 + $i) < count($products); $i++)
                                                 <div class="col-lg-3 col-md-6">
-                                                    <x-kartu-produk 
+                                                    <x-kartu-produk
+                                                        id="{{ $products[$productKey * 4 + $i]['id'] }}" 
                                                         image="{{ $products[$productKey * 4 + $i]['image'] }}" 
                                                         category="{{ $products[$productKey * 4 + $i]['category'] }}"
                                                         name="{{ $products[$productKey * 4 + $i]['name'] }}"

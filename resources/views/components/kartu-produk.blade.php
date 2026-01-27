@@ -1,6 +1,16 @@
+@props([
+    'id',
+    'image',
+    'category',
+    'name',
+    'price',
+    'badge' => null,
+    'oldPrice' => null,
+])
+
 <style>
     .kartu-modern {
-        height: 420px;
+        height: 460px;
         border: 1px solid #e9ecef;
         border-radius: 12px;
         overflow: hidden;
@@ -8,22 +18,24 @@
         background: white;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
 
     .kartu-modern:hover {
         transform: translateY(-8px);
-        box-shadow: 0 12px 24px rgba(61, 143, 239, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08) !important;
-        border-color: #3D8FEF;
+        box-shadow: 0 12px 24px rgba(18, 2, 99, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08) !important;
+        border-color: #120263;
     }
 
     .kartu-image-wrapper {
-        position: top;
+        position: relative;
         height: 220px;
         overflow: hidden;
         background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fa 100%);
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
     }
 
     .kartu-image-wrapper img {
@@ -62,7 +74,7 @@
     .kartu-category {
         font-size: 0.8rem;
         font-weight: 600;
-        color: #3D8FEF;
+        color: #120263;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin: 0;
@@ -78,6 +90,7 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        min-height: 2.8rem;
     }
 
     .kartu-price-section {
@@ -88,7 +101,7 @@
     .price-current {
         font-size: 1.1rem;
         font-weight: 700;
-        color: #3D8FEF;
+        color: #120263;
         display: inline-block;
     }
 
@@ -100,180 +113,138 @@
         display: inline-block;
     }
 
-   .kartu-btn-cart {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    border: none;
-    border-radius: 8px;
-    padding: 10px 16px;
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.kartu-btn-cart:hover {
-    background: linear-gradient(135deg, #128C7E 0%, #0D7C66 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
-    color: white;
-    text-decoration: none;
-}
-
-.kartu-btn-cart:active {
-    transform: translateY(0);
-}
-
-.kartu-btn-cart i {
-    font-size: 1.1em;
-}
-
-    .icon-cart {
-        width: 18px;
-        height: 18px;
-        display: inline-flex;
+    .kartu-btn-cart {
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        border: none;
+        border-radius: 8px;
+        padding: 10px 16px;
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        display: flex;
         align-items: center;
         justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        width: 100%;
+        text-decoration: none;
     }
+
+    .kartu-btn-cart:hover {
+        background: linear-gradient(135deg, #128C7E 0%, #0D7C66 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+
+    .kartu-btn-cart:active {
+        transform: translateY(0);
+    }
+
+    .kartu-btn-cart i {
+        font-size: 1.1em;
+    }
+
     .btn-whatsapp {
-    background-color: #25D366 !important;
-    border-color: #25D366 !important;
-    color: white !important;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+        border: none !important;
+        color: white !important;
     }
 
     .btn-whatsapp:hover {
-        background-color: #128C7E !important;
-        border-color: #128C7E !important;
+        background: linear-gradient(135deg, #128C7E 0%, #0D7C66 100%) !important;
         color: white !important;
     }
 
     .btn-whatsapp i {
         font-size: 1.1em;
-        margin-right: 0.3rem;
     }
-    .product-card {
-    width: 230px;
-    height: 320px;
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
 
-.product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 35px rgba(0,0,0,0.12);
-}
-.badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: #1E88E5;
-    color: #fff;
-    font-size: 11px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-}
+    /* Ensure card link doesn't break layout */
+    a.kartu-modern {
+        text-decoration: none;
+        color: inherit;
+    }
 
-.image-wrapper {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    a.kartu-modern:hover {
+        text-decoration: none;
+    }
 
-.product-img {
-    max-width: 95%;     
-    max-height: 170px;  
-    object-fit: contain;
-}
-.product-info {
-    padding: 14px;
-}
-.category {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 4px;
-}
-.product-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #222;
-    margin-bottom: 10px;
-}
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .kartu-modern {
+            height: 400px;
+        }
 
-.price {
-    margin-bottom: 12px;
-}
-.current {
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-    color: #000;
-}
+        .kartu-image-wrapper {
+            height: 200px;
+        }
 
-.old {
-    display: block;
-    font-size: 12px;
-    color: #999;
-    text-decoration: line-through;
-    margin-top: 2px;
-}
+        .kartu-title {
+            font-size: 0.9rem;
+        }
 
-.btn-cart {
-    width: 100%;
-    background: #1E88E5;
-    color: #fff;
-    border: none;
-    padding: 8px 0;
-    font-size: 13px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
+        .price-current {
+            font-size: 1rem;
+        }
 
-.btn-cart:hover {
-    background: #1565C0;
-}
+        .kartu-btn-cart {
+            font-size: 0.85rem;
+            padding: 8px 12px;
+        }
+    }
 
+    @media (max-width: 480px) {
+        .kartu-modern {
+            height: 380px;
+        }
+
+        .kartu-image-wrapper {
+            height: 180px;
+        }
+
+        .kartu-body {
+            padding: 12px;
+        }
+    }
 </style>
 
 <div class="kartu-modern position-relative shadow-sm">
-    <div class="kartu-image-wrapper">
-        @if($badge)
-            <span class="badge-discount">{{ $badge }}</span>
-        @endif
-        <img src="{{ $image }}" alt="{{ $name }}" loading="lazy" 
-        onerror="this.onerror=null;this.src='{{ asset('images/fallback/product.jpg') }}';"
-        >
-    </div>
-    <div class="kartu-body">
-        <p class="kartu-category">{{ $category }}</p>
-        <h5 class="kartu-title">{{ htmlspecialchars_decode($name) }}</h5>
-        <div class="kartu-price-section">
-            <span class="price-current">{{ $price }}</span>
-            @if($oldPrice)
-                <span class="price-old">{{ $oldPrice }}</span>
+    <a href="/product/{{ $id }}" class="text-decoration-none" style="color: inherit; display: contents;">
+        <div class="kartu-image-wrapper">
+            @if($badge)
+                <span class="badge-discount">{{ $badge }}</span>
             @endif
+            <img src="{{ $image }}" alt="{{ $name }}" loading="lazy" 
+            onerror="this.onerror=null;this.src='{{ asset('images/fallback/product.jpg') }}';">
         </div>
-        @php
-            $message = "Halo, kak\n".
-                    "Saya mau beli" . $name . "\n".
-                    "Apakah stok masih ada?\n".
-                    "Terimakasih.";
-        @endphp
+        <div class="kartu-body">
+            <p class="kartu-category">{{ $category }}</p>
+            <h5 class="kartu-title">{{ htmlspecialchars_decode($name) }}</h5>
+            <div class="kartu-price-section">
+                <span class="price-current">{{ $price }}</span>
+                @if($oldPrice)
+                    <span class="price-old">{{ $oldPrice }}</span>
+                @endif
+            </div>
+        </div>
+    </a>
+    @php
+        $message = "Halo, kak\n".
+                "Saya mau beli " . $name . "\n".
+                "Apakah stok masih ada?\n".
+                "Terimakasih.";
+    @endphp
+    <div style="padding: 0 16px 16px;">
         <a
-        href="https://wa.me/6285942001720?text={{ urlencode($message) }}"
-        target="_blank" rel="noopener" 
-        class="kartu-btn-cart btn-whatsapp" title="Order via WhatsApp" >
+            href="https://wa.me/6285942001720?text={{ urlencode($message) }}"
+            target="_blank" 
+            rel="noopener" 
+            class="kartu-btn-cart btn-whatsapp" 
+            title="Order via WhatsApp"
+            onclick="event.stopPropagation();">
             <i class="bi bi-whatsapp"></i>
             Order via WhatsApp
         </a>

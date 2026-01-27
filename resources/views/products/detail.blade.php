@@ -11,8 +11,8 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="mb-4">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-decoration-none">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('/?category=' . urlencode($product['category'])) }}" class="text-decoration-none">{{ $product['category'] }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/products') }}" class="text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/products?category=' . urlencode($product['category'])) }}" class="text-decoration-none">{{ $product['category'] }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ Str::limit($product['name'], 50) }}</li>
         </ol>
     </nav>

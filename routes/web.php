@@ -13,6 +13,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\IklanController;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\InternshipController;
 
 
 Route::get('/products', [ProductsController::class, 'index'])->name('products');
@@ -84,9 +85,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/tentang', 'pages.tentang')->name('tentang');
 Route::view('/kontak', 'pages.kontak')->name('kontak');
 Route::view('/promo', 'pages.promo')->name('promo');
-Route::view('/intern', 'pages.intern')->name('intern');
 
 // Product detail route
 Route::get('/product/{id}', [ProductsController::class, 'show'])
     ->name('product.detail')
     ->where('id', '[0-9]+');
+
+Route::get('/intern', [InternshipController::class, 'index'])->name('internship');

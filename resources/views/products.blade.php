@@ -6,87 +6,307 @@
 
 @include('partials.header-mobile')
 
-<div class="products-page">
-
-
-
-    <!-- Main Products Section -->
-    <div class="p-5">
-        <div class="row">
-            <!-- Sidebar Filter -->
-            <div class="col-3 mb-4">
-                <div class="sidebar">
-                    <!-- Filter by Price -->
-                   <div class="filter-section mb-4">
-       <h5 class="filter-title border-bottom mb-3">Filter By Price</h5>
-
-                 <form method="GET" action="{{ url()->current() }}">
-                    <p class="mb-2">
-                        Price:
-                        <strong>
-                            Rp<span id="minPriceText">100,000.00</span>
-                            —
-                            Rp<span id="maxPriceText">40,000,000.00</span>
-                        </strong>
-                    </p>
-        <div id="priceSlider"></div>
-                <input type="hidden" id="minPriceInput" name="min_price"
-                    value="{{ request('min_price', 100) }}">
-
-                <input type="hidden" id="maxPriceInput" name="max_price"
-                    value="{{ request('max_price', 40000) }}">
-
-                <!-- Preserve search and category filters -->
-                <input type="hidden" name="search" value="{{ request('search', '') }}">
-                <input type="hidden" name="category" value="{{ request('category', '') }}">
-
-            <button type="submit" class="btn btn-primary  mt-3">
-                Apply Filter
-            </button>
-    </form>
-</div>
-                    <!-- Product Categories -->
-                    <div class="categories-section mb-4">
-                        <h5 class="filter-title border-bottom pb-2 mb-3">Product Categories</h5>
-                        <ul class="list-unstyled category-list">
-                            <li class="mb-2">
-                                @php
-                                    $isActive = request('category') === null;
-                                @endphp
-                                <a href="?search={{ request('search', '') }}&min_price={{ request('min_price', 100) }}&max_price={{ request('max_price', 40000000) }}" 
-                                   class="text-decoration-none {{ $isActive ? 'text-primary fw-bold' : 'text-dark' }} category-link">
-                                    Semua Produk
+<div class="products-page-modern">
+    
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container-fluid px-3 px-lg-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-3">
+                            <li class="breadcrumb-item">
+                                <a href="/" class="text-decoration-none">
+                                    <i class="bi bi-house-door"></i> Home
                                 </a>
                             </li>
-                            @forelse($searchCategories as $cat)
-                            <li class="mb-2">
-                                @php
-                                    $isActive = request('category') === $cat;
-                                @endphp
-                                <a href="?category={{ urlencode($cat) }}&search={{ request('search', '') }}&min_price={{ request('min_price', 0) }}&max_price={{ request('max_price', 50000000) }}" 
-                                   class="text-decoration-none {{ $isActive ? 'text-primary fw-bold' : 'text-dark' }} category-link">
-                                    {{ ucfirst($cat) }}
-                                </a>
-                            </li>
-                            @empty
-                            <li class="mb-2">
-                                <p class="text-muted">No categories available</p>
-                            </li>
-                            @endforelse
-                        </ul>
+                            <li class="breadcrumb-item active" aria-current="page">Products</li>
+                        </ol>
+                    </nav>
+                    <h1 class="page-title mb-2">
+                        <i class="bi bi-grid-3x3-gap-fill me-2"></i>Our Products
+                    </h1>
+                    <p class="page-subtitle text-muted mb-0">Discover our wide range of quality products</p>
+                </div>
+                <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
+                    <div class="results-info">
+                        <i class="bi bi-box-seam me-2"></i>
+                        <span class="fw-semibold" id="totalProducts">
+                            @if(is_object($products) && method_exists($products, 'total'))
+                                {{ $products->total() }}
+                            @else
+                                {{ is_array($products) ? count($products) : $products->count() }}
+                            @endif
+                        </span> products found
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Products Grid -->
-           <div class="col-lg-8 col-md-7">
+    <!-- Main Products Section -->
+    <div class="products-section">
+        <div class="container-fluid px-3 px-lg-5">
+            <div class="row g-4">
+                
+                <!-- Sidebar Filter -->
+                <div class="col-lg-3 col-md-4">
+                    <div class="filters-wrapper">
+                        <!-- Mobile Filter Toggle -->
+                        <button class="btn btn-outline-primary w-100 d-lg-none mb-3 filter-toggle" 
+                                type="button" 
+                                data-bs-toggle="collapse" 
+                                data-bs-target="#filterSidebar">
+                            <i class="bi bi-funnel me-2"></i>Filters & Categories
+                            <i class="bi bi-chevron-down ms-auto"></i>
+                        </button>
 
-                <!-- Products Component -->
-                <x-products 
-                    :products="$products" 
-                    :pagination="$pagination" 
-                    :tabs="$tabs" 
-                />
+                        <div class="sidebar collapse d-lg-block" id="filterSidebar">
+                            <!-- Active Filters -->
+                            @php
+                                $hasFilters = request('category') || request('search') || request('min_price') || request('max_price');
+                            @endphp
+                            
+                            @if($hasFilters)
+                            <div class="filter-section active-filters" id="activeFiltersSection">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h6 class="filter-title mb-0">
+                                        <i class="bi bi-funnel-fill me-2"></i>Active Filters
+                                    </h6>
+                                    <a href="{{ route('products') }}" class="btn btn-sm btn-link text-danger p-0">
+                                        Clear All
+                                    </a>
+                                </div>
+                                <div id="activeFiltersList" class="d-flex flex-wrap gap-2">
+                                    @if(request('category'))
+                                        <span class="badge">
+                                            Category: {{ ucfirst(request('category')) }}
+                                            <a href="{{ route('products', array_filter(request()->except('category'))) }}" class="btn-close ms-2"></a>
+                                        </span>
+                                    @endif
+                                    
+                                    @if(request('search'))
+                                        <span class="badge">
+                                            Search: "{{ request('search') }}"
+                                            <a href="{{ route('products', array_filter(request()->except('search'))) }}" class="btn-close ms-2"></a>
+                                        </span>
+                                    @endif
+                                    
+                                    @if(request('min_price') || request('max_price'))
+                                        <span class="badge">
+                                            Price: Rp{{ number_format(request('min_price', 0), 0, ',', '.') }} - Rp{{ number_format(request('max_price', 9999), 0, ',', '.') }}
+                                            <a href="{{ route('products', array_filter(request()->except(['min_price', 'max_price']))) }}" class="btn-close ms-2"></a>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            @endif
+
+                            <!-- Filter by Price -->
+                            <div class="filter-section">
+                                <h6 class="filter-title mb-3">
+                                    <i class="bi bi-cash-stack me-2"></i>Price Range
+                                </h6>
+
+                                <form method="GET" action="{{ route('products') }}" id="priceFilterForm">
+                                    @if(request('category'))
+                                        <input type="hidden" name="category" value="{{ request('category') }}">
+                                    @endif
+                                    @if(request('search'))
+                                        <input type="hidden" name="search" value="{{ request('search') }}">
+                                    @endif
+
+                                    <div class="price-inputs mb-3">
+                                        <div class="row g-2">
+                                            <div class="col-6">
+                                                <label class="small text-muted mb-1">Min Price</label>
+                                                <input type="number" 
+                                                       class="form-control form-control-sm" 
+                                                       name="min_price"
+                                                       id="minPriceInput" 
+                                                       placeholder="0"
+                                                       value="{{ request('min_price', '') }}"
+                                                       min="0"
+                                                       step="100">
+                                            </div>
+                                            <div class="col-6">
+                                                <label class="small text-muted mb-1">Max Price</label>
+                                                <input type="number" 
+                                                       class="form-control form-control-sm" 
+                                                       name="max_price"
+                                                       id="maxPriceInput" 
+                                                       placeholder="9999"
+                                                       value="{{ request('max_price', '') }}"
+                                                       min="0"
+                                                       step="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quick Price Buttons -->
+                                    <div class="quick-prices mb-3">
+                                        <p class="small text-muted mb-2">Quick Select:</p>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="0" data-max="1000">
+                                                < 1K
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="1000" data-max="3000">
+                                                1K - 3K
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="3000" data-max="6000">
+                                                3K - 6K
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="6000" data-max="9999">
+                                                > 6K
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="bi bi-check2-circle me-2"></i>Apply Price Filter
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Product Categories -->
+                            <div class="filter-section">
+                                <h6 class="filter-title mb-3">
+                                    <i class="bi bi-grid-3x3 me-2"></i>Categories
+                                </h6>
+                                <div class="category-list">
+                                    @php
+                                        $currentCategory = request('category');
+                                        $isAllActive = empty($currentCategory);
+                                    @endphp
+                                    
+                                    <a href="{{ route('products') }}" 
+                                       class="category-item {{ $isAllActive ? 'active' : '' }}">
+                                        <div class="category-icon">
+                                            <i class="bi bi-grid-3x3-gap"></i>
+                                        </div>
+                                        <span class="category-name">All Products</span>
+                                        <i class="bi bi-chevron-right ms-auto"></i>
+                                    </a>
+
+                                    @forelse($searchCategories as $cat)
+                                        @php
+                                            $isActive = strtolower($currentCategory) === strtolower($cat);
+                                        @endphp
+                                        <a href="{{ route('products', ['category' => strtolower($cat)]) }}" 
+                                           class="category-item {{ $isActive ? 'active' : '' }}">
+                                            <div class="category-icon">
+                                                <i class="bi bi-tag"></i>
+                                            </div>
+                                            <span class="category-name">{{ ucfirst($cat) }}</span>
+                                            <i class="bi bi-chevron-right ms-auto"></i>
+                                        </a>
+                                    @empty
+                                        <div class="text-center py-3">
+                                            <i class="bi bi-inbox text-muted" style="font-size: 2rem;"></i>
+                                            <p class="text-muted small mb-0 mt-2">No categories available</p>
+                                        </div>
+                                    @endforelse
+                                </div>
+                            </div>
+
+                            <!-- Search Filter -->
+                            <div class="filter-section">
+                                <h6 class="filter-title mb-3">
+                                    <i class="bi bi-search me-2"></i>Search Products
+                                </h6>
+                                <form method="GET" action="{{ route('products') }}" id="searchForm">
+                                    @if(request('category'))
+                                        <input type="hidden" name="category" value="{{ request('category') }}">
+                                    @endif
+                                    @if(request('min_price'))
+                                        <input type="hidden" name="min_price" value="{{ request('min_price') }}">
+                                    @endif
+                                    @if(request('max_price'))
+                                        <input type="hidden" name="max_price" value="{{ request('max_price') }}">
+                                    @endif
+                                    
+                                    <div class="input-group">
+                                        <input type="text" 
+                                               class="form-control" 
+                                               name="search"
+                                               id="searchInput" 
+                                               value="{{ request('search', '') }}"
+                                               placeholder="Search by name...">
+                                        @if(request('search'))
+                                            <a href="{{ route('products', array_filter(request()->except('search'))) }}" class="btn btn-outline-secondary">
+                                                <i class="bi bi-x-lg"></i>
+                                            </a>
+                                        @else
+                                            <button class="btn btn-outline-secondary" type="submit">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        @endif
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Reset Filters -->
+                            <div class="filter-section border-0">
+                                <a href="{{ route('products') }}" class="btn btn-outline-secondary w-100">
+                                    <i class="bi bi-arrow-clockwise me-2"></i>Reset All Filters
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="col-lg-9 col-md-8">
+                    <!-- Sort & View Options -->
+                    <div class="products-toolbar mb-4">
+                        <div class="row align-items-center g-3">
+                            <div class="col-md-6">
+                                <div class="showing-results">
+                                    @if(request('search') || request('category') || request('min_price') || request('max_price'))
+                                        <i class="bi bi-funnel me-2"></i>
+                                        <span class="text-muted">Filtered results</span>
+                                    @else
+                                        <i class="bi bi-box-seam me-2"></i>
+                                        <span class="text-muted">All products</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex gap-2 justify-content-md-end">
+                                    <form method="GET" action="{{ route('products') }}" id="sortForm">
+                                        @if(request('category'))
+                                            <input type="hidden" name="category" value="{{ request('category') }}">
+                                        @endif
+                                        @if(request('search'))
+                                            <input type="hidden" name="search" value="{{ request('search') }}">
+                                        @endif
+                                        @if(request('min_price'))
+                                            <input type="hidden" name="min_price" value="{{ request('min_price') }}">
+                                        @endif
+                                        @if(request('max_price'))
+                                            <input type="hidden" name="max_price" value="{{ request('max_price') }}">
+                                        @endif
+                                        
+                                        <select class="form-select form-select-sm" name="sort" id="sortBy" style="max-width: 200px;" onchange="this.form.submit()">
+                                            <option value="">Sort by</option>
+                                            <option value="name_asc" {{ request('sort') === 'name_asc' ? 'selected' : '' }}>Name: A to Z</option>
+                                            <option value="name_desc" {{ request('sort') === 'name_desc' ? 'selected' : '' }}>Name: Z to A</option>
+                                            <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
+                                            <option value="price_desc" {{ request('sort') === 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Component -->
+                    <x-products 
+                        :products="$products" 
+                        :pagination="$pagination" 
+                        :tabs="$tabs" 
+                    />
+                </div>
             </div>
         </div>
     </div>
@@ -97,154 +317,473 @@
 
 @push('styles')
 <style>
-    .products-page {
-        background-color: #f8f9fa;
+/* ================================
+   MODERN PRODUCTS PAGE STYLES
+   ================================ */
+
+:root {
+    --primary-color: #120263;
+    --primary-light: #1a0380;
+    --primary-dark: #0a0140;
+}
+
+.products-page-modern {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    padding: 2rem 0;
+    color: white;
+    box-shadow: 0 4px 20px rgba(18, 2, 99, 0.3);
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item,
+.breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb-item a:hover {
+    color: white;
+}
+
+.breadcrumb-item.active {
+    color: white;
+    font-weight: 500;
+}
+
+.results-info {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    display: inline-block;
+    color: white;
+    font-size: 0.95rem;
+}
+
+/* Products Section */
+.products-section {
+    padding: 2rem 0 4rem;
+}
+
+/* Sidebar */
+.filters-wrapper {
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.filter-toggle {
+    border-radius: 12px;
+    padding: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(18, 2, 99, 0.2);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.filter-toggle:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Filter Sections */
+.filter-section {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.filter-title i {
+    color: var(--primary-color);
+}
+
+/* Active Filters */
+.active-filters .badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.active-filters .badge .btn-close {
+    --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+    width: 0.75rem;
+    height: 0.75rem;
+    opacity: 0.8;
+}
+
+.active-filters .badge .btn-close:hover {
+    opacity: 1;
+}
+
+/* Price Inputs */
+.price-inputs .form-control {
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    padding: 0.5rem 0.75rem;
+}
+
+.price-inputs .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(18, 2, 99, 0.15);
+}
+
+/* Quick Price Buttons */
+.quick-prices .btn {
+    font-size: 0.8rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.quick-prices .btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.quick-prices .btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Category List */
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    padding: 0.875rem 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #495057;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.category-item:hover {
+    background: #e9ecef;
+    color: var(--primary-color);
+    transform: translateX(4px);
+    border-color: var(--primary-color);
+}
+
+.category-item.active {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: white;
+    font-weight: 600;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(18, 2, 99, 0.3);
+}
+
+.category-item.active .category-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.category-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 10px;
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.category-name {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.category-item i.bi-chevron-right {
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+}
+
+.category-item:hover i.bi-chevron-right,
+.category-item.active i.bi-chevron-right {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* Search Input */
+.input-group .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(18, 2, 99, 0.15);
+}
+
+/* Products Toolbar */
+.products-toolbar {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.showing-results {
+    font-size: 0.95rem;
+}
+
+.form-select {
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(18, 2, 99, 0.15);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(18, 2, 99, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(18, 2, 99, 0.4);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-outline-secondary {
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-width: 2px;
+}
+
+.btn-outline-secondary:hover {
+    background: #6c757d;
+    border-color: #6c757d;
+}
+
+/* ================================
+   RESPONSIVE STYLES
+   ================================ */
+
+@media (max-width: 991px) {
+    .page-title {
+        font-size: 1.75rem;
     }
 
-    .page-banner {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .breadcrumb-item a {
-        text-decoration: none;
+    .filters-wrapper {
+        position: static;
     }
 
     .sidebar {
-    background: white;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        border-radius: 12px;
     }
 
-    /* jarak antar section */
-    .filter-section,
-    .categories-section {
-        margin-bottom: 2rem;
+    #filterSidebar.collapsing,
+    #filterSidebar.collapse.show {
+        transition: height 0.3s ease;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 1.5rem 0;
     }
 
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .results-info {
+        padding: 0.625rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .products-section {
+        padding: 1.5rem 0 3rem;
+    }
+
+    .filter-section {
+        padding: 1.25rem;
+    }
+
+    .category-item {
+        padding: 0.75rem 0.875rem;
+    }
+
+    .products-toolbar {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.25rem;
+    }
+
+    .breadcrumb {
+        font-size: 0.8rem;
+    }
+
+    .results-info {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
 
     .filter-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #333;
+        font-size: 0.95rem;
     }
 
-    .category-list li a {
-        transition: all 0.3s ease;
-        padding: 0.25rem 0;
-        display: block;
+    .category-item {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.9rem;
     }
 
-    .category-list li a:hover {
-        color: #667eea !important;
-        padding-left: 0.5rem;
+    .category-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
     }
+}
 
-    .category-link.text-primary {
-        color: #667eea !important;
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    .form-range::-webkit-slider-thumb {
-        background: #667eea;
-    }
+.filter-section {
+    animation: slideIn 0.3s ease-out;
+}
 
-    .form-range::-moz-range-thumb {
-        background: #667eea;
-    }
+/* Product items fade */
+.product-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
-    @media (max-width: 768px) {
-        .sidebar {
-            margin-bottom: 2rem;
-        }
-    }
-    #priceSlider {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    }
-
-    .noUi-target {
-        height: 12px;
-    }
-
-    .noUi-connect {
-        background: #667eea;
-    }
-
-    .noUi-handle {
-        width: 18px;
-        height: 18px;
-        top: 0px;
-        border-radius: 50%;
-    }
-
+.product-item.hiding {
+    opacity: 0;
+    transform: scale(0.95);
+}
 </style>
-
 @endpush
 
 @push('scripts')
 <script>
-    // Price range filter functionality
-    document.getElementById('priceRange')?.addEventListener('input', function(e) {
-        console.log('Price range:', e.target.value);
-        // Add your filtering logic here
-    });
-    const slider = document.getElementById('priceSlider');
-
-    const minPriceText = document.getElementById('minPriceText');
-    const maxPriceText = document.getElementById('maxPriceText');
-
-    const minPriceInput = document.getElementById('minPriceInput');
-    const maxPriceInput = document.getElementById('maxPriceInput');
-
-    function formatRupiah(number) {
-        return new Intl.NumberFormat('id-ID').format(Math.round(number));
-    }
-
-    noUiSlider.create(slider, {
-        start: [
-            minPriceInput.value,
-            maxPriceInput.value
-        ],
-        connect: true,
-        range: {
-            min: 100,
-            max: 40000000
-        },
-        step: 5000
-    });
-
-    slider.noUiSlider.on('update', function (values) {
-        const min = values[0];
-        const max = values[1];
-
-        minPriceText.textContent = formatRupiah(min);
-        maxPriceText.textContent = formatRupiah(max);
-
-        minPriceInput.value = Math.round(min);
-        maxPriceInput.value = Math.round(max);
-    });
-
-    /* 🔥 OPTIONAL: auto submit saat slider dilepas */
-    // slider.noUiSlider.on('change', () => {
-    //     minPriceInput.form.submit();
-    // });
-    
-    // Handle category click to toggle selection
-    document.querySelectorAll('.category-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            const currentCategory = new URLSearchParams(window.location.search).get('category');
-            const clickedCategory = new URL(this.href).searchParams.get('category');
+document.addEventListener('DOMContentLoaded', function() {
+    // Quick price buttons
+    document.querySelectorAll('.quick-price').forEach(button => {
+        button.addEventListener('click', function() {
+            const min = this.dataset.min;
+            const max = this.dataset.max;
             
-            // If clicking the same category, clear it
-            if (currentCategory === clickedCategory) {
-                e.preventDefault();
-                const url = new URL(window.location);
-                url.searchParams.delete('category');
-                window.location = url.toString();
-            }
+            document.getElementById('minPriceInput').value = min;
+            document.getElementById('maxPriceInput').value = max;
+            
+            // Auto-submit the form
+            document.getElementById('priceFilterForm').submit();
         });
     });
+
+    // Auto-submit search after typing (with debounce)
+    let searchTimeout;
+    const searchInput = document.getElementById('searchInput');
     
-    updatePrice();
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                if (this.value.length >= 3 || this.value.length === 0) {
+                    document.getElementById('searchForm').submit();
+                }
+            }, 800);
+        });
+    }
+});
 </script>
 @endpush

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->enum('type', ['banner', 'promo']);
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('image_path');
+            $table->string('image_url');
             $table->string('link')->nullable();
             $table->boolean('is_active')->default(true);
             $table->integer('order')->default(0);

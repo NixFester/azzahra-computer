@@ -23,98 +23,126 @@ class ProductsController extends Controller
     }
 
     public function getProductsWithPagination(Request $request): array
-    {
-        // Get search query and category from request
-        $search = $request->input('search', '');
-        $category = $request->input('category', '');
-        $minPrice = $request->input('min_price', 0);
-        $maxPrice = $request->input('max_price', 50000000);
-        $page = $request->input('page', 1);
-        $perPage = 12; // 4 columns x 3 rows
+{
+    // Get search query and category from request
+    $search = $request->input('search', '');
+    $category = $request->input('category', '');
+    $minPrice = $request->input('min_price', null);
+    $maxPrice = $request->input('max_price', null);
+    $sort = $request->input('sort', '');
+    $page = $request->input('page', 1);
+    $perPage = 12; // 4 columns x 3 rows
 
-        // Build query
-        $query = DB::connection('sqlite')->table('products');
+    // Build query
+    $query = DB::connection('sqlite')->table('products');
 
-        // Search by product name
-        if (!empty($search)) {
-            $query->where('product_name', 'like', '%' . $search . '%');
+    // Search by product name
+    if (!empty($search)) {
+        $query->where('product_name', 'like', '%' . $search . '%');
+    }
+
+    // Filter by category (case-insensitive)
+    if (!empty($category)) {
+        $query->whereRaw('LOWER(category) = ?', [strtolower($category)]);
+    }
+
+    // Filter by price range
+    // Handle both numeric and formatted prices (Rp, commas, etc.)
+    if ($minPrice !== null && $minPrice !== '') {
+        // Try to cast price as numeric for comparison
+        $query->whereRaw('CAST(REPLACE(REPLACE(REPLACE(price, "Rp", ""), ".", ""), ",", "") AS INTEGER) >= ?', [(int)$minPrice]);
+    }
+    
+    if ($maxPrice !== null && $maxPrice !== '') {
+        $query->whereRaw('CAST(REPLACE(REPLACE(REPLACE(price, "Rp", ""), ".", ""), ",", "") AS INTEGER) <= ?', [(int)$maxPrice]);
+    }
+
+    // Apply sorting
+    switch ($sort) {
+        case 'name_asc':
+            $query->orderBy('product_name', 'asc');
+            break;
+        case 'name_desc':
+            $query->orderBy('product_name', 'desc');
+            break;
+        case 'price_asc':
+            $query->orderByRaw('CAST(REPLACE(REPLACE(REPLACE(price, "Rp", ""), ".", ""), ",", "") AS INTEGER) ASC');
+            break;
+        case 'price_desc':
+            $query->orderByRaw('CAST(REPLACE(REPLACE(REPLACE(price, "Rp", ""), ".", ""), ",", "") AS INTEGER) DESC');
+            break;
+        default:
+            // Default sorting by id
+            $query->orderBy('id', 'desc');
+            break;
+    }
+
+    // Get total count for pagination
+    $totalProducts = $query->count();
+
+    // Calculate pagination values
+    $totalPages = ceil($totalProducts / $perPage);
+    $currentPage = max(1, min($page, $totalPages ?: 1));
+    $offset = ($currentPage - 1) * $perPage;
+
+    // Get paginated products
+    $dbProducts = $query->offset($offset)->limit($perPage)->get();
+
+    $products = [];
+
+    foreach ($dbProducts as $product) {
+        // Generate random discount between 1-15%
+        $discount = rand(1, 15);
+        
+        // Clean and convert price to number
+        $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);
+        
+        // Skip if price is 0 or invalid (extra safety check)
+        if ($originalPrice <= 0) {
+            continue;
         }
-
-        // Filter by category (case-insensitive)
-        if (!empty($category)) {
-            $query->whereRaw('LOWER(category) = ?', [strtolower($category)]);
-        }
-
-        // Filter by price range
-        // Convert price field to numeric for comparison
-        $query->whereRaw('CAST(REPLACE(REPLACE(price, "Rp", ""), ",", "") AS REAL) >= ?', [$minPrice]);
-        $query->whereRaw('CAST(REPLACE(REPLACE(price, "Rp", ""), ",", "") AS REAL) <= ?', [$maxPrice]);
-
-        // Get total count for pagination
-        $totalProducts = $query->count();
-
-        // Calculate pagination values
-        $totalPages = ceil($totalProducts / $perPage);
-        $currentPage = max(1, min($page, $totalPages));
-        $offset = ($currentPage - 1) * $perPage;
-
-        // Get paginated products
-        $dbProducts = $query->offset($offset)->limit($perPage)->get();
-
-        $products = [];
-
-        foreach ($dbProducts as $product) {
-            // Generate random discount between 1-15%
-            $discount = rand(1, 15);
-            
-            // Clean and convert price to number
-            $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);
-            
-            // Skip if price is 0 or invalid (extra safety check)
-            if ($originalPrice <= 0) {
-                continue;
-            }
-            
-            // Calculate new price after discount
-            $newPrice = $originalPrice - ($originalPrice * $discount / 100);
-            
-            // Format prices
-            $formattedOldPrice = 'Rp' . number_format($originalPrice, 0, ',', '.') . '.000,00';
-            $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
-            
-            // Build image URL with cache-busting timestamp
-            $imageUrl = $this->formatImageUrl($product);
-            
-            $products[] = [
-                'image' => $imageUrl,
-                'category' => $product->category,
-                'name' => $product->product_name,
-                'price' => $formattedNewPrice,
-                'badge' => $discount . '% OFF',
-                'oldPrice' => $formattedOldPrice,
-            ];
-        }
-
-        // Build pagination data
-        $pagination = [
-            'current_page' => $currentPage,
-            'last_page' => $totalPages,
-            'per_page' => $perPage,
-            'total' => $totalProducts,
-            'from' => $totalProducts > 0 ? ($offset + 1) : 0,
-            'to' => min($offset + count($products), $totalProducts),
-            'first_url' => $this->buildUrlWithParams($request, 1),
-            'last_url' => $this->buildUrlWithParams($request, $totalPages),
-            'prev_url' => $currentPage > 1 ? $this->buildUrlWithParams($request, $currentPage - 1) : null,
-            'next_url' => $currentPage < $totalPages ? $this->buildUrlWithParams($request, $currentPage + 1) : null,
-            'links' => $this->buildPaginationLinks($request, $currentPage, $totalPages),
-        ];
-
-        return [
-            'products' => $products,
-            'pagination' => $pagination
+        
+        // Calculate new price after discount
+        $newPrice = $originalPrice - ($originalPrice * $discount / 100);
+        
+        // Format prices
+        $formattedOldPrice = 'Rp' . number_format($originalPrice, 0, ',', '.') . '.000,00';
+        $formattedNewPrice = 'Rp' . number_format($newPrice, 0, ',', '.') . '.000,00';
+        
+        // Build image URL with cache-busting timestamp
+        $imageUrl = $this->formatImageUrl($product);
+        
+        $products[] = [
+            'id' => $product->id,
+            'image' => $imageUrl,
+            'category' => $product->category,
+            'name' => $product->product_name,
+            'price' => $formattedNewPrice,
+            'badge' => $discount . '% OFF',
+            'oldPrice' => $formattedOldPrice,
         ];
     }
+
+    // Build pagination data
+    $pagination = [
+        'current_page' => $currentPage,
+        'last_page' => $totalPages ?: 1,
+        'per_page' => $perPage,
+        'total' => $totalProducts,
+        'from' => $totalProducts > 0 ? ($offset + 1) : 0,
+        'to' => min($offset + count($products), $totalProducts),
+        'first_url' => $this->buildUrlWithParams($request, 1),
+        'last_url' => $this->buildUrlWithParams($request, $totalPages ?: 1),
+        'prev_url' => $currentPage > 1 ? $this->buildUrlWithParams($request, $currentPage - 1) : null,
+        'next_url' => $currentPage < $totalPages ? $this->buildUrlWithParams($request, $currentPage + 1) : null,
+        'links' => $this->buildPaginationLinks($request, $currentPage, $totalPages ?: 1),
+    ];
+
+    return [
+        'products' => $products,
+        'pagination' => $pagination
+    ];
+}
 
     private function buildUrlWithParams(Request $request, int $page): string
     {
@@ -228,6 +256,7 @@ class ProductsController extends Controller
             $imageUrl = $this->formatImageUrl($product);
             
             $products[] = [
+                'id' => $product->id,
                 'image' => $imageUrl,
                 'category' => $product->category,
                 'name' => $product->product_name,
@@ -288,6 +317,7 @@ class ProductsController extends Controller
             $imageUrl = $this->formatImageUrl($product);
 
             $products[] = [
+                'id' => $product->id,
                 'image' => $imageUrl,
                 'category' => $product->category,
                 'name' => $product->product_name,
