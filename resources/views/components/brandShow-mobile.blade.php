@@ -34,7 +34,7 @@
 <style>
 /* Desktop Brand Section */
 .brand-section-mobile {
-    display: block;
+    display: block !important;
     text-align: center;
     padding: 3rem 0;
 }
@@ -84,7 +84,6 @@
    ====================================== */
 @media (max-width: 768px) {
     .brand-section-mobile {
-        display: block;
         padding: 2.5rem 1rem;
     }
 
@@ -131,7 +130,6 @@
 /* Small Mobile - 480px and below */
 @media (max-width: 480px) {
     .brand-section-mobile {
-        display: block;
         padding: 2rem 0.875rem;
     }
 

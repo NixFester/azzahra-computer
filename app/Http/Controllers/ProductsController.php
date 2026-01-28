@@ -33,6 +33,9 @@ class ProductsController extends Controller
     $page = $request->input('page', 1);
     $perPage = 12; // 4 columns x 3 rows
 
+    $minPrice = $minPrice !== null ? $minPrice / 1000 : null;
+    $maxPrice = $maxPrice !== null ? $maxPrice / 1000 : null;
+
     // Build query
     $query = DB::connection('sqlite')->table('products');
 
