@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
+use App\Models\Store;
   
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +28,12 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap(); // atau Paginator::useBootstrapFive();
         // Share navigation data with all views
         View::composer('*', function ($view) {
+            if (Schema::hasTable('store')) {
+                $view->with('storeInfo', Store::first());
+            } else {
+                $view->with('storeInfo', null);
+            }
+
             $searchCategories = DB::table('products')
                 ->select('category')
                 ->distinct()

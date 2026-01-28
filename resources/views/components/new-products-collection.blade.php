@@ -52,7 +52,7 @@
                                             
                                             <!-- WhatsApp Overlay -->
                                             <div class="whatsapp-overlay position-absolute bottom-0 w-100 bg-dark bg-opacity-75 p-3">
-                                                <a href="https://wa.me/6285942001720?text=Halo,%20saya%20ingin%20menanyakan%20ketersediaan%20{{ urlencode($product['name']) }}" 
+                                                <a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo,%20saya%20ingin%20menanyakan%20ketersediaan%20{{ urlencode($product['name']) }}" 
                                                    target="_blank"
                                                    class="btn btn-success btn-sm w-100"
                                                    onclick="event.stopPropagation()">

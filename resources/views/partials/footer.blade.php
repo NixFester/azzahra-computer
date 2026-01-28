@@ -48,9 +48,9 @@
                     <div class="">
                         <h5>Our Service</h5>
                         <ul class="list-unstyled">
-                            <li><a href="https://wa.me/6285942001720?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service Laptop</a></li>
-                            <li><a href="https://wa.me/6285942001720?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service PC</a></li>
-                            <li><a href="https://wa.me/6285942001720?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a></li>
+                            <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service Laptop</a></li>
+                            <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service PC</a></li>
+                            <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a></li>
                         </ul>
                     </div>
 

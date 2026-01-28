@@ -42,10 +42,13 @@
     </p>
 
     <p class="mb-0">
-        <strong>Whatsapp:</strong> 0859.4200.1720
+        <strong>Whatsapp:</strong> {{ $storeInfo?->whatsapp }}
     </p>
     <p class="mb-0">
-        <strong>Instagram:</strong> @Authorized_servicecenter
+        <strong>Instagram:</strong> {{ $storeInfo?->instagram }}
+    </p>
+    <p class="mb-0">
+        <strong>Youtube:</strong> {{ $storeInfo?->youtube }}
     </p>
     <p class="mb-0">
         <strong>Alamat:</strong>

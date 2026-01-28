@@ -239,7 +239,7 @@
     @endphp
     <div style="padding: 0 16px 16px;">
         <a
-            href="https://wa.me/6285942001720?text={{ urlencode($message) }}"
+            href="https://wa.me/{{ $storeInfo?->whatsapp }}?text={{ urlencode($message) }}"
             target="_blank" 
             rel="noopener" 
             class="kartu-btn-cart btn-whatsapp" 

@@ -83,7 +83,7 @@
 
                     <!-- WhatsApp Contact -->
                     <div class="d-grid gap-2 mb-4">
-                        <a href="https://wa.me/6285942001720?text=Hi%2C%20Apakah%20Produk%2C%20{{ urlencode($product['name']) }}%2C%20tersedia%3F" 
+                        <a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Hi%2C%20Apakah%20Produk%2C%20{{ urlencode($product['name']) }}%2C%20tersedia%3F" 
                            target="_blank"
                            class="btn btn-lg text-white fw-semibold" 
                            style="background-color: #25D366;">

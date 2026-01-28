@@ -39,7 +39,7 @@
                                     name="categories" 
                                     required>
                                 <option value="">Select Category</option>
-                                <option value="Whatsapp"
+                                <option value="Whatsapp">
                             </select>
                             @error('categories')
                             <div class="invalid-feedback">{{ $message }}</div>

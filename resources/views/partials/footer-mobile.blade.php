@@ -23,7 +23,7 @@
                         </a>
 
                         <h4 class="contact-title">Kontak</h4>
-                        <p class="contact-item">📱 0859 4200 1720</p>
+                        <p class="contact-item"><i class="bi bi-whatsapp me-1"></i> {{ $storeInfo?->whatsapp }}</p>
                         <p class="contact-item">☎️ 0283 3409 09</p>
 
                         <h4 class="contact-title">Buka :</h4>
@@ -46,9 +46,9 @@
                 <div class="footer-column">
                     <h5 class="footer-heading">Our Service</h5>
                     <ul class="footer-list">
-                        <li><a href="https://wa.me/6285942001720?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service Laptop</a></li>
-                        <li><a href="https://wa.me/6285942001720?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service PC</a></li>
-                        <li><a href="https://wa.me/6285942001720?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a></li>
+                        <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service Laptop</a></li>
+                        <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service PC</a></li>
+                        <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a></li>
                     </ul>
                 </div>
             </div>

@@ -17,8 +17,7 @@
                                     <span>Tegal, Jawa Tengah</span>
                                 </div>
                                 <div class="info-item">
-                                    <span class="info-icon">📞</span>
-                                    <span>WA: 0859-4200-1720</span>
+                                    <span> <i class="bi bi-whatsapp me-1"></i> WA: {{ $storeInfo?->whatsapp }}</span>
                                 </div>
                                 <div class="info-item">
                                     <span class="info-icon">🌐</span>
