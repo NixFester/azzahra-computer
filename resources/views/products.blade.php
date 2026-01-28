@@ -145,7 +145,7 @@
                             <!-- Filter by Price -->
                             <div class="filter-section">
                                 <h6 class="filter-title mb-3">
-                                    <i class="bi bi-cash-stack me-2"></i>Price Range
+                                    <i class="bi bi-cash-stack me-2"></i>Price Range (Rp)
                                 </h6>
 
                                 <form method="GET" action="{{ route('products') }}" id="priceFilterForm">

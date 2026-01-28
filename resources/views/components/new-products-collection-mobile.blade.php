@@ -38,7 +38,7 @@
                                     aria-controls="cat-{{ $index }}" 
                                     aria-selected="false"
                                     data-category="{{ $category }}">
-                                <i class="bi bi-tag me-2"></i>{{ $category }}
+                                <i class="bi bi-tag me-2"></i>{{ ucfirst($category) }}
                             </button>
                         </li>
                     @endforeach
@@ -58,7 +58,7 @@
                                 :name="$product['name']" 
                                 :price="$product['price']" 
                                 :image="$product['image']"
-                                :badge="$product['badge'] ?? null"
+                                :badge=" null"
                                 :oldPrice="$product['oldPrice'] ?? null"
                                 :category="$product['category']"
                                 :brand="$product['brand'] ?? null"
@@ -110,7 +110,7 @@
                                         :name="$product['name']" 
                                         :price="$product['price']" 
                                         :image="$product['image']"
-                                        :badge="$product['badge'] ?? null"
+                                        :badge=" null"
                                         :oldPrice="$product['oldPrice'] ?? null"
                                         :category="$product['category']"
                                         :brand="$product['brand'] ?? null"

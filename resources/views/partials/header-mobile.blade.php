@@ -4,7 +4,7 @@
         
         <!-- Logo Section -->
         <div class="mobile-header-top">
-            <img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-mobile"/>
+            <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-mobile"/></a>
             
             <div class="mobile-header-actions">
                 <!-- Search Icon Button -->
@@ -52,7 +52,7 @@
                 <div class="mobile-dropdown-content">
                     <a href="/products">Semua Produk</a>
                     @foreach($navCategories as $category)
-                        <a href="/products?category={{ $category }}">{{ $category }}</a>
+                        <a href="/products?category={{ $category }}">{{ ucfirst($category) }}</a>
                     @endforeach
                 </div>
             </div>
@@ -71,12 +71,12 @@
     <!-- DESKTOP NAVIGATION -->
     <div class="nav-inner">
         <div>
-            <img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/>
+            <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/></a>
             <x-nav-dropdown title="Kategori Produk">
                 <a href="/products">Semua Produk</a>
                 @foreach($navCategories as $category)
                     <a href="/products?category={{ $category }}">
-                        {{ $category }}
+                        {{ ucfirst($category) }}
                     </a>
                 @endforeach
             </x-nav-dropdown>

@@ -95,7 +95,7 @@ class ProductsController extends Controller
 
     foreach ($dbProducts as $product) {
         // Generate random discount between 1-15%
-        $discount = rand(1, 15);
+        $discount = 0;
         
         // Clean and convert price to number
         $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);
@@ -238,7 +238,7 @@ class ProductsController extends Controller
 
         foreach ($dbProducts as $product) {
             // Generate random discount between 1-15%
-            $discount = rand(1, 15);
+            $discount = 0;
             
             // Clean and convert price to number
             $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);
@@ -307,7 +307,7 @@ class ProductsController extends Controller
         $products = [];
 
         foreach ($dbProducts as $product) {
-            $discount = rand(1, 15);
+            $discount = 0;
             $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);
 
             if ($originalPrice <= 0) {
@@ -367,7 +367,7 @@ public function getProductDetails(int $productId): ?array
     }
     
     // Generate random discount between 1-15%
-    $discount = rand(1, 15);
+    $discount = 0;
     
     // Clean and convert price to number
     $originalPrice = (float) preg_replace('/[^0-9.]/', '', $product->price);

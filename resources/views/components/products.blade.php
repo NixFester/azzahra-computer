@@ -407,7 +407,7 @@
                     category="{{ $product['category'] }}"
                     name="{{ $product['name'] }}"
                     price="{{ $product['price'] }}"
-                    badge="{{ $product['badge'] ?? null }}"
+                    badge="{{ null }}"
                     old-price="{{ $product['oldPrice'] ?? null }}" />
             @empty
                 <div class="col-12 text-center py-5">
@@ -522,7 +522,7 @@
                                                         category="{{ $products[$productKey * 4 + $i]['category'] }}"
                                                         name="{{ $products[$productKey * 4 + $i]['name'] }}"
                                                         price="{{ $products[$productKey * 4 + $i]['price'] }}"
-                                                        badge="{{ $products[$productKey * 4 + $i]['badge'] ?? null }}"
+                                                        badge="{{ null }}"
                                                         old-price="{{ $products[$productKey * 4 + $i]['oldPrice'] ?? null }}" />
                                                 </div>
                                             @endfor
