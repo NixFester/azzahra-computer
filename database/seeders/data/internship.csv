@@ -1,0 +1,8 @@
+id,type,image_url,title,order,created_at,updated_at
+1,batch,/storage/internship/batch/eyfZd3FeqyctH8VQun3q6T9jZUNmqPm8NOoG0j96.png,"Default Batch",0,"2026-01-22 02:23:55","2026-01-22 02:43:36"
+2,brochure,/storage/internship/brochure/TbTYSkkYpvFgTFMO3enji5whJ6HNvMEIRPeVMVCs.png,intern2,1,"2026-01-22 02:44:25","2026-01-22 02:44:25"
+3,brochure,/storage/internship/brochure/gOhLHWdqRDZSRBtfJIrFmee7oTHwMahWHiz78v1T.png,intern3,2,"2026-01-22 02:44:56","2026-01-22 02:44:56"
+4,brochure,/storage/internship/brochure/shKMTZYwzVmWRFSG3wQWFZd3PDMsBSgenzEPBIg0.png,intern4,3,"2026-01-22 02:45:13","2026-01-22 02:45:13"
+5,brochure,/storage/internship/brochure/X2FqeinlXghyUgly4EwUiMLwsEqL0Zl2WgeSvbCw.png,,4,"2026-01-22 02:48:50","2026-01-22 02:48:50"
+6,brochure,/storage/internship/brochure/5gXJ4Q4Uw76cPeFjCDSlF8GHxFi3ZrFnfm5ofeCK.png,,5,"2026-01-22 02:48:59","2026-01-22 02:48:59"
+7,brochure,/storage/internship/brochure/Cn6NKLg0ZPqbo05uW1H1eWWhbWS31sdFhv9rJsYV.png,,6,"2026-01-22 02:49:08","2026-01-22 02:49:08"
