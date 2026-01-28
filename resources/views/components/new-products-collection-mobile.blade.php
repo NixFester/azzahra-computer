@@ -1,17 +1,17 @@
 @props(['products', 'categories'])
 
 <div class="new-products-section-modern">
-    <div class="container-fluid px-3 px-md-5">
+    <div class="container-fluid px-3 px-md-3">
         
         <!-- Section Header -->
-        <div class="section-header text-center mb-5">
+        <div class="section-header text-center mb-3">
             
             <h2 class="section-title fw-bold mb-3">Discover New Products</h2>
             <p class="section-subtitle text-muted">Explore our latest collection of premium products</p>
         </div>
 
         <!-- Category Filter Pills -->
-        <div class="category-filter-wrapper mb-4">
+        <div class="category-filter-wrapper mb-3">
             <div class="category-scroll-container">
                 <ul class="nav nav-pills category-pills gap-2" id="productCategoryTabs" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -68,7 +68,7 @@
                 </div>
                 
                 <!-- Pagination for All Products -->
-                @if(count($products) > 12)
+                @if(count($products) > 10)
                 <div class="pagination-wrapper mt-5" data-pagination="all">
                     <nav aria-label="Products pagination">
                         <ul class="pagination justify-content-center flex-wrap gap-1">
@@ -87,7 +87,7 @@
                     </nav>
                     <div class="text-center mt-3">
                         <small class="text-muted" data-pagination-info>
-                            Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>12</span> of <span class="fw-semibold" data-total-items>{{ count($products) }}</span> products
+                            Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>10</span> of <span class="fw-semibold" data-total-items>{{ count($products) }}</span> products
                         </small>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                         </div>
                         
                         <!-- Pagination for Category -->
-                        @if(count($filteredProducts) > 12)
+                        @if(count($filteredProducts) > 10)
                         <div class="pagination-wrapper mt-5" data-pagination="cat-{{ $index }}">
                             <nav aria-label="Products pagination">
                                 <ul class="pagination justify-content-center flex-wrap gap-1">
@@ -138,7 +138,7 @@
                             </nav>
                             <div class="text-center mt-3">
                                 <small class="text-muted" data-pagination-info>
-                                    Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>12</span> of <span class="fw-semibold" data-total-items>{{ count($filteredProducts) }}</span> products
+                                    Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>10</span> of <span class="fw-semibold" data-total-items>{{ count($filteredProducts) }}</span> products
                                 </small>
                             </div>
                         </div>
@@ -536,8 +536,8 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Configuration
-    const ITEMS_PER_PAGE = 12;
+    // Configuration - CHANGED FROM 12 TO 10
+    const ITEMS_PER_PAGE = 10;
     
     // Initialize pagination for each tab
     const paginationWrappers = document.querySelectorAll('[data-pagination]');
