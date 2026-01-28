@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::table('products')->delete(); // remove all existing data
+        $this->call(CsvSeeder::class);
 
         $path = database_path('seeders/data/productList.csv');
         if (!file_exists($path)) {
