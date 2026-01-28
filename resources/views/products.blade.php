@@ -8,36 +8,40 @@
 
 <div class="products-page-modern">
     
-    <!-- Page Header -->
+    <!-- Modern Page Header -->
     <div class="page-header">
+        <div class="header-overlay"></div>
+        
         <div class="container-fluid px-3 px-lg-5">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-3">
+                <div class="col-lg-7">
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="/" class="text-decoration-none">
-                                    <i class="bi bi-house-door"></i> Home
+                                    <i class="bi bi-house-door me-1"></i>Home
                                 </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Products</li>
                         </ol>
                     </nav>
+                    
                     <h1 class="page-title mb-2">
                         <i class="bi bi-grid-3x3-gap-fill me-2"></i>Our Products
                     </h1>
-                    <p class="page-subtitle text-muted mb-0">Discover our wide range of quality products</p>
+                    <p class="page-subtitle mb-0">Discover our wide range of quality products</p>
                 </div>
-                <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
+                
+                <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
                     <div class="results-info">
-                        <i class="bi bi-box-seam me-2"></i>
+                        <i class="bi bi-box-seam"></i>
                         <span class="fw-semibold" id="totalProducts">
                             @if(is_object($products) && method_exists($products, 'total'))
                                 {{ $products->total() }}
                             @else
                                 {{ is_array($products) ? count($products) : $products->count() }}
                             @endif
-                        </span> products found
+                        </span> products available
                     </div>
                 </div>
             </div>
@@ -331,62 +335,114 @@
 }
 
 .products-page-modern {
-
     min-height: 100vh;
 }
 
-/* Page Header */
+/* ================================
+   ENHANCED PAGE HEADER
+   ================================ */
+
 .page-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    position: relative;
+    background: linear-gradient(135deg, #120263 0%, #1a0380 100%);
     padding: 2rem 0;
     color: white;
-    box-shadow: 0 4px 20px rgba(18, 2, 99, 0.3);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(18, 2, 99, 0.15);
 }
 
-.page-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
+/* Subtle Background Overlay */
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
 }
 
-.page-subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
+/* Header Content */
+.page-header .container-fluid {
+    position: relative;
+    z-index: 1;
 }
 
-.breadcrumb {
+/* Breadcrumb */
+.page-header .breadcrumb {
     background: transparent;
     padding: 0;
     margin: 0;
 }
 
-.breadcrumb-item,
-.breadcrumb-item a {
-    color: rgba(255, 255, 255, 0.9);
+.page-header .breadcrumb-item,
+.page-header .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.85);
     font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.breadcrumb-item a:hover {
+.page-header .breadcrumb-item a:hover {
     color: white;
 }
 
-.breadcrumb-item.active {
+.page-header .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.page-header .breadcrumb-item.active {
     color: white;
     font-weight: 500;
 }
 
+/* Page Title */
+.page-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.5px;
+}
+
+.page-title i {
+    font-size: 1.75rem;
+    opacity: 0.9;
+}
+
+.page-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+    margin-left: 2.5rem;
+}
+
+/* Results Info */
 .results-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    padding: 0.75rem 1.25rem;
-    border-radius: 50px;
-    display: inline-block;
+    padding: 0.875rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
     font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.results-info:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.results-info i {
+    font-size: 1.25rem;
+    opacity: 0.9;
 }
 
 /* Products Section */
@@ -644,8 +700,22 @@
    ================================ */
 
 @media (max-width: 991px) {
+    .page-header {
+        padding: 1.75rem 0;
+    }
+
     .page-title {
-        font-size: 1.75rem;
+        font-size: 1.85rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.95rem;
+        margin-left: 2.25rem;
+    }
+
+    .results-info {
+        width: 100%;
+        justify-content: center;
     }
 
     .filters-wrapper {
@@ -668,16 +738,25 @@
     }
 
     .page-title {
+        font-size: 1.65rem;
+    }
+
+    .page-title i {
         font-size: 1.5rem;
     }
 
     .page-subtitle {
         font-size: 0.9rem;
+        margin-left: 2rem;
     }
 
     .results-info {
-        padding: 0.625rem 1rem;
-        font-size: 0.875rem;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .results-info i {
+        font-size: 1.1rem;
     }
 
     .products-section {
@@ -698,18 +777,36 @@
 }
 
 @media (max-width: 480px) {
+    .page-header {
+        padding: 1.25rem 0;
+    }
+
     .page-title {
+        font-size: 1.4rem;
+    }
+
+    .page-title i {
         font-size: 1.25rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.85rem;
+        margin-left: 0;
+        margin-top: 0.25rem;
+    }
+
+    .results-info {
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+        gap: 0.5rem;
+    }
+
+    .results-info i {
+        font-size: 1rem;
     }
 
     .breadcrumb {
         font-size: 0.8rem;
-    }
-
-    .results-info {
-        width: 100%;
-        text-align: center;
-        margin-top: 0.5rem;
     }
 
     .filter-title {
@@ -726,22 +823,6 @@
         height: 32px;
         font-size: 1rem;
     }
-}
-
-/* Animation */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.filter-section {
-    animation: slideIn 0.3s ease-out;
 }
 
 /* Product items fade */
