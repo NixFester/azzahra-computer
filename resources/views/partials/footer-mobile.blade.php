@@ -1,4 +1,4 @@
-<footer class="footer-mobile border-top mt-5 pt-4 bg-white">
+<footer class="footer-mobile border-top mt-3 pt-4 bg-white">
     <div class="footer-container">
         <div class="footer-grid">
 
