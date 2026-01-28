@@ -74,7 +74,6 @@
     }
     
     .menu a {
-        font-size: 0.8rem !important;
         padding: 0.4rem 0.75rem !important;
         border-radius: 4px !important;
     }
@@ -262,7 +261,7 @@
     }
     
     .card-text {
-        font-size: 0.8rem !important;
+        font-size: 0.8rem ;
         margin-bottom: 0.5rem !important;
     }
     
@@ -273,7 +272,7 @@
     }
     
     .card .btn {
-        font-size: 0.8rem !important;
+        font-size: 0.8rem ;
         padding: 0.45rem 0.85rem !important;
         width: 100% !important;
     }
@@ -713,7 +712,6 @@
    ========================================== */
 @media (max-width: 768px) {
     .breadcrumb {
-        font-size: 0.8rem !important;
         padding: 0.75rem 0 !important;
         margin-bottom: 1rem !important;
     }

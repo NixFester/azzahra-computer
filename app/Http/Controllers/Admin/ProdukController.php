@@ -12,9 +12,28 @@ class ProdukController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $produks = Product::latest()->paginate(10);
+        $query = Product::query();
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->search;
+            
+            $query->where(function($q) use ($search) {
+                $q->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('id', 'LIKE', "%{$search}%")
+                  ->orWhere('category', 'LIKE', "%{$search}%")
+                  ->orWhere('brand', 'LIKE', "%{$search}%")
+                  ->orWhere('price', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $produks = $query->latest()->paginate(10);
+        
+        // Maintain search query in pagination links
+        $produks->appends($request->only('search'));
+
         return view('admin.produk.index', compact('produks'));
     }
 

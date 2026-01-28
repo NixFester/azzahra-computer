@@ -193,9 +193,6 @@
         }
 
         @media (max-width: 600px) {
-            .sidebar {
-                display: none;
-            }
 
             .stats {
                 grid-template-columns: 1fr;

@@ -3,6 +3,13 @@
 @section('breadcrumb', 'Admin / Blog')
 
 @section('content')
+<style>
+    .card-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 
 <div class="container-fluid py-4">
     <div class="row mb-4">

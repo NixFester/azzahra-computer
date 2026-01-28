@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="gallery-badge">
-                        <i class="bi bi-star-fill me-1"></i>Featured
+                        Batch
                     </div>
                 </div>
             </div>
@@ -33,9 +33,10 @@
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                 <div class="gallery-image-wrapper">
                     <img src="{{ asset($image->image_url) }}" 
-                         class="gallery-image" 
+                         class="gallery-image img-fluid" 
                          alt="{{ $image->title ?? 'Internship Brochure' }}"
-                         loading="lazy">
+                         loading="lazy"
+                         >
                     <div class="gallery-overlay">
                         <div class="overlay-content">
                             <i class="bi bi-eye"></i>
@@ -99,7 +100,6 @@
     background: #f8f9fa;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease;
-    aspect-ratio: 4/3;
 }
 
 .gallery-item:hover .gallery-image-wrapper {
