@@ -4,11 +4,7 @@
 
 @section('content')
 <style>
-    .card-footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    
 </style>
 
 <div class="container-fluid py-4">
@@ -46,14 +42,14 @@
                             <p class="card-text">{{ Str::limit($blog->body, 100, '...') }}</p>
                         </div>
                         <div class="card-footer bg-light ">
-                            <div class="btn-group-vertical w-100" role="group">
-                                <a href="{{ route('admin.blog.edit', $blog) }}" class="btn btn-sm btn-outline-primary">
+                            <div class="container" role="group">
+                                <a href="{{ route('admin.blog.edit', $blog) }}" class="btn btn-sm btn-outline-primary w-100 mb-4">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
                                 <form method="POST" action="{{ route('admin.blog.destroy', $blog) }}" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus blog ini?')">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Apakah Anda yakin ingin menghapus blog ini?')">
                                         <i class="bi bi-trash"></i> Hapus
                                     </button>
                                 </form>

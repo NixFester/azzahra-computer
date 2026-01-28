@@ -1,7 +1,7 @@
 @props(['products', 'categories'])
 
 <div class="new-products-section-modern">
-    <div class="container-fluid px-3 px-md-3">
+    <div class="container px-3 px-md-3">
         
         <!-- Section Header -->
         <div class="section-header text-center mb-3">
@@ -68,7 +68,7 @@
                 </div>
                 
                 <!-- Pagination for All Products -->
-                @if(count($products) > 10)
+                @if(count($products) > 12)
                 <div class="pagination-wrapper mt-5" data-pagination="all">
                     <nav aria-label="Products pagination">
                         <ul class="pagination justify-content-center flex-wrap gap-1">
@@ -87,7 +87,7 @@
                     </nav>
                     <div class="text-center mt-3">
                         <small class="text-muted" data-pagination-info>
-                            Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>10</span> of <span class="fw-semibold" data-total-items>{{ count($products) }}</span> products
+                            Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>12</span> of <span class="fw-semibold" data-total-items>{{ count($products) }}</span> products
                         </small>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                         </div>
                         
                         <!-- Pagination for Category -->
-                        @if(count($filteredProducts) > 10)
+                        @if(count($filteredProducts) > 12)
                         <div class="pagination-wrapper mt-5" data-pagination="cat-{{ $index }}">
                             <nav aria-label="Products pagination">
                                 <ul class="pagination justify-content-center flex-wrap gap-1">
@@ -138,7 +138,7 @@
                             </nav>
                             <div class="text-center mt-3">
                                 <small class="text-muted" data-pagination-info>
-                                    Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>10</span> of <span class="fw-semibold" data-total-items>{{ count($filteredProducts) }}</span> products
+                                    Showing <span class="fw-semibold" data-showing-start>1</span>-<span class="fw-semibold" data-showing-end>12</span> of <span class="fw-semibold" data-total-items>{{ count($filteredProducts) }}</span> products
                                 </small>
                             </div>
                         </div>
@@ -537,7 +537,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Configuration - CHANGED FROM 12 TO 10
-    const ITEMS_PER_PAGE = 10;
+    const ITEMS_PER_PAGE = 12;
     
     // Initialize pagination for each tab
     const paginationWrappers = document.querySelectorAll('[data-pagination]');
@@ -661,7 +661,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Scroll to top of products section smoothly
             const sectionTop = document.querySelector('.new-products-section-modern').offsetTop;
             window.scrollTo({
-                top: sectionTop - 100,
+                top: sectionTop -  0,
                 behavior: 'smooth'
             });
         }
