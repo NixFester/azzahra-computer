@@ -3,14 +3,14 @@
         <div class="footer-grid">
 
             {{-- Location Widget --}}
-            <div class="footer-section location-section">
+            <div class="footer-section location-section bg-white">
                 <div class="location-tabs-wrapper">
                     <div class="location-tabs">
                         <div class="location-tab active" onclick="showTegal()">Tegal</div>
                         <div class="location-tab" onclick="showCibubur()">Cibubur</div>
                     </div>
 
-                    <div class="location-content">
+                    <div class="location-content bg-white">
                         <h3 class="location-title" id="title">Toko Reparasi Komputer Tegal</h3>
 
                         <p class="location-address" id="address">
@@ -88,7 +88,7 @@
 <style>
 /* Desktop Footer Styles */
 .footer-mobile {
-    background: #f8f9fa;
+
     border-top: 1px solid #dee2e6;
 }
 

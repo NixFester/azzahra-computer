@@ -203,6 +203,13 @@
                                     </button>
                                 </form>
                             </div>
+                            
+                            <!-- Reset Filters -->
+                            <div class="filter-section border-0">
+                                <a href="{{ route('products') }}" class="btn btn-outline-secondary w-100">
+                                    <i class="bi bi-arrow-clockwise me-2"></i>Reset All Filters
+                                </a>
+                            </div>
 
                             <!-- Product Categories -->
                             <div class="filter-section">
@@ -245,14 +252,6 @@
                                 </div>
                             </div>
 
-                            
-
-                            <!-- Reset Filters -->
-                            <div class="filter-section border-0">
-                                <a href="{{ route('products') }}" class="btn btn-outline-secondary w-100">
-                                    <i class="bi bi-arrow-clockwise me-2"></i>Reset All Filters
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -330,7 +329,7 @@
 }
 
 .products-page-modern {
-    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+
     min-height: 100vh;
 }
 
