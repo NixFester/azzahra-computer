@@ -45,8 +45,8 @@
                             </p>
                             <p class="card-text">{{ Str::limit($blog->body, 100, '...') }}</p>
                         </div>
-                        <div class="card-footer bg-light">
-                            <div class="btn-group w-100" role="group">
+                        <div class="card-footer bg-light ">
+                            <div class="btn-group-vertical w-100" role="group">
                                 <a href="{{ route('admin.blog.edit', $blog) }}" class="btn btn-sm btn-outline-primary">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
