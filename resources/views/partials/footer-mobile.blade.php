@@ -3,7 +3,7 @@
         <div class="footer-grid">
 
             {{-- Location Widget --}}
-            <div class="footer-section location-section bg-white">
+            <div class="footer-section location-section bg-#fffffff">
                 <div class="location-tabs-wrapper">
                     <div class="location-tabs">
                         <div class="location-tab active" onclick="showTegal()">Tegal</div>
