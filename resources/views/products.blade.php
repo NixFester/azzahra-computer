@@ -94,7 +94,7 @@
                                     
                                     @if(request('min_price') || request('max_price'))
                                         <span class="badge">
-                                            Price: Rp{{ number_format(request('min_price', 0), 0, ',', '.') }} - Rp{{ number_format(request('max_price', 33795), 0, ',', '.') }}
+                                            Price: Rp{{ number_format(request('min_price', 0), 0, ',', '.')  }} - Rp{{ number_format(request('max_price', 33795) , 0, ',', '.') }}
                                             <a href="{{ route('products', array_filter(request()->except(['min_price', 'max_price']))) }}" class="btn-close ms-2"></a>
                                         </span>
                                     @endif
@@ -162,8 +162,9 @@
                                                        id="minPriceInput" 
                                                        placeholder="0"
                                                        value="{{ request('min_price', '') }}"
+                                                       max="00"
                                                        min="0"
-                                                       step="100">
+                                                       step="10000">
                                             </div>
                                             <div class="col-6">
                                                 <label class="small text-muted mb-1">Max Price</label>
@@ -171,10 +172,11 @@
                                                        class="form-control form-control-sm" 
                                                        name="max_price"
                                                        id="maxPriceInput" 
-                                                       placeholder="999999"
+                                                       placeholder="00"
                                                        value="{{ request('max_price', '') }}"
                                                        min="0"
-                                                       step="100">
+                                                       max="90000000"
+                                                       step="10000">
                                             </div>
                                         </div>
                                     </div>
@@ -183,16 +185,16 @@
                                     <div class="quick-prices mb-3">
                                         <p class="small text-muted mb-2">Quick Select:</p>
                                         <div class="d-flex flex-wrap gap-2">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="0" data-max="1000">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="0" data-max="1000000">
                                                 < 1,000,000
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="1000" data-max="3000">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="1000000" data-max="3000000">
                                                 1,000,000 - 3,000,000
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="3000" data-max="6000">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="3000000" data-max="6000000">
                                                 3,000,000 - 6,000,000
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="6000" data-max="999999">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary quick-price" data-min="6000000" data-max="90000000">
                                                 > 6,000,000
                                             </button>
                                         </div>

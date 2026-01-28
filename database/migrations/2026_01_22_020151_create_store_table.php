@@ -17,15 +17,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Internship table for batch image and brochures
-        Schema::create('internship', function (Blueprint $table) {
-            $table->id();
-            $table->string('type'); // 'batch' or 'brochure'
-            $table->string('image_url');
-            $table->string('title')->nullable();
-            $table->integer('order')->default(0);
-            $table->timestamps();
-        });
     }
 
     public function down(): void

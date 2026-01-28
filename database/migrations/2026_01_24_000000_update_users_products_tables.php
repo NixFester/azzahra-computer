@@ -36,30 +36,6 @@ return new class extends Migration
             });
         }
 
-        // Update products table
-        if (!Schema::hasColumn('products', 'created_at')) {
-            Schema::table('products', function (Blueprint $table) {
-                $table->timestamps();
-            });
-        }
-
-        if (!Schema::hasColumn('products', 'description')) {
-            Schema::table('products', function (Blueprint $table) {
-                $table->text('description')->nullable()->after('specs');
-            });
-        }
-
-        if (!Schema::hasColumn('products', 'stock')) {
-            Schema::table('products', function (Blueprint $table) {
-                $table->integer('stock')->default(0)->after('description');
-            });
-        }
-
-        if (!Schema::hasColumn('products', 'is_active')) {
-            Schema::table('products', function (Blueprint $table) {
-                $table->boolean('is_active')->default(true)->after('stock');
-            });
-        }
     }
 
     /**
@@ -78,24 +54,6 @@ return new class extends Migration
                 $table->dropColumn('is_admin');
             }
             if (Schema::hasColumn('users', 'is_active')) {
-                $table->dropColumn('is_active');
-            }
-        });
-
-        Schema::table('products', function (Blueprint $table) {
-            if (Schema::hasColumn('products', 'created_at')) {
-                $table->dropColumn('created_at');
-            }
-            if (Schema::hasColumn('products', 'updated_at')) {
-                $table->dropColumn('updated_at');
-            }
-            if (Schema::hasColumn('products', 'description')) {
-                $table->dropColumn('description');
-            }
-            if (Schema::hasColumn('products', 'stock')) {
-                $table->dropColumn('stock');
-            }
-            if (Schema::hasColumn('products', 'is_active')) {
                 $table->dropColumn('is_active');
             }
         });

@@ -109,7 +109,6 @@
     <section class="brand-section container py-5">
         <x-brandShow/>
     </section>
-    <x-brandShow-mobile />
 
 
     <!-- Banner -->
