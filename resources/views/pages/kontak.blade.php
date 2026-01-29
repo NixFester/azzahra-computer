@@ -49,11 +49,11 @@
                     <div class="card-icon tiktok">
                         <i class="bi bi-tiktok"></i>
                     </div>
-                    <h3 class="card-title">tiktok</h3>
+                    <h3 class="card-title">TikTok</h3>
                     <a href="https://www.tiktok.com/@authorized_servicecenter?_r=1&_t=ZS-93SwqwggUEe" target="_blank" class="card-link">
                         @authorizedmultibrandservic9761
                     </a>
-                    <p class="card-desc">Subscribe to our channel</p>
+                    <p class="card-desc">Follow us on TikTok</p>
                 </div>
             </div>
         </div>
@@ -210,7 +210,8 @@
     --primary-light: #1a0380;
     --whatsapp-color: #25D366;
     --instagram-color: #E4405F;
-    --tiktok-color: #000000;
+    --tiktok-cyan: #69C9D0;
+    --tiktok-pink: #EE1D52;
 }
 
 .contact-page-modern {
@@ -290,6 +291,8 @@
     font-size: 2rem;
     color: white;
     margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .card-icon.phone {
@@ -300,8 +303,16 @@
     background: linear-gradient(135deg, #F58529 0%, var(--instagram-color) 50%, #833AB4 100%);
 }
 
+/* TikTok Icon - Clean Style */
 .card-icon.tiktok {
-    background: linear-gradient(135deg, var(--tiktok-color) 0%, #cc0000 100%);
+    background: #000000;
+}
+
+.card-icon.tiktok i {
+    position: relative;
+    z-index: 1;
+    color: white;
+    filter: drop-shadow(2px 2px 0 #69C9D0) drop-shadow(-2px -2px 0 #EE1D52);
 }
 
 .card-title {
