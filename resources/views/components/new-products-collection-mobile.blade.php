@@ -167,7 +167,7 @@
 <style>
 /* Modern New Products Section */
 .new-products-section-modern {
-    padding: 5rem 0;
+    padding: 2rem 0;
     position: relative;
 }
 
@@ -432,7 +432,7 @@
 /* Mobile */
 @media (max-width: 768px) {
     .new-products-section-modern {
-        padding: 3rem 0;
+
     }
 
     .section-title {

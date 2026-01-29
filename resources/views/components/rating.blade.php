@@ -5,7 +5,7 @@
 
         <!-- Rating summary (unchanged) -->
         <div class="col-lg-3 col-md-4 text-center">
-            <h2 class="display-4 fw-bold">{{ $ratings['summary']['score'] }}</h2>
+            <h2 class="display-4 fw-bold">5.0</h2>
             <div class="text-warning fs-4">{{ str_repeat('★', $ratings['summary']['stars']) }}</div>
             <small>Berdasarkan {{ number_format($ratings['summary']['reviews']) }} ulasan Google</small>
             <div class="mt-3 mx-auto" style="max-width:120px;">

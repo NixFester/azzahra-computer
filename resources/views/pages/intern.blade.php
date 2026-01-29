@@ -73,8 +73,135 @@
         </div>
     </div>
 </div>
+<!-- Registration CTA Section -->
+<div class="registration-cta">
+    <div class="cta-minimal">
+        <h3 class="cta-text">SEGERA BERGABUNG BERSAMA KAMI <span class="text-red">(KUOTA TERBATAS)</span></h3>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdczCw6MVO5ZgSMNLhYZtGkZqM-TolqY-UJs7jQp8uK2XAc0g/viewform" 
+           class="btn-minimal green" 
+           target="_blank">
+            <span>DAFTAR</span>
+        </a>
+    </div>
+</div>
+
+<!-- Documentation Section -->
+<div class="documentation-section">
+    <div class="doc-minimal">
+        <h3 class="doc-text">DOKUMENTASI KEGIATAN INTERNSHIP/MAGANG</h3>
+        <a href="https://drive.google.com/drive/folders/1FkvRsUfTBRQnxKHrPoM_zz_-vSszJHY3" 
+           class="btn-minimal blue" 
+           target="_blank">
+            <span>LIHAT</span>
+        </a>
+    </div>
+</div>
 
 <style>
+/* Minimalist Style */
+.registration-cta,
+.documentation-section {
+}
+
+.cta-minimal,
+.doc-minimal {
+
+    border-radius: 12px;
+    padding: 1.75rem 1.5rem;
+    padding-bottom: 0rem;
+    text-align: center;
+    position: relative;
+}
+
+.cta-minimal::before,
+.doc-minimal::before {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.cta-text,
+.doc-text {
+    color: #333;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.text-red {
+    color: #ff4757;
+}
+
+.btn-minimal {
+    display: inline-block;
+    padding: 0.7rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-minimal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.5s ease;
+}
+
+.btn-minimal:hover::before {
+    left: 100%;
+}
+
+.btn-minimal.green {
+    background: #28a745;
+    color: #fff;
+}
+
+.btn-minimal.green:hover {
+    background: #218838;
+    transform: scale(1.05);
+    color: #fff;
+}
+
+.btn-minimal.blue {
+    background: #4285f4;
+    color: #fff;
+}
+
+.btn-minimal.blue:hover {
+    background: #3367d6;
+    transform: scale(1.05);
+    color: #fff;
+}
+
+@media (max-width: 576px) {
+    .cta-minimal,
+    .doc-minimal {
+
+    }
+    
+    .cta-text,
+    .doc-text {
+        font-size: 1rem;
+    }
+    
+    .btn-minimal {
+        font-size: 0.85rem;
+        padding: 0.6rem 2rem;
+    }
+}
+
 /* ================================
    MODERN IMAGE GALLERY STYLES
    ================================ */
