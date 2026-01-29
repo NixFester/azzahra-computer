@@ -14,8 +14,8 @@
 .nav-dropdown {
     position: relative;
     display: inline-block;
-    border-right: 1.5px solid rgba(255, 255, 255, 0.2);
-    border-left: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-right: 1.5px solid
+    border-left: 1.5px solid
 }
 
 .nav-dropdown-toggle {
