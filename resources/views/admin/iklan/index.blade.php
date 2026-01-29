@@ -76,7 +76,6 @@
                             <i class="bi bi-three-dots-vertical"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('admin.iklan.edit', $promo) }}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
                             <li>
                                 <form action="{{ route('admin.iklan.destroy', $promo) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
                                     @csrf

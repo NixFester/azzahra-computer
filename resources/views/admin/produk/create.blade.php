@@ -76,14 +76,14 @@
 
                         <div class="mb-3">
                             <label class="form-label">
-                                Harga <span class="text-danger">*</span>
+                                Harga <span class="text-danger">* Dibagi 1000 contoh Rp. 1,000,000 jadi 1000</span>
                             </label>
                             <input type="text" 
                                    name="price" 
                                    class="form-control @error('price') is-invalid @enderror" 
                                    value="{{ old('price') }}" 
                                    required 
-                                   placeholder="Contoh: Rp 100.000">
+                                   placeholder="Contoh: 1000">
                             @error('price')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
