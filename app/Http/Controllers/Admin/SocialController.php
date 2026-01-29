@@ -17,7 +17,7 @@ class SocialController extends Controller
             $store = Store::create([
                 'whatsapp' => '+6285942001720',
                 'instagram' => 'authorized_servicecenter.tegal',
-                'youtube' => '@authorizedmultibrandservic9761'
+                'tiktok' => '@authorized_servicecenter'
             ]);
         }
 
@@ -32,7 +32,7 @@ class SocialController extends Controller
         $validated = $request->validate([
             'whatsapp' => 'nullable|string|max:255',
             'instagram' => 'nullable|string|max:255',
-            'youtube' => 'nullable|string|max:255',
+            'tiktok' => 'nullable|string|max:255',
         ]);
 
         $store = Store::first();
@@ -55,10 +55,10 @@ class SocialController extends Controller
         $batchImage = Internship::batch()->first();
 
         if ($request->hasFile('batch_image')) {
-            // Delete old image if exists and not the default intern1.png
+            // Delete old image if exists and not the default intern1.jpg
             if ($batchImage && $batchImage->image_url) {
                 $oldPath = str_replace('/storage/', '', $batchImage->image_url);
-                if (!str_contains($oldPath, 'intern1.png')) {
+                if (!str_contains($oldPath, 'intern1.jpg')) {
                     Storage::disk('public')->delete($oldPath);
                 }
             }

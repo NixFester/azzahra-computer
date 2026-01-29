@@ -1,7 +1,7 @@
 id,type,title,description,image_path,link,is_active,order,created_at,updated_at
-5,promo,promo1,,iklans/LpKRFyx24adRN40DWXCCQCqzby7wF5nnLAtQuS9s.png,,1,0,"2026-01-21 08:29:35","2026-01-21 08:29:35"
-6,promo,promo2,,iklans/w43ZBZsegXacvkrQQJEeJlNoRuNxibmxWkMHwoqB.png,,1,0,"2026-01-21 08:29:48","2026-01-21 08:29:48"
-7,promo,promo3,,iklans/fL9gkMpANKeeyUBxmgqVanfj3U9oBPuX6ZHw8nXP.png,,1,0,"2026-01-21 08:30:01","2026-01-21 08:30:01"
+5,promo,promo1,,iklans/LpKRFyx24adRN40DWXCCQCqzby7wF5nnLAtQuS9s.jpg,,1,0,"2026-01-21 08:29:35","2026-01-21 08:29:35"
+6,promo,promo2,,iklans/w43ZBZsegXacvkrQQJEeJlNoRuNxibmxWkMHwoqB.jpg,,1,0,"2026-01-21 08:29:48","2026-01-21 08:29:48"
+7,promo,promo3,,iklans/fL9gkMpANKeeyUBxmgqVanfj3U9oBPuX6ZHw8nXP.jpg,,1,0,"2026-01-21 08:30:01","2026-01-21 08:30:01"
 13,banner,2,,iklans/jjjtiOFIni1LJD8Q1f9uNpZ055kQU2lyQ1YOX0z2.jpg,,1,0,"2026-01-24 09:07:16","2026-01-24 09:07:16"
 14,banner,laptop,,iklans/2ECwMKvSYXMhW2uJNe142PmUxzb3AoT2rGNTYiyG.jpg,,1,0,"2026-01-24 09:07:30","2026-01-24 09:07:30"
 16,banner,abaikan,,iklans/PsnNWUgcDSGJZwHKumOAZDcxD4yxDboQgY6vqaxQ.jpg,,1,0,"2026-01-27 04:31:39","2026-01-27 04:31:39"

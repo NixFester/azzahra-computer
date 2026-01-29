@@ -16,7 +16,7 @@
         <!-- Image -->
         <div class="col-md-5 mb-4 mb-md-0">
           <img 
-            src="images/kantor.png" 
+            src="images/kantor.jpg" 
             alt="Kantor Azzahra Computer"
             class="img-fluid rounded shadow">
 
@@ -48,7 +48,7 @@
         <strong>Instagram:</strong> {{ $storeInfo?->instagram }}
     </p>
     <p class="mb-0">
-        <strong>Youtube:</strong> {{ $storeInfo?->youtube }}
+        <strong>tiktok:</strong> {{ $storeInfo?->tiktok }}
     </p>
     <p class="mb-0">
         <strong>Alamat:</strong>

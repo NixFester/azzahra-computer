@@ -29,7 +29,9 @@
 
     {{-- Main Content --}}
     <main>
-        @yield('content')
+            @yield('content')
+            @include('components.floating-whatsapp', ['storeInfo' => \App\Models\Store::first()])
+            @include('components.social-sidebar', ['storeInfo' => \App\Models\Store::first()])
     </main>
 
     {{-- Link JS Anda disini --}}

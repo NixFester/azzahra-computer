@@ -6,7 +6,7 @@
                         
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
+                                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="60">
                                 <p class="company-info">
                                     Kami menyediakan solusi teknologi lengkap sejak 2010 — dari penjualan perangkat komputer, laptop,
                                     printer, CCTV, hingga pengembangan sistem digital dan pelatihan IT. Melayani instansi, pendidikan,
@@ -46,7 +46,7 @@
                         
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
+                                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="60">
                         <h4 class="company-title">CABANG BEKASI</h4>
                                 <p class="company-info">
                                     Cabang kami di Bekasi siap melayani kebutuhan teknologi Anda dengan layanan yang sama berkualitas.

@@ -340,7 +340,7 @@
             }
         }
         .seksi {
-            background-image: url('images/head/header.png');
+            background-image: url('images/head/header.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -377,7 +377,7 @@
 
     <!-- box -->
     <section class="container">
-        <x-bannerIklan :urlgambar="['images/tiers/good.png', 'images/tiers/better.png', 'images/tiers/best.png']" />
+        <x-bannerIklan :urlgambar="['images/tiers/good.jpg', 'images/tiers/better.jpg', 'images/tiers/best.jpg']" />
     </section>
 
 
@@ -398,7 +398,7 @@
     
     <!-- box -->
     <section class="container my+5">
-        <x-bannerIklan :urlgambar="['images/box1.png', 'images/box2.png', 'images/box3.png']" />
+        <x-bannerIklan :urlgambar="['images/box1.jpg', 'images/box2.jpg', 'images/box3.jpg']" />
     </section>
 
 
@@ -631,7 +631,7 @@
     <aside class="sidebar">
         <div class="sidebar-top">
             <div class="logo">
-                <img src="images/logo.png" alt="Logo">
+                <img src="images/logo.jpg" alt="Logo">
             </div>
 
             <ul class="menu">
@@ -1162,7 +1162,7 @@ document.querySelectorAll('.img-thumbnail').forEach((thumb, index) => {
   <div class="nav-inner ">
 
     <div>
-        <img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/>
+        <img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/>
         <x-nav-dropdown title="Kategori Produk">
             <a href="/products">Semua Produk</a>
             @foreach($navCategories as $category)
@@ -1429,21 +1429,21 @@ document.querySelectorAll('.img-thumbnail').forEach((thumb, index) => {
            <div class="col-md-3 pt-5">
                 <h5>Pembayaran</h5>
                 <div class="d-flex flex-wrap gap-2">
-                    <img src="{{ asset('images/payment/bca.png') }}" height="20">
-                    <img src="{{ asset('images/payment/mandiri.png') }}" height="20">
-                    <img src="{{ asset('images/payment/bri.png') }}" height="20">
+                    <img src="{{ asset('images/payment/bca.jpg') }}" height="20">
+                    <img src="{{ asset('images/payment/mandiri.jpg') }}" height="20">
+                    <img src="{{ asset('images/payment/bri.jpg') }}" height="20">
                     <img src="{{ asset('images/payment/bni.jpg') }}" height="20">
-                    <img src="{{ asset('images/payment/dana.png') }}" height="20">
-                    <img src="{{ asset('images/payment/ovo.png') }}" height="20">
-                    <img src="{{ asset('images/payment/gopay.png') }}" height="20">
+                    <img src="{{ asset('images/payment/dana.jpg') }}" height="20">
+                    <img src="{{ asset('images/payment/ovo.jpg') }}" height="20">
+                    <img src="{{ asset('images/payment/gopay.jpg') }}" height="20">
                 </div>
 
                 <h5 class="mt-4">Pengiriman</h5>
                 <div class="d-flex align-items-center gap-2">
-                    <img src="{{ asset('images/tiki.png') }}" height="20">
-                    <img src="{{ asset('images/jne.png') }}" height="20">
-                    <img src="{{ asset('images/j&t.png') }}" height="20">
-                    <img src="{{ asset('images/sicepat.png') }}" height="20">
+                    <img src="{{ asset('images/tiki.jpg') }}" height="20">
+                    <img src="{{ asset('images/jne.jpg') }}" height="20">
+                    <img src="{{ asset('images/j&t.jpg') }}" height="20">
+                    <img src="{{ asset('images/sicepat.jpg') }}" height="20">
                 </div>
             </div>
 
@@ -1498,10 +1498,10 @@ function showCibubur() {
 <section class="container py-5">
   <div class="row">
     <div class="col-12 mb-3 text-center">
-      <img src="images/promo1.png" alt="promo1" class="img-fluid">
+      <img src="images/promo1.jpg" alt="promo1" class="img-fluid">
     </div>
     <div class="col-12 text-center">
-      <img src="images/promo2.png" alt="promo2" class="img-fluid">
+      <img src="images/promo2.jpg" alt="promo2" class="img-fluid">
     </div>
   </div>
 </section>
@@ -1521,25 +1521,25 @@ function showCibubur() {
 
     <div class="row g-3">
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern1.png" class="img-fluid rounded" alt="Internship 1">
+            <img src="images/intern1.jpg" class="img-fluid rounded" alt="Internship 1">
         </div>
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern2.png" class="img-fluid rounded" alt="Internship 2">
+            <img src="images/intern2.jpg" class="img-fluid rounded" alt="Internship 2">
         </div>
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern3.png" class="img-fluid rounded" alt="Internship 3">
+            <img src="images/intern3.jpg" class="img-fluid rounded" alt="Internship 3">
         </div>
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern4.png" class="img-fluid rounded" alt="Internship 4">
+            <img src="images/intern4.jpg" class="img-fluid rounded" alt="Internship 4">
         </div>
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern5.png" class="img-fluid rounded" alt="Internship 5">
+            <img src="images/intern5.jpg" class="img-fluid rounded" alt="Internship 5">
         </div>
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern6.png" class="img-fluid rounded" alt="Internship 6">
+            <img src="images/intern6.jpg" class="img-fluid rounded" alt="Internship 6">
         </div>
         <div class="col-md-4 col-sm-6">
-            <img src="images/intern7.png" class="img-fluid rounded" alt="Internship 7">
+            <img src="images/intern7.jpg" class="img-fluid rounded" alt="Internship 7">
         </div>
     </div>
 </section>
@@ -1557,10 +1557,10 @@ function showCibubur() {
       <h1 class="mb-4">CONTACT</h1>
   <div class="row">
     <div class="col-12 mb-3 text-center">
-      <img src="images/promo1.png" alt="promo1" class="img-fluid">
+      <img src="images/promo1.jpg" alt="promo1" class="img-fluid">
     </div>
     <div class="col-12 text-center">
-      <img src="images/promo2.png" alt="promo2" class="img-fluid">
+      <img src="images/promo2.jpg" alt="promo2" class="img-fluid">
     </div>
   </div>
 </section>
@@ -1582,13 +1582,13 @@ function showCibubur() {
   <!-- Gambar -->
   <div class="row g-4">
     <div class="col-md-4">
-      <img src="images/promo3.png" alt="promo3" class="img-fluid">
+      <img src="images/promo3.jpg" alt="promo3" class="img-fluid">
     </div>
     <div class="col-md-4">
-      <img src="images/promo4.png" alt="promo4" class="img-fluid">
+      <img src="images/promo4.jpg" alt="promo4" class="img-fluid">
     </div>
     <div class="col-md-4">
-      <img src="images/promo5.png" alt="promo5" class="img-fluid">
+      <img src="images/promo5.jpg" alt="promo5" class="img-fluid">
     </div>
   </div>
 
@@ -1616,7 +1616,7 @@ function showCibubur() {
         <!-- Image -->
         <div class="col-md-5 mb-4 mb-md-0">
           <img 
-            src="images/kantor.png" 
+            src="images/kantor.jpg" 
             alt="Kantor Azzahra Computer"
             class="img-fluid rounded shadow">
 
@@ -2031,7 +2031,7 @@ function showCibubur() {
                 </div>
                 @empty
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/banner1.png') }}" class="d-block w-100" alt="Default Banner">
+                    <img src="{{ asset('images/banner1.jpg') }}" class="d-block w-100" alt="Default Banner">
                 </div>
                 @endforelse
             </div>
@@ -2066,14 +2066,14 @@ function showCibubur() {
         </h3>
 
         <div class="brand-logos">
-            <img class="brand" src="{{ asset('images/asus.png') }}" alt="Asus">
-            <img class="brand" src="{{ asset('images/lenovo.png') }}" alt="Lenovo">
-            <img class="brand" src="{{ asset('images/zyrex.png') }}" alt="Zyrex">
-            <img class="brand" src="{{ asset('images/xiami.png') }}" alt="Xiaomi">
-            <img class="brand" src="{{ asset('images/avita.png') }}" alt="Avita">
-            <img class="brand" src="{{ asset('images/infinix.png') }}" alt="Infinix">
-            <img class="brand" src="{{ asset('images/canon.png') }}" alt="Canon">
-            <img class="brand" src="{{ asset('images/hp.png') }}" alt="HP">
+            <img class="brand" src="{{ asset('images/asus.jpg') }}" alt="Asus">
+            <img class="brand" src="{{ asset('images/lenovo.jpg') }}" alt="Lenovo">
+            <img class="brand" src="{{ asset('images/zyrex.jpg') }}" alt="Zyrex">
+            <img class="brand" src="{{ asset('images/xiami.jpg') }}" alt="Xiaomi">
+            <img class="brand" src="{{ asset('images/avita.jpg') }}" alt="Avita">
+            <img class="brand" src="{{ asset('images/infinix.jpg') }}" alt="Infinix">
+            <img class="brand" src="{{ asset('images/canon.jpg') }}" alt="Canon">
+            <img class="brand" src="{{ asset('images/hp.jpg') }}" alt="HP">
         </div>
 </div>
 
@@ -2099,7 +2099,7 @@ function showCibubur() {
                         
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
+                                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="60">
                                 <p class="company-info">
                                     Kami menyediakan solusi teknologi lengkap sejak 2010 — dari penjualan perangkat komputer, laptop,
                                     printer, CCTV, hingga pengembangan sistem digital dan pelatihan IT. Melayani instansi, pendidikan,
@@ -2140,7 +2140,7 @@ function showCibubur() {
                         
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="60">
+                                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="60">
                         <h4 class="company-title">CABANG BEKASI</h4>
                                 <p class="company-info">
                                     Cabang kami di Bekasi siap melayani kebutuhan teknologi Anda dengan layanan yang sama berkualitas.
@@ -3236,7 +3236,7 @@ function showCibubur() {
             <div class="text-warning fs-4">{{ str_repeat('★', $ratings['summary']['stars']) }}</div>
             <small>Berdasarkan {{ number_format($ratings['summary']['reviews']) }} ulasan Google</small>
             <div class="mt-3 mx-auto" style="max-width:120px;">
-                <img src="{{ asset('images/logo 1.png') }}" alt="banner" class="img-fluid">
+                <img src="{{ asset('images/logo 1.jpg') }}" alt="banner" class="img-fluid">
             </div>
         </div>
 
@@ -4008,11 +4008,11 @@ function showCibubur() {
                              class="img-thumbnail mb-3" 
                              style="max-width: 100%; max-height: 300px;">
                     @else
-                        <img src="{{ asset('images/intern1.png') }}" 
+                        <img src="{{ asset('images/intern1.jpg') }}" 
                              alt="Default Batch" 
                              class="img-thumbnail mb-3" 
                              style="max-width: 100%; max-height: 300px;">
-                        <p class="text-muted">Default image (intern1.png)</p>
+                        <p class="text-muted">Default image (intern1.jpg)</p>
                     @endif
                 </div>
 
@@ -4033,7 +4033,7 @@ function showCibubur() {
                             @enderror
                             <small class="form-text text-muted">
                                 Max size: 2MB. Format: JPG, PNG, GIF<br>
-                                Note: Will replace current image (except default intern1.png)
+                                Note: Will replace current image (except default intern1.jpg)
                             </small>
                         </div>
 
@@ -4060,7 +4060,7 @@ function showCibubur() {
                 @foreach($brochures as $brochure)
                 <div class="col-md-3 mb-3">
                     <div class="card">
-                        <img src="@if(strpos($brochure->image_url, 'images/') === 0 && strpos($brochure->image_url, '.png') !== false){{ asset($brochure->image_url) }}@else{{ $brochure->image_url }}@endif" 
+                        <img src="@if(strpos($brochure->image_url, 'images/') === 0 && strpos($brochure->image_url, '.jpg') !== false){{ asset($brochure->image_url) }}@else{{ $brochure->image_url }}@endif" 
                              class="card-img-top" 
                              alt="{{ $brochure->title }}"
                              style="height: 200px; object-fit: cover;">
@@ -4651,8 +4651,8 @@ document.getElementById('imageInput').addEventListener('change', function(e) {
     <div class="sidebar-top">
         <div class="logo">
             {{-- Jika ada logo gambar, uncomment baris dibawah --}}
-            {{-- <img src="{{ asset('images/logo.png') }}" alt="Logo"> --}}
-            <h2><a href="/" style="text-decoration: none; color: blue   "><img src="{{ asset('images/logo.png') }}" alt="Logo" height="40"></a></h2>
+            {{-- <img src="{{ asset('images/logo.jpg') }}" alt="Logo"> --}}
+            <h2><a href="/" style="text-decoration: none; color: blue   "><img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="40"></a></h2>
         </div>
 
         <ul class="menu">

@@ -57,21 +57,21 @@
             <div class="footer-section payment-section">
                 <h5 class="footer-heading">Pembayaran</h5>
                 <div class="payment-logos">
-                    <img src="{{ asset('images/payment/bca.png') }}" height="20" alt="BCA">
-                    <img src="{{ asset('images/payment/mandiri.png') }}" height="20" alt="Mandiri">
-                    <img src="{{ asset('images/payment/bri.png') }}" height="20" alt="BRI">
+                    <img src="{{ asset('images/payment/bca.jpg') }}" height="20" alt="BCA">
+                    <img src="{{ asset('images/payment/mandiri.jpg') }}" height="20" alt="Mandiri">
+                    <img src="{{ asset('images/payment/bri.jpg') }}" height="20" alt="BRI">
                     <img src="{{ asset('images/payment/bni.jpg') }}" height="20" alt="BNI">
-                    <img src="{{ asset('images/payment/dana.png') }}" height="20" alt="DANA">
-                    <img src="{{ asset('images/payment/ovo.png') }}" height="20" alt="OVO">
-                    <img src="{{ asset('images/payment/gopay.png') }}" height="20" alt="GoPay">
+                    <img src="{{ asset('images/payment/dana.jpg') }}" height="20" alt="DANA">
+                    <img src="{{ asset('images/payment/ovo.jpg') }}" height="20" alt="OVO">
+                    <img src="{{ asset('images/payment/gopay.jpg') }}" height="20" alt="GoPay">
                 </div>
 
                 <h5 class="footer-heading mt-4">Pengiriman</h5>
                 <div class="shipping-logos">
-                    <img src="{{ asset('images/tiki.png') }}" height="20" alt="TIKI">
-                    <img src="{{ asset('images/jne.png') }}" height="20" alt="JNE">
-                    <img src="{{ asset('images/j&t.png') }}" height="20" alt="J&T">
-                    <img src="{{ asset('images/sicepat.png') }}" height="20" alt="SiCepat">
+                    <img src="{{ asset('images/tiki.jpg') }}" height="20" alt="TIKI">
+                    <img src="{{ asset('images/jne.jpg') }}" height="20" alt="JNE">
+                    <img src="{{ asset('images/j&t.jpg') }}" height="20" alt="J&T">
+                    <img src="{{ asset('images/sicepat.jpg') }}" height="20" alt="SiCepat">
                 </div>
             </div>
 

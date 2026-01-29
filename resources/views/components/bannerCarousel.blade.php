@@ -19,7 +19,7 @@
                 </div>
                 @empty
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/banner1.png') }}" class="d-block w-100" alt="Default Banner">
+                    <img src="{{ asset('images/banner1.jpg') }}" class="d-block w-100" alt="Default Banner">
                 </div>
                 @endforelse
             </div>

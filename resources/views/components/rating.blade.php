@@ -9,7 +9,7 @@
             <div class="text-warning fs-4">{{ str_repeat('★', $ratings['summary']['stars']) }}</div>
             <small>Berdasarkan {{ number_format($ratings['summary']['reviews']) }} ulasan Google</small>
             <div class="mt-3 mx-auto" style="max-width:120px;">
-                <img src="{{ asset('images/logo 1.png') }}" alt="banner" class="img-fluid">
+                <img src="{{ asset('images/logo 1.jpg') }}" alt="banner" class="img-fluid">
             </div>
         </div>
 

@@ -207,7 +207,7 @@
     <aside class="sidebar">
         <div class="sidebar-top">
             <div class="logo">
-                <img src="images/logo.png" alt="Logo">
+                <img src="images/logo.jpg" alt="Logo">
             </div>
 
             <ul class="menu">

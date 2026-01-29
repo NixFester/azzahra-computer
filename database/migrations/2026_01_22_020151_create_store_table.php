@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('whatsapp')->nullable();
             $table->string('instagram')->nullable();
-            $table->string('youtube')->nullable();
+            $table->string('tiktok')->nullable();
             $table->timestamps();
         });
 
