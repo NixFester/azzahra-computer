@@ -5,28 +5,28 @@
 
     <div class="brand-logos-wrapper">
         <div class="brand-logo-item">
-            <img src="{{ asset('images/asus.png') }}" alt="Asus">
+            <img src="{{ asset('images/asus.jpg') }}" alt="Asus">
         </div>
         <div class="brand-logo-item">
-            <img src="{{ asset('images/lenovo.png') }}" alt="Lenovo">
+            <img src="{{ asset('images/lenovo.jpg') }}" alt="Lenovo">
         </div>
         <div class="brand-logo-item">
-            <img src="{{ asset('images/zyrex.png') }}" alt="Zyrex">
+            <img src="{{ asset('images/zyrex.jpg') }}" alt="Zyrex">
         </div>
         <div class="brand-logo-item">
-            <img src="{{ asset('images/xiami.png') }}" alt="Xiaomi">
+            <img src="{{ asset('images/xiami.jpg') }}" alt="Xiaomi">
         </div>
         <div class="brand-logo-item">
-            <img src="{{ asset('images/avita.png') }}" alt="Avita">
+            <img src="{{ asset('images/avita.jpg') }}" alt="Avita">
         </div>
         <div class="brand-logo-item">
-            <img src="{{ asset('images/infinix.png') }}" alt="Infinix">
+            <img src="{{ asset('images/infinix.jpg') }}" alt="Infinix">
         </div>
         <div class="brand-logo-item">
-            <img src="{{ asset('images/canon.png') }}" alt="Canon">
+            <img src="{{ asset('images/canon.jpg') }}" alt="Canon">
         </div>
         <div class="brand-logo-item">
-            <img src="{{ asset('images/hp.png') }}" alt="HP">
+            <img src="{{ asset('images/hp.jpg') }}" alt="HP">
         </div>
     </div>
 </div>

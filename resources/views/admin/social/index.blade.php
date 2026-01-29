@@ -119,11 +119,11 @@
                              class="img-thumbnail mb-3" 
                              style="max-width: 100%; max-height: 300px;">
                     @else
-                        <img src="{{ asset('images/intern1.png') }}" 
+                        <img src="{{ asset('images/intern1.jpg') }}" 
                              alt="Default Batch" 
                              class="img-thumbnail mb-3" 
                              style="max-width: 100%; max-height: 300px;">
-                        <p class="text-muted">Default image (intern1.png)</p>
+                        <p class="text-muted">Default image (intern1.jpg)</p>
                     @endif
                 </div>
 
@@ -144,7 +144,7 @@
                             @enderror
                             <small class="form-text text-muted">
                                 Max size: 2MB. Format: JPG, PNG, GIF<br>
-                                Note: Will replace current image (except default intern1.png)
+                                Note: Will replace current image (except default intern1.jpg)
                             </small>
                         </div>
 
@@ -171,7 +171,7 @@
                 @foreach($brochures as $brochure)
                 <div class="col-md-3 mb-3">
                     <div class="card">
-                        <img src="@if(strpos($brochure->image_url, 'images/') === 0 && strpos($brochure->image_url, '.png') !== false){{ asset($brochure->image_url) }}@else{{ $brochure->image_url }}@endif" 
+                        <img src="@if(strpos($brochure->image_url, 'images/') === 0 && strpos($brochure->image_url, '.jpg') !== false){{ asset($brochure->image_url) }}@else{{ $brochure->image_url }}@endif" 
                              class="card-img-top" 
                              alt="{{ $brochure->title }}"
                              style="height: 200px; object-fit: cover;">

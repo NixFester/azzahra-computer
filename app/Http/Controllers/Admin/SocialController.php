@@ -55,10 +55,10 @@ class SocialController extends Controller
         $batchImage = Internship::batch()->first();
 
         if ($request->hasFile('batch_image')) {
-            // Delete old image if exists and not the default intern1.png
+            // Delete old image if exists and not the default intern1.jpg
             if ($batchImage && $batchImage->image_url) {
                 $oldPath = str_replace('/storage/', '', $batchImage->image_url);
-                if (!str_contains($oldPath, 'intern1.png')) {
+                if (!str_contains($oldPath, 'intern1.jpg')) {
                     Storage::disk('public')->delete($oldPath);
                 }
             }

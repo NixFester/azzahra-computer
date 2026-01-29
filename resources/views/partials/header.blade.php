@@ -5,7 +5,7 @@
   <div class="nav-inner ">
 
     <div>
-        <img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/>
+        <img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/>
         <x-nav-dropdown title="Kategori Produk">
             <a href="/products">Semua Produk</a>
             @foreach($navCategories as $category)

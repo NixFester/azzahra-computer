@@ -82,7 +82,7 @@
             }
         }
         .seksi {
-            background-image: url('images/head/header.png');
+            background-image: url('images/head/header.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;

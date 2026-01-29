@@ -16,7 +16,7 @@ class StoreSeeder extends Seeder
 
         Internship::create([
             'type' => 'batch',
-            'image_url' => asset('images/intern1.png'),
+            'image_url' => asset('images/intern1.jpg'),
             'title' => 'Default Batch',
             'order' => 0
         ]);
