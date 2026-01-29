@@ -1,18 +1,18 @@
+@props(['brands'])
 <div class="brand-desktop">
     <h3 class="brand-title">
             AUTHORIZED MULTIBRAND SERVICE CENTER TEGAL
         </h3>
 
         <div class="brand-logos">
-            <img class="brand" src="{{ asset('images/asus.jpg') }}" alt="Asus">
-            <img class="brand" src="{{ asset('images/lenovo.jpg') }}" alt="Lenovo">
-            <img class="brand" src="{{ asset('images/zyrex.jpg') }}" alt="Zyrex">
-            <img class="brand" src="{{ asset('images/xiami.jpg') }}" alt="Xiaomi">
-            <img class="brand" src="{{ asset('images/avita.jpg') }}" alt="Avita">
-            <img class="brand" src="{{ asset('images/infinix.jpg') }}" alt="Infinix">
-            <img class="brand" src="{{ asset('images/canon.jpg') }}" alt="Canon">
-            <img class="brand" src="{{ asset('images/hp.jpg') }}" alt="HP">
-        </div>
+        @foreach ($brands as $brand)
+            <img
+                class="brand"
+                src="{{ Storage::url($brand['image_path']) }}"
+                alt="{{ $brand['title'] }}"
+            >
+        @endforeach
+    </div>
 </div>
 
 <style>

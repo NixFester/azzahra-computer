@@ -90,7 +90,6 @@
         </div>
         @endforeach
         
-        @if($promos->count() < 4)
         <div class="col-3">
             <a href="{{ route('admin.iklan.create') }}?type=promo" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm h-100 bg-light d-flex align-items-center justify-content-center" style="min-height: 250px; cursor: pointer;">
@@ -100,7 +99,50 @@
                 </div>
             </a>
         </div>
-        @endif
+
+        <!-- Brands Section -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">Brands</h5>
+            <button class="btn btn-link text-muted">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+        </div>
+
+        <div class="row g-3 mb-5">
+            @foreach($brands as $brand)
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 position-relative">
+                    <img src="{{ $brand->image_url }}" class="card-img-top" alt="{{ $brand->title }}" style="height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 p-2">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-light rounded-circle" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form action="{{ route('admin.iklan.destroy', $brand) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item text-danger"><i class="bi bi-trash me-2"></i>Hapus</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            
+            <div class="col-md-4">
+                <a href="{{ route('admin.iklan.create') }}?type=brand" class="text-decoration-none">
+                    <div class="card border-0 shadow-sm h-100 bg-light d-flex align-items-center justify-content-center" style="min-height: 200px; cursor: pointer;">
+                        <div class="text-center text-secondary">
+                            <i class="bi bi-plus-lg" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 

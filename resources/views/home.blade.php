@@ -10,7 +10,7 @@
 
      <!-- Brands -->
     <section class="brand-section container py-5">
-        <x-brandShow/>
+        <x-brandShow :brands="$brands"/>
     </section>
 
 

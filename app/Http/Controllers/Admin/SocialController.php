@@ -7,9 +7,11 @@ use App\Models\Store;
 use App\Models\Internship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\CompressesImages;
 
 class SocialController extends Controller
 {
+    use CompressesImages;
     public function index()
     {
         $store = Store::first();
@@ -49,7 +51,7 @@ class SocialController extends Controller
     public function updateBatchImage(Request $request)
     {
         $request->validate([
-            'batch_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'batch_image' => 'required|image|mimes:jpeg,png,jpg,gif'
         ]);
 
         $batchImage = Internship::batch()->first();
@@ -64,7 +66,7 @@ class SocialController extends Controller
             }
 
             // Store new image
-            $path = $request->file('batch_image')->store('internship/batch', 'public');
+            $path = $this->compressAndStore($request->file('batch_image'), 'internship/batch');
             $imageUrl = Storage::url($path);
 
             if ($batchImage) {
@@ -85,12 +87,12 @@ class SocialController extends Controller
     public function addBrochure(Request $request)
     {
         $request->validate([
-            'brochure_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'brochure_image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'brochure_title' => 'nullable|string|max:255'
         ]);
 
         if ($request->hasFile('brochure_image')) {
-            $path = $request->file('brochure_image')->store('internship/brochure', 'public');
+            $path = $this->compressAndStore($request->file('brochure_image'), 'internship/brochure');
             $imageUrl = Storage::url($path);
 
             $maxOrder = Internship::brochure()->max('order') ?? 0;
