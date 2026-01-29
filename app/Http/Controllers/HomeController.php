@@ -14,11 +14,11 @@ class HomeController extends Controller
                         ->where('is_active', true)
                         ->orderBy('order')
                         ->get();
-        
-        $products = []; // Data produk
-        $brands = [];   // Data brand
-        $reviews = [];  // Data review
-        
-        return view('home', compact('products', 'brands', 'reviews', 'banners'));
+        $brands = Iklan::where('type', 'brand')
+                        ->where('is_active', true)
+                        ->orderBy('order')
+                        ->get();
+
+        return view('home', compact('banners', 'brands'));
     }
 }

@@ -20,6 +20,7 @@
                                 <option value="">Pilih Tipe</option>
                                 <option value="banner" {{ request('type') == 'banner' ? 'selected' : '' }}>Banner</option>
                                 <option value="promo" {{ request('type') == 'promo' ? 'selected' : '' }}>Promo</option>
+                                <option value="brand" {{ request('type') == 'brand' ? 'selected' : '' }}>Brand</option>
                             </select>
                             @error('type')
                                 <div class="invalid-feedback">{{ $message }}</div>

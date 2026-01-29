@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\CompressesImages;
 
 class ProdukController extends Controller
 {
+
+    use CompressesImages;
+
     /**
      * Display a listing of the resource.
      */
@@ -56,7 +60,7 @@ class ProdukController extends Controller
             'brand' => 'nullable|string|max:255',
             'specs' => 'nullable|string',
             'price' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ], [
             'product_name.required' => 'Nama produk wajib diisi',
             'category.required' => 'Kategori wajib diisi',
@@ -68,7 +72,8 @@ class ProdukController extends Controller
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            $validated['image_array'] = $request->file('image')->store('products', 'public');
+            $validated['image_path'] = $this->compressAndStore($request->file('image'), 'products');
+
         }
 
         Product::create($validated);
@@ -99,7 +104,7 @@ class ProdukController extends Controller
             'brand' => 'nullable|string|max:255',
             'specs' => 'nullable|string',
             'price' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ], [
             'product_name.required' => 'Nama produk wajib diisi',
             'category.required' => 'Kategori wajib diisi',

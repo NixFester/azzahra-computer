@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Iklan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\CompressesImages;
 
 class IklanController extends Controller
 {
+    use CompressesImages;
     public function index()
     {
         $banners = Iklan::where('type', 'banner')
@@ -18,8 +20,12 @@ class IklanController extends Controller
         $promos = Iklan::where('type', 'promo')
             ->orderBy('order')
             ->get();
+        
+        $brands = Iklan::where('type', 'brand')
+            ->orderBy('order')
+            ->get();
 
-        return view('admin.iklan.index', compact('banners', 'promos'));
+        return view('admin.iklan.index', compact('banners', 'promos', 'brands'));
     }
 
     public function create()
@@ -30,18 +36,17 @@ class IklanController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'type' => 'required|in:banner,promo',
+            'type' => 'required|in:banner,promo,brand',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'link' => 'nullable|url',
             'is_active' => 'boolean',
             'order' => 'integer'
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('iklans', 'public');
-            $validated['image_path'] = $path;
+            $validated['image_path'] = $this->compressAndStore($request->file('image'), 'iklans');
         }
 
         Iklan::create($validated);
@@ -58,10 +63,10 @@ class IklanController extends Controller
     public function update(Request $request, Iklan $iklan)
     {
         $validated = $request->validate([
-            'type' => 'required|in:banner,promo',
+            'type' => 'required|in:banner,promo,brand',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'link' => 'nullable|url',
             'is_active' => 'boolean',
             'order' => 'integer'
@@ -73,8 +78,8 @@ class IklanController extends Controller
                 Storage::disk('public')->delete($iklan->image_path);
             }
             
-            $path = $request->file('image')->store('iklans', 'public');
-            $validated['image_path'] = $path;
+            $validated['image_path'] = $this->compressAndStore($request->file('image'), 'iklans');
+
         }
 
         $iklan->update($validated);
