@@ -46,11 +46,11 @@
 
             <div class="col-lg-4 col-md-6">
                 <div class="contact-card">
-                    <div class="card-icon youtube">
-                        <i class="bi bi-youtube"></i>
+                    <div class="card-icon tiktok">
+                        <i class="bi bi-tiktok"></i>
                     </div>
-                    <h3 class="card-title">YouTube</h3>
-                    <a href="https://youtube.com/@authorizedmultibrandservic9761" target="_blank" class="card-link">
+                    <h3 class="card-title">tiktok</h3>
+                    <a href="https://www.tiktok.com/@authorized_servicecenter?_r=1&_t=ZS-93SwqwggUEe" target="_blank" class="card-link">
                         @authorizedmultibrandservic9761
                     </a>
                     <p class="card-desc">Subscribe to our channel</p>
@@ -210,7 +210,7 @@
     --primary-light: #1a0380;
     --whatsapp-color: #25D366;
     --instagram-color: #E4405F;
-    --youtube-color: #FF0000;
+    --tiktok-color: #000000;
 }
 
 .contact-page-modern {
@@ -300,8 +300,8 @@
     background: linear-gradient(135deg, #F58529 0%, var(--instagram-color) 50%, #833AB4 100%);
 }
 
-.card-icon.youtube {
-    background: linear-gradient(135deg, var(--youtube-color) 0%, #cc0000 100%);
+.card-icon.tiktok {
+    background: linear-gradient(135deg, var(--tiktok-color) 0%, #cc0000 100%);
 }
 
 .card-title {

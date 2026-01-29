@@ -12,6 +12,6 @@ class Store extends Model
     protected $fillable = [
         'whatsapp',
         'instagram',
-        'youtube'
+        'tiktok'
     ];
 }

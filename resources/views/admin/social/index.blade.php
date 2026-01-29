@@ -74,19 +74,19 @@
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label class="form-label fw-medium d-flex align-items-center gap-2">
-                            <i class="bi bi-youtube text-danger"></i>
-                            YouTube
+                            <i class="bi bi-tiktok text-danger"></i>
+                            tiktok
                         </label>
                         <div class="input-group">
                             <span class="input-group-text bg-light border-end-0">
-                                <i class="bi bi-youtube text-danger"></i>
+                                <i class="bi bi-tiktok text-danger"></i>
                             </span>
                             <input type="text" 
-                                   class="form-control border-start-0 @error('youtube') is-invalid @enderror" 
-                                   name="youtube" 
-                                   value="{{ old('youtube', $store->youtube) }}"
+                                   class="form-control border-start-0 @error('tiktok') is-invalid @enderror" 
+                                   name="tiktok" 
+                                   value="{{ old('tiktok', $store->tiktok) }}"
                                    placeholder="@authorizedmultibrandservic9761">
-                            @error('youtube')
+                            @error('tiktok')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

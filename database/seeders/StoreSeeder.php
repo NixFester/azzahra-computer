@@ -11,7 +11,7 @@ class StoreSeeder extends Seeder
         Store::create([
             'whatsapp' => '+6285942001720',
             'instagram' => 'authorized_servicecenter.tegal',
-            'youtube' => '@authorizedmultibrandservic9761'
+            'tiktok' => '@authorizedmultibrandservic9761'
         ]);
 
         Internship::create([
