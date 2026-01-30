@@ -22,12 +22,14 @@
     padding-bottom: 4%;
 }
         
-        .banner-title {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #f7f7f7;
-            margin-bottom: 2rem;
-        }
+.banner-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 1px #000000; /* 2px ketebalan, warna hitam */
+}
         
         .banner-buttons {
             display: flex;

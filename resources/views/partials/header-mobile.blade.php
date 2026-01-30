@@ -405,7 +405,7 @@
             padding: 0 1rem 1rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 1s ease;
         }
 
         .mobile-nav-menu.active {
@@ -451,7 +451,7 @@
         }
 
         .dropdown-icon-mobile {
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         .mobile-dropdown.active .dropdown-icon-mobile {

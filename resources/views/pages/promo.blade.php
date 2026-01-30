@@ -10,7 +10,7 @@
         <div class="row g-4">
             @foreach($promoImages as $index => $image)
             <div class="col-md-4 col-sm-6">
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-index="{{ $index }}">
                     <div class="gallery-image-wrapper">
                         <img src="{{ asset($image->image_url) }}" 
                              class="gallery-image img-fluid" 
@@ -36,6 +36,20 @@
             <button class="lightbox-close" id="lightboxClose">
                 <i class="bi bi-x-lg"></i>
             </button>
+            
+            <!-- Navigation Arrows -->
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            
+            <!-- Image Counter -->
+            <div class="lightbox-counter" id="lightboxCounter">
+                <span id="currentImageNumber">1</span> / <span id="totalImages">{{ count($promoImages) }}</span>
+            </div>
+            
             <div class="lightbox-controls">
                 <button class="lightbox-zoom" id="zoomIn" title="Zoom In">
                     <i class="bi bi-zoom-in"></i>
@@ -79,7 +93,7 @@
     background: #f8f9fa;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease;
-    aspect-ratio: 3 / 4; /* Portrait ratio - height is taller than width */
+    aspect-ratio: 3 / 4;
     width: 100%;
 }
 
@@ -149,7 +163,7 @@
 @media (max-width: 768px) {
     .gallery-image-wrapper {
         border-radius: 12px;
-        aspect-ratio: 3 / 4; /* Maintain portrait ratio on tablets */
+        aspect-ratio: 3 / 4;
     }
     
     .overlay-content i {
@@ -168,7 +182,7 @@
     
     .gallery-image-wrapper {
         border-radius: 10px;
-        aspect-ratio: 3 / 4; /* Maintain portrait ratio on mobile */
+        aspect-ratio: 3 / 4;
     }
     
     .overlay-content i {
@@ -297,6 +311,62 @@
     border-color: rgba(255, 255, 255, 0.4);
 }
 
+/* Navigation Arrows */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.lightbox-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.lightbox-prev {
+    left: 2rem;
+}
+
+.lightbox-next {
+    right: 2rem;
+}
+
+/* Image Counter */
+.lightbox-counter {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 0.5rem 1.25rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    z-index: 10001;
+}
+
 /* Zoom Controls */
 .lightbox-controls {
     position: absolute;
@@ -380,6 +450,25 @@
         right: 0.75rem;
     }
 
+    .lightbox-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .lightbox-prev {
+        left: 1rem;
+    }
+
+    .lightbox-next {
+        right: 1rem;
+    }
+
+    .lightbox-counter {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+
     .lightbox-controls {
         padding: 0.625rem 1rem;
         gap: 0.5rem;
@@ -398,6 +487,25 @@
         width: 40px;
         height: 40px;
         font-size: 1.1rem;
+    }
+
+    .lightbox-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+    }
+
+    .lightbox-prev {
+        left: 0.5rem;
+    }
+
+    .lightbox-next {
+        right: 0.5rem;
+    }
+
+    .lightbox-counter {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.85rem;
     }
 
     .lightbox-controls {
@@ -425,6 +533,14 @@
         const zoomInBtn = document.getElementById('zoomIn');
         const zoomOutBtn = document.getElementById('zoomOut');
         const resetZoomBtn = document.getElementById('resetZoom');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const currentImageNumber = document.getElementById('currentImageNumber');
+        const totalImages = document.getElementById('totalImages');
+        
+        // Gallery items array
+        const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        let currentIndex = 0;
         
         // Zoom variables
         let currentZoom = 1;
@@ -437,14 +553,14 @@
         let startX, startY, translateX = 0, translateY = 0;
         
         // Open lightbox when gallery item is clicked
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        galleryItems.forEach(item => {
+        galleryItems.forEach((item, index) => {
             item.style.cursor = 'pointer';
             
             item.addEventListener('click', function() {
                 const img = this.querySelector('.gallery-image');
+                currentIndex = index;
                 openLightbox(img.src, img.alt);
+                updateCounter();
             });
         });
         
@@ -457,6 +573,7 @@
             document.body.style.overflow = 'hidden';
             
             resetZoom();
+            updateNavigationButtons();
         }
         
         // Close Lightbox Function
@@ -470,15 +587,78 @@
             }, 300);
         }
         
+        // Update Counter
+        function updateCounter() {
+            currentImageNumber.textContent = currentIndex + 1;
+        }
+        
+        // Update Navigation Buttons
+        function updateNavigationButtons() {
+            // Disable prev button if first image
+            if (currentIndex === 0) {
+                lightboxPrev.style.opacity = '0.3';
+                lightboxPrev.style.cursor = 'not-allowed';
+            } else {
+                lightboxPrev.style.opacity = '1';
+                lightboxPrev.style.cursor = 'pointer';
+            }
+            
+            // Disable next button if last image
+            if (currentIndex === galleryItems.length - 1) {
+                lightboxNext.style.opacity = '0.3';
+                lightboxNext.style.cursor = 'not-allowed';
+            } else {
+                lightboxNext.style.opacity = '1';
+                lightboxNext.style.cursor = 'pointer';
+            }
+        }
+        
+        // Show Next Image
+        function showNextImage() {
+            if (currentIndex < galleryItems.length - 1) {
+                currentIndex++;
+                const img = galleryItems[currentIndex].querySelector('.gallery-image');
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                updateCounter();
+                updateNavigationButtons();
+                resetZoom();
+            }
+        }
+        
+        // Show Previous Image
+        function showPrevImage() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                const img = galleryItems[currentIndex].querySelector('.gallery-image');
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                updateCounter();
+                updateNavigationButtons();
+                resetZoom();
+            }
+        }
+        
+        // Event Listeners
         lightboxClose.addEventListener('click', closeLightbox);
         lightboxOverlay.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightboxPrev.addEventListener('click', showPrevImage);
         
+        // Keyboard Navigation
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
-                closeLightbox();
+            if (lightboxModal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                }
             }
         });
         
+        // Zoom Functions
         zoomInBtn.addEventListener('click', function() {
             if (currentZoom < maxZoom) {
                 currentZoom += zoomStep;
@@ -506,6 +686,7 @@
             applyZoom();
         }
         
+        // Mouse Wheel Zoom
         lightboxImageContainer.addEventListener('wheel', function(e) {
             e.preventDefault();
             
@@ -522,6 +703,7 @@
             }
         });
         
+        // Drag to Pan
         lightboxImageContainer.addEventListener('mousedown', function(e) {
             if (currentZoom > 1) {
                 isDragging = true;
@@ -546,7 +728,7 @@
             }
         });
         
-        // Touch Support
+        // Touch Support for Dragging
         let touchStartX, touchStartY;
         
         lightboxImageContainer.addEventListener('touchstart', function(e) {
@@ -590,6 +772,38 @@
             const dx = touch1.clientX - touch2.clientX;
             const dy = touch1.clientY - touch2.clientY;
             return Math.sqrt(dx * dx + dy * dy);
+        }
+        
+        // Swipe Navigation for Touch Devices
+        let touchStartXSwipe = 0;
+        let touchEndXSwipe = 0;
+        
+        lightboxImageContainer.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 1 && currentZoom === 1) {
+                touchStartXSwipe = e.touches[0].clientX;
+            }
+        }, { passive: true });
+        
+        lightboxImageContainer.addEventListener('touchend', function(e) {
+            if (currentZoom === 1) {
+                touchEndXSwipe = e.changedTouches[0].clientX;
+                handleSwipe();
+            }
+        }, { passive: true });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchStartXSwipe - touchEndXSwipe;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swipe left - next image
+                    showNextImage();
+                } else {
+                    // Swipe right - previous image
+                    showPrevImage();
+                }
+            }
         }
     });
     </script>
