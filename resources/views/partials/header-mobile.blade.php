@@ -156,7 +156,7 @@
         color: #fff;
         text-decoration: none;
         font-weight: 500;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
     }
 
     .menu a:hover {
@@ -171,7 +171,7 @@
         font-size: 1.2rem;
         cursor: pointer;
         padding: 0.5rem;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -187,19 +187,29 @@
         background: #0f0250;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                    padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.3s ease;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0;
     }
 
     .desktop-search-dropdown.active {
         max-height: 100px;
         padding: 1rem 0;
+        opacity: 1;
     }
 
     .desktop-search-container {
         max-width: 800px;
         margin: 0 auto;
         padding: 0 20px;
+        transform: translateY(-10px);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .desktop-search-dropdown.active .desktop-search-container {
+        transform: translateY(0);
     }
 
     .desktop-search-form {
@@ -208,6 +218,7 @@
         background: white;
         border-radius: 4px;
         overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .desktop-search-form input {
@@ -234,7 +245,7 @@
         padding: 0 20px;
         color: white;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
     }
 
     .desktop-search-submit:hover {
@@ -281,6 +292,11 @@
         .logo-mobile {
             height: 40px;
             width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-mobile:hover {
+            transform: scale(1.05);
         }
 
         .mobile-header-actions {
@@ -300,34 +316,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile-search-toggle:hover {
             color: #3D8FEF;
+            transform: scale(1.1);
         }
 
         .mobile-search-toggle.active {
             color: #3D8FEF;
+            transform: rotate(90deg) scale(1.1);
         }
 
         /* Mobile Search Bar */
         .mobile-search-bar {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s ease;
             background: #0f0250;
+            opacity: 0;
         }
 
         .mobile-search-bar.active {
             max-height: 200px;
             padding: 0.75rem 1rem 1rem;
+            opacity: 1;
         }
 
         .mobile-search-form {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            transform: translateY(-10px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-search-bar.active .mobile-search-form {
+            transform: translateY(0);
         }
 
         .mobile-search-form input {
@@ -336,6 +364,11 @@
             border-radius: 4px;
             outline: none;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-search-form input:focus {
+            box-shadow: 0 0 0 2px #3D8FEF;
         }
 
         .mobile-search-form select {
@@ -345,6 +378,11 @@
             outline: none;
             background: white;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-search-form select:focus {
+            box-shadow: 0 0 0 2px #3D8FEF;
         }
 
         .mobile-search-submit {
@@ -359,11 +397,17 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile-search-submit:hover {
             background: #1e6bd6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(47, 128, 237, 0.3);
+        }
+
+        .mobile-search-submit:active {
+            transform: translateY(0);
         }
 
         .mobile-search-submit i {
@@ -388,7 +432,7 @@
             height: 3px;
             background: white;
             border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile-menu-toggle.active span:nth-child(1) {
@@ -397,6 +441,7 @@
 
         .mobile-menu-toggle.active span:nth-child(2) {
             opacity: 0;
+            transform: translateX(20px);
         }
 
         .mobile-menu-toggle.active span:nth-child(3) {
@@ -405,17 +450,20 @@
 
         /* Mobile Navigation Menu */
         .mobile-nav-menu {
-            display: none;
             background: #120263;
-            padding: 0 1rem 1rem;
+            padding: 0 1rem 0;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 1s ease;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s ease;
+            opacity: 0;
         }
 
         .mobile-nav-menu.active {
-            display: block;
             max-height: 600px;
+            padding: 0 1rem 1rem;
+            opacity: 1;
         }
 
         /* Mobile Navigation Links */
@@ -426,18 +474,47 @@
             padding: 0.875rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-10px);
+            opacity: 0;
         }
+
+        .mobile-nav-menu.active .mobile-nav-link {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Staggered animation for nav links */
+        .mobile-nav-menu.active .mobile-nav-link:nth-child(2) { transition-delay: 0.05s; }
+        .mobile-nav-menu.active .mobile-nav-link:nth-child(3) { transition-delay: 0.1s; }
+        .mobile-nav-menu.active .mobile-nav-link:nth-child(4) { transition-delay: 0.15s; }
+        .mobile-nav-menu.active .mobile-nav-link:nth-child(5) { transition-delay: 0.2s; }
+        .mobile-nav-menu.active .mobile-nav-link:nth-child(6) { transition-delay: 0.25s; }
+        .mobile-nav-menu.active .mobile-nav-link:nth-child(7) { transition-delay: 0.3s; }
+        .mobile-nav-menu.active .mobile-nav-link:nth-child(8) { transition-delay: 0.35s; }
 
         .mobile-nav-link:hover {
             color: #3D8FEF;
             padding-left: 0.5rem;
+            background: rgba(61, 143, 239, 0.1);
+        }
+
+        .mobile-nav-link:active {
+            transform: scale(0.98);
         }
 
         /* Mobile Dropdown */
         .mobile-dropdown {
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 0.5rem;
+            transform: translateX(-10px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-nav-menu.active .mobile-dropdown {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .mobile-dropdown-toggle {
@@ -453,10 +530,15 @@
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-dropdown-toggle:hover {
+            color: #3D8FEF;
         }
 
         .dropdown-icon-mobile {
-            transition: transform 0.5s ease;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile-dropdown.active .dropdown-icon-mobile {
@@ -466,7 +548,8 @@
         .mobile-dropdown-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             padding-left: 1rem;
         }
 
@@ -481,12 +564,32 @@
             text-decoration: none;
             padding: 0.75rem 0;
             font-size: 0.95rem;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-10px);
+            opacity: 0;
         }
+
+        .mobile-dropdown.active .mobile-dropdown-content a {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Staggered animation for dropdown items */
+        .mobile-dropdown.active .mobile-dropdown-content a:nth-child(1) { transition-delay: 0.05s; }
+        .mobile-dropdown.active .mobile-dropdown-content a:nth-child(2) { transition-delay: 0.1s; }
+        .mobile-dropdown.active .mobile-dropdown-content a:nth-child(3) { transition-delay: 0.15s; }
+        .mobile-dropdown.active .mobile-dropdown-content a:nth-child(4) { transition-delay: 0.2s; }
+        .mobile-dropdown.active .mobile-dropdown-content a:nth-child(5) { transition-delay: 0.25s; }
+        .mobile-dropdown.active .mobile-dropdown-content a:nth-child(6) { transition-delay: 0.3s; }
 
         .mobile-dropdown-content a:hover {
             color: #3D8FEF;
             padding-left: 0.5rem;
+            background: rgba(61, 143, 239, 0.1);
+        }
+
+        .mobile-dropdown-content a:active {
+            transform: scale(0.98);
         }
     }
 
@@ -561,7 +664,7 @@
                 if (mobileSearchBar.classList.contains('active')) {
                     setTimeout(() => {
                         mobileSearchBar.querySelector('input').focus();
-                    }, 300);
+                    }, 400);
                 }
             });
         }
@@ -576,14 +679,15 @@
                 if (desktopSearchDropdown.classList.contains('active')) {
                     setTimeout(() => {
                         desktopSearchInput.focus();
-                    }, 300);
+                    }, 400);
                 }
             });
         }
 
         // Toggle dropdown menus
         dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const dropdown = this.parentElement;
                 dropdown.classList.toggle('active');
             });
@@ -593,10 +697,14 @@
         document.addEventListener('click', function(event) {
             // Close mobile menu and search
             if (!event.target.closest('.nav-inner-mobile')) {
-                mobileMenuToggle?.classList.remove('active');
-                mobileNavMenu?.classList.remove('active');
-                mobileSearchToggle?.classList.remove('active');
-                mobileSearchBar?.classList.remove('active');
+                if (mobileMenuToggle && mobileMenuToggle.classList.contains('active')) {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileNavMenu.classList.remove('active');
+                }
+                if (mobileSearchToggle && mobileSearchToggle.classList.contains('active')) {
+                    mobileSearchToggle.classList.remove('active');
+                    mobileSearchBar.classList.remove('active');
+                }
             }
 
             // Close desktop search
@@ -621,6 +729,12 @@
                 mobileSearchBar?.classList.remove('active');
                 mobileSearchToggle?.classList.remove('active');
                 desktopSearchDropdown?.classList.remove('active');
+                
+                // Reset menu toggle if needed
+                if (mobileNavMenu?.classList.contains('active')) {
+                    mobileMenuToggle?.classList.remove('active');
+                    mobileNavMenu?.classList.remove('active');
+                }
             }
         });
     });
