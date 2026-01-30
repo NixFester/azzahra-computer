@@ -16,35 +16,40 @@
                 <img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="40">
             </a>
         </div>
-        
+
         <nav>
             <ul class="menu">
                 <li>
-                    <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <i class="bi bi-speedometer2"></i>
                         <span>Overview</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.produk.index') }}" class="{{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.produk.index') }}"
+                        class="{{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
                         <i class="bi bi-box-seam"></i>
                         <span>Produk</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.iklan.index') }}" class="{{ request()->routeIs('admin.iklan.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.iklan.index') }}"
+                        class="{{ request()->routeIs('admin.iklan.*') ? 'active' : '' }}">
                         <i class="bi bi-megaphone"></i>
                         <span>Iklan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.blog.index') }}" class="{{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.blog.index') }}"
+                        class="{{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
                         <i class="bi bi-file-text"></i>
                         <span>Blog</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.social.index') }}" class="{{ request()->routeIs('admin.social.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.social.index') }}"
+                        class="{{ request()->routeIs('admin.social.*') ? 'active' : '' }}">
                         <i class="bi bi-share"></i>
                         <span>Social</span>
                     </a>
@@ -58,7 +63,7 @@
             </ul>
         </nav>
     </div>
-    
+
     <div class="sidebar-bottom">
         <div class="profile">
             <div class="avatar">

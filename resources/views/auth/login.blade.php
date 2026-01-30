@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #3D8FEF 0%, #2563eb 100%);
@@ -19,6 +21,7 @@
             justify-content: center;
             padding: 20px;
         }
+
         .login-container {
             background: white;
             padding: 40px;
@@ -27,20 +30,24 @@
             width: 100%;
             max-width: 400px;
         }
+
         h2 {
             color: #333;
             margin-bottom: 30px;
             text-align: center;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin-bottom: 8px;
             color: #555;
             font-weight: 500;
         }
+
         input {
             width: 100%;
             padding: 12px;
@@ -49,15 +56,18 @@
             font-size: 14px;
             transition: border-color 0.3s;
         }
+
         input:focus {
             outline: none;
             border-color: #3D8FEF;
         }
+
         .error {
             color: #e74c3c;
             font-size: 13px;
             margin-top: 5px;
         }
+
         button {
             width: 100%;
             padding: 12px;
@@ -70,13 +80,16 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+
         button:hover {
             background: #2563eb;
             transform: translateY(-2px);
         }
+
         button:active {
             transform: translateY(0);
         }
+
         .temp-notice {
             background: #fff3cd;
             border: 1px solid #ffc107;
@@ -89,6 +102,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="temp-notice">
@@ -112,4 +126,5 @@
         </form>
     </div>
 </body>
+
 </html>

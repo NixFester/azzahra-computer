@@ -4,23 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Iklan;
+use App\Traits\CompressesImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Traits\CompressesImages;
 
 class IklanController extends Controller
 {
     use CompressesImages;
+
     public function index()
     {
         $banners = Iklan::where('type', 'banner')
             ->orderBy('order')
             ->get();
-        
+
         $promos = Iklan::where('type', 'promo')
             ->orderBy('order')
             ->get();
-        
+
         $brands = Iklan::where('type', 'brand')
             ->orderBy('order')
             ->get();
@@ -42,7 +43,7 @@ class IklanController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'link' => 'nullable|url',
             'is_active' => 'boolean',
-            'order' => 'integer'
+            'order' => 'integer',
         ]);
 
         if ($request->hasFile('image')) {
@@ -69,7 +70,7 @@ class IklanController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'link' => 'nullable|url',
             'is_active' => 'boolean',
-            'order' => 'integer'
+            'order' => 'integer',
         ]);
 
         if ($request->hasFile('image')) {
@@ -77,7 +78,7 @@ class IklanController extends Controller
             if ($iklan->image_path) {
                 Storage::disk('public')->delete($iklan->image_path);
             }
-            
+
             $validated['image_path'] = $this->compressAndStore($request->file('image'), 'iklans');
 
         }

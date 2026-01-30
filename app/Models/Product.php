@@ -18,6 +18,6 @@ class Product extends Model
         'brand',
         'specs',
         'price',
-        'image_array'
+        'image_array',
     ];
 }

@@ -51,12 +51,12 @@ class User extends Authenticatable
             'is_active' => 'boolean',
         ];
     }
-    
+
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
     }
-    
+
     public function scopeAdmins($query)
     {
         return $query->where('is_admin', true);

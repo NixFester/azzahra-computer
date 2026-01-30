@@ -1,4 +1,5 @@
 <?php
+
 // app/Http/Controllers/NavigationController.php
 
 namespace App\Http\Controllers;
@@ -28,7 +29,7 @@ class NavigationController extends Controller
 
             $view->with([
                 'navCategories' => $categories,
-                'navBrands' => $brands
+                'navBrands' => $brands,
             ]);
         });
     }

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Blog')
 @section('content')
-    
-@include('partials.header-mobile')
-    
+
+    @include('partials.header-mobile')
+
     <div class="container-fluid py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-5">
@@ -12,7 +12,7 @@
                 </h1>
             </div>
 
-            @if(session('success'))
+            @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <i class="bi bi-check-circle me-2"></i>
                     {{ session('success') }}
@@ -51,7 +51,7 @@
                 @endforelse
             </div>
 
-            @if($blogs->hasPages())
+            @if ($blogs->hasPages())
                 <div class="d-flex justify-content-center mt-5">
                     {{ $blogs->links('pagination::bootstrap-5') }}
                 </div>
@@ -63,13 +63,15 @@
         .hover-shadow {
             transition: box-shadow 0.3s ease;
         }
+
         .hover-shadow:hover {
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
         }
+
         .bg-primary-subtle {
             background-color: rgba(13, 110, 253, 0.1);
         }
     </style>
-    
+
     @include('partials.footer-mobile')
 @endsection

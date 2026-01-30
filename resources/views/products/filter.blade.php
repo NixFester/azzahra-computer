@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
@@ -149,6 +150,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Product Filter</h1>
@@ -158,7 +160,7 @@
                 <label for="category">Category</label>
                 <select name="category" id="category">
                     <option value="">All Categories</option>
-                    @foreach($categories as $category)
+                    @foreach ($categories as $category)
                         <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }}>
                             {{ $category }}
                         </option>
@@ -170,7 +172,7 @@
                 <label for="brand">Brand</label>
                 <select name="brand" id="brand">
                     <option value="">All Brands</option>
-                    @foreach($brands as $brand)
+                    @foreach ($brands as $brand)
                         <option value="{{ $brand }}" {{ request('brand') == $brand ? 'selected' : '' }}>
                             {{ $brand }}
                         </option>
@@ -186,10 +188,10 @@
             </div>
         </form>
 
-        @if(isset($products))
-            @if($products->count() > 0)
+        @if (isset($products))
+            @if ($products->count() > 0)
                 <div class="products-grid">
-                    @foreach($products as $product)
+                    @foreach ($products as $product)
                         <div class="product-card">
                             <h3>{{ $product->name ?? 'Product #' . $product->id }}</h3>
                             <div class="product-info">
@@ -207,4 +209,5 @@
         @endif
     </div>
 </body>
+
 </html>

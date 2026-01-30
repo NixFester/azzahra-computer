@@ -1,24 +1,23 @@
-
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
 
-@include('partials.header-mobile')
+    @include('partials.header-mobile')
 
     <!-- Hero Section -->
-    <x-Hero/>
+    <x-Hero />
 
-     <!-- Brands -->
+    <!-- Brands -->
     <section class="brand-section container py-5">
-        <x-brandShow :brands="$brands"/>
+        <x-brandShow :brands="$brands" />
     </section>
 
 
     <!-- Banner -->
     <section class="text-white container">
-            
-        @include('components.bannerCarousel',['banners' => $banners])
-        
+
+        @include('components.bannerCarousel', ['banners' => $banners])
+
     </section>
     <!-- Rating  -->
     <section class="container pt-5 pb-3">
@@ -27,10 +26,7 @@
 
 
     <!-- Products -->
-    <x-new-products-collection-mobile 
-    :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" 
-    :categories="$navCategories" 
-/>
+    <x-new-products-collection-mobile :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :categories="$navCategories" />
 
     <!-- rusak kalau di hapus hehe -->
     <section class="container " style="display:none;">
@@ -39,10 +35,10 @@
 
     <!-- Info perusahaan -->
     <section class="profile-section py-5">
-        <x-companyInfo/>
+        <x-companyInfo />
     </section>
 
-   
 
-@include('partials.footer-mobile')
+
+    @include('partials.footer-mobile')
 @endsection

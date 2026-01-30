@@ -37,7 +37,8 @@
 
             <div class="mb-6">
                 <label for="body" class="block text-gray-700 font-bold mb-2">Body (Markdown)</label>
-                <br/>                <textarea name="body" id="body" rows="20" 
+                <br />
+                <textarea name="body" id="body" rows="20"
                     class=" px-3 py-2 border rounded font-mono bodyblog @error('body') @enderror">{{ old('body') }}</textarea>
                 <p class="text-gray-600 text-sm mt-1">You can use Markdown formatting</p>
                 @error('body')
@@ -46,18 +47,17 @@
             </div>
 
             <div class="flex gap-4">
-                <button 
-                    type="submit" 
+                <button type="submit"
                     class="bg-purple-600 text-black px-6 py-2 rounded-lg font-semibold
                         hover:bg-purple-700 transition duration-200">
                     Create Post
                 </button>
 
-                    <a href="{{ route('blog.index') }}"
+                <a href="{{ route('blog.index') }}"
                     class="inline-block border border-gray-400 text-gray-600 px-6 py-2 rounded-lg
                             hover:bg-gray-100 hover:text-gray-800 transition duration-200">
-                        Cancel
-                    </a>
+                    Cancel
+                </a>
 
             </div>
         </form>

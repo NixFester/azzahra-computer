@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -162,7 +163,7 @@
             padding: 22px;
             border-radius: 18px;
             margin-bottom: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
         }
 
         .card.large {
@@ -200,80 +201,83 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="app">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div class="sidebar-top">
-            <div class="logo">
-                <img src="images/logo.jpg" alt="Logo">
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="Logo">
+                </div>
+
+                <ul class="menu">
+                    <li class="active">Overview</li>
+                    <li>Produk</li>
+                    <li>Iklan</li>
+                    <li>Kelola Pengguna</li>
+                    <li>Blog</li>
+                    <li>Social</li>
+                </ul>
             </div>
 
-            <ul class="menu">
-                <li class="active">Overview</li>
-                <li>Produk</li>
-                <li>Iklan</li>
-                <li>Kelola Pengguna</li>
-                <li>Blog</li>
-                <li>Social</li>
-            </ul>
-        </div>
-
-        <div class="sidebar-bottom">
-            <div class="profile">
-                <div class="avatar">A</div>
-                <span>{{ Session::get('username') }}</span>
-                <form method="POST" action="{{ route('logout') }}" style="margin-left: auto;">
-                    @csrf
-                    <button type="submit" class="logout-link" style="background: none; border: none;">Logout</button>
-                </form>
+            <div class="sidebar-bottom">
+                <div class="profile">
+                    <div class="avatar">A</div>
+                    <span>{{ Session::get('username') }}</span>
+                    <form method="POST" action="{{ route('logout') }}" style="margin-left: auto;">
+                        @csrf
+                        <button type="submit" class="logout-link"
+                            style="background: none; border: none;">Logout</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </aside>
+        </aside>
 
-    <!-- MAIN -->
-    <main class="main">
-        <div class="topbar">
-            <span class="breadcrumb">Dashboards / Overview</span>
-        </div>
+        <!-- MAIN -->
+        <main class="main">
+            <div class="topbar">
+                <span class="breadcrumb">Dashboards / Overview</span>
+            </div>
 
-        <!-- STAT CARDS -->
-        <div class="stats">
-            <div class="stat-card">
-                <p>Kunjungan</p>
-                <h2>7,265</h2>
-                <span class="up">▲ 11.01%</span>
+            <!-- STAT CARDS -->
+            <div class="stats">
+                <div class="stat-card">
+                    <p>Kunjungan</p>
+                    <h2>7,265</h2>
+                    <span class="up">▲ 11.01%</span>
+                </div>
+                <div class="stat-card">
+                    <p>Produk Masuk</p>
+                    <h2>3,671</h2>
+                    <span class="down">▼ 0.03%</span>
+                </div>
+                <div class="stat-card">
+                    <p>Produk Keluar</p>
+                    <h2>256</h2>
+                    <span class="up">▲ 15.03%</span>
+                </div>
+                <div class="stat-card">
+                    <p>Pengguna Baru</p>
+                    <h2>2,318</h2>
+                    <span class="up">▲ 6.08%</span>
+                </div>
             </div>
-            <div class="stat-card">
-                <p>Produk Masuk</p>
-                <h2>3,671</h2>
-                <span class="down">▼ 0.03%</span>
-            </div>
-            <div class="stat-card">
-                <p>Produk Keluar</p>
-                <h2>256</h2>
-                <span class="up">▲ 15.03%</span>
-            </div>
-            <div class="stat-card">
-                <p>Pengguna Baru</p>
-                <h2>2,318</h2>
-                <span class="up">▲ 6.08%</span>
-            </div>
-        </div>
 
-        <!-- CHART -->
-        <div class="card large">
-            <h4>Users</h4>
-            <div class="chart-placeholder">Line Chart</div>
-        </div>
+            <!-- CHART -->
+            <div class="card large">
+                <h4>Users</h4>
+                <div class="chart-placeholder">Line Chart</div>
+            </div>
 
-        <div class="card">
-            <h4 class="red">Grafik Penjualan</h4>
-            <div class="chart-placeholder">Bar Chart</div>
-        </div>
-    </main>
-</div>
+            <div class="card">
+                <h4 class="red">Grafik Penjualan</h4>
+                <div class="chart-placeholder">Bar Chart</div>
+            </div>
+        </main>
+    </div>
 
 </body>
+
 </html>

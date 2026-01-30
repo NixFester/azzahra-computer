@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Traits\CompressesImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Traits\CompressesImages;
 
 class ProdukController extends Controller
 {
-
     use CompressesImages;
 
     /**
@@ -23,18 +22,18 @@ class ProdukController extends Controller
         // Search functionality
         if ($request->filled('search')) {
             $search = $request->search;
-            
-            $query->where(function($q) use ($search) {
+
+            $query->where(function ($q) use ($search) {
                 $q->where('product_name', 'LIKE', "%{$search}%")
-                  ->orWhere('id', 'LIKE', "%{$search}%")
-                  ->orWhere('category', 'LIKE', "%{$search}%")
-                  ->orWhere('brand', 'LIKE', "%{$search}%")
-                  ->orWhere('price', 'LIKE', "%{$search}%");
+                    ->orWhere('id', 'LIKE', "%{$search}%")
+                    ->orWhere('category', 'LIKE', "%{$search}%")
+                    ->orWhere('brand', 'LIKE', "%{$search}%")
+                    ->orWhere('price', 'LIKE', "%{$search}%");
             });
         }
 
         $produks = $query->latest()->paginate(10);
-        
+
         // Maintain search query in pagination links
         $produks->appends($request->only('search'));
 
@@ -88,6 +87,7 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $produk = Product::findOrFail($id);
+
         return view('admin.produk.edit', compact('produk'));
     }
 
@@ -97,7 +97,7 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $produk = Product::findOrFail($id);
-        
+
         $validated = $request->validate([
             'product_name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
@@ -137,7 +137,7 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         $produk = Product::findOrFail($id);
-        
+
         // Delete image
         if ($produk->image_array && Storage::disk('public')->exists($produk->image_array)) {
             Storage::disk('public')->delete($produk->image_array);

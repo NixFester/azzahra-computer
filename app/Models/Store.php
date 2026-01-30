@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     protected $guarded = [];
+
     protected $table = 'store';
-    
+
     protected $fillable = [
         'whatsapp',
         'instagram',
-        'tiktok'
+        'tiktok',
     ];
 }

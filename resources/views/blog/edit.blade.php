@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Edit Post')
 @section('content')
-    
-@include('partials.header-mobile')
-    
+
+    @include('partials.header-mobile')
+
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold mb-6">Edit Blog Post</h1>
 
@@ -43,12 +43,13 @@
                 <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
                     Update Post
                 </button>
-                <a href="{{ route('blog.show', $blog) }}" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
+                <a href="{{ route('blog.show', $blog) }}"
+                    class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
                     Cancel
                 </a>
             </div>
         </form>
     </div>
-    
+
     @include('partials.footer-mobile')
 @endsection

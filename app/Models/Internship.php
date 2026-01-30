@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Internship extends Model
 {
     protected $table = 'internship';
+
     protected $guarded = [];
 
     public function scopeBatch($query)
@@ -17,13 +18,12 @@ class Internship extends Model
     public function scopeBrochure($query)
     {
         return $query->where('type', 'brochure')
-                     ->orderBy('order');
+            ->orderBy('order');
     }
-    
+
     protected $fillable = [
         'type',
         'image_url',
         'title',
     ];
-    
 }

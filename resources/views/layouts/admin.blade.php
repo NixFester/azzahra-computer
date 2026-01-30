@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dashboard') - Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
@@ -29,20 +31,21 @@
 
         /* Sidebar Styles */
         .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--sidebar-width);
-    height: 100vh;
-    background: #ffffff;
-    border-right: 1px solid #e8e9ed;
-    z-index: 1030;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease-in-out;
-    overflow-y: auto;
-    transform: translateX(0); /* Visible on desktop */
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: #ffffff;
+            border-right: 1px solid #e8e9ed;
+            z-index: 1030;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            transform: translateX(0);
+            /* Visible on desktop */
+        }
 
         .sidebar-header {
             display: flex;
@@ -263,7 +266,7 @@
             font-weight: 600;
         }
 
-        .breadcrumb-item + .breadcrumb-item::before {
+        .breadcrumb-item+.breadcrumb-item::before {
             content: "/";
             color: #ccc;
         }
@@ -276,7 +279,7 @@
             background: #fff;
             padding: 1.5rem;
             border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         }
 
         /* Overlay for mobile */
@@ -383,19 +386,20 @@
         /* Responsive Styles */
         @media (max-width: 991.98px) {
             .sidebar {
-        transform: translateX(-100%); /* Hidden by default on mobile */
-        width: 100vw;
-        max-width: 100vw;
-    }
+                transform: translateX(-100%);
+                /* Hidden by default on mobile */
+                width: 100vw;
+                max-width: 100vw;
+            }
 
-    .sidebar-top {
-        padding: 1rem;
-        width: 100%;
-    }
+            .sidebar-top {
+                padding: 1rem;
+                width: 100%;
+            }
 
-    .sidebar.show {
-        transform: translateX(0);
-    }
+            .sidebar.show {
+                transform: translateX(0);
+            }
 
             .sidebar-overlay {
                 display: block;
@@ -425,27 +429,31 @@
 
             /* Mobile menu styling - vertical list */
             .menu {
-        padding: 0;
-        width: 100%;
-        display: block; /* Force block display */
-    }
+                padding: 0;
+                width: 100%;
+                display: block;
+                /* Force block display */
+            }
 
-    .menu li {
-        margin-bottom: 0;
-        border-bottom: 1px solid #f0f0f0;
-        width: 100%; /* Full width */
-        display: block; /* Force block display */
-    }
+            .menu li {
+                margin-bottom: 0;
+                border-bottom: 1px solid #f0f0f0;
+                width: 100%;
+                /* Full width */
+                display: block;
+                /* Force block display */
+            }
 
-    .menu li a {
-        width: 100%;
-        display: flex; /* Keep flex for icon alignment */
-        padding: 1.25rem 1.5rem;
-        font-size: 1.6rem;
-        border-radius: 0;
-        background: transparent;
-        border-left: 4px solid transparent;
-    }
+            .menu li a {
+                width: 100%;
+                display: flex;
+                /* Keep flex for icon alignment */
+                padding: 1.25rem 1.5rem;
+                font-size: 1.6rem;
+                border-radius: 0;
+                background: transparent;
+                border-left: 4px solid transparent;
+            }
         }
 
         @media (max-width: 575.98px) {
@@ -511,109 +519,113 @@
     </style>
     @stack('styles')
 </head>
+
 <body>
 
-<!-- Sidebar Overlay -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<!-- Sidebar -->
-@include('admin.partials.sidebar')
+    <!-- Sidebar -->
+    @include('admin.partials.sidebar')
 
-<!-- Main Wrapper -->
-<div class="main-wrapper">
-    <!-- Topbar -->
-    @include('admin.partials.breadcrumb')
-    
-    <!-- Content -->
-    <div class="content-wrapper">
-        @if(session('success'))
-            <div class="alert alert-success">
-                <i class="bi bi-check-circle-fill"></i>
-                <span>{{ session('success') }}</span>
-            </div>
-        @endif
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <!-- Topbar -->
+        @include('admin.partials.breadcrumb')
 
-        @if(session('error'))
-            <div class="alert alert-danger">
-                <i class="bi bi-exclamation-circle-fill"></i>
-                <span>{{ session('error') }}</span>
-            </div>
-        @endif
+        <!-- Content -->
+        <div class="content-wrapper">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>{{ session('success') }}</span>
+                </div>
+            @endif
 
-        @yield('content')
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <span>{{ session('error') }}</span>
+                </div>
+            @endif
+
+            @yield('content')
+        </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<script>
-    // Wait for DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mobile Sidebar Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const sidebarClose = document.getElementById('sidebarClose');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Sidebar Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-        console.log('Mobile Toggle:', mobileToggle); // Debug
-        console.log('Sidebar:', sidebar); // Debug
+            console.log('Mobile Toggle:', mobileToggle); // Debug
+            console.log('Sidebar:', sidebar); // Debug
 
-        function toggleSidebar() {
-            console.log('Toggle clicked'); // Debug
-            if (sidebar && sidebarOverlay) {
-                sidebar.classList.toggle('show');
-                sidebarOverlay.classList.toggle('show');
-                document.body.style.overflow = sidebar.classList.contains('show') ? 'hidden' : '';
+            function toggleSidebar() {
+                console.log('Toggle clicked'); // Debug
+                if (sidebar && sidebarOverlay) {
+                    sidebar.classList.toggle('show');
+                    sidebarOverlay.classList.toggle('show');
+                    document.body.style.overflow = sidebar.classList.contains('show') ? 'hidden' : '';
+                }
             }
-        }
 
-        function closeSidebar() {
-            console.log('Close clicked'); // Debug
-            if (sidebar && sidebarOverlay) {
-                sidebar.classList.remove('show');
-                sidebarOverlay.classList.remove('show');
-                document.body.style.overflow = '';
+            function closeSidebar() {
+                console.log('Close clicked'); // Debug
+                if (sidebar && sidebarOverlay) {
+                    sidebar.classList.remove('show');
+                    sidebarOverlay.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
             }
-        }
 
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleSidebar();
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleSidebar();
+                });
+            }
+
+            if (sidebarClose) {
+                sidebarClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeSidebar();
+                });
+            }
+
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', closeSidebar);
+            }
+
+            // Close sidebar when clicking menu items on mobile
+            const menuLinks = document.querySelectorAll('.menu a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 991.98) {
+                        setTimeout(closeSidebar, 100);
+                    }
+                });
             });
-        }
 
-        if (sidebarClose) {
-            sidebarClose.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                closeSidebar();
-            });
-        }
-
-        if (sidebarOverlay) {
-            sidebarOverlay.addEventListener('click', closeSidebar);
-        }
-
-        // Close sidebar when clicking menu items on mobile
-        const menuLinks = document.querySelectorAll('.menu a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 991.98) {
-                    setTimeout(closeSidebar, 100);
+            // Close sidebar on window resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 991.98) {
+                    closeSidebar();
                 }
             });
         });
-
-        // Close sidebar on window resize to desktop
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 991.98) {
-                closeSidebar();
-            }
-        });
-    });
-</script>
-@stack('scripts')
+    </script>
+    @stack('scripts')
 
 </body>
+
 </html>

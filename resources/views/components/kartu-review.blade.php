@@ -9,13 +9,12 @@
         <div class="avatar">
             @if ($image)
                 <img src="{{ $image }}" alt="{{ $name }}" class="avatar-img">
-                @else
-                    
-                    <div class="avatar text-white fw-bold d-flex align-items-center justify-content-center"
-                        style="background-color: {{ $bgColor }};">
-                        {{ strtoupper(mb_substr($name, 0, 1)) }}
-                    </div>
-                @endif
+            @else
+                <div class="avatar text-white fw-bold d-flex align-items-center justify-content-center"
+                    style="background-color: {{ $bgColor }};">
+                    {{ strtoupper(mb_substr($name, 0, 1)) }}
+                </div>
+            @endif
         </div>
 
         <div class="user-info">

@@ -2,13 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\View;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Schema;
 use App\Models\Store;
-  
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -53,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'searchCategories' => $searchCategoriesArray,
                 'navCategories' => $searchCategoriesArray,
-                'navBrands' => $brands
+                'navBrands' => $brands,
             ]);
         });
     }

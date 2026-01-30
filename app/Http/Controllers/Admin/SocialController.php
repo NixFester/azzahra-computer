@@ -3,23 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Store;
 use App\Models\Internship;
+use App\Models\Store;
+use App\Traits\CompressesImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Traits\CompressesImages;
 
 class SocialController extends Controller
 {
     use CompressesImages;
+
     public function index()
     {
         $store = Store::first();
-        if (!$store) {
+        if (! $store) {
             $store = Store::create([
                 'whatsapp' => '+6285942001720',
                 'instagram' => 'authorized_servicecenter.tegal',
-                'tiktok' => '@authorized_servicecenter'
+                'tiktok' => '@authorized_servicecenter',
             ]);
         }
 
@@ -38,7 +39,7 @@ class SocialController extends Controller
         ]);
 
         $store = Store::first();
-        if (!$store) {
+        if (! $store) {
             $store = Store::create($validated);
         } else {
             $store->update($validated);
@@ -51,7 +52,7 @@ class SocialController extends Controller
     public function updateBatchImage(Request $request)
     {
         $request->validate([
-            'batch_image' => 'required|image|mimes:jpeg,png,jpg,gif'
+            'batch_image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $batchImage = Internship::batch()->first();
@@ -60,7 +61,7 @@ class SocialController extends Controller
             // Delete old image if exists and not the default intern1.jpg
             if ($batchImage && $batchImage->image_url) {
                 $oldPath = str_replace('/storage/', '', $batchImage->image_url);
-                if (!str_contains($oldPath, 'intern1.jpg')) {
+                if (! str_contains($oldPath, 'intern1.jpg')) {
                     Storage::disk('public')->delete($oldPath);
                 }
             }
@@ -75,7 +76,7 @@ class SocialController extends Controller
                 Internship::create([
                     'type' => 'batch',
                     'image_url' => $imageUrl,
-                    'title' => 'Batch Magang'
+                    'title' => 'Batch Magang',
                 ]);
             }
         }
@@ -88,7 +89,7 @@ class SocialController extends Controller
     {
         $request->validate([
             'brochure_image' => 'required|image|mimes:jpeg,png,jpg,gif',
-            'brochure_title' => 'nullable|string|max:255'
+            'brochure_title' => 'nullable|string|max:255',
         ]);
 
         if ($request->hasFile('brochure_image')) {
@@ -101,7 +102,7 @@ class SocialController extends Controller
                 'type' => 'brochure',
                 'image_url' => $imageUrl,
                 'title' => $request->brochure_title,
-                'order' => $maxOrder + 1
+                'order' => $maxOrder + 1,
             ]);
         }
 

@@ -19,7 +19,7 @@
     .product-tabs {
         border-bottom: 2px solid #e0e0e0;
         display: flex;
-        gap: 1rem;  
+        gap: 1rem;
         flex-wrap: wrap;
     }
 
@@ -65,6 +65,7 @@
         from {
             transform: scaleX(0);
         }
+
         to {
             transform: scaleX(1);
         }
@@ -172,7 +173,7 @@
         position: absolute;
         width: 120%;
         height: 120%;
-        background: 
+        background:
             radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
             radial-gradient(ellipse at 80% 70%, rgba(61, 143, 239, 0.6) 0%, transparent 50%);
         border-radius: 48% 52% 65% 35% / 42% 58% 42% 58%;
@@ -193,18 +194,23 @@
     }
 
     @keyframes morphShape {
-        0%, 100% {
+
+        0%,
+        100% {
             border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
             transform: rotate(0deg);
         }
+
         25% {
             border-radius: 48% 52% 68% 32% / 42% 61% 39% 58%;
             transform: rotate(5deg);
         }
+
         50% {
             border-radius: 38% 62% 43% 57% / 51% 44% 56% 49%;
             transform: rotate(-3deg);
         }
+
         75% {
             border-radius: 56% 44% 61% 39% / 68% 35% 65% 32%;
             transform: rotate(4deg);
@@ -212,10 +218,13 @@
     }
 
     @keyframes flowingLight {
-        0%, 100% {
+
+        0%,
+        100% {
             border-radius: 48% 52% 65% 35% / 42% 58% 42% 58%;
             transform: rotate(0deg) scale(1);
         }
+
         50% {
             border-radius: 35% 65% 48% 52% / 58% 42% 58% 42%;
             transform: rotate(180deg) scale(1.1);
@@ -233,14 +242,18 @@
     }
 
     @keyframes twistRibbon {
-        0%, 100% {
+
+        0%,
+        100% {
             border-radius: 45% 55% 65% 35% / 72% 28% 72% 28%;
             transform: rotate(0deg) scale(1);
         }
+
         33% {
             border-radius: 72% 28% 45% 55% / 35% 65% 35% 65%;
             transform: rotate(120deg) scale(1.05);
         }
+
         66% {
             border-radius: 28% 72% 55% 45% / 65% 35% 65% 35%;
             transform: rotate(240deg) scale(1);
@@ -250,7 +263,7 @@
     /* Alternative: Asymmetric wave */
     .category-bg-shape.wave {
         border-radius: 73% 27% 39% 61% / 48% 71% 29% 52%;
-        background: 
+        background:
             linear-gradient(220deg, rgba(61, 143, 239, 0.9) 0%, #3D8FEF 100%),
             radial-gradient(circle at 70% 30%, rgba(96, 165, 250, 0.8) 0%, transparent 60%);
         box-shadow:
@@ -260,10 +273,13 @@
     }
 
     @keyframes waveFlow {
-        0%, 100% {
+
+        0%,
+        100% {
             border-radius: 73% 27% 39% 61% / 48% 71% 29% 52%;
             transform: translateY(0) rotate(0deg);
         }
+
         50% {
             border-radius: 27% 73% 61% 39% / 71% 48% 52% 29%;
             transform: translateY(-5px) rotate(8deg);
@@ -397,18 +413,13 @@
 </style>
 
 <section class="product-section container">
-    @if($pagination)
+    @if ($pagination)
         <!-- PRODUCTS PAGE: Grid Layout -->
         <div class="products-grid grid-4col">
             @forelse($products as $product)
-                <x-kartu-produk
-                    id="{{ $product['id'] }}" 
-                    image="{{ $product['image'] }}" 
-                    category="{{ $product['category'] }}"
-                    name="{{ $product['name'] }}"
-                    price="{{ $product['price'] }}"
-                    badge="{{ null }}"
-                    old-price="{{ $product['oldPrice'] ?? null }}" />
+                <x-kartu-produk id="{{ $product['id'] }}" image="{{ $product['image'] }}"
+                    category="{{ $product['category'] }}" name="{{ $product['name'] }}" price="{{ $product['price'] }}"
+                    badge="{{ null }}" old-price="{{ $product['oldPrice'] ?? null }}" />
             @empty
                 <div class="col-12 text-center py-5">
                     <p class="text-muted fs-5">No products found</p>
@@ -423,7 +434,7 @@
         <nav aria-label="Page navigation">
             <ul class="pagination pagination-modern">
                 {{-- Previous Page Link --}}
-                @if($pagination['current_page'] > 1)
+                @if ($pagination['current_page'] > 1)
                     <li class="page-item">
                         <a class="page-link" href="{{ $pagination['first_url'] }}" aria-label="First">
                             <i class="bi bi-chevron-double-left"></i>
@@ -448,13 +459,14 @@
                 @endif
 
                 {{-- Pagination Elements --}}
-                @foreach($pagination['links'] as $link)
-                    @if($link['url'] === null)
+                @foreach ($pagination['links'] as $link)
+                    @if ($link['url'] === null)
                         <li class="page-item disabled" aria-label="Page {{ $link['label'] }}">
                             <span class="page-link">{{ $link['label'] }}</span>
                         </li>
                     @else
-                        <li class="page-item {{ $link['active'] ? 'active' : '' }}" aria-label="Page {{ $link['label'] }}">
+                        <li class="page-item {{ $link['active'] ? 'active' : '' }}"
+                            aria-label="Page {{ $link['label'] }}">
                             <a class="page-link {{ $link['active'] ? 'active' : '' }}" href="{{ $link['url'] }}">
                                 {{ $link['label'] }}
                             </a>
@@ -463,7 +475,7 @@
                 @endforeach
 
                 {{-- Next Page Link --}}
-                @if($pagination['current_page'] < $pagination['last_page'])
+                @if ($pagination['current_page'] < $pagination['last_page'])
                     <li class="page-item">
                         <a class="page-link" href="{{ $pagination['next_url'] }}" aria-label="Next">
                             <i class="bi bi-chevron-right"></i>
@@ -491,14 +503,10 @@
     @else
         <!-- HOME PAGE: Carousel Layout -->
         <ul class="nav nav-tabs product-tabs" role="tablist">
-            @foreach($tabs as $index => $tab)
+            @foreach ($tabs as $index => $tab)
                 <li class="nav-item" role="presentation">
-                    <button 
-                        class="nav-link {{ $index === 0 ? 'active' : '' }}" 
-                        id="tab-{{ $index }}" 
-                        data-bs-toggle="tab" 
-                        data-bs-target="#content-{{ $index }}" 
-                        type="button">
+                    <button class="nav-link {{ $index === 0 ? 'active' : '' }}" id="tab-{{ $index }}"
+                        data-bs-toggle="tab" data-bs-target="#content-{{ $index }}" type="button">
                         {{ $tab }}
                     </button>
                 </li>
@@ -506,7 +514,7 @@
         </ul>
 
         <div class="tab-content">
-            @foreach($tabs as $index => $tab)
+            @foreach ($tabs as $index => $tab)
                 <div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}" id="content-{{ $index }}">
                     <div class="product-carousel-wrapper">
                         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -514,11 +522,10 @@
                                 @forelse(array_chunk($products, 4) as $productKey => $productChunk)
                                     <div class="carousel-item {{ $productKey === 0 ? 'active' : '' }}">
                                         <div class="row g-4">
-                                            @for($i = 0; $i < 4 && ($productKey * 4 + $i) < count($products); $i++)
+                                            @for ($i = 0; $i < 4 && $productKey * 4 + $i < count($products); $i++)
                                                 <div class="col-lg-3 col-md-6">
-                                                    <x-kartu-produk
-                                                        id="{{ $products[$productKey * 4 + $i]['id'] }}" 
-                                                        image="{{ $products[$productKey * 4 + $i]['image'] }}" 
+                                                    <x-kartu-produk id="{{ $products[$productKey * 4 + $i]['id'] }}"
+                                                        image="{{ $products[$productKey * 4 + $i]['image'] }}"
                                                         category="{{ $products[$productKey * 4 + $i]['category'] }}"
                                                         name="{{ $products[$productKey * 4 + $i]['name'] }}"
                                                         price="{{ $products[$productKey * 4 + $i]['price'] }}"
@@ -536,11 +543,13 @@
                                     </div>
                                 @endforelse
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel"
+                                data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel"
+                                data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>

@@ -9,10 +9,15 @@ use Illuminate\View\Component;
 class KartuProduk extends Component
 {
     public $badge;
+
     public $image;
+
     public $category;
+
     public $name;
+
     public $price;
+
     public $oldPrice;
 
     public function __construct(
@@ -30,7 +35,6 @@ class KartuProduk extends Component
         $this->price = $price;
         $this->oldPrice = $oldPrice;
     }
-
 
     /**
      * Get the view / contents that represent the component.

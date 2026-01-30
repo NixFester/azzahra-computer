@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-
 class CategoriesController extends Controller
 {
     public function getCategories(): array
@@ -32,7 +30,7 @@ class CategoriesController extends Controller
             [
                 'name' => 'audio',
                 'image' => 'images/kategori/tws.jpg',
-            ]
+            ],
         ];
     }
 }

@@ -2,15 +2,16 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class StatsBar extends Component
 {
     public int $serviceCount;
+
     public int $satisfaction;
+
     public int $maxSatisfaction;
+
     public int $customerCount;
 
     public function __construct(

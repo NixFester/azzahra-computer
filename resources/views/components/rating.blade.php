@@ -13,31 +13,23 @@
             </div>
         </div>
 
-         <!-- Reviews carousel -->
+        <!-- Reviews carousel -->
         <div class="col-lg-9 col-md-8 ">
 
-            <div id="reviewCarousel"
-                 class="carousel slide carousel-wrapper"
-                 data-bs-ride="carousel"
-                 data-bs-interval="4000"
-                 data-bs-wrap="true">
+            <div id="reviewCarousel" class="carousel slide carousel-wrapper" data-bs-ride="carousel"
+                data-bs-interval="4000" data-bs-wrap="true">
 
                 <div class="carousel-inner">
 
-                    @foreach(array_chunk($ratings['reviews'], 3) as $i => $chunk)
+                    @foreach (array_chunk($ratings['reviews'], 3) as $i => $chunk)
                         <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
                             <div class="row g-3">
-                                @foreach($chunk as $review)
-                                    <a
-                                    href="https://www.google.com/maps/place/TEGAL+LAPTOP+STORE+%26+SERVICE+CENTER/@-6.8654767,109.1200087,17z/data=!4m8!3m7!1s0x2e6fb761bcd1112d:0xf00bab24147a6ca6!8m2!3d-6.8654767!4d109.1200087!9m1!1b1!16s%2Fg%2F11ggbrysfh?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoASAFQAw%3D%3D" 
-                                    class="col-lg-4 col-md-6"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style="text-decoration: none; color: inherit;">
-                                        <x-kartu-review 
-                                            name="{{ $review['name'] }}" 
-                                            image="{{ $review['image'] ?? null }}"
-                                            :rating="$review['rating']"
+                                @foreach ($chunk as $review)
+                                    <a href="https://www.google.com/maps/place/TEGAL+LAPTOP+STORE+%26+SERVICE+CENTER/@-6.8654767,109.1200087,17z/data=!4m8!3m7!1s0x2e6fb761bcd1112d:0xf00bab24147a6ca6!8m2!3d-6.8654767!4d109.1200087!9m1!1b1!16s%2Fg%2F11ggbrysfh?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoASAFQAw%3D%3D"
+                                        class="col-lg-4 col-md-6" target="_blank" rel="noopener noreferrer"
+                                        style="text-decoration: none; color: inherit;">
+                                        <x-kartu-review name="{{ $review['name'] }}"
+                                            image="{{ $review['image'] ?? null }}" :rating="$review['rating']"
                                             review="{{ $review['review'] }}" />
                                     </a>
                                 @endforeach
@@ -48,47 +40,49 @@
                 </div>
 
                 <!-- Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </button>
 
             </div>
 
+        </div>
     </div>
-</div>
-<style>
-    /* Custom styles for the rating component */
-    .carousel-item {
-        transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-    .blur-btn {
-    width: 48px;
-    backdrop-filter: blur(1px);
-    background: rgba(255,255,255,0);
-}
-    .blur-btn:hover {
-        backdrop-filter: blur(8px);
-    background: rgba(255,255,255,0.3);
-}
+    <style>
+        /* Custom styles for the rating component */
+        .carousel-item {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
 
-    .carousel-control-prev.blur-btn,
-    .carousel-control-next.blur-btn {
-        top: 50%;
-        left: 10px;
-        transform: translateY(-50%);
-        height: 120px; /* vertical blur area */
-    }
+        .blur-btn {
+            width: 48px;
+            backdrop-filter: blur(1px);
+            background: rgba(255, 255, 255, 0);
+        }
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        filter: invert(1);
-    }
+        .blur-btn:hover {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.3);
+        }
 
-</style>
+        .carousel-control-prev.blur-btn,
+        .carousel-control-next.blur-btn {
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            height: 120px;
+            /* vertical blur area */
+        }
 
-<script>
- 
-    </script>
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(1);
+        }
+    </style>
+
+    <script></script>

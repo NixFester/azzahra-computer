@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', $blog->title)
 @section('content')
-    
-@include('partials.header-mobile')
-    
+
+    @include('partials.header-mobile')
+
     <div class="container-fluid py-5 bg-light">
         <div class="container">
             <article>
@@ -42,6 +42,7 @@
             color: #333;
             line-height: 1.8;
         }
+
         .prose-content h1 {
             font-size: 2rem;
             font-weight: 600;
@@ -49,6 +50,7 @@
             margin-bottom: 1rem;
             color: #222;
         }
+
         .prose-content h2 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -56,16 +58,21 @@
             margin-bottom: 0.8rem;
             color: #333;
         }
+
         .prose-content p {
             margin-bottom: 1rem;
         }
-        .prose-content ul, .prose-content ol {
+
+        .prose-content ul,
+        .prose-content ol {
             margin-bottom: 1rem;
             margin-left: 2rem;
         }
+
         .prose-content li {
             margin-bottom: 0.5rem;
         }
+
         .prose-content code {
             background-color: #f5f5f5;
             padding: 0.2rem 0.4rem;
@@ -73,6 +80,7 @@
             font-family: 'Courier New', monospace;
             color: #d63384;
         }
+
         .prose-content pre {
             background-color: #f5f5f5;
             padding: 1rem;
@@ -80,6 +88,7 @@
             overflow-x: auto;
             margin-bottom: 1rem;
         }
+
         .prose-content blockquote {
             border-left: 4px solid #0d6efd;
             padding-left: 1rem;
@@ -87,6 +96,7 @@
             margin-bottom: 1rem;
             color: #666;
         }
+
         .prose-content img {
             max-width: 100%;
             height: auto;
@@ -94,6 +104,6 @@
             margin: 1rem 0;
         }
     </style>
-    
+
     @include('partials.footer-mobile')
 @endsection

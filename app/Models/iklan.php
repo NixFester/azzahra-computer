@@ -14,7 +14,7 @@ class Iklan extends Model
         'image_path',
         'link',
         'is_active',
-        'order'
+        'order',
     ];
 
     protected $casts = [

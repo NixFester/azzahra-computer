@@ -13,6 +13,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return redirect()->route('admin.dashboard');
         }
+
         return view('auth.login');
     }
 
@@ -28,7 +29,7 @@ class AuthController extends Controller
             // Create a session manually
             Session::put('authenticated', true);
             Session::put('username', 'admin');
-            
+
             return redirect()->route('admin.dashboard');
         }
 
@@ -40,14 +41,16 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Session::flush();
+
         return redirect()->route('login');
     }
 
     public function dashboard()
     {
-        if (!Session::get('authenticated')) {
+        if (! Session::get('authenticated')) {
             return redirect()->route('login');
         }
+
         return view('dashboard');
     }
 }

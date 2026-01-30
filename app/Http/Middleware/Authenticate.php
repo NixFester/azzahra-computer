@@ -2,16 +2,14 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Request;
 
-class Authenticate  extends Middleware
+class Authenticate extends Middleware
 {
     protected function authenticate($request, array $guards)
     {
-        if (!Session::get('authenticated')) {
+        if (! Session::get('authenticated')) {
             $this->unauthenticated($request, $guards);
         }
     }

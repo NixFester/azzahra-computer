@@ -3,89 +3,86 @@
 @section('breadcrumb', 'Admin / Social')
 
 @section('content')
-<div class="container-fluid">
-    @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    @endif
-
-    <!-- Store Contact Details Section -->
-    <div class="card border-0 shadow-sm mb-4">
-    <div class="card-header bg-white border-bottom py-3">
-        <div class="d-flex align-items-center">
-            <div class="bg-primary bg-opacity-10 rounded-3 p-2 me-3">
-                <i class="bi bi-shop text-primary fs-5"></i>
+    <div class="container-fluid">
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
-            <h5 class="mb-0 fw-semibold">Kontak Store</h5>
-        </div>
-    </div>
-    <div class="card-body p-4">
-        <form action="{{ route('admin.social.store.update') }}" method="POST">
-            @csrf
-            @method('PUT')
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label class="form-label fw-medium d-flex align-items-center gap-2">
-                            <i class="bi bi-whatsapp text-success"></i>
-                            WhatsApp
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0">
-                                <i class="bi bi-whatsapp text-success"></i>
-                            </span>
-                            <input type="text" 
-                                   class="form-control border-start-0 @error('whatsapp') is-invalid @enderror" 
-                                   name="whatsapp" 
-                                   value="{{ old('whatsapp', $store->whatsapp) }}"
-                                   placeholder="+6285942001720">
-                            @error('whatsapp')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+        @endif
+
+        <!-- Store Contact Details Section -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-white border-bottom py-3">
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary bg-opacity-10 rounded-3 p-2 me-3">
+                        <i class="bi bi-shop text-primary fs-5"></i>
                     </div>
+                    <h5 class="mb-0 fw-semibold">Kontak Store</h5>
                 </div>
-                
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label class="form-label fw-medium d-flex align-items-center gap-2">
-                            <i class="bi bi-instagram text-danger"></i>
-                            Instagram
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0">
-                                <i class="bi bi-instagram text-danger"></i>
-                            </span>
-                            <input type="text" 
-                                   class="form-control border-start-0 @error('instagram') is-invalid @enderror" 
-                                   name="instagram" 
-                                   value="{{ old('instagram', $store->instagram) }}"
-                                   placeholder="authorized_servicecenter.tegal">
-                            @error('instagram')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ route('admin.social.store.update') }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label fw-medium d-flex align-items-center gap-2">
+                                    <i class="bi bi-whatsapp text-success"></i>
+                                    WhatsApp
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-whatsapp text-success"></i>
+                                    </span>
+                                    <input type="text"
+                                        class="form-control border-start-0 @error('whatsapp') is-invalid @enderror"
+                                        name="whatsapp" value="{{ old('whatsapp', $store->whatsapp) }}"
+                                        placeholder="+6285942001720">
+                                    @error('whatsapp')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label class="form-label fw-medium d-flex align-items-center gap-2">
-                            <i class="bi bi-tiktok text-danger"></i>
-                            tiktok
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0">
-                                <i class="bi bi-tiktok text-danger"></i>
-                            </span>
-                            <input type="text" 
-                                   class="form-control border-start-0 @error('tiktok') is-invalid @enderror" 
-                                   name="tiktok" 
-                                   value="{{ old('tiktok', $store->tiktok) }}"
-                                   placeholder="@authorizedmultibrandservic9761">
+
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label fw-medium d-flex align-items-center gap-2">
+                                    <i class="bi bi-instagram text-danger"></i>
+                                    Instagram
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-instagram text-danger"></i>
+                                    </span>
+                                    <input type="text"
+                                        class="form-control border-start-0 @error('instagram') is-invalid @enderror"
+                                        name="instagram" value="{{ old('instagram', $store->instagram) }}"
+                                        placeholder="authorized_servicecenter.tegal">
+                                    @error('instagram')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label fw-medium d-flex align-items-center gap-2">
+                                    <i class="bi bi-tiktok text-danger"></i>
+                                    tiktok
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-tiktok text-danger"></i>
+                                    </span>
+                                    <input type="text"
+                                        class="form-control border-start-0 @error('tiktok') is-invalid @enderror"
+                                        name="tiktok" value="{{ old('tiktok', $store->tiktok) }}"
+                                        placeholder="@authorizedmultibrandservic9761">
                             @error('tiktok')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -113,7 +110,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h6>Current Batch Image:</h6>
-                    @if($batchImage)
+                    @if ($batchImage)
                         <img src="{{ $batchImage->image_url }}" 
                              alt="Batch Magang" 
                              class="img-thumbnail mb-3" 
@@ -135,7 +132,7 @@
                         <div class="mb-3">
                             <label class="form-label">Upload New Batch Image</label>
                             <input type="file" 
-                                   class="form-control @error('batch_image') is-invalid @enderror" 
+                                   class="form-control ___inline_directive___________________3___" 
                                    name="batch_image" 
                                    accept="image/*"
                                    required>
@@ -166,12 +163,12 @@
             </button>
         </div>
         <div class="card-body">
-            @if($brochures->count() > 0)
+            @if ($brochures->count() > 0)
             <div class="row">
-                @foreach($brochures as $brochure)
+                @foreach ($brochures as $brochure)
                 <div class="col-md-3 mb-3">
                     <div class="card">
-                        <img src="@if(strpos($brochure->image_url, 'images/') === 0 && strpos($brochure->image_url, '.jpg') !== false){{ asset($brochure->image_url) }}@else{{ $brochure->image_url }}@endif" 
+                        <img src="___inline_directive____________________________________________________________________________________4___" 
                              class="card-img-top" 
                              alt="{{ $brochure->title }}"
                              style="height: 200px; object-fit: cover;">
@@ -195,51 +192,52 @@
             <div class="text-center text-muted py-4">
                 <i class="fas fa-folder-open fa-3x mb-3"></i>
                 <p>No brochures added yet. Click "Add Brosur" to upload.</p>
-            </div>
-            @endif
+            </div> @endif
         </div>
     </div>
 </div>
 
 <!-- Add Brochure Modal -->
-<div class="modal fade" id="addBrochureModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="{{ route('admin.social.brochure.add') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title">Add New Brosur</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Title (Optional)</label>
-                        <input type="text" 
-                               class="form-control" 
-                               name="brochure_title"
-                               placeholder="e.g., Content & Marketing">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Brochure Image <span class="text-danger">*</span></label>
-                        <input type="file" 
-                               class="form-control @error('brochure_image') is-invalid @enderror" 
-                               name="brochure_image" 
-                               accept="image/*"
-                               required>
-                        @error('brochure_image')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <small class="form-text text-muted">Max size: 2MB. Format: JPG, PNG, GIF</small>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-success">
-                        <i class="fas fa-upload"></i> Upload Brosur
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endsection
+<div class="modal
+                                        fade" id="addBrochureModal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="{{ route('admin.social.brochure.add') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Add New Brosur</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Title (Optional)</label>
+                                                        <input type="text" class="form-control" name="brochure_title"
+                                                            placeholder="e.g., Content & Marketing">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Brochure Image <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="file"
+                                                            class="form-control @error('brochure_image') is-invalid @enderror"
+                                                            name="brochure_image" accept="image/*" required>
+                                                        @error('brochure_image')
+                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
+                                                        <small class="form-text text-muted">Max size: 2MB. Format: JPG, PNG,
+                                                            GIF</small>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-success">
+                                                        <i class="fas fa-upload"></i> Upload Brosur
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endsection

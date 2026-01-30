@@ -48,9 +48,15 @@
                     <div class="">
                         <h5>Our Service</h5>
                         <ul class="list-unstyled">
-                            <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service Laptop</a></li>
-                            <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service PC</a></li>
-                            <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a></li>
+                            <li><a
+                                    href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service
+                                    Laptop</a></li>
+                            <li><a
+                                    href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service
+                                    PC</a></li>
+                            <li><a
+                                    href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -58,7 +64,7 @@
             </div>
 
             {{-- RIGHT: Payment & Shipping --}}
-           <div class="col-md-3 pt-5">
+            <div class="col-md-3 pt-5">
                 <h5>Pembayaran</h5>
                 <div class="d-flex flex-wrap gap-2">
                     <img src="{{ asset('images/payment/bca.jpg') }}" height="20">
@@ -92,32 +98,31 @@
 
 {{-- Original JS preserved --}}
 <script>
-const tabs = document.querySelectorAll('.tab');
+    const tabs = document.querySelectorAll('.tab');
 
-function setActive(index) {
-    tabs.forEach(tab => tab.classList.remove('active'));
-    tabs[index].classList.add('active');
-}
+    function setActive(index) {
+        tabs.forEach(tab => tab.classList.remove('active'));
+        tabs[index].classList.add('active');
+    }
 
-function showTegal() {
-    setActive(0);
-    document.getElementById('title').innerText = 'Toko Reparasi Komputer Tegal';
-    document.getElementById('address').innerHTML = `
+    function showTegal() {
+        setActive(0);
+        document.getElementById('title').innerText = 'Toko Reparasi Komputer Tegal';
+        document.getElementById('address').innerHTML = `
         Ruko Citraland Tegal, Blk. B No.11, Kraton, Kec. <br>
         Tegal Bar., Kota Tegal, Jawa Tengah 52112
     `;
-    document.getElementById('maps').href = '#';
-}
+        document.getElementById('maps').href = '#';
+    }
 
-function showCibubur() {
-    setActive(1);
-    document.getElementById('title').innerText = 'Toko Reparasi Komputer Cibubur';
-    document.getElementById('address').innerHTML = `
+    function showCibubur() {
+        setActive(1);
+        document.getElementById('title').innerText = 'Toko Reparasi Komputer Cibubur';
+        document.getElementById('address').innerHTML = `
         Blok AS36, RT.003/RW.014, Jatisampurna, <br>
         Kec. Jatisampurna, Kota Bks, Jawa Barat 17433
     `;
-    document.getElementById('maps').href =
-        'https://maps.app.goo.gl/gNrtrGizxMmiqGzx8';
-}
+        document.getElementById('maps').href =
+            'https://maps.app.goo.gl/gNrtrGizxMmiqGzx8';
+    }
 </script>
-

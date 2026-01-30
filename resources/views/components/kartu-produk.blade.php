@@ -1,12 +1,4 @@
-@props([
-    'id',
-    'image',
-    'category',
-    'name',
-    'price',
-    'badge' => null,
-    'oldPrice' => null,
-])
+@props(['id', 'image', 'category', 'name', 'price', 'badge' => null, 'oldPrice' => null])
 
 <style>
     .kartu-modern {
@@ -214,36 +206,29 @@
 <div class="kartu-modern position-relative shadow-sm">
     <a href="/product/{{ $id }}" class="text-decoration-none" style="color: inherit; display: contents;">
         <div class="kartu-image-wrapper">
-            @if($badge)
+            @if ($badge)
                 <span class="badge-discount">{{ $badge }}</span>
             @endif
-            <img src="{{ $image }}" alt="{{ $name }}" loading="lazy" 
-            onerror="this.onerror=null;this.src='{{ asset('images/fallback/product.jpg') }}';">
+            <img src="{{ $image }}" alt="{{ $name }}" loading="lazy"
+                onerror="this.onerror=null;this.src='{{ asset('images/fallback/product.jpg') }}';">
         </div>
         <div class="kartu-body">
             <p class="kartu-category">{{ $category }}</p>
             <h5 class="kartu-title">{{ ucfirst(htmlspecialchars_decode($name)) }}</h5>
             <div class="kartu-price-section">
                 <span class="price-current">{{ $price }}</span>
-                @if($oldPrice)
+                @if ($oldPrice)
                     <span class="price-old">{{ $oldPrice }}</span>
                 @endif
             </div>
         </div>
     </a>
     @php
-        $message = "Halo, kak\n".
-                "Saya mau beli " . $name . "\n".
-                "Apakah stok masih ada?\n".
-                "Terimakasih.";
+        $message = "Halo, kak\n" . 'Saya mau beli ' . $name . "\n" . "Apakah stok masih ada?\n" . 'Terimakasih.';
     @endphp
     <div style="padding: 0 16px 16px;">
-        <a
-            href="https://wa.me/{{ $storeInfo?->whatsapp }}?text={{ urlencode($message) }}"
-            target="_blank" 
-            rel="noopener" 
-            class="kartu-btn-cart btn-whatsapp" 
-            title="Order via WhatsApp"
+        <a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text={{ urlencode($message) }}" target="_blank"
+            rel="noopener" class="kartu-btn-cart btn-whatsapp" title="Order via WhatsApp"
             onclick="event.stopPropagation();">
             <i class="bi bi-whatsapp"></i>
             Order via WhatsApp

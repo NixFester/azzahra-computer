@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
-
 class AdminBlogController extends Controller
 {
     public function index()
     {
         $blogs = Blog::paginate(10);
+
         return view('admin.blog.index', compact('blogs'));
     }
 
@@ -29,6 +29,7 @@ class AdminBlogController extends Controller
         ]);
 
         Blog::create($validated);
+
         return redirect()->route('admin.blog.index')->with('success', 'Blog berhasil dibuat.');
     }
 
@@ -46,12 +47,14 @@ class AdminBlogController extends Controller
         ]);
 
         $blog->update($validated);
+
         return redirect()->route('admin.blog.index')->with('success', 'Blog berhasil diperbarui.');
     }
 
     public function destroy(Blog $blog)
     {
         $blog->delete();
+
         return redirect()->route('admin.blog.index')->with('success', 'Blog berhasil dihapus.');
     }
 }

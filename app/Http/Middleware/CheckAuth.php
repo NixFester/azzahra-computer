@@ -11,10 +11,10 @@ class CheckAuth
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Session::get('authenticated')) {
+        if (! Session::get('authenticated')) {
             return redirect()->route('login');
         }
-        
+
         return $next($request);
     }
 }

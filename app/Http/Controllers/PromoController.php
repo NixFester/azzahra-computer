@@ -1,7 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\Iklan;
-use Illuminate\Http\Request;
 
 class PromoController extends Controller
 {
@@ -9,7 +10,7 @@ class PromoController extends Controller
     {
         // Get all records where type is 'promo'
         $promoImages = Iklan::where('type', 'promo')->get();
-        
+
         return view('pages.promo', compact('promoImages'));
     }
 }

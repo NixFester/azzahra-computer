@@ -18,7 +18,8 @@
                             Tegal Bar., Kota Tegal, Jawa Tengah 52112
                         </p>
 
-                        <a href="https://maps.app.goo.gl/CeYe9bGF1zyYp6ZX7" id="maps" class="btn btn-primary btn-maps">
+                        <a href="https://maps.app.goo.gl/CeYe9bGF1zyYp6ZX7" id="maps"
+                            class="btn btn-primary btn-maps">
                             Lihat di Google Maps
                         </a>
 
@@ -46,9 +47,15 @@
                 <div class="footer-column">
                     <h5 class="footer-heading">Our Service</h5>
                     <ul class="footer-list">
-                        <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service Laptop</a></li>
-                        <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service PC</a></li>
-                        <li><a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a></li>
+                        <li><a
+                                href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service
+                                Laptop</a></li>
+                        <li><a
+                                href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Service
+                                PC</a></li>
+                        <li><a
+                                href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop">Sparepart</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -86,105 +93,106 @@
 </footer>
 
 <style>
-/* Desktop Footer Styles */
-.footer-mobile {
+    /* Desktop Footer Styles */
+    .footer-mobile {
 
-    border-top: 1px solid #dee2e6;
-}
+        border-top: 1px solid #dee2e6;
+    }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-}
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+    }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-}
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
 
-.footer-section {
-    padding: 0;
-}
+    .footer-section {
+        padding: 0;
+    }
 
-/* Location Section */
-.location-tabs-wrapper {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
+    /* Location Section */
+    .location-tabs-wrapper {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
 
-.location-tabs {
-    display: flex;
-    background: #f8f9fa;
-    border-bottom: 2px solid #e9ecef;
-}
+    .location-tabs {
+        display: flex;
+        background: #f8f9fa;
+        border-bottom: 2px solid #e9ecef;
+    }
 
-.location-tab {
-    flex: 1;
-    padding: 1rem;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 600;
-    color: #666;
-    background: transparent;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s;
-}
+    .location-tab {
+        flex: 1;
+        padding: 1rem;
+        text-align: center;
+        cursor: pointer;
+        font-weight: 600;
+        color: #666;
+        background: transparent;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s;
+    }
 
-.location-tab:hover {
-    background: #fff;
-    color: #3D8FEF;
-}
+    .location-tab:hover {
+        background: #fff;
+        color: #3D8FEF;
+    }
 
-.location-tab.active {
-    background: white;
-    color: #3D8FEF;
-    border-bottom-color: #3D8FEF;
-}
+    .location-tab.active {
+        background: white;
+        color: #3D8FEF;
+        border-bottom-color: #3D8FEF;
+    }
 
-.location-content {
-    padding: 1.5rem;
-}
+    .location-content {
+        padding: 1.5rem;
+    }
 
-.location-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #333;
-}
+    .location-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+    }
 
-.location-address {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
+    .location-address {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
 
-.btn-maps {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-}
+    .btn-maps {
+        display: inline-block;
+        margin-bottom: 1.5rem;
+    }
 
-.contact-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
+    .contact-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
 
-.contact-item {
-    color: #666;
-    margin-bottom: 0.5rem;
-}
+    .contact-item {
+        color: #666;
+        margin-bottom: 0.5rem;
+    }
 
-/* Links Section */
+    /* Links Section */
     .links-section {
         display: flex;
-        flex-direction: column; /* Default: vertikal untuk desktop */
+        flex-direction: column;
+        /* Default: vertikal untuk desktop */
         gap: 20px;
     }
 
@@ -217,214 +225,215 @@
         color: #007bff;
     }
 
-/* Payment Section */
-.payment-logos,
-.shipping-logos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-}
-
-.payment-logos img,
-.shipping-logos img {
-    height: 20px;
-    width: auto;
-    object-fit: contain;
-}
-
-.footer-divider {
-    margin: 2rem 0 1rem;
-    border-color: #dee2e6;
-}
-
-.footer-copyright {
-    text-align: center;
-    font-size: 0.875rem;
-    color: #6c757d;
-    padding-bottom: 1rem;
-}
-
-/* ======================================
-   MOBILE STYLES - 768px and below
-   ====================================== */
-@media (max-width: 768px) {
-    .footer-container {
-        padding: 1.5rem 1rem;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-
-    .location-tabs-wrapper {
-        margin-bottom: 0;
-    }
-
-    .location-tabs {
-        display: flex;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .location-tabs::-webkit-scrollbar {
-        display: none;
-    }
-
-    .location-tab {
-        flex-shrink: 0;
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
-    }
-
-    .location-content {
-        padding: 1.25rem;
-    }
-
-    .location-title {
-        font-size: 1.1rem;
-    }
-
-    .location-address {
-        font-size: 0.9rem;
-    }
-
-    .btn-maps {
-        width: 100%;
-        text-align: center;
-        font-size: 0.95rem;
-        padding: 0.75rem;
-    }
-
-    .contact-title {
-        font-size: 0.95rem;
-        margin-top: 1.25rem;
-    }
-
-    .contact-item {
-        font-size: 0.9rem;
-    }
-
-    /* Links Section Mobile */
-    .links-section {
-        flex-direction: row; /* Horizontal di mobile */
-        gap: 20px;
-    }
-
-    .footer-column {
-        flex: 1;
-    }
-
-    .footer-heading {
-        font-size: 0.95rem;
-        margin-bottom: 0.875rem;
-    }
-
-    .footer-list li {
-        margin-bottom: 0.6rem;
-    }
-
-    .footer-list a {
-        font-size: 0.9rem;
-    }
-
-    /* Payment Section Mobile */
-    .payment-section {
-        text-align: center;
-    }
-
+    /* Payment Section */
     .payment-logos,
     .shipping-logos {
-        justify-content: center;
-        gap: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
     }
 
     .payment-logos img,
     .shipping-logos img {
-        height: 18px;
+        height: 20px;
+        width: auto;
+        object-fit: contain;
     }
 
     .footer-divider {
-        margin: 1.5rem 0 1rem;
+        margin: 2rem 0 1rem;
+        border-color: #dee2e6;
     }
 
     .footer-copyright {
-        font-size: 0.8rem;
-        padding: 0 0.5rem 0.5rem;
-    }
-}
-
-/* Small Mobile - 480px and below */
-@media (max-width: 480px) {
-    .footer-container {
-        padding: 1.25rem 0.875rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: #6c757d;
+        padding-bottom: 1rem;
     }
 
-    .footer-grid {
-        gap: 1.5rem !important;
+    /* ======================================
+   MOBILE STYLES - 768px and below
+   ====================================== */
+    @media (max-width: 768px) {
+        .footer-container {
+            padding: 1.5rem 1rem;
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+        }
+
+        .location-tabs-wrapper {
+            margin-bottom: 0;
+        }
+
+        .location-tabs {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .location-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .location-tab {
+            flex-shrink: 0;
+            padding: 0.875rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .location-content {
+            padding: 1.25rem;
+        }
+
+        .location-title {
+            font-size: 1.1rem;
+        }
+
+        .location-address {
+            font-size: 0.9rem;
+        }
+
+        .btn-maps {
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
+            padding: 0.75rem;
+        }
+
+        .contact-title {
+            font-size: 0.95rem;
+            margin-top: 1.25rem;
+        }
+
+        .contact-item {
+            font-size: 0.9rem;
+        }
+
+        /* Links Section Mobile */
+        .links-section {
+            flex-direction: row;
+            /* Horizontal di mobile */
+            gap: 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+        }
+
+        .footer-heading {
+            font-size: 0.95rem;
+            margin-bottom: 0.875rem;
+        }
+
+        .footer-list li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-list a {
+            font-size: 0.9rem;
+        }
+
+        /* Payment Section Mobile */
+        .payment-section {
+            text-align: center;
+        }
+
+        .payment-logos,
+        .shipping-logos {
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .payment-logos img,
+        .shipping-logos img {
+            height: 18px;
+        }
+
+        .footer-divider {
+            margin: 1.5rem 0 1rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            padding: 0 0.5rem 0.5rem;
+        }
     }
 
-    .location-tab {
-        padding: 0.75rem 1.25rem;
-        font-size: 0.9rem;
-    }
+    /* Small Mobile - 480px and below */
+    @media (max-width: 480px) {
+        .footer-container {
+            padding: 1.25rem 0.875rem;
+        }
 
-    .location-content {
-        padding: 1rem;
-    }
+        .footer-grid {
+            gap: 1.5rem !important;
+        }
 
-    .location-title {
-        font-size: 1rem;
-    }
+        .location-tab {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+        }
 
-    .location-address,
-    .contact-item {
-        font-size: 0.85rem;
-    }
+        .location-content {
+            padding: 1rem;
+        }
 
-    .contact-title {
-        font-size: 0.9rem;
-    }
+        .location-title {
+            font-size: 1rem;
+        }
 
-    .payment-logos,
-    .shipping-logos {
-        gap: 0.4rem;
-    }
+        .location-address,
+        .contact-item {
+            font-size: 0.85rem;
+        }
 
-    .payment-logos img,
-    .shipping-logos img {
-        height: 16px;
+        .contact-title {
+            font-size: 0.9rem;
+        }
+
+        .payment-logos,
+        .shipping-logos {
+            gap: 0.4rem;
+        }
+
+        .payment-logos img,
+        .shipping-logos img {
+            height: 16px;
+        }
     }
-}
 </style>
 
 <script>
-const tabs = document.querySelectorAll('.location-tab');
+    const tabs = document.querySelectorAll('.location-tab');
 
-function setActive(index) {
-    tabs.forEach(tab => tab.classList.remove('active'));
-    tabs[index].classList.add('active');
-}
+    function setActive(index) {
+        tabs.forEach(tab => tab.classList.remove('active'));
+        tabs[index].classList.add('active');
+    }
 
-function showTegal() {
-    setActive(0);
-    document.getElementById('title').innerText = 'Toko Reparasi Komputer Tegal';
-    document.getElementById('address').innerHTML = `
+    function showTegal() {
+        setActive(0);
+        document.getElementById('title').innerText = 'Toko Reparasi Komputer Tegal';
+        document.getElementById('address').innerHTML = `
         Ruko Citraland Tegal, Blk. B No.11, Kraton, Kec. <br>
         Tegal Bar., Kota Tegal, Jawa Tengah 52112
     `;
-    document.getElementById('maps').href = 'https://maps.app.goo.gl/CeYe9bGF1zyYp6ZX7';
-}
+        document.getElementById('maps').href = 'https://maps.app.goo.gl/CeYe9bGF1zyYp6ZX7';
+    }
 
-function showCibubur() {
-    setActive(1);
-    document.getElementById('title').innerText = 'Toko Reparasi Komputer Cibubur';
-    document.getElementById('address').innerHTML = `
+    function showCibubur() {
+        setActive(1);
+        document.getElementById('title').innerText = 'Toko Reparasi Komputer Cibubur';
+        document.getElementById('address').innerHTML = `
         Blok AS36, RT.003/RW.014, Jatisampurna, <br>
         Kec. Jatisampurna, Kota Bks, Jawa Barat 17433
     `;
-    document.getElementById('maps').href = 'https://maps.app.goo.gl/gNrtrGizxMmiqGzx8';
-}
+        document.getElementById('maps').href = 'https://maps.app.goo.gl/gNrtrGizxMmiqGzx8';
+    }
 </script>

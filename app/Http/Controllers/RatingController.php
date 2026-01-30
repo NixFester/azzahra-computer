@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-
 class RatingController extends Controller
 {
     public function getRatings(): array
@@ -49,10 +47,10 @@ class RatingController extends Controller
                     'name' => 'APIP RAMADAN',
                     'image' => null,
                     'rating' => 5,
-                    'review' => 'TEGAL LAPTOP STORE DAN SERVICE CENTER TEGAL memang luar biasa,pelayanannya ramah dan cepat,informasi jelas,garansi panjang dan hadiahnya menarik.buat teman -teman yang punya masalah dengan laptopnya bisa langsung ke TEGA...'
-                ]
+                    'review' => 'TEGAL LAPTOP STORE DAN SERVICE CENTER TEGAL memang luar biasa,pelayanannya ramah dan cepat,informasi jelas,garansi panjang dan hadiahnya menarik.buat teman -teman yang punya masalah dengan laptopnya bisa langsung ke TEGA...',
+                ],
 
-            ]
+            ],
         ];
     }
 }

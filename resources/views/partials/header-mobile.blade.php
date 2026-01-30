@@ -1,17 +1,18 @@
 <!-- MOBILE RESPONSIVE HEADER -->
 <div class="nav-bar navigasi">
     <div class="nav-inner-mobile">
-        
+
         <!-- Logo Section -->
         <div class="mobile-header-top">
-            <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo" class="logo-mobile"/></a>
-            
+            <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo"
+                    class="logo-mobile" /></a>
+
             <div class="mobile-header-actions">
                 <!-- Search Icon Button -->
                 <button class="mobile-search-toggle" id="mobileSearchToggle">
                     <i class="bi bi-search"></i>
                 </button>
-                
+
                 <!-- Mobile Menu Toggle Button -->
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
@@ -24,10 +25,11 @@
         <!-- Mobile Search Bar (Hidden by default) -->
         <div class="mobile-search-bar" id="mobileSearchBar">
             <form action="/products" method="GET" class="mobile-search-form">
-                <input type="text" name="search" placeholder="Search products..." value="{{ request('search', '') }}">
+                <input type="text" name="search" placeholder="Search products..."
+                    value="{{ request('search', '') }}">
                 <select name="category">
                     <option value="">All Categories</option>
-                    @foreach($navCategories as $category)
+                    @foreach ($navCategories as $category)
                         <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }}>
                             {{ $category }}
                         </option>
@@ -46,12 +48,12 @@
                 <button class="mobile-dropdown-toggle">
                     Kategori Produk
                     <svg class="dropdown-icon-mobile" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </button>
                 <div class="mobile-dropdown-content">
                     <a href="/products">Semua Produk</a>
-                    @foreach($navCategories as $category)
+                    @foreach ($navCategories as $category)
                         <a href="/products?category={{ $category }}">{{ ucfirst($category) }}</a>
                     @endforeach
                 </div>
@@ -71,17 +73,18 @@
     <!-- DESKTOP NAVIGATION -->
     <div class="nav-inner">
         <div>
-            <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo" class="logo-area" style="margin-left:15px; margin-right:10px;"/></a>
+            <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo" class="logo-area"
+                    style="margin-left:15px; margin-right:10px;" /></a>
             <x-nav-dropdown title="Kategori Produk">
                 <a href="/products">Semua Produk</a>
-                @foreach($navCategories as $category)
+                @foreach ($navCategories as $category)
                     <a href="/products?category={{ $category }}">
                         {{ ucfirst($category) }}
                     </a>
                 @endforeach
             </x-nav-dropdown>
         </div>
-        
+
         <!-- Menu -->
         <nav class="menu">
             <a href="/">Home</a>
@@ -91,7 +94,7 @@
             <a href="/promo">Promo</a>
             <a href="/intern">Intership</a>
             <a href="/login">Admin</a>
-            
+
             <!-- Desktop Search Icon -->
             <button class="desktop-search-toggle" id="desktopSearchToggle">
                 <i class="bi bi-search"></i>
@@ -103,10 +106,11 @@
     <div class="desktop-search-dropdown" id="desktopSearchDropdown">
         <div class="desktop-search-container">
             <form action="/products" method="GET" class="desktop-search-form">
-                <input type="text" name="search" placeholder="Search products..." value="{{ request('search', '') }}" id="desktopSearchInput">
+                <input type="text" name="search" placeholder="Search products..."
+                    value="{{ request('search', '') }}" id="desktopSearchInput">
                 <select name="category">
                     <option value="">All Categories</option>
-                    @foreach($navCategories as $category)
+                    @foreach ($navCategories as $category)
                         <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }}>
                             {{ $category }}
                         </option>
@@ -250,6 +254,7 @@
        MOBILE STYLES - 768px and below
        ====================================== */
     @media (max-width: 768px) {
+
         /* Hide desktop navigation */
         .nav-inner {
             display: none !important;
@@ -516,12 +521,12 @@
         const mobileNavMenu = document.getElementById('mobileNavMenu');
         const mobileSearchToggle = document.getElementById('mobileSearchToggle');
         const mobileSearchBar = document.getElementById('mobileSearchBar');
-        
+
         // Desktop Elements
         const desktopSearchToggle = document.getElementById('desktopSearchToggle');
         const desktopSearchDropdown = document.getElementById('desktopSearchDropdown');
         const desktopSearchInput = document.getElementById('desktopSearchInput');
-        
+
         const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
         // Toggle mobile menu
@@ -530,7 +535,7 @@
                 e.stopPropagation();
                 this.classList.toggle('active');
                 mobileNavMenu.classList.toggle('active');
-                
+
                 // Close search if open
                 if (mobileSearchBar.classList.contains('active')) {
                     mobileSearchBar.classList.remove('active');
@@ -545,13 +550,13 @@
                 e.stopPropagation();
                 this.classList.toggle('active');
                 mobileSearchBar.classList.toggle('active');
-                
+
                 // Close menu if open
                 if (mobileNavMenu.classList.contains('active')) {
                     mobileNavMenu.classList.remove('active');
                     mobileMenuToggle.classList.remove('active');
                 }
-                
+
                 // Focus input when opened
                 if (mobileSearchBar.classList.contains('active')) {
                     setTimeout(() => {
@@ -566,7 +571,7 @@
             desktopSearchToggle.addEventListener('click', function(e) {
                 e.stopPropagation();
                 desktopSearchDropdown.classList.toggle('active');
-                
+
                 // Focus input when opened
                 if (desktopSearchDropdown.classList.contains('active')) {
                     setTimeout(() => {
@@ -593,9 +598,9 @@
                 mobileSearchToggle?.classList.remove('active');
                 mobileSearchBar?.classList.remove('active');
             }
-            
+
             // Close desktop search
-            if (!event.target.closest('.desktop-search-toggle') && 
+            if (!event.target.closest('.desktop-search-toggle') &&
                 !event.target.closest('.desktop-search-dropdown')) {
                 desktopSearchDropdown?.classList.remove('active');
             }

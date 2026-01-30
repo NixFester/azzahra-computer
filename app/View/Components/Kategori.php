@@ -12,7 +12,9 @@ class Kategori extends Component
      * Create a new component instance.
      */
     public ?string $image = null;
+
     public string $kategori;
+
     public function __construct(?string $image = null, string $kategori = '')
     {
         $this->image = $image;

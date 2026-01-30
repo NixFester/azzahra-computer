@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\User;
 use App\Models\Blog;
 use App\Models\Iklan;
-use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\User;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -16,7 +15,7 @@ class DashboardController extends Controller
     {
         // Mengambil data real dari database dengan perhitungan growth otomatis
         $stats = $this->calculateStats();
-        
+
         // Data untuk recent items
         $recentProducts = Product::latest('created_at')->take(5)->get();
         $recentUsers = User::latest('created_at')->take(5)->get();
@@ -27,7 +26,7 @@ class DashboardController extends Controller
 
     /**
      * Hitung statistik dari database
-     * 
+     *
      * @return array
      */
     private function calculateStats()
@@ -37,14 +36,14 @@ class DashboardController extends Controller
         $totalUsers = User::count();
         $totalBlogs = Blog::count();
         $activeIklan = Iklan::where('is_active', true)->count();
-        
+
         // Data per bulan
         $usersThisMonth = $this->getMonthlyCount('users');
         $usersLastMonth = $this->getLastMonthCount('users');
-        
+
         $productsThisMonth = $this->getMonthlyCount('products');
         $productsLastMonth = $this->getLastMonthCount('products');
-        
+
         // Hitung persentase pertumbuhan
         $userGrowth = $this->calculateGrowth($usersThisMonth, $usersLastMonth);
         $productGrowth = $this->calculateGrowth($productsThisMonth, $productsLastMonth);
@@ -63,8 +62,8 @@ class DashboardController extends Controller
 
     /**
      * Dapatkan count untuk bulan ini
-     * 
-     * @param string $table
+     *
+     * @param  string  $table
      * @return int
      */
     private function getMonthlyCount($table)
@@ -77,8 +76,8 @@ class DashboardController extends Controller
 
     /**
      * Dapatkan count untuk bulan lalu
-     * 
-     * @param string $table
+     *
+     * @param  string  $table
      * @return int
      */
     private function getLastMonthCount($table)
@@ -91,9 +90,9 @@ class DashboardController extends Controller
 
     /**
      * Hitung persentase pertumbuhan
-     * 
-     * @param int $current
-     * @param int $previous
+     *
+     * @param  int  $current
+     * @param  int  $previous
      * @return float
      */
     private function calculateGrowth($current, $previous)
@@ -101,7 +100,7 @@ class DashboardController extends Controller
         if ($previous == 0) {
             return $current > 0 ? 100 : 0;
         }
-        
+
         return round((($current - $previous) / $previous) * 100, 2);
     }
 }

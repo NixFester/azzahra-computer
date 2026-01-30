@@ -41,7 +41,7 @@
     }
 
     .stat-card {
-        
+
         border: 1px solid rgba(255, 255, 255, 0);
         backdrop-filter: blur(0px);
         border-radius: 15px;
@@ -80,9 +80,12 @@
     }
 
     @keyframes pulse {
-        0%, 100% {
+
+        0%,
+        100% {
             box-shadow: 0 0 0 0 rgba(61, 143, 239, 0.4);
         }
+
         50% {
             box-shadow: 0 0 0 20px rgba(61, 143, 239, 0);
         }
@@ -127,7 +130,7 @@
         font-size: 0.9rem;
         text-transform: uppercase;
         font-weight: 700;
-        color:rgba(61, 143, 239,  0.5);
+        color: rgba(61, 143, 239, 0.5);
         letter-spacing: 2px;
         margin-bottom: 0.8rem;
         font-family: 'Courier New', monospace;
@@ -144,7 +147,7 @@
 
     .stat-subtitle {
         font-size: 0.85rem;
-        color:black;
+        color: black;
         margin-top: 0.8rem;
         letter-spacing: 1px;
         transition: color 0.4s ease;
