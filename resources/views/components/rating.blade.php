@@ -28,13 +28,18 @@
                         <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
                             <div class="row g-3">
                                 @foreach($chunk as $review)
-                                    <div class="col-lg-4 col-md-6">
+                                    <a
+                                    href="https://www.google.com/maps/place/TEGAL+LAPTOP+STORE+%26+SERVICE+CENTER/@-6.8654767,109.1200087,17z/data=!4m8!3m7!1s0x2e6fb761bcd1112d:0xf00bab24147a6ca6!8m2!3d-6.8654767!4d109.1200087!9m1!1b1!16s%2Fg%2F11ggbrysfh?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoASAFQAw%3D%3D" 
+                                    class="col-lg-4 col-md-6"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style="text-decoration: none; color: inherit;">
                                         <x-kartu-review 
                                             name="{{ $review['name'] }}" 
                                             image="{{ $review['image'] ?? null }}"
                                             :rating="$review['rating']"
                                             review="{{ $review['review'] }}" />
-                                    </div>
+                                    </a>
                                 @endforeach
                             </div>
                         </div>
