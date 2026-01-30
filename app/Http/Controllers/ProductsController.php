@@ -359,8 +359,7 @@ class ProductsController extends Controller
         // Get product from database
         $product = DB::table('products')
             ->where('id', $productId)
-            ->first()
-            ->get();
+            ->first();
 
         if (! $product) {
             return null;
