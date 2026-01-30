@@ -4,7 +4,7 @@
 
         <!-- Logo Section -->
         <div class="mobile-header-top">
-            <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo"
+            <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo"
                     class="logo-mobile" /></a>
 
             <div class="mobile-header-actions">
@@ -73,7 +73,7 @@
     <!-- DESKTOP NAVIGATION -->
     <div class="nav-inner">
         <div>
-            <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="Azzahra Computer Logo" class="logo-area"
+            <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Azzahra Computer Logo" class="logo-area"
                     style="margin-left:15px; margin-right:10px;" /></a>
             <x-nav-dropdown title="Kategori Produk">
                 <a href="/products">Semua Produk</a>
