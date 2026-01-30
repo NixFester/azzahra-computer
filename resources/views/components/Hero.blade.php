@@ -57,18 +57,23 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
-        .btn-outline-primary {
-            color: #120263;
-            background-color: #ffffff;
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: #120263;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-        }
-        
+.btn-outline-primary {
+    background: rgba(18, 18, 30, 0.65);
+    color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 999px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.btn-outline-primary:hover {
+    background: #ffffff;
+    color: #12121e;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
         @media (max-width: 768px) {
             .banner-title {
                 font-size: 2.5rem;

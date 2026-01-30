@@ -40,10 +40,10 @@
                 </div>
             </div>
 
-            <div class="section-divider"></div>
+
 
             <!-- Branch Profile -->
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-12">
                     <div class="company-card">
                         
