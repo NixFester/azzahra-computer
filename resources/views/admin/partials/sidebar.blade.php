@@ -2,7 +2,7 @@
     <div class="sidebar-header d-lg-none">
         <div class="logo">
             <a href="/" class="d-inline-block">
-                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="40">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
             </a>
         </div>
         <button class="sidebar-close" id="sidebarClose" type="button">
@@ -13,7 +13,7 @@
     <div class="sidebar-top">
         <div class="logo d-none d-lg-block">
             <a href="/" class="d-inline-block">
-                <img src="{{ asset('images/logo.jpg') }}" alt="Logo" height="40">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
             </a>
         </div>
 
