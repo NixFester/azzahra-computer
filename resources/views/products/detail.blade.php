@@ -159,14 +159,10 @@
         </div>
     </section>
 
-<<<<<<< HEAD
     <!-- Products -->
     <section class="container-fluid">
         <x-new-products-collection-mobile :products="app('App\Http\Controllers\ProductsController')->getFeaturedProducts()" :categories="$navCategories" />
     </section>
-=======
-
->>>>>>> 03f6d03cb7e1de32b78b02682adbd204b600af61
 
     @include('partials.footer-mobile')
 

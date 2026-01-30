@@ -80,65 +80,8 @@
         }
 
         .banner-buttons .btn {
-<<<<<<< HEAD
             padding: 0.6rem 1.5rem;
             font-size: 1rem;
-=======
-            padding: 0.75rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary {
-            background-color: #3498db;
-            border: none;
-        }
-        
-        .btn-primary:hover {
-            background-color: #298bb9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-.btn-outline-primary {
-    background: rgba(18, 18, 30, 0.65);
-    color: #ffffff;
-    border: 1.5px solid rgba(255,255,255,0.4);
-    border-radius: 999px;
-    font-weight: 500;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-}
-
-.btn-outline-primary:hover {
-    background: #ffffff;
-    color: #12121e;
-    border-color: #ffffff;
-    transform: translateY(-2px);
-}
-
-        @media (max-width: 768px) {
-            .banner-title {
-                font-size: 2.5rem;
-            }
-            
-            .banner-section {
-                height: 400px;
-            }
-            
-            .banner-buttons .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
-        .seksi {
-            background-image: url('images/head/header.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
->>>>>>> 03f6d03cb7e1de32b78b02682adbd204b600af61
         }
     }
 

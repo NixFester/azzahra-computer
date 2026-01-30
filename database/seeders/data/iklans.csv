@@ -1,8 +1,17 @@
 id,type,title,description,image_path,link,is_active,order,created_at,updated_at
-5,promo,promo1,,iklans/LpKRFyx24adRN40DWXCCQCqzby7wF5nnLAtQuS9s.jpg,,1,0,"2026-01-21 08:29:35","2026-01-21 08:29:35"
-6,promo,promo2,,iklans/w43ZBZsegXacvkrQQJEeJlNoRuNxibmxWkMHwoqB.jpg,,1,0,"2026-01-21 08:29:48","2026-01-21 08:29:48"
-7,promo,promo3,,iklans/fL9gkMpANKeeyUBxmgqVanfj3U9oBPuX6ZHw8nXP.jpg,,1,0,"2026-01-21 08:30:01","2026-01-21 08:30:01"
-13,banner,2,,iklans/jjjtiOFIni1LJD8Q1f9uNpZ055kQU2lyQ1YOX0z2.jpg,,1,0,"2026-01-24 09:07:16","2026-01-24 09:07:16"
-14,banner,laptop,,iklans/2ECwMKvSYXMhW2uJNe142PmUxzb3AoT2rGNTYiyG.jpg,,1,0,"2026-01-24 09:07:30","2026-01-24 09:07:30"
-16,banner,abaikan,,iklans/PsnNWUgcDSGJZwHKumOAZDcxD4yxDboQgY6vqaxQ.jpg,,1,0,"2026-01-27 04:31:39","2026-01-27 04:31:39"
-17,promo,sa,,iklans/zGleuvMAS1ahqgy8jAt76KtqyV7Yt7whdLRBs1rN.jpg,,1,0,"2026-01-27 07:56:44","2026-01-27 07:56:44"
+5,promo,promo1,,iklans/LpKRFyx24adRN40DWXCCQCqzby7wF5nnLAtQuS9s.jpg,,1,0,2026-01-21 08:29:35,2026-01-21 08:29:35
+6,promo,promo2,,iklans/w43ZBZsegXacvkrQQJEeJlNoRuNxibmxWkMHwoqB.jpg,,1,0,2026-01-21 08:29:48,2026-01-21 08:29:48
+7,promo,promo3,,iklans/fL9gkMpANKeeyUBxmgqVanfj3U9oBPuX6ZHw8nXP.jpg,,1,0,2026-01-21 08:30:01,2026-01-21 08:30:01
+13,banner,2,,iklans/jjjtiOFIni1LJD8Q1f9uNpZ055kQU2lyQ1YOX0z2.jpg,,1,0,2026-01-24 09:07:16,2026-01-24 09:07:16
+14,banner,laptop,,iklans/2ECwMKvSYXMhW2uJNe142PmUxzb3AoT2rGNTYiyG.jpg,,1,0,2026-01-24 09:07:30,2026-01-24 09:07:30
+16,banner,abaikan,,iklans/PsnNWUgcDSGJZwHKumOAZDcxD4yxDboQgY6vqaxQ.jpg,,1,0,2026-01-27 04:31:39,2026-01-27 04:31:39
+17,brand,asus,,iklans/1769669786_697b049aea8e1.jpg,,1,0,2026-01-29 06:56:27,2026-01-29 06:56:27
+18,brand,lenovo,,iklans/1769670551_697b0797c1062.jpg,,1,0,2026-01-29 07:09:11,2026-01-29 07:09:11
+19,brand,xiaomi,,iklans/1769670589_697b07bd10eab.jpg,,1,0,2026-01-29 07:09:49,2026-01-29 07:09:49
+20,brand,infinix,,iklans/1769670606_697b07ce4af87.jpg,,1,0,2026-01-29 07:10:06,2026-01-29 07:10:06
+21,brand,canon,,iklans/1769670619_697b07db7e17f.jpg,,1,0,2026-01-29 07:10:19,2026-01-29 07:10:19
+22,brand,zyrex,,iklans/1769670635_697b07eb66dc6.jpg,,1,0,2026-01-29 07:10:35,2026-01-29 07:10:35
+23,brand,hp,,iklans/1769670707_697b0833caf83.jpg,,1,0,2026-01-29 07:11:47,2026-01-29 07:11:47
+24,brand,acer,,iklans/1769670808_697b08988b07a.jpg,,1,0,2026-01-29 07:13:28,2026-01-29 07:13:28
+25,brand,apple,,iklans/1769670818_697b08a28caad.jpg,,1,0,2026-01-29 07:13:38,2026-01-29 07:13:38
+26,brand,msi,,iklans/1769670830_697b08ae85345.jpg,,1,0,2026-01-29 07:13:50,2026-01-29 07:13:50
