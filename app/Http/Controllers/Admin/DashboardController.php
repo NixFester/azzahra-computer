@@ -17,9 +17,9 @@ class DashboardController extends Controller
         $stats = $this->calculateStats();
 
         // Data untuk recent items
-        $recentProducts = [];
-        $recentUsers = [];
-        $recentBlogs = [];
+        $recentProducts = Product::latest('id')->take(5)->get();
+        $recentUsers = User::latest('id')->take(5)->get();
+        $recentBlogs = Blog::latest('id')->take(5)->get();
 
         return view('admin.dashboard.index', compact('stats', 'recentProducts', 'recentUsers', 'recentBlogs'));
     
