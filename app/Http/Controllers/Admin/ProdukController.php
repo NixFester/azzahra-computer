@@ -32,7 +32,7 @@ class ProdukController extends Controller
             });
         }
 
-        $produks = $query->latest()->paginate(10);
+        $produks = $query->latest('id')->paginate(10);
 
         // Maintain search query in pagination links
         $produks->appends($request->only('search'));
