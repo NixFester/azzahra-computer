@@ -88,3 +88,20 @@ Route::get('/product/{id}', [ProductsController::class, 'show'])
 
 Route::get('/intern', [InternshipController::class, 'index'])->name('internship');
 Route::get('/promo', [PromoController::class, 'index'])->name('promo');
+
+Route::get('/storage/{path}', function ($path) {
+    $file = storage_path('app/public/' . $path);
+    
+    // Security: prevent directory traversal
+    $file = realpath($file);
+    $basePath = realpath(storage_path('app/public'));
+    
+    if (!$file || !str_starts_with($file, $basePath) || !file_exists($file)) {
+        abort(404);
+    }
+    
+    return response()->file($file, [
+        'Content-Type' => mime_content_type($file),
+        'Cache-Control' => 'public, max-age=604800', // 1 week cache
+    ]);
+})->where('path', '.*')->name('storage.file');
