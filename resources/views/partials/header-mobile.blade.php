@@ -92,7 +92,7 @@
             <a href="/blog">Blog</a>
             <a href="/kontak">Contact</a>
             <a href="/promo">Promo</a>
-            <a href="/intern">Intership</a>
+            <a href="/intern">Internship</a>
             <a href="/login">Admin</a>
 
             <!-- Desktop Search Icon -->
