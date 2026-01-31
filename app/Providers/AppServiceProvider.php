@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Schema::defaultStringLength(191);
+
         Paginator::useBootstrap(); // atau Paginator::useBootstrapFive();
         // Share navigation data with all views
         View::composer('*', function ($view) {
