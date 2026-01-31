@@ -17,11 +17,9 @@ class DashboardController extends Controller
         $stats = $this->calculateStats();
 
         // Data untuk recent items
-        $recentProducts = Product::latest('created_at')->take(5)->get();
-        $recentUsers = User::latest('created_at')->take(5)->get();
-        $recentBlogs = Blog::latest('created_at')->take(5)->get();
 
-        return view('admin.dashboard.index', compact('stats', 'recentProducts', 'recentUsers', 'recentBlogs'));
+
+        return view('admin.dashboard.index');
     }
 
     /**
@@ -68,10 +66,7 @@ class DashboardController extends Controller
      */
     private function getMonthlyCount($table)
     {
-        return \DB::table($table)
-            ->whereMonth('created_at', Carbon::now()->month)
-            ->whereYear('created_at', Carbon::now()->year)
-            ->count();
+        return ;
     }
 
     /**
@@ -82,10 +77,7 @@ class DashboardController extends Controller
      */
     private function getLastMonthCount($table)
     {
-        return \DB::table($table)
-            ->whereMonth('created_at', Carbon::now()->subMonth()->month)
-            ->whereYear('created_at', Carbon::now()->subMonth()->year)
-            ->count();
+        return ;
     }
 
     /**
