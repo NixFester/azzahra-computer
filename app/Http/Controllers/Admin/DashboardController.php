@@ -8,6 +8,8 @@ use App\Models\Iklan;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -18,10 +20,10 @@ class DashboardController extends Controller
 
         // Data untuk recent items
         $recentProducts = Product::latest('id')->take(5)->get();
-        $recentUsers = User::latest('id')->take(5)->get();
         $recentBlogs = Blog::latest('id')->take(5)->get();
+        $recentVisitors = DB::table('visitors')->distinct()->count('ip_address');
 
-        return view('admin.dashboard.index', compact('stats', 'recentProducts', 'recentUsers', 'recentBlogs'));
+        return view('admin.dashboard.index', compact('stats', 'recentProducts' , 'recentBlogs', 'recentVisitors'));
     
 
         return view('admin.dashboard.index');
@@ -36,30 +38,16 @@ class DashboardController extends Controller
     {
         // Total counts
         $totalProducts = Product::count();
-        $totalUsers = User::count();
+        $totalVisitors = DB::table('visitors')->distinct()->count('ip_address');
         $totalBlogs = Blog::count();
         $activeIklan = Iklan::where('is_active', true)->count();
 
-        // Data per bulan
-        $usersThisMonth = $this->getMonthlyCount('users');
-        $usersLastMonth = $this->getLastMonthCount('users');
-
-        $productsThisMonth = $this->getMonthlyCount('products');
-        $productsLastMonth = $this->getLastMonthCount('products');
-
-        // Hitung persentase pertumbuhan
-        $userGrowth = $this->calculateGrowth($usersThisMonth, $usersLastMonth);
-        $productGrowth = $this->calculateGrowth($productsThisMonth, $productsLastMonth);
 
         return [
-            'kunjungan' => $totalUsers,
-            'produk_masuk' => $productsThisMonth,
+            'kunjungan' => $totalVisitors,
             'produk_keluar' => $totalProducts,
-            'pengguna_baru' => $usersThisMonth,
             'total_blogs' => $totalBlogs,
             'active_iklan' => $activeIklan,
-            'user_growth' => $userGrowth,
-            'product_growth' => $productGrowth,
         ];
     }
 

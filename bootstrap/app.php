@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'check.auth' => \App\Http\Middleware\CheckAuth::class,
         ]);
+        $middleware->append(\App\Http\Middleware\LogVisitor::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

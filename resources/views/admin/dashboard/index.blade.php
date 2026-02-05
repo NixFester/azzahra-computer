@@ -196,29 +196,7 @@
         <div class="stat-card blue">
             <div class="stat-label">Jumlah Kunjungan</div>
             <div class="stat-value">{{ number_format($stats['kunjungan']) }}</div>
-            <span class="stat-growth up">
-                @if ($stats['user_growth'] > 0)
-                    ▲ {{ $stats['user_growth'] }}% dari bulan lalu
-                @elseif($stats['user_growth'] < 0)
-                    ▼ {{ abs($stats['user_growth']) }}% dari bulan lalu
-                @else
-                    — Sama dengan bulan lalu
-                @endif
-            </span>
-        </div>
-
-        <div class="stat-card green">
-            <div class="stat-label">Produk Masuk (Bulan Ini)</div>
-            <div class="stat-value">{{ number_format($stats['produk_masuk']) }}</div>
-            <span class="stat-growth up">
-                @if ($stats['product_growth'] > 0)
-                    ▲ {{ $stats['product_growth'] }}% dari bulan lalu
-                @elseif($stats['product_growth'] < 0)
-                    ▼ {{ abs($stats['product_growth']) }}% dari bulan lalu
-                @else
-                    — Sama dengan bulan lalu
-                @endif
-            </span>
+            <span class="stat-growth up">Kunjungan tahun ini</span>
         </div>
 
         <div class="stat-card orange">
