@@ -66,7 +66,7 @@
             <a href="/kontak" class="mobile-nav-link">Contact</a>
             <a href="/promo" class="mobile-nav-link">Promo</a>
             <a href="/intern" class="mobile-nav-link">Internship</a>
-            <a href="/login" class="mobile-nav-link">Admin</a>
+            <a href="/admin/dashboard" class="mobile-nav-link">Admin</a>
         </div>
     </div>
 
@@ -93,7 +93,7 @@
             <a href="/kontak">Contact</a>
             <a href="/promo">Promo</a>
             <a href="/intern">Internship</a>
-            <a href="/login">Admin</a>
+            <a href="/admin/dashboard">Admin</a>
 
             <!-- Desktop Search Icon -->
             <button class="desktop-search-toggle" id="desktopSearchToggle">
