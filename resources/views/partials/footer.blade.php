@@ -123,6 +123,6 @@
         Kec. Jatisampurna, Kota Bks, Jawa Barat 17433
     `;
         document.getElementById('maps').href =
-            'https://maps.app.goo.gl/gNrtrGizxMmiqGzx8';
+            'https://maps.app.goo.gl/LB27m7oNH48D8svZ8';
     }
 </script>

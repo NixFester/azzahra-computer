@@ -434,6 +434,6 @@
         Blok AS36, RT.003/RW.014, Jatisampurna, <br>
         Kec. Jatisampurna, Kota Bks, Jawa Barat 17433
     `;
-        document.getElementById('maps').href = 'https://maps.app.goo.gl/gNrtrGizxMmiqGzx8';
+        document.getElementById('maps').href = 'https://maps.app.goo.gl/LB27m7oNH48D8svZ8';
     }
 </script>

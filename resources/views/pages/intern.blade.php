@@ -10,7 +10,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="gallery-item featured">
                             <div class="gallery-image-wrapper">
-                                <img src="{{ asset($batchImage->image_url) }}" class="gallery-image"
+                                <img src="{{ url($batchImage->image_url) }}" class="gallery-image"
                                     alt="{{ $batchImage->title ?? 'Batch Internship' }}" loading="lazy">
                                 <div class="gallery-overlay">
                                     <div class="overlay-content">
@@ -30,7 +30,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="gallery-item" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                             <div class="gallery-image-wrapper">
-                                <img src="{{ asset($image->image_url) }}" class="gallery-image img-fluid"
+                                <img src="{{ url($image->image_url) }}" class="gallery-image img-fluid"
                                     alt="{{ $image->title ?? 'Internship Brochure' }}" loading="lazy">
                                 <div class="gallery-overlay">
                                     <div class="overlay-content">
