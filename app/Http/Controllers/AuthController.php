@@ -25,7 +25,7 @@ class AuthController extends Controller
         ]);
 
         // Hardcoded credentials - TEMPORARY USE ONLY
-        if ($request->username === 'admin' && $request->password === 'admin') {
+        if ($request->username === 'azzahracomputer' && $request->password === '2026sukses') {
             // Create a session manually
             Session::put('authenticated', true);
             Session::put('username', 'admin');

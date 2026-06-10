@@ -431,8 +431,9 @@
         setActive(1);
         document.getElementById('title').innerText = 'Toko Reparasi Komputer Cibubur';
         document.getElementById('address').innerHTML = `
-        Blok AS36, RT.003/RW.014, Jatisampurna, <br>
-        Kec. Jatisampurna, Kota Bks, Jawa Barat 17433
+        Ruko Kranggan Permai, Jl. Alternatif Cibubur 
+        No.Blok. RT16 No. 27, RT.003/RW.010, Jatisampurna,
+        Kec. Jatisampurna, Kota Bks, Jawa Barat 17431
     `;
         document.getElementById('maps').href = 'https://maps.app.goo.gl/LB27m7oNH48D8svZ8';
     }
