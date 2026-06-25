@@ -48,6 +48,13 @@
                     </a>
                 </li>
                 <li>
+                <a href="{{ route('admin.service.index') }}"
+                    class="{{ request()->routeIs('admin.service.*') ? 'active' : '' }}">
+                    <i class="bi bi-tools"></i>
+                    <span>Service</span>
+                </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.social.index') }}"
                         class="{{ request()->routeIs('admin.social.*') ? 'active' : '' }}">
                         <i class="bi bi-share"></i>

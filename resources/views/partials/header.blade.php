@@ -24,6 +24,7 @@
             <a href="{{ url('/') }}">Home</a>
             <a href="{{ url('/tentang') }}">About Us</a>
             <a href="{{ url('/blog') }}">Blog</a>
+            <a href="{{ url('/service') }}">Service</a>
             <a href="{{ url('/kontak') }}">Contact</a>
             <a href="{{ url('/promo') }}">Promo</a>
             <a href="{{ url('/intern') }}">Intership</a>

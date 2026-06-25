@@ -12,6 +12,8 @@ use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PromoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 
 Route::get('/products', [ProductsController::class, 'index'])->name('products');
 
@@ -67,6 +69,11 @@ Route::prefix('admin')->name('admin.')->middleware(['check.auth'])->group(functi
     Route::post('social/brochure', [SocialController::class, 'addBrochure'])->name('social.brochure.add');
     Route::delete('social/brochure/{id}', [SocialController::class, 'deleteBrochure'])->name('social.brochure.delete');
 
+    // Service
+    Route::get('service', [AdminServiceController::class, 'index'])->name('service.index');
+    Route::get('service/{service}', [AdminServiceController::class, 'show'])->name('service.show');
+    Route::patch('service/{service}/status', [AdminServiceController::class, 'updateStatus'])->name('service.updateStatus');
+    Route::delete('service/{service}', [AdminServiceController::class, 'destroy'])->name('service.destroy');
 });
 
 Route::get('/blogs', function () {
@@ -87,6 +94,9 @@ Route::get('/product/{id}', [ProductsController::class, 'show'])
     ->where('id', '[0-9]+');
 
 Route::get('/intern', [InternshipController::class, 'index'])->name('internship');
+Route::get('/service', [ServiceController::class, 'create'])->name('service.create');
+Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
+Route::get('/service/sukses', [ServiceController::class, 'sukses'])->name('service.sukses');
 Route::get('/promo', [PromoController::class, 'index'])->name('promo');
 
 Route::get('/storage/{path}', function ($path) {

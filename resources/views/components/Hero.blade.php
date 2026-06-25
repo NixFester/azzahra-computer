@@ -343,14 +343,36 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-        .hero-seksi { height: 100svh; min-height: 480px; }
-        .hero-content { padding: 0 5%; padding-bottom: 80px; }
-        .hero-stats { gap: 0; }
-        .hero-stat { padding: 14px 10px; }
-        .hero-stat-num { font-size: 1.2rem; }
-        .hero-scroll { display: none; }
-        .hero-title { font-size: 2rem; }
+    .hero-seksi { height: calc(100svh - 60px); min-height: 480px; }
+    .hero-content {
+        padding: 0 5%;
+        padding-bottom: 80px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0;
     }
+    .hero-stats { gap: 0; }
+    .hero-stat { padding: 14px 10px; }
+    .hero-stat-num { font-size: 1.2rem; }
+    .hero-scroll { display: none; }
+    .hero-title { font-size: 2rem; }
+
+    /* Tampilkan logo di HP tapi lebih kecil */
+    .hero-logo-wrap {
+        display: flex !important;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        opacity: 0.85;
+    }
+    .hero-logo-ring {
+        width: 80px;
+        height: 80px;
+    }
+    .hero-logo-ring::before,
+    .hero-logo-ring::after { display: none; }
+}
 
     @media (prefers-reduced-motion: reduce) {
         .hero-bg, .hero-badge, .hero-title, .hero-subtitle,
