@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    @include('partials.footer')
+    @include('partials.footer-mobile')
 @endsection
 
 @push('styles')
