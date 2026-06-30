@@ -21,7 +21,7 @@ class ServiceController extends Controller
             'jenis_device' => 'required|in:Laptop,PC,Printer,Vacuum Robot,Smartphone,Lainnya',
             'merk'         => 'required|string|max:255',
             'keluhan'      => 'required|string',
-            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,webp|max:500',
         ], [
             'nama.required'         => 'Nama lengkap wajib diisi.',
             'whatsapp.required'     => 'Nomor WhatsApp wajib diisi.',
@@ -30,7 +30,7 @@ class ServiceController extends Controller
             'merk.required'         => 'Merk perangkat wajib diisi.',
             'keluhan.required'      => 'Keluhan wajib diisi.',
             'foto.image'            => 'File harus berupa gambar.',
-            'foto.max'              => 'Ukuran foto maksimal 5MB.',
+            'foto.max'              => 'Ukuran foto maksimal 500 KB.',
         ]);
 
         // Upload foto jika ada

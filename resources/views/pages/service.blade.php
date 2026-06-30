@@ -105,7 +105,7 @@
                             <input type="file" name="foto" accept="image/*" id="fotoInput" class="d-none">
                             <div id="uploadPlaceholder">
                                 <i class="bi bi-cloud-arrow-up fs-2 text-muted"></i>
-                                <p class="mb-0 mt-1 text-muted small">Klik untuk upload foto (maks. 5MB)</p>
+                                <p class="mb-0 mt-1 text-muted small">Klik untuk upload foto (maks. 500 KB)</p>
                             </div>
                             <div id="uploadPreview" class="d-none">
                                 <img id="previewImg" src="" alt="Preview" class="preview-img">
