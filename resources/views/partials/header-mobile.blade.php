@@ -63,6 +63,7 @@
               <a href="{{ url('/') }}" class="mobile-nav-link">Home</a>
               <a href="{{ url('/tentang') }}" class="mobile-nav-link">About Us</a>
               <a href="{{ url('/blog') }}" class="mobile-nav-link">Blog</a>
+              <a href="{{ url('/service') }}" class="mobile-nav-link">Service</a>
               <a href="{{ url('/kontak') }}" class="mobile-nav-link">Contact</a>
               <a href="{{ url('/promo') }}" class="mobile-nav-link">Promo</a>
               <a href="{{ url('/intern') }}" class="mobile-nav-link">Internship</a>
@@ -90,6 +91,7 @@
             <a href="{{ url('/') }}">Home</a>
             <a href="{{ url('/tentang') }}">About Us</a>
             <a href="{{ url('/blog') }}">Blog</a>
+            <a href="{{ url('/service') }}">Service</a>
             <a href="{{ url('/kontak') }}">Contact</a>
             <a href="{{ url('/promo') }}">Promo</a>
             <a href="{{ url('/intern') }}">Internship</a>
