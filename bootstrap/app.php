@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'check.auth' => \App\Http\Middleware\CheckAuth::class,
         ]);
         $middleware->append(\App\Http\Middleware\LogVisitor::class);
+
+        $middleware->validateCsrfTokens(except: [
+            'payment/webhook',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

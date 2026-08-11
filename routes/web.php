@@ -11,9 +11,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\XenditController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/products', [ProductsController::class, 'index'])->name('products');
+
+// Xendit Payment Routes
+Route::post('/payment/checkout', [XenditController::class, 'checkout'])->name('payment.checkout');
+Route::post('/payment/webhook', [XenditController::class, 'webhook'])->name('payment.webhook');
+Route::get('/payment/success/{order}', [XenditController::class, 'success'])->name('payment.success');
+Route::get('/payment/failed/{order}', [XenditController::class, 'failed'])->name('payment.failed');
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

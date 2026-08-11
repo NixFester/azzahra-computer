@@ -2,7 +2,7 @@
 
 <style>
     .kartu-modern {
-        height: 460px;
+        height: 510px;
         border: 1px solid #e9ecef;
         border-radius: 12px;
         overflow: hidden;
@@ -154,6 +154,19 @@
         font-size: 1.1em;
     }
 
+    .btn-beli-sekarang {
+        background: linear-gradient(135deg, #120263 0%, #1e0590 100%) !important;
+        border: none !important;
+        color: white !important;
+    }
+
+    .btn-beli-sekarang:hover {
+        background: linear-gradient(135deg, #1e0590 0%, #2a07b8 100%) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(18, 2, 99, 0.3);
+        color: white !important;
+    }
+
     /* Ensure card link doesn't break layout */
     a.kartu-modern {
         text-decoration: none;
@@ -167,7 +180,7 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
         .kartu-modern {
-            height: 400px;
+            height: 450px;
         }
 
         .kartu-image-wrapper {
@@ -190,7 +203,7 @@
 
     @media (max-width: 480px) {
         .kartu-modern {
-            height: 380px;
+            height: 430px;
         }
 
         .kartu-image-wrapper {
@@ -226,12 +239,18 @@
     @php
         $message = "Halo, kak\n" . 'Saya mau beli ' . $name . "\n" . "Apakah stok masih ada?\n" . 'Terimakasih.';
     @endphp
-    <div style="padding: 0 16px 16px;">
+    <div style="padding: 0 16px 16px; display: flex; flex-direction: column; gap: 8px;">
+        <a href="{{ route('product.detail', $id) }}" class="kartu-btn-cart btn-beli-sekarang"
+            onclick="event.stopPropagation();" title="Beli Sekarang">
+            <i class="bi bi-bag-check"></i>
+            Beli Sekarang
+        </a>
         <a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text={{ urlencode($message) }}" target="_blank"
-            rel="noopener" class="kartu-btn-cart btn-whatsapp" title="Order via WhatsApp"
+            rel="noopener" class="kartu-btn-cart btn-whatsapp" title="Hubungi via WhatsApp"
             onclick="event.stopPropagation();">
             <i class="bi bi-whatsapp"></i>
-            Order via WhatsApp
+            Hubungi via WhatsApp
         </a>
     </div>
 </div>
+

@@ -18,6 +18,20 @@
             </ol>
         </nav>
 
+        <!-- Alert Messages -->
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show mb-4 rounded-3 shadow-sm" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show mb-4 rounded-3 shadow-sm" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>{{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <div class="row g-4">
             <!-- Product Image -->
             <div class="col-lg-6">
@@ -80,12 +94,17 @@
                             </div>
                         </div>
 
-                        <!-- WhatsApp Contact -->
+                        <!-- Action Buttons -->
                         <div class="d-grid gap-2 mb-4">
+                            <button type="button" class="btn btn-lg text-white fw-semibold btn-buy-now"
+                                data-bs-toggle="modal" data-bs-target="#checkoutModal"
+                                style="background: linear-gradient(135deg, #120263, #1e0590); border: none; border-radius: 12px; padding: 14px;">
+                                <i class="bi bi-bag-check me-2 fs-5"></i>Beli Sekarang
+                            </button>
                             <a href="https://wa.me/{{ $storeInfo?->whatsapp }}?text=Hi%2C%20Apakah%20Produk%2C%20{{ urlencode($product['name']) }}%2C%20tersedia%3F"
-                                target="_blank" class="btn btn-lg text-white fw-semibold"
-                                style="background-color: #25D366;">
-                                <i class="bi bi-whatsapp me-2 fs-5"></i>Chat via WhatsApp
+                                target="_blank" class="btn btn-lg fw-semibold btn-wa-detail"
+                                style="background-color: #25D366; color: white; border-radius: 12px; padding: 14px;">
+                                <i class="bi bi-whatsapp me-2 fs-5"></i>Hubungi via WhatsApp
                             </a>
                         </div>
 
@@ -166,6 +185,88 @@
 
     @include('partials.footer-mobile')
 
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; overflow: hidden;">
+                <div class="modal-header border-0 pb-0" style="background: linear-gradient(135deg, #120263, #1e0590); padding: 28px 28px 20px;">
+                    <div>
+                        <h5 class="modal-title text-white fw-bold" id="checkoutModalLabel">
+                            <i class="bi bi-bag-check me-2"></i>Checkout
+                        </h5>
+                        <p class="text-white-50 mb-0 mt-1 small">Lengkapi data untuk melanjutkan pembayaran</p>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    {{-- Product Summary --}}
+                    <div class="d-flex align-items-center p-3 mb-4 rounded-3" style="background: #f8f9fa;">
+                        <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}"
+                            class="rounded-3 me-3" style="width: 64px; height: 64px; object-fit: cover;"
+                            onerror="this.onerror=null;this.src='{{ asset('images/fallback/product.jpg') }}';">
+                        <div class="flex-grow-1 overflow-hidden">
+                            <div class="fw-semibold text-truncate" style="font-size: 0.9rem;">{{ $product['name'] }}</div>
+                            <div class="fw-bold mt-1" style="color: #120263;">{{ $product['price'] }}</div>
+                        </div>
+                    </div>
+
+                    {{-- Checkout Form --}}
+                    <form action="{{ route('payment.checkout') }}" method="POST" id="checkoutForm">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product['id'] }}">
+
+                        <div class="mb-3">
+                            <label for="buyer_name" class="form-label fw-semibold small">
+                                <i class="bi bi-person me-1"></i>Nama Lengkap
+                            </label>
+                            <input type="text" class="form-control form-control-lg" id="buyer_name"
+                                name="buyer_name" required placeholder="Masukkan nama lengkap"
+                                style="border-radius: 12px; border: 2px solid #e5e7eb; font-size: 0.9rem;"
+                                onfocus="this.style.borderColor='#120263'" onblur="this.style.borderColor='#e5e7eb'">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="buyer_email" class="form-label fw-semibold small">
+                                <i class="bi bi-envelope me-1"></i>Email
+                            </label>
+                            <input type="email" class="form-control form-control-lg" id="buyer_email"
+                                name="buyer_email" required placeholder="nama@email.com"
+                                style="border-radius: 12px; border: 2px solid #e5e7eb; font-size: 0.9rem;"
+                                onfocus="this.style.borderColor='#120263'" onblur="this.style.borderColor='#e5e7eb'">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="buyer_phone" class="form-label fw-semibold small">
+                                <i class="bi bi-phone me-1"></i>No. HP <span class="text-muted">(opsional)</span>
+                            </label>
+                            <input type="tel" class="form-control form-control-lg" id="buyer_phone"
+                                name="buyer_phone" placeholder="08xxxxxxxxxx"
+                                style="border-radius: 12px; border: 2px solid #e5e7eb; font-size: 0.9rem;"
+                                onfocus="this.style.borderColor='#120263'" onblur="this.style.borderColor='#e5e7eb'">
+                        </div>
+
+                        <button type="submit" class="btn btn-lg w-100 text-white fw-bold" id="checkoutSubmitBtn"
+                            style="background: linear-gradient(135deg, #120263, #1e0590); border: none; border-radius: 14px; padding: 16px;">
+                            <span class="checkout-btn-text">
+                                <i class="bi bi-shield-lock me-2"></i>Bayar Sekarang
+                            </span>
+                            <span class="checkout-btn-loading d-none">
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                Memproses...
+                            </span>
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <small class="text-muted">
+                            <i class="bi bi-shield-check me-1"></i>Pembayaran aman diproses oleh Xendit
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for Image Gallery -->
     <script>
         // Image gallery functionality
@@ -175,6 +276,17 @@
                 document.querySelector('.img-fluid.rounded').src = this.src;
             });
         });
+
+        // Checkout form submit handler
+        const checkoutForm = document.getElementById('checkoutForm');
+        if (checkoutForm) {
+            checkoutForm.addEventListener('submit', function() {
+                const btn = document.getElementById('checkoutSubmitBtn');
+                btn.disabled = true;
+                btn.querySelector('.checkout-btn-text').classList.add('d-none');
+                btn.querySelector('.checkout-btn-loading').classList.remove('d-none');
+            });
+        }
     </script>
 
     <style>
@@ -214,6 +326,22 @@
         .card:hover {
             transform: translateY(-2px);
             box-shadow: 0 .5rem 1rem rgba(18, 2, 99, 0.15) !important;
+        }
+
+        .btn-buy-now:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(18, 2, 99, 0.35);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-wa-detail:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #checkoutModal .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(18, 2, 99, 0.15);
         }
     </style>
 
