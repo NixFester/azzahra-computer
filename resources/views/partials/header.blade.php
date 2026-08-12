@@ -171,6 +171,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: nowrap;
         padding-right: 20px;
     }
 
@@ -191,7 +192,10 @@
     /* Menu */
     .menu {
         display: flex;
+        flex-wrap: nowrap;
         gap: 10px;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 
     .menu a {
