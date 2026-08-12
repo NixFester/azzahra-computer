@@ -202,6 +202,7 @@
         color: #fff;
         text-decoration: none;
         font-weight: 500;
+        white-space: nowrap;
     }
 
     .menu a:hover {
