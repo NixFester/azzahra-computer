@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AdminBlogController extends Controller
 {
@@ -32,8 +33,17 @@ class AdminBlogController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('blogs', 'public');
-        }
+    $file = $request->file('image');
+    $baseSlug = Str::slug($validated['title']);
+    $extension = $file->getClientOriginalExtension();
+    $filename = $baseSlug . '.' . $extension;
+    $counter = 1;
+        while (Storage::disk('public')->exists('blogs/' . $filename)) {
+    $counter++;
+    $filename = $baseSlug . '-' . $counter . '.' . $extension;
+    }
+    $validated['image'] = $file->storeAs('blogs', $filename, 'public');
+    }
 
         Blog::create($validated);
 
@@ -60,7 +70,16 @@ class AdminBlogController extends Controller
             if ($blog->image) {
                 Storage::disk('public')->delete($blog->image);
             }
-            $validated['image'] = $request->file('image')->store('blogs', 'public');
+        $file = $request->file('image');
+        $baseSlug = Str::slug($validated['title']);
+        $extension = $file->getClientOriginalExtension();
+        $filename = $baseSlug . '.' . $extension;
+        $counter = 1;
+         while (Storage::disk('public')->exists('blogs/' . $filename)) {
+        $counter++;
+        $filename = $baseSlug . '-' . $counter . '.' . $extension;
+        }
+        $validated['image'] = $file->storeAs('blogs', $filename, 'public');
         }
 
         $blog->update($validated);
