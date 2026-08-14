@@ -155,6 +155,7 @@
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
+        white-space: nowrap;
     }
 
     .menu a:hover {
